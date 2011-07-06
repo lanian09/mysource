@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+%toi=("I",1,"V",5,"X",10,"L",50,"C",100,"D",500,"M",1000);
+$_= shift(@ARGV);
+$total=0;
+while(/./){
+	$_=$';$t=$toi{$&};
+	(/./);
+	if($t<$toi{$&}){
+		$total-=($t*2);
+	}
+	$total+=$t;
+	
+}
+print "$total\n";

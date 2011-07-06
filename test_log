@@ -1,0 +1,98 @@
+    KTF YONG-IN1 R5 SGSN KR1.5.0  2008-04-04 (FRI) 00:00:58
+     S2193 STATISTICS ON PACKET CALL
+       STM = 2008-04-03 23:55:00 ~ 2008-04-04 00:00:00 MPRD = 5(MN)
+       ITEM =INTERACTIVE 
+       CATEGORY = ORIG
+       RESULT = OK
+       RNC    ATTEMPT SUCCESS PDP_ACT PDP_ANS SUCRATE INS_RSC MU_APN  UK_ADDR NSAPIAU
+              NF_RNC  NF_GGSN  NF_DNS  QOS_NA INV_MSG PRO_ERR UK_CNTX ERR_TFT  ERR_PF
+              GGSNREJ OPD_BAR OVLDCAL SYSFAIL TIMEOUT ETCFAIL AVG_PDP AHDTIME(SEC)
+       320          0       0       0       0    0.00       0       0       0       0
+                    0       0       0       0       0       0       0       0       0
+                    0       0       0       0       0       0       0       0
+       321          0       0       0       0    0.00       0       0       0       0
+                    0       0       0       0       0       0       0       0       0
+                    0       0       0       0       0       0       0       0
+       322          0       0       0       0    0.00       0       0       0       0
+                    0       0       0       0       0       0       0       0       0
+                    0       0       0       0       0       0       0       0
+       323          0       0       0       0    0.00       0       0       0       0
+                    0       0       0       0       0       0       0       0       0
+                    0       0       0       0       0       0       0       0
+        326          0       0       0       0    0.00       0       0       0       0
+                     0       0       0       0       0       0       0       0       0
+                     0       0       0       0       0       0       0       0
+        327        126     119     124     124   94.44       2       0       0       0
+                     0       0       0       0       0       0       0       0       0
+                     0       1       0       0       0       5       1      89
+        -------------------------------------------------------------------------------
+        TOTAL     1694    1546    1622    1621   91.26      22       0       0       0
+                     0       0       0       0       0       0       0       0       0
+                     0      70       0       0       0      56       1     115
+     COMPLETED
+
+    KTF YONG-IN1 R5 SGSN KR1.5.0  2008-04-04 (FRI) 00:01:00
+     S2193 STATISTICS ON PACKET CALL
+       STM = 2008-04-03 23:55:00 ~ 2008-04-04 00:00:00 MPRD = 5(MN)
+       ITEM = CONVERSATIONAL
+       CATEGORY = ORIG
+       RESULT = OK
+       RNC    ATTEMPT SUCCESS PDP_ACT PDP_ANS SUCRATE INS_RSC MU_APN  UK_ADDR NSAPIAU
+              NF_RNC  NF_GGSN  NF_DNS  QOS_NA INV_MSG PRO_ERR UK_CNTX ERR_TFT  ERR_PF
+              GGSNREJ OPD_BAR OVLDCAL SYSFAIL TIMEOUT ETCFAIL AVG_PDP AHDTIME(SEC)
+       320          0       0       0       0    0.00       0       0       0       0
+                    0       0       0       0       0       0       0       0       0
+                    0       0       0       0       0       0       0       0
+       321          0       0       0       0    0.00       0       0       0       0
+                    0       0       0       0       0       0       0       0       0
+                    0       0       0       0       0       0       0       0
+       322          0       0       0       0    0.00       0       0       0       0
+                    0       0       0       0       0       0       0       0       0
+                    0       0       0       0       0       0       0       0
+       323          0       0       0       0    0.00       0       0       0       0
+                    0       0       0       0       0       0       0       0       0
+                    0       0       0       0       0       0       0       0
+        326          0       0       0       0    0.00       0       0       0       0
+                     0       0       0       0       0       0       0       0       0
+                     0       0       0       0       0       0       0       0
+        327        126     119     124     124   94.44       2       0       0       0
+                     0       0       0       0       0       0       0       0       0
+                     0       1       0       0       0       5       1      89
+        -------------------------------------------------------------------------------
+        TOTAL     1694    1546    1622    1621   91.26      22       0       0       0
+                     0       0       0       0       0       0       0       0       0
+                     0      70       0       0       0      56       1     115
+     COMPLETED
+
+    KTF YONG-IN1 R5 SGSN KR1.5.0  2008-04-04 (FRI) 00:01:04
+     S2193 STATISTICS ON PACKET CALL
+       STM = 2008-04-03 23:55:00 ~ 2008-04-04 00:00:00 MPRD = 5(MN)
+       ITEM = INTERACTIVE
+       CATEGORY = ORIG
+       RESULT = OK
+       RNC    ATTEMPT SUCCESS PDP_ACT PDP_ANS SUCRATE INS_RSC MU_APN  UK_ADDR NSAPIAU
+              NF_RNC  NF_GGSN  NF_DNS  QOS_NA INV_MSG PRO_ERR UK_CNTX ERR_TFT  ERR_PF
+              GGSNREJ OPD_BAR OVLDCAL SYSFAIL TIMEOUT ETCFAIL AVG_PDP AHDTIME(SEC)
+       320          0       0       0       0    0.00       0       0       0       0
+                    0       0       0       0       0       0       0       0       0
+                    0       0       0       0       0       0       0       0
+       321          0       0       0       0    0.00       0       0       0       0
+                    0       0       0       0       0       0       0       0       0
+                    0       0       0       0       0       0       0       0
+       322          0       0       0       0    0.00       0       0       0       0
+                    0       0       0       0       0       0       0       0       0
+                    0       0       0       0       0       0       0       0
+       323          0       0       0       0    0.00       0       0       0       0
+                    0       0       0       0       0       0       0       0       0
+                    0       0       0       0       0       0       0       0
+        326          0       0       0       0    0.00       0       0       0       0
+                     0       0       0       0       0       0       0       0       0
+                     0       0       0       0       0       0       0       0
+        327        126     119     124     124   94.44       2       0       0       0
+                     0       0       0       0       0       0       0       0       0
+                     0       1       0       0       0       5       1      89
+        -------------------------------------------------------------------------------
+        TOTAL     1694    1546    1622    1621   91.26      22       0       0       0
+                     0       0       0       0       0       0       0       0       0
+                     0      70       0       0       0      56       1     115
+     COMPLETED

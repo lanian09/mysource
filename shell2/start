@@ -1,0 +1,9 @@
+#!/bin/bash
+until [ -z "$1" ]
+do
+        ./StartMC -b "$1"
+        shift
+done
+echo
+
+exit 0

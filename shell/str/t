@@ -1,0 +1,14 @@
+#!/bin/bash
+SSS=`df -kh |grep "boot"|awk '{print $2}'`
+echo $SSS
+
+SS2=${SSS%[\%MG]}
+echo $SS2
+
+if [ $(($SS2)) -gt $1 ]
+then
+	echo "BIG ="$SS2 " more then $1"
+else
+	echo "SMALL ="$SS2 " more then $1"
+fi
+

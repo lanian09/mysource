@@ -1,0 +1,37 @@
+#!/bin/bash
+myPATH=~uamyd/WNTAS64/WGTAM/BIN
+function help()
+{
+    echo "$0 [BLOCKNAME]*"
+    echo ""
+    exit
+}
+
+if [ $# -lt 1 ]
+then
+    help
+fi
+
+PARA=$@
+F_START=0
+
+if [ $1 == '-s' ]
+then
+    F_START=1
+    shift
+    PARA=$@
+fi
+
+
+for i in $PARA
+do
+    if [ $F_START -eq 1 ]
+    then
+        ./StartMC -b $i
+    else
+        ./KillMC -b $i
+        cp $myPATH/$i ./
+
+    fi
+
+done

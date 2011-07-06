@@ -1,0 +1,12 @@
+ cat chkmem.log | grep samd1 > rst.txt
+ cat chkmem.log | grep samd2 >> rst.txt
+ cat chkmem.log | grep samd3 >> rst.txt
+ cat chkmem.log | grep samd4 >> rst.txt
+ cat chkmem.log | grep samd_new1 >> rst.txt
+ cat chkmem.log | grep samd_new2 >> rst.txt
+ cat chkmem.log | grep samd_new3 >> rst.txt
+ cat chkmem.log | grep samd_new4 >> rst.txt
+ cat chkmem.log | grep samd_new5 >> rst.txt
+ cat chkmem.log | grep samd_new6 >> rst.txt
+ cat chkmem.log | grep samd_ntp >> rst.txt
+ cat chkmem.log | grep "block" >> rst.txt

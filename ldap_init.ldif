@@ -1,0 +1,11 @@
+dn:dc=ablex,dc=com2
+objectClass:top
+
+dn:o=일반사원,dc=ablex,dc=com2
+objectClass:organization
+o:일반사원
+
+dn:o=팀장급,dc=ablex,dc=com2
+objectClass:organization
+o:팀장급
+

@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+
+sub read_mem
+{
+        @files = glob("/WNTAFAPP/LOG/A_PROTO/DEBUG/debuglog.0");
+
+        foreach $file (sort @files) {
+                open STG, "$file" || die $!;
+
+                print "file name: $file\n";
+
+                while($line = <STG>) {
+                        chop($line);
+
+                        if($line =~ /NOT GRX PACKET CIP=211\.246\.(\d+)\.(\d+)\:(\d+) SIP=([^\r\n \:\]\t]+)\:(\d+)/) {
+#                               print "CIP=211.246.$1.$2:$3 SIP=$4:$5\n";
+                                if(($3 == 2152) || ($5 == 2152)) {
+                                        $tmp = "211.246.$1.$2:$3 $4:$5";
+                                        $data{$tmp}++;
+                                }
+                        }
+                }
+        }
+
+        foreach $key (keys %data) {
+                print "$key\t$data{$key}\n";
+        }
+}
+
+read_mem;

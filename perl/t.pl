@@ -1,0 +1,2 @@
+#!/bin/usr/perl
+`ls`

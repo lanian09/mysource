@@ -1,0 +1,113 @@
+#!/usr/bin/perl
+# ------------------------------------------------------------------------------------
+# 1. variable
+#  1.1 scalar 
+#	ex) $VAR
+#  1.2 array  
+#	ex) @VAR 
+#	    $#VAR  = last index of @VAR
+#	1.2.1 shift :: prune first item in @ARRAY
+#		ex) @ARRAY=(1,2,3,4); shift( @ARRAY ); then @ARRAY=(2,3,4)
+#	1.2.2 pop   :: prune last item in @ARRAY
+#		ex) @ARRAY=(1,2,3,4); pop( @ARRAY ); then @ARRAY=(1,2,3)
+#  1.3 associative array :: hash
+#	ex) %VAR
+#	    %VAR = ( index1, value1, index2, value2, ... )
+# ------------------------------------------------------------------------------------
+# 2. print option
+#  2.1 print << EOF
+#      ...
+#      EOF <- *) REMOVE First indent!!
+#  2.2 $VAR = <STDIN> :: will be insert value of Standard input device : keyboard etc.
+#  2.3 DIE :: usage ) same as print. but terminate end of work
+# ------------------------------------------------------------------------------------
+# 3. option
+#  3.1 chomp :: prune '\n' that last character of value from  <STDIN>
+#		usage ) chomp $var
+#  3.2 length :: usage ) length $var :: return length of $var
+#  3.3 chop :: usage ) prune last character
+#		usage ) chop ( $var )
+#  3.4 substr :: extract substring.
+#		usage ) substr( $var, StartIndex ) :: print $var to end of $var 
+#								 from StartIndex
+#			substr( $var, StartIndex, Count ) :: print count-character
+# ------------------------------------------------------------------------------------
+# 4. file
+#  4.1 open( filehandle, $filename )
+#	ex) <$filename, $filename : read-mode
+#	ex) >$filename : write-mode, file not exist then make file
+#	ex) >>$filename : append-mode
+#	ex) +<$filename : read&write
+#  4.2 close( filehandle )
+#  4.3 -e, -d, -f ,-z , -s, -T, -B, -M
+# ------------------------------------------------------------------------------------
+# 5. directory
+#  5.1 readdir( dirhandle )
+#  5.2 opendir( dirhandle, $dir )
+#  5.3 closedir dirhandle  !!!!!!!!!!!
+# ------------------------------------------------------------------------------------
+# 6. argument
+#  6.1 argument is in @ARGV
+#	:: if argument is not exist then, 
+#	   return value of $#ARGV is -1 that count of @ARGV
+#          if argument count is 1, return value is 0... etc.
+# ------------------------------------------------------------------------------------
+
+$stufile='stufile';
+$scores='scores';
+$maxnamelength=0;
+$maxexamno=0;
+
+open(sth,"<$stufile")|| die "Failed open $stufile\n";
+while(<sth>)
+{
+	chop;
+	last if( length($_) < 3 );
+	( $stuid, $name, $year ) = split(':');
+	$students{$stuid}=$name;
+	$studyear{$stuid}=$year;
+	if( $maxnamelength < length($name) )
+	{ $maxnamelength = length($name); };
+	
+}
+close(sth);
+
+open(sch,"<$scores")|| die "Failed open $scores\n";
+while(<sch>)
+{
+	chop;
+	last if( length($_) <3 );
+	( $stuid, $examno, $score) = split;
+	$scores{$stuid, $examno } = $score;
+	if( $examno > $maxexamno )
+	{ $maxexamno = $examno; }
+}
+close(sch);
+
+printf(" %3s %-${maxnamelength}s %4s","ID","Name","year");
+foreach( 1..$maxexamno )
+{	printf( "%4d",$_); }
+printf( "%10s\n\n",'Totals');
+
+foreach $stuid(sort(keys %students))
+{
+	printf("%3d %-${maxnamelength}s %4d",
+		$stuid, $students{$stuid}, $studyear{$stuid});
+	$total =0 ;
+	foreach $examno(1..$maxexamno)
+	{
+		printf("%4d", $scores{$stuid, $examno});
+		$total += $scores{ $stuid, $examno};
+		$examtotal{ $examno } += $scores{$stuid, $examno};
+	}
+	printf( "%10d\n", $total);
+}
+
+printf( "%3s %-${maxnamelength}s %4s",'',"Total",'');
+$total=0;
+foreach $examno(1..$maxexamno)
+{
+	printf( "%4d", $examtotal{ $examno } );
+	$total += $examtotal{ $examno };
+}
+printf( "%10d\n\n", $total);

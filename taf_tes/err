@@ -1,0 +1,10 @@
+grep MAX_MIN_SIZE *.h |grep define
+grep MAX_MODELINFO_LEN *.h |grep define
+grep MAX_BROWSERINFO_LEN *.h |grep define
+grep MAX_URL_LEN *.h |grep define
+grep MAX_HASH_SIZE *.h |grep define
+grep MAX_CPNAME_LEN *.h |grep define
+grep MAX_SVCNAME_LEN *.h |grep define
+grep MAX_NAME_SIZE *.h |grep define
+grep MAX_HOSTNAME_LEN *.h |grep define
+grep MAX_PROTO_LEN *.h |grep define

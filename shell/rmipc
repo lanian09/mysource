@@ -1,0 +1,29 @@
+#!/bin/bash
+if [ $# -lt 1 ]
+then
+    echo "$0 [s|m|q] id1 id2 id3 ..."
+    exit
+fi
+
+case $1 in
+s)
+    OPT="-s"
+    ;;
+m)
+    OPT="-m"
+    ;;
+q)
+    OPT="-q"
+    ;;
+*)
+    echo "only [s|m|q]"
+    exit
+esac
+
+shift
+PARA=$@
+for i in $PARA
+do
+    echo ipcrm $OPT $i
+    ipcrm $OPT $i
+done

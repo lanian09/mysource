@@ -1,0 +1,6 @@
+while [ 1 ]
+do
+    #pmap $1 | grep total
+    pmap $1
+	usleep 500000
+done

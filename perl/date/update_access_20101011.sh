@@ -1,0 +1,1 @@
+mysql -h localhost -u dqms -pdqms123 dqmsDB < ./tmp2

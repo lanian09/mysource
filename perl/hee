@@ -1,0 +1,24 @@
+#!/usr/bin/perl
+
+print "filename=";
+$fn=<STDIN>;
+chomp $fn;
+print $fn,", length=",(length $fn),"\n";
+if( -e $fn ){
+	print "StartOfFile:$fn >>> \n"; 
+
+	open (handle, $fn);
+	@afile=<handle>;
+	close (handle);
+	print @afile;
+	$acnt=@afile;
+	print $acnt,"\n"; 
+
+	print " <<< EndOfFile:$fn\n"; 
+}
+else{
+	die "$fn is not exist\n";
+}
+
+
+
