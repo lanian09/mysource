@@ -1,0 +1,11 @@
+
+[PRINT_MASK]
+FAULT   = 0  0  0  0
+LOAD    = 0  0  0  0
+LINK    = 0  0  0  0
+LEG    = 0  0  0  0
+LOGON    = 0  0  0  0
+FLOW    = 0  0  0  0
+RULE_SET    = 0  0  0  0
+RULE_ENT    = 0  0  0  0
+SMS    = 0  0  0  0

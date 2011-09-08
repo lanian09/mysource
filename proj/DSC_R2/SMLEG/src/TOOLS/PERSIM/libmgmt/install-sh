@@ -1,0 +1,63 @@
+#!/bin/sh
+# install - install a library, include
+
+# library install
+#/bin/sh /usr/bin/libtool --mode=install /usr/bin/install -c  libs/libmgmt.la /usr/local/lib/libmgmt.la
+rm -f /usr/local/lib/libmgmt.so.0
+rm -f /usr/local/lib/libmgmt.so 
+
+/usr/bin/install -c ./libs/libmgmt.so.0.0.0 /usr/local/lib/libmgmt.so.0.0.0
+/usr/bin/install -c ./libs/libmgmt.la /usr/local/lib/libmgmt.la
+/usr/bin/install -c ./libs/libmgmt.a /usr/local/lib/libmgmt.a
+
+ln -s /usr/local/lib/libmgmt.so.0.0.0 /usr/local/lib/libmgmt.so.0
+ln -s /usr/local/lib/libmgmt.so.0.0.0 /usr/local/lib/libmgmt.so
+
+ranlib /usr/local/lib/libmgmt.a
+chmod 644 /usr/local/lib/libmgmt.a
+ldconfig -n /usr/local/lib
+
+echo `ls -l /usr/local/lib/libmgmt.a`
+echo `ls -l /usr/local/lib/libmgmt.la`
+echo `ls -l /usr/local/lib/libmgmt.so.0.0.0`
+echo `ls -l /usr/local/lib/libmgmt.so.0`
+echo `ls -l /usr/local/lib/libmgmt.so`
+
+# include install
+cd ./stilib
+/usr/bin/install -d -m 644 /usr/local/include/stilib
+/usr/bin/install -c -m 644 __if.h /usr/local/include/stilib/__if.h
+/usr/bin/install -c -m 644 __ipc.h /usr/local/include/stilib/__ipc.h
+/usr/bin/install -c -m 644 __time.h /usr/local/include/stilib/__time.h
+/usr/bin/install -c -m 644 bufq.h /usr/local/include/stilib/bufq.h
+/usr/bin/install -c -m 644 conf.h /usr/local/include/stilib/conf.h
+/usr/bin/install -c -m 644 cpu.h /usr/local/include/stilib/cpu.h
+/usr/bin/install -c -m 644 disk.h /usr/local/include/stilib/disk.h
+/usr/bin/install -c -m 644 dns.h /usr/local/include/stilib/dns.h
+/usr/bin/install -c -m 644 ipp.h /usr/local/include/stilib/ipp.h
+/usr/bin/install -c -m 644 log.h /usr/local/include/stilib/log.h
+/usr/bin/install -c -m 644 dhcp.h /usr/local/include/stilib/dhcp.h
+/usr/bin/install -c -m 644 make_dhcp.h /usr/local/include/stilib/make_dhcp.h
+/usr/bin/install -c -m 644 md5.h /usr/local/include/stilib/md5.h
+/usr/bin/install -c -m 644 mib2.h /usr/local/include/stilib/mib2.h
+/usr/bin/install -c -m 644 mmc.h /usr/local/include/stilib/mmc.h
+/usr/bin/install -c -m 644 ntp.h /usr/local/include/stilib/ntp.h
+/usr/bin/install -c -m 644 peer.h /usr/local/include/stilib/peer.h
+/usr/bin/install -c -m 644 proc.h /usr/local/include/stilib/proc.h
+/usr/bin/install -c -m 644 radius.h /usr/local/include/stilib/radius.h
+/usr/bin/install -c -m 644 shell.h /usr/local/include/stilib/shell.h
+/usr/bin/install -c -m 644 sock.h /usr/local/include/stilib/sock.h
+/usr/bin/install -c -m 644 timer.h /usr/local/include/stilib/timer.h
+/usr/bin/install -c -m 644 make_radius.h /usr/local/include/stilib/make_radius.h
+/usr/bin/install -c -m 644 make_rrq.h /usr/local/include/stilib/make_rrq.h
+/usr/bin/install -c -m 644 fsm.h /usr/local/include/stilib/fsm.h
+/usr/bin/install -c -m 644 shm_list.h /usr/local/include/stilib/shm_list.h
+/usr/bin/install -c -m 644 _stdarg.h /usr/local/include/stilib/_stdarg.h
+/usr/bin/install -c -m 644 ioctl_func.h /usr/local/include/stilib/ioctl_func.h
+
+echo `ls -lrt /usr/local/include/stilib`
+
+export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
+
+echo `env|grep LD_LIBRARY_PATH`
+

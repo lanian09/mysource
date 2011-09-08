@@ -1,0 +1,2589 @@
+########################################################################################
+#
+# 모든 명령어는 COMMAND 라인과, @PARA 라인, @SLOGAN 라인, @HELP로 구성된다.
+# - COMMAND 라인에는 명령어 이름과 명령을 직접 처리할 application 정보, 그리고 명령어 등급이 기술된다.
+# - @PARA 라인에는 각 파라미터 별 파라미터 이름, 필수/선택, 파라미터 type, 최소값/최대값이 기술된다.
+# - @HELP에는 그 다음 줄부터 @HELP 라인까지 여러줄에 기술되어진다.
+# - COMMAND 라인부터 HELP라인까지 사이에는 comment 또는 빈 라인을 둘 수 없다.
+#
+#
+# COMMAND 라인
+# -> command_name,
+#    명령을 처리할 application이 있는 시스템이름,
+#    명령을 처리할 applicaton이름,
+#    명령어 등급
+#    명령어군(ETC,OPERATOR,OAM,STAT,DBM) 
+#
+# @PARA 라인
+# -> parameter_name
+#    mandatory or optional flag
+#    parameter_type
+#    minimum_value,
+#    maximum_value
+#    -> type이 ENUM인 경우 (...)로 묶어 enum_list를 나열한다.(min/max를 기술하지 않는다.)
+#    -> type이 STRING인 경우 min/max는 문자열 자릿수를 의미한다.
+#
+# @SLOGAN에는 결과 출력시 MMCD가 header에 붙여주는 command_slogan(title)을 기술한다.
+#
+# @HELP에는 명령어 도움말 출력시 그대로 출력되어지는 내용을 @HELP로 묶어 여러줄로 기술한다.
+#
+#
+##########################################################################################
+#
+# mml_commands 파일에는 해당 명령을 처리할 프로세스를 등록할 때, 반드시 시스템의 type을
+#	기술해야 하는데, 같은 type의 시스템이 여러개 존재하므로, MMCD가 어느 시스템으로 
+#	request를 보내야 하는지 결정하기가 애매하다.
+# - 이를 위해 MMCD는 ixpc header의 dstSysName에 system_name을 기록하지 않고 mml_commands에
+#	등록되어 있는 system_type을 기록하여 ixpc로 보낸다.
+# - 이를 수신한 ixpc는 dstSysName에 system_type이 기록되어 있음을 감지하여 같은 type의
+#	여러개 중 한군데를 임의로 선택하여 routing한다.
+# - request를 수신한 Application은 해당 명령어의 종류에 따라 자신이 직접 처리해야 하는지
+#	다른 시스템으로 전달해야 하는지 등의 판단을 포함하여 모든 실질적 처리를 수행한다.
+#
+##########################################################################################
+# 
+# 명령어 코드 		: MXXXX
+# O&M~/CMD			: M1XXX		
+# O&M~/STATUS		: M2XXX
+# O&M~/ALARM		: M3XXX
+# Operator~/USER	: M4XXX
+# Statistics		: M5XXX
+# DBM				: M6XXX
+# ETC				: M9XXX
+# 
+##########################################################################################
+COMMAND dis-sys-sts DSCM MCDM NU SYSTEM
+@PARA   SYS OPT ENUM SCMA SCMB ALL
+@SLOGAN M1101 DISPLAY SYSTEM HARDWARE STATUS INFORMATION
+@HELP
+    Command     : DIS-SYS-STS [SYS]
+
+    Description : DISPLAY SYSTEM HARDWARE STATUS INFORMATION
+
+    Class       : Normal User
+
+    Parameters  : SYS = ENUM : System Name
+                        SCMA: SCM A NODE
+                        SCMB: SCM B NODE
+                        ALL 
+@HELP
+
+
+COMMAND dis-load-sts DSCM MCDM NU SYSTEM
+@PARA   SYS		OPT ENUM SCMA SCMB DSCM ALL
+@SLOGAN M1102 DISPLAY LOAD STATUS
+@HELP
+    Command     : DIS-LOAD-STS  [SYS]
+
+    Description : DISPLAY SYSTEM LOAD STATUS
+
+    Class       : Normal User
+
+    Parameters  : SYS  = ENUM(SCMA, SCMB, DSCM, ALL)
+@HELP
+
+
+COMMAND dis-ntp-sts DSCM MCDM NU SYSTEM
+@PARA   SYS     OPT ENUM SCMA SCMB DSCM ALL
+@SLOGAN M1103 DISPLAY NETWORK TIME PROTOCOL STATUS
+@HELP
+    Command     : DIS-NTP-STS  [SYS]
+
+    Description : DISPLAY NETWORK TIME PROTOCOL STATUS
+
+    Class       : Normal User
+
+    Parameters  : SYS  = ENUM(SCMA, SCMB, DSCM, ALL)
+@HELP
+
+
+COMMAND dis-lan-sts DSCM MCDM NU SYSTEM
+@PARA   SYS OPT ENUM SCMA SCMB DSCM ALL
+@SLOGAN M1104 DISPLAY LAN STATUS
+@HELP
+    Command     : DIS-LAN-STS [SYS]
+
+    Description : DISPLAY LAN STATUS
+
+    Class       : Normal User
+
+    Parameters  : SYS = ENUM : System Name
+                        SCMA : SCM A NODE
+                        SCMB : SCM B NODE
+                        DSCM : DSCM
+                        ALL 
+@HELP
+
+COMMAND dis-tap-sts DSCM SAMD NU SYSTEM
+@PARA   SYS OPT ENUM TAPA TAPB ALL
+@SLOGAN M1105 DISPLAY DIRECTOR STATUS
+@HELP
+    Command     : DIS-TAP-STS [SYS]
+
+    Description : DISPLAY DIRECTOR STATUS
+
+    Class       : Normal User
+
+    Parameters  : SYS = ENUM : System Name
+                        TAPA: TAP A NODE
+                        TAPB: TAP B NODE
+               			ALL: ALL TAP NODE
+                        
+@HELP
+
+
+COMMAND dis-sys-ver DSCM MCDM NU SYSTEM
+@PARA   SYS OPT ENUM SCMA SCMB DSCM ALL
+@SLOGAN M1106 DISPLAY SYS VERSION
+@HELP
+    Command     : DIS-SYS-VER [SYS]
+
+    Description : DISPLAY SYSTEM VERSION
+
+    Class       : Normal User
+
+    Parameters  : SYS = ENUM : System Name
+                        SCMA : SCM A NODE
+                        SCMB : SCM B NODE
+                        DSCM : DSCM
+                        ALL 
+@HELP
+
+
+
+
+COMMAND dis-prc-sts DSCM MCDM NU SYSTEM
+@PARA   SYS		OPT ENUM SCMA SCMB DSCM ALL
+@SLOGAN M1201 DISPLAY PROCESS STATUS
+@HELP
+
+    Command     : DIS-PRC-STS  [SYS]
+
+    Description : DISPLAY PROCESS STATUS
+
+    Class       : Normal User
+
+    Parameters  : SYS  = ENUM(SCMA, SCMB, DSCM, ALL)
+@HELP
+
+
+COMMAND start-prc DSCM SAMD SU SYSTEM CONFIRM
+@PARA   SYS		MAND ENUM SCMA SCMB DSCM
+@PARA   APPNAME MAND STRING 1 15
+@SLOGAN M1202 START UP PROCESS
+@HELP
+
+    Command     : START-PRC  SYS, APPNAME
+
+    Description : START UP PROCESS
+
+    Class       : Super User
+
+    Parameters  : SYS     = ENUM   (SCMA, SCMB, DSCM)
+                  APPNAME = STRING (1~15)
+@HELP
+
+
+COMMAND kill-prc DSCM SAMD SU SYSTEM CONFIRM
+@PARA   SYS		MAND ENUM SCMA SCMB DSCM
+@PARA   APPNAME MAND STRING 1 15
+@SLOGAN M1203 KILL PROCESS
+@HELP
+
+    Command     : KILL-PRC  SYS, APPNAME
+
+    Description : KILL PROCESS
+
+    Class       : Super User
+
+    Parameters  : SYS     = ENUM   (SCMA, SCMB, DSCM)
+                  APPNAME = STRING (1~15)
+@HELP
+
+COMMAND stop-aud-alm DSCM FIMD SU SYSTEM CONFIRM
+@SLOGAN M1204 STOP AUDIO ALARM
+@HELP
+    Command	: STOP-AUD-ALM
+    Description	: STOP AUDIO ALARM
+    Class	: Super User
+@HELP
+
+
+COMMAND set-alm-lmt DSCM FIMD SU ALARM
+@PARA   SYS   MAND ENUM SCMA SCMB DSCM TAPA TAPB SCEA SCEB L2SWA L2SWB
+@PARA   TYPE  MAND ENUM CPU MEM DISK QUEUE SESS LOGON-SUCC LOGOUT-SUCC SMLINK
+@PARA   LEVEL MAND ENUM MINOR MAJOR CRITICAL
+@PARA   LIMIT MAND DECIMAL  1 99
+@PARA   DURAT OPT  DECIMAL  1 255
+@SLOGAN M1401 SETUP ALARM LIMITATION
+@HELP
+
+    Command     : SET-ALM-LMT  SYS, TYPE, LEVEL, LIMIT, [DURAT]
+
+    Description : SETUP ALARM LIMITATION
+
+    Class       : Super User
+
+    Parameters  : SYS   = ENUM : System Name
+                          SCMA : SCM A NODE
+                          SCMB : SCM B NODE
+                          DSCM : DSCM
+                          TAPA : TAP A NODE
+                          TAPB : TAP B NODE
+                          SCEA : Cisco SCE Device A NODE
+                          SCEB : Cisco SCE Device B NODE
+                          L2SWA : L2 SWITCH A NODE
+                          L2SWB : L2 SWITCH B NODE
+
+                  TYPE  = ENUM  : Resource Type
+                          CPU   : SCMA, SCMB, DSCM, TAPA, TAPB, SCEA, SCEB, L2SWA, L2SWB CPU
+                          MEM   : SCMA, SCMB, DSCM, TAPA, TAPB, SCEA, SCEB, L2SWA, L2SWB MEMORY
+                          DISK  : SCMA, SCMB, DSCM, SCEA, SCEB  DISK         
+                          QUEUE : SCMA, SCMB, DSCM  QUEUE
+                          LOGON-SUCC : SCMA, SCMB
+                          LOGOUT-SUCC: SCMA, SCMB
+                          SMLINK: SCMA, SCMB
+
+
+                  LEVEL = ENUM     : Alarm Level
+                          MINOR    : Minor
+                          MAJOR    : Major
+                          CRITICAL : Critical
+
+                  LIMIT = DECIMAL (1~99)  : Limit Value
+                  DURAT = DECIMAL (1~255) : Duration (seconds)
+@HELP
+
+
+COMMAND dis-alm-lmt DSCM FIMD NU ALARM
+@PARA   SYS  OPT  ENUM SCMA SCMB DSCM TAPA TAPB SCEA SCEB L2SWA L2SWB ALL
+@SLOGAN M1402 DISPLAY ALARM LIMITATION
+@HELP
+
+    Command     : DIS-ALM-LMT  [SYS]
+
+    Description : DISPLAY ALARM LIMITATION
+
+    Class       : Normal User
+
+    Parameters  : SYS  = ENUM : System Name
+                         SCMA : SCM A NODE
+                         SCMB : SCM B NODE
+                         DSCM : DSCM
+                         TAPA : TAP A NODE
+                         TAPB : TAP B NODE
+                         SCEA : Cisco SCE Device A NODE
+                         SCEB : Cisco SCE Device B NODE
+                         L2SWA : L2 SWITCH A NODE
+                         L2SWB : L2 SWITCH B NODE
+    	                 ALL   : ALL NODE
+@HELP
+
+
+
+COMMAND mask-alm DSCM FIMD SU ALARM
+@PARA   SYS  MAND ENUM SCMA SCMB DSCM TAPA TAPB SCEA SCEB L2SWA L2SWB
+@PARA   TYPE MAND ENUM CPU DISK LAN PROC MEM QUE HW RMTLAN MIRR_PORT DUP_HB NTP SUCC_RATE TAP-CPU TAP-MEM TAP-PORT TAP-POWER SESSION TPS_LOAD NMS SCE-STAT SCE-CPU SCE-DISK SCE-MEM SCE-PORT SCE-FAN SCE-PWR SCE-TEMP SCE-RDR-CONN L2-CPU L2-MEM L2-PORT CPS_LOAD LOGON-SUCC LOGOUT-SUCC SMLINK
+@PARA   UNIT OPT STRING 1 15
+@SLOGAN M1403 MASK ALARM INFORMATION
+@HELP
+
+	Command     : MASK-ALM  SYS, TYPE, [UNIT]
+
+	Description : MASK ALARM INFORMATION
+
+	Class       : Super User
+
+	Parameters  : SYS = ENUM  : System Name
+                        DSCM  : DSCM
+                        SCMA  : SCM A NODE
+                        SCMB  : SCM B NODE
+                        TAPA  : DIRECTOR A NODE
+                        TAPB  : DIRECTOR B NODE
+                        SCEA  : SCE A NODE
+                        SCEB  : SCE B NODE
+                        L2SWA : L2 SWITCH A NODE
+                        L2SWA : L2 SWITCH B NODE
+
+                 TYPE = ENUM : Alarm Type
+                        CPU  : CPU
+                        DISK : Disk
+                        LAN  : LAN
+                        PROC : S/W Process
+                        MEM  : Memory
+                        QUE  : Queue
+                        HW   : H/W 
+                        RMTLAN      : Remote Lan
+                        MIRR_PORT   : Optical Lan
+                        DUP_HB      : DUPLICATION HEART BEAT
+                        NTP         : NETWORK TIME PROTOCOL
+                        TAP-CPU	    : TAP CPU
+                        TAP-MEM     : TAP MEM
+                        TAP-PORT    : TAP PORT
+                        TAP-POWER   : TAP POWER
+                        NMS         : Network Management System		 
+                        SCE-STAT    : SCE Device STATUS
+                        SCE-CPU     : SCE Device CPU
+                        SCE-MEM     : SCE Device MEM
+                        SCE-DISK    : SCE Device DISK
+                        SCE-PORT    : SCE Device PORT
+                        SCE-FAN     : SCE Device FAN
+                        SCE-PWR     : SCE Device POWER
+                        SCE-TEMP    : SCE Device TEMPERATURE
+                        SCE-RDR-CONN : SCE Device RDR Conn
+                        L2-CPU      : L2 SWITCH CPU
+                        L2-MEM      : L2 SWITCH MEM
+                        L2-PORT     : L2 SWITCH PORT
+                        CPS_LOAD    : CPS LOAD STATUS
+                        CPS_LOAD    : TPS LOAD STATUS
+                        LOGON-SUCC  : LOGON SUCCESS RATE
+                        LOGOUT-SUCC : LOGOUT SUCCESS RATE
+                        SMLINK      : SM Connection Status
+
+
+                UNIT = 	STRING (1~15) : Unit Name
+                        If TYPE is CPU, Don't input the unit name.
+                        If TYPE is DISK, then Unit must be partition name (ex: /, /DATA)
+                        If TYPE is LAN, then Unit must be ip address (ex: 10.160.250.106)
+                        If TYPE is PROC, input the unit name (ex: samd, rleg, mmcd)
+                        If TYPE is QUE, Don't input the unit name.
+                        If TYPE is HW, input the unit name (ex: "e1000g0","e1000g1","e1000g2","e1000g4","e1000g6","e1000g7",
+                                                                "mysql", "timesten", "sm","cm","DISK1", "DISK2", 
+																"SMCONN_A", "SMSYNC_A", "SMCONN_B", "SMSYNC_B",
+																"FAN1", "FAN2", "FAN3","PWR1", "PWR2")
+                        If TYPE is RMTLAN, then Unit must be IP address (ex: 10.160.250.99)
+                        If TYPE is MIRR_PORT, then Unit must be partition name (ex: SCMA/SCMB : "e1000g3", "e1000g5")
+                        If TYPE is DUP_HB,  Don't input the unit name.
+                        If TYPE is NTP, input the unit name (ex: daemon, channel)
+                        If TYPE is TAP-CPU, Don't input the unit name.
+                        If TYPE is TAP-MEM, Don't input the unit name.
+                        If TYPE is TAP-PORT, then Unit must be PORT number(ex: In-line port : 1-12, Monitor port : 13-22, Mng Port : 23) 
+                        If TYPE is TAP-POWER, then Unit must be POWER number(ex:  Tap Power : 1-2) 
+                        If TYPE is NMS, then Unit must be partition name (ex: "CONSOLE", "ALARM", "STATISTICS", "CONFIG", "MMC") 
+                        If TYPE is SCE-STAT, Don't input the unit name. 
+                        If TYPE is SCE-CPU, then Unit must be cpu number (ex: "CPU-1", "CPU-2", "CPU-3") 
+                        If TYPE is SCE-MEM, then Unit must be memory number (ex: "MEM-1", "MEM-2", "MEM-3") 
+                        If TYPE is SCE-DISK, Don't input the unit name. 
+                        If TYPE is SCE-PORT, then Unit must be partition name (ex: "MNG-1", "MNG-2", "PORT-0","PORT-1","PORT-2","PORT-3") 
+                        If TYPE is SCE-FAN, Don't input the unit name. 
+                        If TYPE is SCE-PWR, Don't input the unit name. 
+                        If TYPE is SCE-TEMP, Don't input the unit name. 
+                        If TYPE is SCE-RDR-CONN, input the unit name. (ex: "SCMA", "SCMB");
+                        If TYPE is L2-CPU Don't input the unit name.
+                        If TYPE is L2-MEM Don't input the unit name.
+                        If TYPE is L2-PORT Don't input the unit name.
+                        If TYPE is CPS_LOAD Don't input the unit name.
+                        If TYPE is LOGON SUCC RATE Don't input the unit name.
+                        If TYPE is LOGOUT SUCC RATE Don't input the unit name.
+                        If TYPE is SMLINK,  input the unit name (ex: "1","2","3","4","5" )
+						
+                        Otherwise, input the unit name
+
+@HELP
+
+
+COMMAND umask-alm DSCM FIMD SU ALARM
+@PARA   SYS  MAND ENUM SCMA SCMB DSCM TAPA TAPB SCEA SCEB L2SWA L2SWB
+@PARA   TYPE MAND ENUM CPU DISK LAN PROC MEM QUE HW RMTLAN MIRR_PORT DUP_HB NTP SUCC_RATE TAP-CPU TAP-MEM TAP-PORT TAP-POWER SESSION TPS_LOAD NMS SCE-STAT SCE-CPU SCE-DISK SCE-MEM SCE-PORT SCE-FAN SCE-PWR SCE-TEMP SCE-RDR-CONN L2-CPU L2-MEM L2-PORT CPS_LOAD LOGON-SUCC LOGOUT-SUCC SMLINK
+@PARA   UNIT OPT STRING 1 15
+@SLOGAN M1404 UNMASK ALARM INFORMATION
+@HELP
+
+    Command     : UMASK-ALM  SYS, TYPE, [UNIT]
+
+    Description : UNMASK ALARM INFORMATION
+
+    Class       : Super User
+
+    Parameters  : SYS  = ENUM : System Name
+                         SCMA : SCM A NODE
+                         SCMB : SCM B NODE
+                         DSCM : DSCM
+                         TAPA : TAP A NODE
+                         TAPB : TAP B NODE
+                         SCEA : SCE A NODE
+                         SCEB : SCE B NODE
+                         L2SWA : L2 SWITCH A NODE
+                         L2SWA : L2 SWITCH B NODE
+
+                  TYPE = ENUM : Alarm Type
+                         CPU  : CPU
+                         DISK : Disk
+                         LAN  : LAN
+                         PROC : S/W Process
+                         MEM  : Memory
+                         QUE  : Queue
+                         HW   : H/W 
+                         RMTLAN      : Remote Lan
+                         MIRR_PORT   : Optical Lan
+                         DUP_HB      : DUPLICATION HEART BEAT
+                         NTP         : NETWORK TIME PROTOCOL
+                         TAP-CPU     : TAP Device CPU
+                         TAP-MEM     : TAP Device MEM
+                         TAP-PORT    : TAP Device PORT
+                         TAP-POWER   : TAP Device POWER
+                         NMS         : Network Management System		 
+                         SCE-STAT    : SCE Device STATUS
+                         SCE-CPU     : SCE Device CPU
+                         SCE-MEM     : SCE Device MEM
+                         SCE-DISK    : SCE Device DISK
+                         SCE-PORT    : SCE Device PORT
+                         SCE-FAN     : SCE Device FAN
+                         SCE-PWR     : SCE Device POWER
+                         SCE-TEMP    : SCE Device TEMPERATURE
+                         SCE-RDR-CONN : SCE Device RDR Conn
+                         L2-CPU      : L2 SWITCH CPU
+                         L2-MEM      : L2 SWITCH MEM
+                         L2-PORT     : L2 SWITCH PORT
+                         CPS_LOAD    : CPS LOAD STATUS
+						 LOGON-SUCC  : LOGON SUCCESS RATE
+						 LOGOUT-SUCC : LOGOUT SUCCESS RATE
+                         SMLINK      : SM Connection Status
+
+                UNIT =   STRING (1~15) : Unit Name
+                         If TYPE is CPU, Don't input the unit name.
+                         If TYPE is DISK, then Unit must be partition name (ex: /data)
+                         If TYPE is LAN, then Unit must be IP address(ex: 10.3.2.1)
+                         If TYPE is PROC, input the unit name (ex: ana, wap1ana, udrgen)
+                         If TYPE is QUE, Don't input the unit name.
+                         If TYPE is HW, input the unit name (ex: "e1000g0","e1000g1","e1000g2","e1000g4","e1000g6","e1000g7",
+                                                                  "mysql", "timesten", "sm","cm","DISK1", "DISK2",
+																  "SMCONN_A", "SMSYNC_A", "SMCONN_B", "SMSYNC_B",
+																  "FAN1", "FAN2", "FAN3","PWR1", "PWR2")
+                         If TYPE is RMTLAN, then Unit must be IP address(ex: 192.168.100.10)
+                         If TYPE is MIRR_PORT, then Unit must be partition name (ex: SCMA/SCMB : "e1000g3", "e1000g5")
+                         If TYPE is DUP_HB,  Don't input the unit name.
+                         If TYPE is NTP, input the unit name (ex: daemon, channel)
+                         If TYPE is TAP-CPU, Don't input the unit name.
+                         If TYPE is TAP-MEM, Don't input the unit name.
+                         If TYPE is TAP-PORT, then Unit must be PORT number(1-52)
+                         If TYPE is TAP-POWER, then Unit must be POWER number(1-2)
+                         If TYPE is NMS, then Unit must be partition name (ex: "CONSOLE", "ALARM", "STATISTICS", "CONFIG", "MMC") 
+                         If TYPE is SCE-STAT, Don't input the unit name. 
+                         If TYPE is SCE-CPU, then Unit must be cpu number  (ex: "CPU-1", "CPU-2", "CPU-3") 
+                         If TYPE is SCE-MEM, hen Unit must be memory number  (ex: "MEM-1", "MEM-2", "MEM-3") 
+                         If TYPE is SCE-DISK, Don't input the unit name. 
+                         If TYPE is SCE-PORT, then Unit must be partition name (ex: "MNG-1", "MNG-2", "PORT-0","PORT-1","PORT-2","PORT-3") 
+                         If TYPE is SCE-FAN, Don't input the unit name. 
+                         If TYPE is SCE-PWR, Don't input the unit name. 
+                         If TYPE is SCE-TEMP, Don't input the unit name. 
+                         If TYPE is SCE-RDR-CONN, input the unit name. (ex: "SCMA", "SCMB");
+                         If TYPE is L2-CPU Don't input the unit name.
+                         If TYPE is L2-MEM Don't input the unit name.
+                         If TYPE is L2-PORT Don't input the unit name.
+                         If TYPE is CPS_LOAD Don't input the unit name.
+                         If TYPE is LOGON-SUCC Don't input the unit name.
+                         If TYPE is LOGOUT-SUCC Don't input the unit name.
+                         If TYPE is SMLINK,  input the unit name (ex: "1","2","3","4","5" )
+                         Otherwise, input the unit name
+ 
+@HELP
+
+
+COMMAND dis-nms-sts DSCM NMSIF NU SYSTEM
+@SLOGAN M2301 DISPLAY NMS TCP CONNECTION STATUS
+@HELP
+
+    Command     : DIS-NMS_STS
+
+    Description : DISPLAY NMS TCP CONNECTION STATUS
+
+    Class       : Normal User
+
+@HELP
+
+
+#COMMAND add-pdsn-info DSCM MCDM SU CONFIGURATION CONFIRM
+#@PARA   SYS      MAND     ENUM SCMA SCMB ALL
+#@PARA   IP       MAND     STRING    7 15
+#@PARA   ALIAS    OPT      STRING    1 15
+#@SLOGAN M3101  ADD PDSN INFORMATION
+#@HELP
+#
+#    Command     : ADD-PDSN-INFO SYS, IP, [ALIAS]
+#
+#    Description : Add PDSN INFORMATION
+#
+#    Class       : Super User     
+#
+#    Parameters  : SYS     = ENUM   (SCMA, SCMB, ALL)
+#                  IP      = STRING (7~15)   : IP Address
+#                  ALIAS   = STRING (1~15)   : PDSN Name
+#@HELP
+#
+#
+#COMMAND del-pdsn-info DSCM MCDM SU CONFIGURATION CONFIRM
+#@PARA   SYS      MAND     ENUM SCMA SCMB ALL
+#@PARA   IP       MAND     STRING    7 15
+#@SLOGAN M3102  DELETE PDSN INFORMATION
+#@HELP
+#
+#    Command     : DEL-PDSN-INFO SYS, IP
+#
+#    Description : Delete PDSN INFORMATION
+#
+#    Class       : Super User     
+#
+#    Parameters  : SYS     = ENUM   (SCMA, SCMB, ALL)
+#                  IP      = STRING (7~15)   : IP Address
+#@HELP
+#
+#
+#COMMAND chg-pdsn-info DSCM MCDM SU CONFIGURATION CONFIRM
+#@PARA   SYS      MAND     ENUM SCMA SCMB ALL
+#@PARA   IP       MAND     STRING    7 15
+#@PARA   ALIAS    OPT      STRING    1 15
+#@SLOGAN M3103  CHANGE PDSN INFORMATION
+#@HELP
+#
+#    Command     : CHG-PDSN-INFO SYS, IP, [ALIAS]
+#
+#    Description : CHANGE PDSN INFORMATION
+#
+#    Class       : Super User     
+#
+#    Parameters  : SYS     = ENUM   (SCMA, SCMB, ALL)
+#                  IP   	  = STRING (7~15)   : IP Address
+#                  ALIAS   = STRING (1~15)   : PDSN Name 
+#@HELP
+
+
+#COMMAND dis-pdsn-info DSCM MCDM NU CONFIGURATION          
+#@PARA   SYS     OPT      ENUM SCMA SCMB ALL
+#@PARA   IP      OPT      STRING    7 15
+#@SLOGAN M3104  DISPLAY PDSN INFORMATION
+#@HELP
+#
+#    Command     : DIS-PDSN-INFO [SYS], [IP]
+#
+#    Description : DISPLAY PDSN INFORMATION
+#
+#    Class       : Normal User     
+#
+#    Parameters  : SYS    = ENUM(SCMA, SCMB, ALL)
+#                  IP     = STRING (7~15)   : IP Address
+#@HELP
+
+
+COMMAND add-pdsn-info DSCM STMD SU CONFIGURATION CONFIRM
+@PARA   IP       MAND     STRING    7 15
+@PARA   ALIAS    MAND     STRING    1 64
+@SLOGAN M3101  ADD PDSN INFORMATION
+@HELP
+
+    Command     : ADD-PDSN-INFO IP, ALIAS
+
+    Description : Add PDSN INFORMATION
+
+    Class       : Super User     
+
+    Parameters  : IP      = STRING (7~15)   : IP Address
+                  ALIAS   = STRING (1~64)   : PDSN Name
+@HELP
+
+
+COMMAND del-pdsn-info DSCM STMD SU CONFIGURATION CONFIRM
+@PARA   IP       MAND     STRING    7 15
+@SLOGAN M3102  DELETE PDSN INFORMATION
+@HELP
+
+    Command     : DEL-PDSN-INFO IP
+
+    Description : Delete PDSN INFORMATION
+
+    Class       : Super User     
+
+    Parameters  : IP      = STRING (7~15)   : IP Address
+@HELP
+
+
+COMMAND dis-pdsn-info DSCM STMD NU CONFIGURATION          
+@SLOGAN M3104  DISPLAY PDSN INFORMATION
+@HELP
+
+    Command     : DIS-PDSN-INFO 
+
+    Description : DISPLAY PDSN INFORMATION
+
+    Class       : Normal User     
+
+@HELP
+
+
+#COMMAND add-ip-pool DSCM MCDM SU CONFIGURATION CONFIRM
+#@PARA   SYS       MAND    ENUM DSCA DSCB ALL
+#@PARA   PDSN_IP   MAND    STRING    7 15
+#@PARA   IP        MAND    STRING    7 15
+#@PARA   NETMASK   MAND    STRING    0 32
+#@SLOGAN M3201 ADD PDSN IP POOL INFORMATION
+#@HELP
+#
+#    Command     : ADD-IP-POOL SYS, PDSN_IP, IP, NETMASK
+#
+#    Description : ADD PDSN IP POOL INFORMATION
+#
+#    Class       : Super User
+#
+#    Parameters  : SYS     = ENUM    (DSCA, DSCB, ALL)
+#    Parameters  : PDSN_IP = STRING  (7~15)     : PDSN IP
+#    Parameters  : IP      = STRING  (7~15)     : First IP POOL
+#    Parameters  : NETMASK = STRING  (0~32)     : Netmask
+#@HELP
+
+
+#COMMAND del-ip-pool DSCM MCDM SU CONFIGURATION CONFIRM
+#@PARA   SYS       MAND    ENUM DSCA DSCB ALL
+#@PARA   PDSN_IP   MAND    STRING    7 15
+#@PARA   IP        MAND    STRING    7 15
+#@SLOGAN M3202 DELETE PDSN IP POOL INFORMATION
+#@HELP
+#
+#    Command     : DEL-IP-POOL SYS, PDSN_IP, IP
+#
+##    Description : DELETE PDSN IP POOL INFORMATION
+#
+#    Class       : Super User
+#
+#    Parameters  : SYS     = ENUM    (DSCA, DSCB, ALL)
+#    Parameters  : PDSN_IP = STRING  (7~15)     : PDSN IP
+#    Parameters  : IP      = STRING  (7~15)     : First IP POOL
+#@HELP
+
+
+#COMMAND dis-ip-pool DSCM MCDM NU CONFIGURATION
+#@PARA   SYS       OPT     ENUM DSCA DSCB ALL
+#@PARA   PDSN_IP   OPT     STRING        7 15
+#@SLOGAN M3204 DISPLAY PDSN IP POOL INFORMATION
+#@HELP
+#
+#    Command     : DIS-IP-POOL [SYS], [PDSN_IP]
+#
+#    Description : DISPLAY PDSN IP POOL INFORMATION
+#
+#    Class       : Normal User
+#
+#    Parameters  : SYS     = ENUM     (DSCA, DSCB, ALL)
+#    Parameters  : PDSN_IP = STRING  (7~15)     : PDSN_IP
+#@HELP
+
+
+
+#COMMAND set-tmr DSCM MCDM SU TIMER CONFIRM
+#@PARA   SYS       MAND    ENUM SCMA SCMB ALL
+#@PARA   TMR_TYPE  MAND    ENUM SESS MSG CALL
+#@PARA   TMR_CLS   MAND    ENUM CALL LONGCALL WAP1 WAP2 HTTP AAA VT
+#@PARA   TMR_VAL   MAND	  DECIMAL 0 65535
+#@SLOGAN M3501 SETUP CALL PROCESSING TIMER
+#@HELP
+
+#Command     : SET-TMR SYS, TMR_TYPE, TMR_CLS, TMR_VAL
+#
+#Description : SETUP CALL PROCESSING TIMER
+#
+#Class       : Super User
+#
+#Parameters  : SYS          = ENUM    (SCMA, SCMB, ALL)
+#Parameters  : TMR_TYPE     = ENUM    (SESS, MSG, CALL)
+#Parameters  : TMR_CLS      = ENUM    (CALL, LONGCALL, WAP1, WAP2, HTTP, AAA, VT)
+#Parameters  : TMR_VAL      = DECIMAL (0~65535)
+#@HELP
+
+
+#COMMAND dis-tmr DSCM MCDM NU TIMER
+#@PARA   SYS       OPT     ENUM SCMA SCMB ALL
+#@PARA   TMR_TYPE  OPT     ENUM SESS MSG CALL
+#@SLOGAN M3502 DISPLAY CALL PROCESSING TIMER
+#@HELP
+#
+#    Command     : DIS-TMR [SYS], [TMR_TYPE]
+#
+#    Description : DISPLAY CALL PROCESSING TIMER
+#
+#    Class       : Normal User
+#
+#    Parameters  : SYS		= ENUM (SCMA, SCMB, ALL)
+#    Parameters  : TMR_TYPE	= ENUM (SESS, MSG, CALL)
+#@HELP
+
+
+#COMMAND dis-sess-load DSCM MCDM NU SESSION
+#@PARA   SYS      OPT     ENUM SCMA SCMB ALL
+#@SLOGAN M3601 DISPLAY SESSION LOAD STATUS    
+#@HELP
+#
+#    Command     : DIS-SESS-LOAD [SYS]
+#
+#    Description : DISPLAY SESSION LOAD STATUS
+#
+#    Class       : Normal User
+#
+#    Parameters  : SYS		= ENUM (SCMA, SCMB, ALL)
+#@HELP
+
+
+#COMMAND del-sess-info DSCM MCDM SU SESSION       
+#@PARA   SYS       MAND    ENUM SCMA SCMB ALL
+#@PARA   IMSI	  MAND    STRING 15	15
+#@SLOGAN M3602 DELETE CALL SESSION INFORMATION
+#@HELP
+#
+#    Command     : DEL-SESS-INFO SYS, IMSI
+#
+#    Description : DELETE CALL SESSION INFORMATION
+#
+#    Class       : Super User
+#
+#    Parameters  : SYS           = ENUM   (SCMA, SCMB, ALL)
+#    Parameters  : IMSI	        = STRING (15)
+#@HELP
+#
+#COMMAND dis-sess-info DSCM MCDM NU SESSION   
+#@PARA   SYS       OPT     ENUM SCMA SCMB ALL
+#@PARA   IMSI	  MAND    STRING 15  15
+#@SLOGAN M3603 DISPLAY CALL SESSION INFORMATION
+#@HELP
+#
+#   Command     : DIS-SESS-INFO [SYS], IMSI
+#
+#    Description : DISPLAY CALL SESSION INFORMATION
+#
+#    Class       : Normal User
+#
+#    Parameters  : SYS			= ENUM	 (SCMA, SCMB, ALL)
+#    Parameters  : IMSI			= STRING (15)
+#@HELP
+
+COMMAND dis-sess DSCM MCDM NU SESSION   
+@PARA   SYS       OPT     ENUM SCMA SCMB ALL
+@PARA   IMSI	  MAND     STRING 15  15
+@SLOGAN M3603 DISPLAY CALL SESSION IMSI INFORMATION
+@HELP
+
+    Command     : DIS-SESS [SYS], IMSI
+
+    Description : DISPLAY IMSI CALL SESSION INFORMATION
+
+    Class       : Normal User
+
+    Parameters  : SYS			= ENUM	 (SCMA, SCMB, ALL)
+    Parameters  : IMSI			= STRING (15)
+@HELP
+
+COMMAND dis-sess-cnt DSCM MCDM NU SESSION   
+@PARA   SYS       OPT     ENUM SCMA SCMB ALL
+@SLOGAN M3604 DISPLAY CALL SESSION TOTAL COUNT INFORMATION
+@HELP
+
+    Command     : DIS-SESS-CNT [SYS]
+
+    Description : DISPLAY CALL SESSION COUNT
+
+    Class       : Normal User
+
+    Parameters  : SYS			= ENUM	 (SCMA, SCMB, ALL)
+@HELP
+
+
+COMMAND dis-sess-list DSCM MCDM NU SESSION   
+@PARA   SYS       	  OPT     ENUM SCMA SCMB ALL
+@PARA   LIST_INDEX	  OPT     DECIMAL 1   999999
+@SLOGAN M3605 DISPLAY CALL SESSION LIST_INDEX INFORMATION
+@HELP
+
+    Command     : DIS-SESS-LIST [SYS], [LIST_INDEX]
+
+    Description : DISPLAY CALL SESSION LIST_INDEX INFORMATION
+
+    Class       : Normal User
+
+    Parameters  : SYS			= ENUM	 (SCMA, SCMB, ALL)
+    Parameters  : LIST_INDEX	= DECIMAL (1~999999)
+@HELP
+
+#COMMAND dis-svc-alm DSCM FIMD NU ALARM
+#@PARA   SYS        OPT ENUM SCMA SCMB ALL
+#@SLOGAN M4102 DISPLAY SERVICE ALARM LIMITATION
+#@HELP
+#
+#    Command     : DIS-SVC-ALM  [SYS]
+#
+#    Description : DISPLAY SERVICE ALARM LIMITATION
+#
+#    Class       : Normal User
+#
+#    Parameters  : SYS  = ENUM : System Name
+#			 SCMA : SCM A NODE
+#			 SCMB : SCM B NODE
+#			 ALL  : ALL NODE
+#@HELP
+
+#COMMAND reg-call-trc DSCM MCDM SU TRACE
+#@PARA   SYS      MAND   ENUM    SCMA SCMB ALL
+#@PARA   IP_IMSI     MAND   STRING	7 15
+#@SLOGAN M4201 REGISTER CALL TRACE INFORMATION
+#@HELP
+#
+#    Command     : REG-CALL-TRC SYS, IP_IMSI
+#
+#    Description : REGISTER CALL TRACE INFORMATION
+#
+#    Class       : Super User
+#    
+#    Parameters  : SYS	   = ENUM  (SCMA, SCMB, ALL)
+#    Parameters  : IP_IMSI     = STRING  (7~15) 
+#@HELP
+
+
+COMMAND reg-call-trc DSCM MCDM SU TRACE
+@PARA   SYS      MAND   ENUM    SCMA SCMB ALL
+@PARA   IP_IMSI     MAND   STRING	7 15
+@PARA   DURATION    OPT   DECIMAL	1 1440
+@SLOGAN M4201 REGISTER CALL TRACE INFORMATION
+@HELP
+
+    Command     : REG-CALL-TRC SYS, IP_IMSI, DURATION
+
+    Description : REGISTER CALL TRACE INFORMATION
+
+    Class       : Super User
+    
+    Parameters  : SYS	   = ENUM  (SCMA, SCMB, ALL)
+    Parameters  : IP_IMSI     = STRING  (7~15) 
+    Parameters  : DURATION    = DECIMAL (1~1440) Minute
+@HELP
+
+COMMAND canc-call-trc DSCM MCDM SU TRACE
+@PARA   SYS      MAND   ENUM SCMA SCMB ALL
+@PARA   IP_IMSI     MAND   STRING	7 15
+@SLOGAN M4203 CANCEL CALL TRACE INFORMATION
+@HELP
+
+    Command     : CANC-CALL-TRC SYS, IP_IMSI
+
+    Description : CANCEL CALL TRACE INFORMATION
+
+    Class       : Super User
+
+    Parameters  : SYS	  = ENUM  (SCMA, SCMB, ALL)
+    Parameters  : IP_IMSI    = STRING  (7~15)
+@HELP
+
+#COMMAND chg-call-trc DSCM MCDM SU TRACE
+#@PARA   SYS      MAND   ENUM    SCMA SCMB ALL
+#@PARA   IMSI     MAND   STRING  15 15
+#@PARA   TRCLEVEL MAND   DECIMAL 1  2
+#@SLOGAN M4202 CHANGE CALL TRACE INFORMATION
+#@HELP
+#
+#    Command     : CHG-CALL-TRC SYS, IMSI, TRCLEVEL
+#
+#    Description : CHANGE CALL TRACE INFORMATION
+#
+#    Class       : Super User
+#
+#    Parameters  : SYS      = ENUM  (SCMA, SCMB, ALL)
+#    Parameters  : IMSI     = STRING  (15) :
+#    Parameters  : TRCLEVEL = DECIMAL  (1~2)  
+#                             LEVEL 1 : REALTIME SUBSCRIBER INFO
+#                             LEVEL 2 : BLOCKING  INFO
+#@HELP
+
+
+COMMAND dis-call-trc DSCM MCDM NU TRACE   
+@PARA   SYS      OPT     ENUM SCMA SCMB ALL
+@SLOGAN M4204 DISPLAY CALL TRACE INFORMATION
+@HELP
+
+    Command     : DIS-CALL-TRC [SYS]    
+
+    Description : DISPLAY CALL TRACE INFORMATION
+
+    Class       : Normal User
+
+    Parameters  : SYS		= ENUM	 (SCMA, SCMB, ALL)
+@HELP
+
+
+#COMMAND set-log-level DSCM MCDM SU O&M CONFIRM
+#@PARA   SYS       MAND    ENUM SCMA SCMB ALL
+#@PARA   LOGTYPE   MAND    ENUM MSG APP
+#@PARA   LOGCLS    MAND    ENUM CAPD MMCR PANA RANA RLEG0 RLEG1 RLEG2 RLEG3 RLEG4 REANA RDRANA SMPP RDRCAPD
+#@PARA   LEVEL     MAND    ENUM ALL DEBUG WARNING CRITICAL NO
+#@SLOGAN M4301 SETUP PROCESS DEBUGGING LOG AND HEADLOG LEVEL
+#@HELP
+#
+#    Command     : SET-LOG-LEVEL SYS, LOGTYPE, LOGCLS, LEVEL
+#
+#    Description : SETUP PROCESS DEBUGGING LOG AND HEADLOG LEVEL
+#
+#    Class       : Super User
+#
+#    Parameters : SYS	 = ENUM (SCMA, SCMB, ALL)
+#    Parameters : LOGTYPE = ENUM (MSG, APP)
+#    Parameters : LOGCLS	 = ENUM (CAPD MMCR PANA RANA RLEG0 RLEG1 RLEG2 RLEG3 RLEG4 REANA RDRANA RDRCAPD SMPP)
+#    Parameters : LEVEL	 = ENUM (ALL, DEBUG, WARNING, CRITICAL, NO)
+#@HELP
+
+
+COMMAND set-log-level DSCM MCDM SU O&M CONFIRM
+@PARA   SYS       MAND    ENUM SCMA SCMB ALL
+@PARA   LOGTYPE   MAND    ENUM MSG APP
+@PARA   LOGCLS    MAND    ENUM CAPD MMCR PANA RANA RLEG0 REANA RDRANA SMPP RDRCAPD
+@PARA   LEVEL     MAND    ENUM ALL DEBUG WARNING CRITICAL NO
+@SLOGAN M4301 SETUP PROCESS DEBUGGING LOG AND HEADLOG LEVEL
+@HELP
+
+    Command     : SET-LOG-LEVEL SYS, LOGTYPE, LOGCLS, LEVEL
+
+    Description : SETUP PROCESS DEBUGGING LOG AND HEADLOG LEVEL
+
+    Class       : Super User
+
+    Parameters : SYS	 = ENUM (SCMA, SCMB, ALL)
+    Parameters : LOGTYPE = ENUM (MSG, APP)
+    Parameters : LOGCLS	 = ENUM (CAPD MMCR PANA RANA RLEG0 RLEG1 RLEG2 RLEG3 RLEG4 REANA RDRANA RDRCAPD SMPP)
+    Parameters : LEVEL	 = ENUM (ALL, DEBUG, WARNING, CRITICAL, NO)
+@HELP
+
+COMMAND dis-log-level DSCM MCDM NU O&M           
+@PARA   SYS      OPT     ENUM SCMA SCMB ALL
+@SLOGAN M4302 DISPLAY PROCESS DEBUGGING LOG AND HEADLOG LEVEL
+@HELP
+
+    Command     : DIS-LOG-LEVEL [SYS]
+
+    Description : DISPLAY PROCESS DEBUGGING LOG AND HEADLOG LEVEL
+
+    Class       : Normal User     
+
+    Parameters  : SYS		= ENUM	 (SCMA, SCMB, ALL)
+@HELP
+
+
+COMMAND inh-msg DSCM COND SU O&M
+@PARA   MSGTYPE   MAND ENUM ALM STS
+@PARA   MSGNUM    MAND STRING 4 4
+@SLOGAN M4401 INHIBIT PRINT MESSAGE
+@HELP
+
+    Command     : INH-MSG MSGTYPE, MSGNUM
+
+    Description : INHIBIT PRINT MESSAGE
+
+    Class       : Super User     
+
+    Parameters  : MSGTYPE		= ENUM	 (ALM, STS)
+    Parameters  : MSGNUM		= STRING (4~4)
+@HELP
+
+
+COMMAND alw-msg DSCM COND SU O&M
+@PARA   MSGTYPE   MAND ENUM ALM STS
+@PARA   MSGNUM    MAND STRING 4 4
+@SLOGAN M4402 ALLOW PRINT MESSAGE
+@HELP
+
+    Command     : ALW-MSG MSGTYPE, MSGNUM
+
+    Description : ALLOW PRINT MESSAGE
+
+    Class       : Super User     
+
+    Parameters  : MSGTYPE		= ENUM	 (ALM, STS)
+    Parameters  : MSGNUM		= STRING (4~4)
+@HELP
+
+
+COMMAND dis-inh-msg DSCM COND NU O&M
+@PARA   MSGTYPE   OPT ENUM ALM STS
+@SLOGAN M4403 DISPLAY PRINT MESSAGE
+@HELP
+
+    Command     : DIS-INH-MSG [MSGTYPE]
+
+    Description : DISPLAY PRINT MESSAGE
+
+    Class       : Normal User     
+
+    Parameters  : MSGTYPE		= ENUM	 (ALM, STS)
+@HELP
+
+
+COMMAND add-usr DSCM MMCD SU O&M
+@PARA   USER    MAND STRING 1 15
+@PARA   PASSWD  MAND STRING 1 10
+@PARA   CLASS   MAND ENUM   SU NU GUEST
+@PARA	NAME	MAND STRING 1 15
+@SLOGAN M5101 ADD DSCM LOGIN USER ACCOUNT
+@HELP
+
+    Command     : ADD-USR  USER, PASSWD, CLASS, NAME
+
+    Description : ADD DSCM LOGIN USER ACCOUNT
+
+    Class       : Super User
+
+    Parameters  : USER   = STRING (1~15) : User Name 
+                  PASSWD = STRING (1~10) : Password
+                  CLASS  = ENUM  : User Class (Privilege)
+                           SU    : Super User
+                           NU    : Normal User
+                           GUEST : Guest User
+				  NAME	 = STRING (1~15) : NAME			 
+@HELP
+
+
+COMMAND del-usr DSCM MMCD SU O&M
+@PARA   USER    MAND STRING  1 15
+@SLOGAN M5102 DELETE DSCM LOGIN USER ACCOUNT
+@HELP
+
+    Command     : DEL-USR USER
+
+    Description : DELETE DSCM LOGIN USER ACCOUNT
+
+    Class       : Super User
+
+    Parameters  : USER = STRING (1~15) : User Name
+@HELP
+
+
+COMMAND chg-pwd DSCM MMCD SU O&M
+@PARA   USER    OPT  STRING    1 15
+@PARA   OLD_PWD MAND STRING    1 10
+@PARA   NEW_PWD MAND STRING    1 10
+@SLOGAN M5103 CHANGE DSCM LOGIN USER PASSWORD
+@HELP
+
+    Command     : CHG-PWD  [USER], OLD_PWD, NEW_PWD
+
+    Description : CHANGE DSCM LOGIN USER PASSWORD
+
+    Class       : Super User
+
+    Parameters  : USER    = STRING (1~15) : User Name
+                  OLD_PWD = STRING (1~10) : OLD Password
+                  NEW_PWD = STRING (1~10) : NEW Password
+@HELP
+
+
+COMMAND dis-usr-info DSCM MMCD NU O&M
+@SLOGAN M5104 DISPLAY REGISTERED DSCM USER INFORMATION
+@HELP
+
+    Command     : DIS-USR-INFO
+
+    Description : DISPLAY REGISTERED DSCM USER INFORMATION
+
+    Class       : Normal User
+
+    Parameters  : None
+@HELP
+
+
+COMMAND dis-cmd-his DSCM COND NU O&M
+@PARA   STIME  MAND  STRING  12 12
+@PARA   ETIME  MAND  STRING  12 12
+@SLOGAN M5201 DISPLAY COMMAND HISTORY
+@HELP
+
+    Command     : DIS-CMD-HIS  STIME, ETIME
+
+    Description : DISPLAY COMMAND HISTORY
+
+    Class       : Normal User
+
+    Parameters  : STIME  = STRING (12~12) : Start Time (YYYYMMDDHHMM)
+    Parameters  : ETIME  = STRING (12~12) : End Time   (YYYYMMDDHHMM)
+@HELP
+
+
+COMMAND canc-exe-cmd DSCM MMCD NU O&M
+@PARA   JOB MAND DECIMAL 0 255
+@SLOGAN M5202 CANCEL ON EXECUTION COMMAND
+@HELP
+
+    Command     : CANC-EXE-CMD  JOB
+
+    Description : CANCEL ON EXECUTION COMMAND
+
+    Class       : Normal User
+
+    Parameters  : JOB = DECIMAL (0~255) : Job Number
+@HELP
+
+
+COMMAND dis-exe-cmd DSCM MMCD NU O&M
+@SLOGAN M5203 DISPLAY ON EXECUTION COMMAND LIST
+@HELP
+
+    Command     : DIS-EXE-CMD
+
+    Description : DISPLAY ON EXECUTION COMMAND LIST
+
+    Class       : Normal User
+
+    Parameters  : None
+@HELP
+
+
+#act-batch-job -> act-cmd-file
+#COMMAND act-cmd-file DSCM MMCD NU O&M~/BATCH
+#@PARA  FILE MAND STRING 1 30
+#@SLOGAN M5205 EXECUTE BATCH JOB
+#@HELP
+#
+#    Command     : ACT-CMD-FILE FILE
+#
+#    Description : EXECUTE BATCH JOB
+#
+#    Class       : Normal User
+#
+#    Parameter   : FILE = STRING (1~30) : File Name
+#
+#@HELP
+
+#act-batch-job?
+#COMMAND file-exe DSCM MMCD NU O&M~/BATCH
+#@PARA  FILE MAND STRING 1 50
+#@SLOGAN M9003 EXECUTE BATCH JOB
+#@HELP
+#
+#    Command     : FILE_EXE FILE_PATH
+#
+#    Description : EXECUTE BATCH JOB
+#
+#    Class       : Normal User
+#
+#    Parameter   : FILE = STRING (1~50) : File Name & Path
+#
+#@HELP
+
+
+#dis-batch-job -> dis-cmd-file
+#COMMAND dis-cmd-file DSCM MMCD NU O&M~/BATCH
+#@SLOGAN M5206 DISPLAY BATCH JOB FILE LIST
+#@HELP
+#
+#    Command     : DIS-CMD-FILE
+#
+#    Description : DISPLAY BATCH JOB FILE LIST
+#
+#    Class       : Normal User
+#@HELP
+
+
+COMMAND bkup-pkg DSCM MCDM SU O&M
+@PARA   SYS			MAND ENUM DSCM SCMA SCMB ALL
+@PARA   BKUPTYPE	MAND ENUM APP DATA ALL
+@SLOGAN M5301 BACKUP SCM PACKAGE 
+@HELP
+    Command     : BKUP-PKG SYS, BKUPTYPE
+
+    Description : BACKUP DSCM & SCM PACKAGE
+
+    Class       : Super User
+
+    Parameters  : SYS = ENUM : System Name
+                        DSCM: OMP 
+                        SCMA: SCM A NODE
+                        SCMB: SCM B NODE
+                        ALL : DSCMC SCMA SCMB
+
+    Parameters  : BKUPTYPE = ENUM : Backup Type
+                             APP  : SCM Application
+                             DATA : SCM Configuration Data
+                             ALL  : SCM Application and SCM Configuration Data and Database
+@HELP
+
+
+#COMMAND restr-db DSCM MCDM SU O&M
+#@PARA   SYS			MAND ENUM SCMA SCMB
+#@SLOGAN M5302 RESTORE DSCM SCM DATABASE  
+#@HELP
+#    Command     : RESTR-DB SYS
+#
+#    Description : RESTORE MYSQL APP DATABASE 
+#
+#    Class       : Super User
+#
+#    Parameters  : SYS = ENUM : System Name
+#                        SCMA: SCM A NODE
+#                        SCMB: SCM B NODE
+#
+#@HELP
+
+
+COMMAND stat-fault DSCM STMD NU STATISTICS
+@PARA   SYS     MAND ENUM SCMA SCMB DSCM TAPA TAPB SCEA SCEB ALL
+@PARA   STIME   OPT  STRING  12 12 
+@PARA   PRD     OPT  DECIMAL 5 60
+@PARA   CNT     OPT  DECIMAL 1 255
+@SLOGAN M6101 MEASURE STATISTICS ON SYSTEM FAULT
+@HELP
+
+    Command     : STAT-FAULT  SYS, [STIME], [PRD], [CNT]
+
+    Description : MEASURE STATISTICS ON SYSTEM FAULT 
+
+    Class       : Normal User
+
+    Parameters  : SYS   = ENUM    (SCMA, SCMB, DSCM, TAPA, TAPB, SCEA, SCEB, ALL)
+		  STIME = STRING (12~12) : Start Time(YYYYMMDDHHMM, ex.200307151400)
+                  PRD   = DECIMAL (5~60)  : Measurement Periodic Timer(5/10../60 MIN:default 5 MIN)
+                  CNT   = DECIMAL (1~255) : Measurement Repeat Counter(XXX:default 1)
+@HELP
+
+
+COMMAND stat-load DSCM STMD NU STATISTICS
+@PARA   SYS     MAND ENUM SCMA SCMB DSCM TAPA TAPB SCEA SCEB ALL
+@PARA   STIME   OPT  STRING  12 12
+@PARA   PRD     OPT  DECIMAL 5 60 
+@PARA   CNT     OPT  DECIMAL 1 255
+@SLOGAN M6102 MEASURE STATISTICS ON SYSTEM LOAD
+@HELP
+
+    Command     : STAT-LOAD  SYS, [STIME], [PRD], [CNT]
+
+    Description : MEASURE STATISTICS ON SYSTEM LOAD
+
+    Class       : Normal User
+
+    Parameters  : SYS    = ENUM    (SCMA, SCMB, DSCM, TAPA, TAPB, SCEA, SCEB, ALL)
+		  STIME  = STRING (12~12) : Start Time(YYYYMMDDHHMM, ex.200307151400)
+                  PRD    = DECIMAL (5~60)  : Measurement Periodic Timer(5/10../60 MIN:default 5 MIN)
+                  CNT    = DECIMAL (1~255) : Measurement Repeat Counter(XXX:default 1)
+@HELP
+
+COMMAND stat-link DSCM STMD NU STATISTICS
+@PARA   SYS     MAND ENUM SCEA SCEB ALL
+@PARA   STIME   OPT  STRING  12 12
+@PARA   PRD     OPT  DECIMAL 5 60 
+@PARA   CNT     OPT  DECIMAL 1 255
+@SLOGAN M6103 MEASURE STATISTICS ON SYSTEM LINK TOTAL THROUGHPUT
+@HELP
+
+    Command     : STAT-LINK  SYS, [STIME], [PRD], [CNT]
+
+    Description : MEASURE STATISTICS ON SYSTEM LINK TOTAL THROUGHPUT
+
+    Class       : Normal User
+
+    Parameters  : SYS    = ENUM    (SCEA, SCEB, ALL)
+		          STIME  = STRING (12~12) : Start Time(YYYYMMDDHHMM, ex.200906151400)
+                  PRD    = DECIMAL (5~60)  : Measurement Periodic Timer(5/10../60 MIN:default 5 MIN)
+                  CNT    = DECIMAL (1~255) : Measurement Repeat Counter(XXX:default 1)
+@HELP
+
+COMMAND stat-rule-set DSCM STMD NU STATISTICS
+@PARA   SYS     MAND ENUM SCEA SCEB ALL
+@PARA   STIME   OPT  STRING  12 12
+@PARA   PRD     OPT  DECIMAL 5 60
+@PARA   CNT     OPT  DECIMAL 1 255
+@SLOGAN M6104 MEASURE STATISTICS ON SYSTEM RULE SET
+@HELP
+
+	Command     : STAT-RULE-SET  SYS, [STIME], [PRD], [CNT]
+
+	Description : MEASURE STATISTICS ON SYSTEM RULE SET
+
+	Class       : Normal User
+
+	Parameters  : SYS    = ENUM    (SCEA, SCEB, ALL)
+	              STIME  = STRING (12~12) : Start Time(YYYYMMDDHHMM, ex.200906151400)
+	              PRD    = DECIMAL (5~60)  : Measurement Periodic Timer(5/10../60 MIN:default 5 MIN)
+	              CNT    = DECIMAL (1~255) : Measurement Repeat Counter(XXX:default 1)
+@HELP
+
+COMMAND stat-rule-ent DSCM STMD NU STATISTICS
+@PARA   SYS     MAND ENUM SCEA SCEB ALL
+@PARA   STIME   OPT  STRING  12 12
+@PARA   PRD     OPT  DECIMAL 5 60
+@PARA   CNT     OPT  DECIMAL 1 255
+@SLOGAN M6105 MEASURE STATISTICS ON SYSTEM RULE ENTRY
+@HELP
+
+	Command     : STAT-RULE-ENT  SYS, [STIME], [PRD], [CNT]
+
+	Description : MEASURE STATISTICS ON SYSTEM RULE ENTRY
+
+	Class       : Normal User
+
+	Parameters  : SYS    = ENUM    (SCEA, SCEB, ALL)
+	              STIME  = STRING  (12~12) : Start Time(YYYYMMDDHHMM, ex.200307151400)
+	              PRD    = DECIMAL (5~60)  : Measurement Periodic Timer(5/10../60 MIN:default 5 MIN)
+	              CNT    = DECIMAL (1~255) : Measurement Repeat Counter(XXX:default 1)
+@HELP
+
+COMMAND stat-account DSCM STMD NU STATISTICS
+@PARA   SYS     MAND ENUM SCMA SCMB ALL
+@PARA   STIME   OPT  STRING  12 12
+@PARA   PRD     OPT  DECIMAL 5 60
+@PARA   CNT     OPT  DECIMAL 1 255
+@SLOGAN M6106 MEASURE STATISTICS ON SYSTEM ACCOUNTING
+@HELP
+
+	Command     : STAT-ACCOUNT  SYS, [STIME], [PRD], [CNT]
+
+	Description : MEASURE STATISTICS ON SYSTEM ACCOUNT
+
+	Class       : Normal User
+
+	Parameters  : SYS    = ENUM    (SCMA, SCMB, ALL)
+	              STIME  = STRING  (12~12) : Start Time(YYYYMMDDHHMM, ex.200307151400)
+	              PRD    = DECIMAL (5~60)  : Measurement Periodic Timer(5/10../60 MIN:default 5 MIN)
+	              CNT    = DECIMAL (1~255) : Measurement Repeat Counter(XXX:default 1)
+@HELP
+
+COMMAND stat-logon DSCM STMD NU STATISTICS
+@PARA   SYS     MAND ENUM SCMA SCMB ALL
+@PARA   STIME   OPT  STRING  12 12
+@PARA   PRD     OPT  DECIMAL 5 60
+@PARA   CNT     OPT  DECIMAL 1 255
+@SLOGAN M6107 MEASURE STATISTICS ON SYSTEM LOGON
+@HELP
+
+	Command     : STAT-LOGON  SYS, [STIME], [PRD], [CNT]
+
+	Description : MEASURE STATISTICS ON SYSTEM LOGON
+
+	Class       : Normal User
+
+	Parameters  : SYS    = ENUM    (SCMA, SCMB, ALL)
+	              STIME  = STRING (12~12)  : Start Time(YYYYMMDDHHMM, ex.200906151400)
+	              PRD    = DECIMAL (5~60)  : Measurement Periodic Timer(5/10../60 MIN:default 5 MIN)
+	              CNT    = DECIMAL (1~255) : Measurement Repeat Counter(XXX:default 1)
+@HELP
+
+COMMAND stat-sms DSCM STMD NU STATISTICS
+@PARA   SYS     MAND ENUM SCMA SCMB ALL
+@PARA   STIME   OPT  STRING  12 12
+@PARA   PRD     OPT  DECIMAL 5 60
+@PARA   CNT     OPT  DECIMAL 1 255
+@SLOGAN M6108 MEASURE STATISTICS ON SYSTEM SMS
+@HELP
+
+	Command     : STAT-SMS  SYS, [STIME], [PRD], [CNT]
+
+	Description : MEASURE STATISTICS ON SYSTEM SMS
+
+	Class       : Normal User
+
+	Parameters  : SYS    = ENUM    (SCMA, SCMB, ALL)
+	              STIME  = STRING (12~12)  : Start Time(YYYYMMDDHHMM, ex.200906151400)
+	              PRD    = DECIMAL (5~60)  : Measurement Periodic Timer(5/10../60 MIN:default 5 MIN)
+	              CNT    = DECIMAL (1~255) : Measurement Repeat Counter(XXX:default 1)
+@HELP
+
+COMMAND stat-delay DSCM STMD NU STATISTICS
+@PARA   SYS     MAND ENUM SCMA SCMB ALL
+@SLOGAN M6109 MEASURE STATISTICS ON SYSTEM DELAY
+@HELP
+
+	Command     : STAT-DELAY  [SYS]
+
+	Description : DISPLAY CURRENT STATISTICS ON SYSTEM PACKET DEALY
+
+	Class       : Normal User
+
+	Parameters  : SYS    = ENUM    (SCMA, SCMB, ALL)
+@HELP
+
+
+#stat-ip <- stat-tcpip
+#COMMAND stat-ip DSCM STMD NU STATISTICS
+#@PARA   SYS     MAND ENUM SCMA SCMB ALL
+#@PARA   STIME   OPT  STRING  12 12
+#@PARA   PRD     OPT  DECIMAL 5 60 
+#@PARA   CNT     OPT  DECIMAL 1 255
+#@SLOGAN M6103 MEASURE STATISTICS ON IP LAYER
+#@HELP
+#
+#    Command     : STAT-IP  SYS, [STIME], [PRD], [CNT]
+#
+#    Description : MEASURE STATISTICS ON IP LAYER 
+#
+#    Class       : Normal User
+#
+#    Parameters  : SYS    = ENUM    (SCMA, SCMB, ALL)
+#		  STIME  = STRING (12~12) : Start Time(YYYYMMDDHHMM, ex.200307151400)
+#                  PRD    = DECIMAL (5~60)  : Measurement Periodic Timer(5/10../60 MIN:default 5 MIN)
+#                  CNT    = DECIMAL (1~255) : Measurement Repeat Counter(XXX:default 1)
+#@HELP
+
+
+
+# stat-svc <- stat-ttxn
+#COMMAND stat-svc DSCM STMD NU STATISTICS   
+#@PARA   SYS     MAND ENUM SCMA SCMB ALL
+#@PARA	TYPE	MAND ENUM WAP1 WAP2 HTTP JAVA VODS WIPI VT
+#@PARA   STIME   OPT  STRING  12 12
+#@PARA   PRD     OPT  DECIMAL 5 60
+#@PARA   CNT     OPT  DECIMAL 1 255
+#@SLOGAN M6105 MEASURE STATISTICS ON SERVICE LAYER 
+#@HELP
+#
+#    Command     : STAT-SVC  SYS, TYPE, [STIME], [PRD], [CNT]    
+#
+#    Description : MEASURE STATISTICS ON SERVICE LAYER 
+#
+#    Class       : Normal User
+#
+#    Parameters  : SYS    = ENUM    (SCMA, SCMB, ALL)
+#                  TYPE	 = ENUM	   
+#                           WAP1        : Wireless Application Protocol 1.x Analyzer Daemon
+#                           WAP2        : Wireless Application Protocol 2.x Analyzer Daemon
+#                           HTTP        : Hypertext Transfer Protocol Analyzer Daemon
+#                           JAVA        : JAVA Network Analyzer Daemon
+#                           VODS        : Video On Demand Streaming Analyzer Daemon
+#                           WIPI        : Wireless Internet Platform for Interoperability Network Analyzer Daemon
+#                           VT          : Video Telephony Analyzer Daemon 
+#                  STIME  = STRING (12~12) : Start Time(YYYYMMDDHHMM, ex.200307151400)
+#                  PRD    = DECIMAL (5~60)  : Measurement Periodic Timer(5/10../60 MIN:default 5 MIN)
+#                  CNT    = DECIMAL (1~255) : Measurement Repeat Counter(XXX:default 1)
+#@HELP
+
+
+# stat-txn <- stat-tcpudp
+#COMMAND stat-tcpudp DSCM STMD NU STATISTICS
+#COMMAND stat-txn DSCM STMD NU STATISTICS
+#@PARA   SYS     MAND ENUM SCMA SCMB ALL
+#@PARA   STIME   OPT  STRING  12 12
+#@PARA   PRD     OPT  DECIMAL 5 60
+#@PARA   CNT     OPT  DECIMAL 1 255
+#@SLOGAN M6106 MEASURE STATISTICS ON SERVICE TCP AND UDP 
+#@HELP
+#
+#    Command     : STAT-TCPUDP  SYS, [STIME], [PRD], [CNT]   
+#
+#    Description : MEASURE STATISTICS ON SERVICE TCP AND UDP
+#
+#    Class       : Normal User
+#
+#    Parameters  : SYS    = ENUM    (SCMA, SCMB, ALL)
+#		  STIME  = STRING  (12~12) : Start Time(YYYYMMDDHHMM, ex.200307151400)
+#                  PRD    = DECIMAL (5~60)  : Measurement Periodic Timer(5/10../60 MIN:default 5 MIN)
+#                  CNT    = DECIMAL (1~255) : Measurement Repeat Counter(XXX:default 1)
+#@HELP
+
+# srch-stat-ip <- srch-stat-tcpip
+#COMMAND srch-stat-ip DSCM STMD NU STATISTICS
+#@PARA   SYS    MAND  ENUM    SCMA SCMB ALL
+#@PARA   PERIOD MAND  ENUM    5MIN HOUR DAY MONTH
+#@PARA   STIME  MAND  STRING  12 12
+#@PARA   ETIME  MAND  STRING  12 12
+#@SLOGAN M6203 SEARCH STATISTICS ON IP LAYER     
+#@HELP
+#Command     : SRCH-STAT-IP  SYS, PERIOD, STIME, ETIME    
+#
+#      Description : SEARCH STATISTICS ON IP LAYER
+#
+#      Class       : Normal User
+#
+#      Parameters  : SYS    = ENUM(SCMA, SCMB, ALL)
+#      Parameters  : PERIOD = ENUM       : Statistics Type
+#                             5MIN       : 5Minutely statistics history
+#                             HOUR       : Hourly statistics history
+#                             DAY        : Daily statistics history
+#                             MONTH      : Monthly statistics history
+#      Parameters  : STIME  = STRING  (12~12) : Start Time (YYYYMMDDHHMM, ex.200307151400)
+#      Parameters  : ETIME  = STRING  (12~12) : End Time   (YYYYMMDDHHMM, ex.200307151400)
+#@HELP
+
+
+
+#srch-stat-svc <- srch-stat-ttxn
+#COMMAND srch-stat-svc DSCM STMD NU STATISTICS
+#@PARA   SYS    MAND  ENUM    SCMA SCMB ALL
+#@PARA   TYPE   MAND  ENUM    WAP1 WAP2 HTTP JAVA VODS WIPI VT
+#@PARA   PERIOD MAND  ENUM    5MIN HOUR DAY MONTH
+#@PARA   STIME  MAND  STRING  12 12
+#@PARA   ETIME  MAND  STRING  12 12
+#@SLOGAN M6205 SEARCH STATISTICS ON SERVICE LAYER
+#@HELP
+#      Command     : SRCH-STAT-SVC  SYS, TYPE, PERIOD, STIME, ETIME    
+#
+#      Description : SEARCH STATISTICS ON SERVICE LAYER 
+#
+#      Class       : Normal User
+#
+#      Parameters  : SYS    = ENUM (SCMA, SCMB, ALL)
+#      Parameters  : TYPE   = ENUM
+#                             WAP1       : Wireless Application Protocol 1.x Analyzer Daemon
+#                             WAP2       : Wireless Application Protocol 2.x Analyzer Daemon
+#                             HTTP       : Hypertext Transfer Protocol Analyzer Daemon
+#                             JAVA       : JAVA Network Analyzer Daemon
+#                             VODS       : Video On Demand Streaming Analyzer Daemon
+#                             WIPI       : Wireless Internet Platform for Interoperability Network Analyzer Daemon
+#                             VT         : Video Telephony Analyzer Daemon
+#      Parameters  : PERIOD = ENUM       : Statistics Type
+#                             5MIN       : 5Minutely statistics history
+#                             HOUR       : Hourly statistics history
+#                             DAY        : Daily statistics history
+#                             MONTH      : Monthly statistics history
+#      Parameters  : STIME  = STRING  (12~12) : Start Time (YYYYMMDDHHMM, ex.200307151400)
+#      Parameters  : ETIME  = STRING  (12~12) : End Time   (YYYYMMDDHHMM, ex.200307151400)
+#@HELP
+
+# srch-stat-tcpudp
+#COMMAND srch-stat-tcpudp DSCM STMD NU STATISTICS
+#@PARA   SYS    MAND  ENUM    SCMA SCMB ALL
+#@PARA   PERIOD MAND  ENUM    5MIN HOUR DAY MONTH
+#@PARA   STIME  MAND  STRING  12 12
+#@PARA   ETIME  MAND  STRING  12 12
+#@SLOGAN M6206 SEARCH STATISTICS ON SERVICE TCP AND UDP    
+#@HELP
+#Command     : SRCH-STAT-TCPUDP  SYS, PERIOD, STIME, ETIME   
+#
+#      Description : SEARCH STATISTICS ON SERVICE TCP AND UDP
+#
+#      Class       : Normal User
+#
+#      Parameters  : SYS    = ENUM (SCMA, SCMB, ALL)
+#      Parameters  : PERIOD = ENUM       : Statistics Type
+#                             5MIN       : 5Minutely statistics history
+#                             HOUR       : Hourly statistics history
+#                             DAY        : Daily statistics history
+#                             MONTH      : Monthly statistics history
+#      Parameters  : STIME  = STRING  (12~12) : Start Time (YYYYMMDDHHMM, ex.200307151400)
+#      Parameters  : ETIME  = STRING  (12~12) : End Time   (YYYYMMDDHHMM, ex.200307151400)
+#@HELP
+
+COMMAND dis-cls-lst DSCM MMCD NU O&M
+@PARA   GRADE     MAND ENUM SU NU GUEST
+@SLOGAN M1003 DISPLAY GRADE COMMAND
+@HELP
+
+    Command     : DIS-CLS-LST  GRADE
+
+    Description : DISPLAY GRADE COMMAND
+
+    Class       : Normal User
+
+    Parameters  : GRADE = ENUM (SU, NU, GUEST)
+@HELP
+
+
+COMMAND dis-msg-his DSCM COND NU O&M
+@PARA   TYPE   MAND  ENUM    ALM=1 STS=2 MMC=3
+@PARA   STIME  MAND  STRING  12 12
+@PARA   ETIME  MAND  STRING  12 12
+@SLOGAN M1007 DISPLAY MESSAGE HISTORY
+@HELP
+
+    Command     : DIS-MSG-HIS  TYPE, STIME, ETIME
+
+    Description : DISPLAY MESSAGE HISTORY
+
+    Class       : Normal User
+
+    Parameters  : TYPE   = ENUM     : Message Type
+                           ALM  (1) : Alarm Message
+                           STS  (2) : Status Message
+                           MMC  (3) : MMC Message
+    Parameters  : STIME  = STRING (12~12) : Start Time(YYYYMMDDHHMM)
+    Parameters  : ETIME  = STRING (12~12) : End Time  (YYYYMMDDHHMM)
+@HELP
+
+
+COMMAND dis-alm-sts DSCM FIMD NU ALARM
+@PARA   SYS  OPT  ENUM SCMA SCMB DSCM TAPA TAPB SCEA SCEB L2SWA L2SWB ALL
+@SLOGAN M3005 DISPLAY ALARM STATUS
+@HELP
+
+    Command     : DIS-ALM-STS  [SYS]
+
+    Description : DISPLAY ALARM STATUS
+
+    Class       : Normal User
+
+    Parameters  : SYS  = ENUM : System Name
+                         SCMA : SCM A NODE
+                         SCMB : SCM B NODE
+                         DSCM : DSCM
+                         TAPA : TAP A NODE
+                         TAPB : TAP B NODE
+                         SCEA : SCE A NODE
+                         SCEB : SCE B NODE
+                         L2SWA : L2 SWITCH A NODE
+                         L2SWB : L2 SWITCH B NODE
+                         ALL  : ALL NODE
+@HELP
+
+
+COMMAND dis-mask-sts DSCM  FIMD  NU ALARM
+@PARA   SYS   OPT  ENUM SCMA SCMB DSCM TAPA TAPB SCEA SCEB L2SWA L2SWB ALL
+@SLOGAN M3006 DISPLAY ALARM MASK STATUS
+@HELP
+
+    Command     : DIS-MASK-STS [SYS]
+
+    Description : DISPLAY ALARM MASK STATUS
+
+    Class       : Normal User
+
+    Parameters  : SYS   = ENUM   : System Name
+                          SCMA   : SCM A NODE
+                          SCMB   : SCM B NODE
+                          DSCM   : DSCM
+                          TAPA   : TAP A NODE 
+                          TAPB   : TAP B NODE
+                          SCEA   : SCE Device A NODE
+                          SCEB   : SCE Device B NODE
+                          L2SWA  : L2 Switch A NODE
+                          L2SWB  : L2 Switch B NODE
+                          ALL    : ALL NODE
+@HELP
+
+
+
+#COMMAND log-in DSCM MMCD SU O&M
+COMMAND log-in DSCM MMCD GUEST O&M
+@PARA   USER    MAND STRING 1 15
+@PARA   PASSWD  MAND STRING 1 15
+@SLOGAN M4003 USER LOG-IN
+@HELP
+
+    Command     : LOG-IN  USER, PASSWD
+
+    Description : USER LOG-IN
+
+    Class       : Guest User
+
+    Parameters  : USER   = STRING (1~15) : User Name
+                  PASSWD = STRING (1~15) : Password
+@HELP
+
+
+COMMAND log-out DSCM MMCD GUEST O&M
+@SLOGAN M4004 USER LOG-OUT
+@HELP
+
+    Command     : LOG-OUT
+
+    Description : USER LOG-OUT
+
+    Class       : Guest User
+
+    Parameters  : None
+@HELP
+
+
+COMMAND rebuild-mml-tbl DSCM MMCD SU O&M
+@SLOGAN M1009 REBUILD MML TABLE
+@HELP
+
+    Command     : REBUILD-MML-TBL
+
+    Description : REBUILD MML TABLE
+
+    Class       : Super User
+
+    Parameters  : None
+@HELP
+
+
+#COMMAND dis-dup-conf DSCM MCDM NU DUPLICATION
+#@PARA   SYS        OPT ENUM SCMA SCMB ALL
+#@SLOGAN M1302 DISPLAY DUPLICATION CONFIGURATION
+#@HELP
+#
+#    Command     : DIS-DUP-CONF [SYS]
+#
+#    Description : DISPLAY DUPLICATION CONFIGURATION
+#
+#    Class       : Normal User
+#
+#    Parameters  : SYS  = ENUM(SCMA, SCMB, ALL)
+#@HELP
+
+
+#sjjeon : DSCM SAMD에서만 이중화 여부 확인....
+COMMAND dis-scm-sts DSCM SAMD NU DUPLICATION
+#@PARA   SYS     OPT ENUM SCMA SCMB ALL
+@SLOGAN M1307 DISPLAY SCM DUPLICATION STATUS
+@HELP
+
+   Command     : DIS-SCM-STS 
+
+   Description : DISPLAY SCM DUPLICATION STATUS
+
+   Class       : Normal User
+
+@HELP
+#   Parameters  : SYS = ENUM(SCMA, SCMB, ALL)
+
+#COMMAND dis-swt-info DSCM MCDM NU DUPLICATION
+#@PARA   SYS        OPT ENUM SCMA SCMB DSCM ALL
+#@SLOGAN M1308 DISPLAY DUPLICATION SWITCH-OVER INFORMATION
+#@HELP
+#
+#    Command     : DIS-SWT-INFO [SYS]
+#
+#    Description : DISPLAY DUPLICATION SWITCH-OVER INFORMATION
+#
+#    Class       : Normal User
+#
+#    Parameters  : SYS  = ENUM(SCMA, SCMB, DSCM ALL)
+#@HELP
+
+COMMAND switch-scm DSCM SAMD SU DUPLICATION CONFIRM
+@PARA   SYS      MAND ENUM SCMA SCMB
+@SLOGAN M1306 SWITCH SCM DUPLICATION STATUS
+@HELP
+
+    Command     : SWITCH-SCM SYS 
+
+    Description : SWITCH SCM DUPLICATION STATUS
+
+    Class       : Super User
+
+    Parameters  : SYS     = ENUM(SCMA, SCMB)
+@HELP
+
+COMMAND auto-sce-mode DSCM SAMD SU DUPLICATION CONFIRM
+@PARA   OPT1    MAND ENUM ON OFF
+@SLOGAN M1309 SWITCH SCM DUPLICATION STATUS
+@HELP
+
+    Command     : AUTO-SCE-MODE OPT1
+
+    Description : SELECT SCE MODE (Auto or Manual)
+
+    Class       : Super User
+
+    Parameters  : OPT1     = ENUM(ON, OFF)
+@HELP
+
+
+
+#COMMAND dis-rule-info DSCM MCDM SU O&M~/BATCH
+#@PARA   SYS      OPT ENUM SCMA SCMB ALL
+#@SLOGAN M9004 SETUP SCM RULE INFORMATION
+#@HELP
+#
+#    Command     : DIS-RULE-INFO [SYS]
+#
+#    Description : RULE SET INFORMATION
+#
+#    Class       : Super User
+#
+#    Parameters  : SYS     = ENUM(SCMA, SCMB, ALL)
+#@HELP
+
+COMMAND set-rule-sce DSCM SAMD SU O&M~/BATCH
+@PARA   SYS      MAND ENUM SCEA SCEB ALL
+@PARA   STAT     MAND ENUM RECOVERY APPLY
+@PARA   FILE     OPT STRING  0  50
+@SLOGAN M9001 SETUP SCM RULE INFORMATION
+@HELP
+
+    Command     : SET-RULE-SCE SYS STAT [FILE]
+
+    Description : APPLY RULE SET TO SCE
+
+    Class       : Super User
+
+    Parameters  : SYS     = ENUM(SCEA, SCEB, ALL)
+                  STAT    = RECOVERY    : SCE rule recovery
+                            APPLY       : SCE rule apply
+                  FILE    = FILE        : Recovery file name
+				            
+@HELP
+
+COMMAND sync-rule-file DSCM MCDM SU O&M~/BATCH
+@PARA   SYS      OPT ENUM SCMA SCMB ALL
+@SLOGAN M9002 Sync RULE INFORMATION
+@HELP
+
+    Command     : SYNC-RULE-FILE [SYS]
+
+    Description : Sync RULE SET FILE 
+
+    Class       : Super User
+
+    Parameters  : SYS     = ENUM(SCMA, SCMB, ALL)
+@HELP
+
+#COMMAND sync-rule-file2 DSCM MCDM SU O&M~/BATCH
+#@PARA   SYS      OPT ENUM SCMA SCMB ALL
+#@SLOGAN M9003 Sync RULE INFORMATION
+#@HELP
+#
+#Command     : SYNC-RULE-FILE2 [SYS]
+#
+#Description : Sync RULE SET FILE 
+#
+#Class       : Super User
+#
+#Parameters  : SYS     = ENUM(SCMA, SCMB, ALL)
+#@HELP
+
+COMMAND sync-sms-msg DSCM MCDM SU O&M~/BATCH
+@PARA   SYS      OPT ENUM SCMA SCMB ALL
+@SLOGAN M9003 Sync SMS SENDING MSG INFORMATION
+@HELP
+
+	Command     : SYNC-SMS-MSG [SYS]
+
+	Description : Sync SMS SEND MSG 
+
+	Class       : Super User
+
+	Parameters  : SYS     = ENUM(SCMA, SCMB, ALL)
+@HELP
+
+COMMAND sess-log-out DSCM MCDM SU SYSTEM
+@PARA   SYS      OPT ENUM SCMA SCMB ALL
+@PARA   IMSI     MAND   STRING	15 15
+@PARA   IP       MAND   STRING	 7 16
+@SLOGAN M9004 SUBS SESS LOG OUT 
+@HELP
+
+    Command     : SESS-LOG-OUT [SYS], IMSI, IP
+
+    Description : SUBSCRIBER SESSION LOG-OUT
+
+    Class       : Super User
+
+    Parameters  : SYS     = ENUM(SCMA, SCMB, ALL)
+    Parameters  : IMSI    = STRING  (15) 
+    Parameters  : IP      = STRING  (16)
+@HELP
+
+
+
+COMMAND dis-sce-mode DSCM HAMON NU SYSTEM
+@PARA   SCE OPT ENUM SCEA SCEB ALL
+@SLOGAN M9005 DISPLAY SCE MODE INFORMATION
+@HELP
+    Command     : DIS-SCE-MODE [SCE]
+
+    Description : DISPLAY SCE MODE INFORMATION
+
+    Class       : Normal User
+
+    Parameters  : SCE = ENUM(SCEA, SCEB, ALL)
+
+@HELP
+
+
+COMMAND reload-sce DSCM HAMON SU SYSTEM CONFIRM
+@PARA   SCE MAND ENUM SCEA SCEB ALL
+@SLOGAN M9006 RELOAD SCE
+@HELP
+    Command     : RELOAD-SCE SCE
+
+    Description : RELOAD SCE 
+
+    Class       : Super User
+
+    Parameters  : SCE = ENUM(SCEA, SCEB, ALL)
+
+@HELP
+
+
+COMMAND set-sce-mode DSCM HAMON SU SYSTEM CONFIRM
+@PARA   SYS MAND ENUM SCEA SCEB ALL
+@PARA   MODE MAND ENUM ACTIVE FAILURE RECOVERY
+@PARA   STAT MAND STRING  0 20
+@SLOGAN M9007 SET SCE MODE
+@HELP
+    Command     : SET-SCE-MODE SYS MODE [STAT]
+
+    Description : SET SCE MODE
+
+    Class       : Super User
+
+    Parameters  : SYS  = ENUM(SCEA, SCEB, ALL)
+    Parameters  : MODE = ENUM(ACTIVE, FAILURE, RECOVERY)
+    Parameters  : STAT = STRING (1~20) : Mode
+                        If TYPE is ACTIVE, then Mode must be active status.(ex: "FORWARDING", "BYPASS", "CUTOFF")
+                        If TYPE is FAILURE, then Mode must be failure status.(ex: "BYPASS", "CUTOFF")
+                        If TYPE is RECOVERY, then Mode must be recovery status.(ex "OPERATIONAL", "NON-OPERATIONAL")
+
+@HELP
+
+COMMAND dis-rule-use DSCM MCDM SU SYSTEM
+@PARA   SYS      OPT ENUM SCMA SCMB ALL
+@SLOGAN M9009 DIS RULE USE 
+@HELP
+
+    Command     : DIS-RULE-USE [SYS]
+
+    Description : DIS USE RULE 
+
+    Class       : Super User
+
+    Parameters  : SYS     = ENUM(SCMA, SCMB, ALL)
+
+@HELP
+
+COMMAND set-rule-use DSCM MCDM SU SYSTEM
+@PARA   SYS      OPT ENUM SCMA SCMB ALL
+@PARA   PBIT     MAND  STRING   0 2
+@PARA   HBIT     MAND  STRING   0 2
+@PARA   USE		 MAND  ENUM	OFF=1 ON=2
+@SLOGAN M9010 SET RULE USE 
+@HELP
+
+    Command     : SET-RULE-USE [SYS], PBIT, HBIT, USE 
+
+    Description : SET USE RULE 
+
+    Class       : Super User
+
+    Parameters  : SYS      = ENUM    (SCMA, SCMB, ALL)
+    Parameters  : PBIT     = STRING  (0~2)
+    Parameters  : HBIT     = STRING  (0~2)
+    Parameters  : USE	   = ENUM    (OFF,ON)
+                             OFF : RULE SET NOT USE 
+                             ON  : RULE SET USE
+@HELP
+
+COMMAND del-rule-use DSCM MCDM SU SYSTEM
+@PARA   SYS      MAND  ENUM SCMA SCMB ALL
+@PARA   PBIT     MAND  STRING   0 2
+@PARA   HBIT     MAND  STRING   0 2
+@SLOGAN M9011 DEL RULE USE 
+@HELP
+
+    Command     : DEL-RULE-USE [SYS], PBIT, HBIT
+
+    Description : DEL USE RULE 
+
+    Class       : Super User
+
+    Parameters  : SYS      = ENUM    (SCMA, SCMB, ALL)
+    Parameters  : PBIT     = STRING  (0~2)
+    Parameters  : HBIT     = STRING  (0~2)
+
+@HELP
+
+#COMMAND dis-sm-tmr DSCM MCDM SU SYSTEM
+#@PARA   SYS      OPT ENUM SCMA SCMB ALL
+#@SLOGAN M9012 DIS SM TMR
+#@HELP
+#
+#    Command     : DIS-SM-TMR [SYS]
+#
+#    Description : DISPLAY SM LOGOUT TIME MODE
+#
+#    Class       : Super User
+#
+#    Parameters  : SYS      = ENUM    (SCMA, SCMB, ALL)
+#
+#@HELP
+
+#COMMAND set-sm-tmr DSCM MCDM SU SYSTEM
+#@PARA   SYS      OPT ENUM SCMA SCMB ALL
+#@PARA   MODE	 MAND  ENUM	OFF=-1 ON=0 AUTO=1
+#@SLOGAN M9013 SET SM TMR
+#@HELP
+#
+#    Command     : SET-SM-TMR [SYS], MODE
+#
+#    Description : SET SM LOGOUT TIME MODE 
+#
+#    Class       : Super User
+#
+#    Parameters  : SYS      = ENUM    (SCMA, SCMB, ALL)
+#    Parameters  : MODE	   = ENUM    (OFF,ON, AUTO)
+#                             OFF  : RULE SET NOT USE 
+#                             ON   : RULE SET USE
+#							 AUTO :
+#@HELP
+
+COMMAND set-ovld-ctrl DSCM MCDM SU SYSTEM
+@PARA   SYS      OPT ENUM SCMA SCMB ALL
+@PARA   CPS		 MAND  DECIMAL 0 1000
+@PARA   RATE	 MAND  DECIMAL 0 100
+@SLOGAN M9014 SET OVERLOAD CONTROL
+@HELP
+
+    Command     : SET-OVLD-ctrl [SYS], CPS, RATE
+
+    Description : SET CPS OVERLOAD CONTROL 
+
+    Class       : Super User
+
+    Parameters  : SYS      = ENUM    (SCMA, SCMB, ALL)
+    Parameters  : CPS	   = DECIMAL (0~1000) : LOG ON CNT SETTING
+    Parameters  : RATE	   = DECIMAL (0~100) : DISCARD RATE SETTING (0~100%) 
+@HELP
+
+COMMAND dis-ovld-ctrl DSCM MCDM SU SYSTEM
+@PARA   SYS      OPT ENUM SCMA SCMB ALL
+@SLOGAN M9015 DIS OVERLOAD CONTROL
+@HELP
+
+    Command     : DIS-OVLD-CTRL [SYS]
+
+    Description : DISPLAY OVERLOAD CONTROL
+
+    Class       : Super User
+
+    Parameters  : SYS      = ENUM    (SCMA, SCMB, ALL)
+
+@HELP
+
+COMMAND set-svc-alm DSCM STMD SU SYSTEM
+@PARA   SVC      MAND  ENUM LOGON LOGOUT THROUGHPUT
+@PARA   MIN		 MAND  DECIMAL 0 100000
+@PARA   RATE	 MAND  DECIMAL 0 1000
+@SLOGAN M9016 SET SERVICE ALARM
+@HELP
+
+    Command     : SET-SVC-ALM SVC, MIN, RATE
+
+    Description : SET SERVICE ALARM SETTING 
+
+    Class       : Super User
+
+    Parameters  : SVC      = ENUM    (LOGON, LOGOUT, THROUGHPUT)
+    Parameters  : MIN	   = DECIMAL (0~100000) : ALARM MIN VALUE
+    Parameters  : RATE	   = DECIMAL (0~1000) : ALARM RATE SETTING (0~1000%) 
+@HELP
+
+COMMAND dis-svc-alm DSCM STMD SU SYSTEM
+@SLOGAN M9015 DIS SERVICE ALARM
+@HELP
+
+    Command     : DIS-SVC-ALM 
+
+    Description : DISPLAY SERVICE ALARM
+
+    Class       : Super User
+
+@HELP
+
+COMMAND dis-tmr-info DSCM MCDM SU SYSTEM
+@PARA   SYS      OPT ENUM SCMA SCMB ALL
+@SLOGAN M9016 DIS SM TMR
+@HELP
+
+    Command     : DIS-TMR-INFO [SYS]
+
+    Description : DISPLAY TIMEOUT MODE
+
+    Class       : Super User
+
+    Parameters  : SYS      = ENUM    (SCMA, SCMB, ALL)
+
+@HELP
+
+COMMAND set-tmr-info DSCM MCDM SU SYSTEM
+@PARA   SYS      OPT ENUM SCMA SCMB ALL
+@PARA   TMR_TYPE MAND  ENUM SESS SMS
+@PARA   TMR_VAL	 MAND  DECIMAL  0 3600
+@SLOGAN M9017 SET TMR INFO
+@HELP
+
+    Command     : SET-TMR-INFO [SYS], TMR_TYPE, TMR_VAL
+
+    Description : SETUP TIMEOUT of [SESSION | SMS]
+
+    Class       : Super User
+
+    Parameters  : SYS      = ENUM    (SCMA, SCMB, ALL)
+    Parameters  : TMR_TYPE = ENUM    (SESS, SMS)
+    Parameters  : TMR_VAL  = DECIMAL (1 - 3600)
+@HELP
+
+COMMAND mask-stat-item DSCM STMD SU ALARM
+@PARA   ITEM MAND ENUM FAULT LOAD LINK ACCOUNT LOGON RULE_SET RULE_ENT SMS DELAY
+@PARA   PRD OPT ENUM HOURLY DAILY WEEKLY MONTHLY
+@SLOGAN M9018 MASK STATISTICS TABLE
+@HELP
+
+	Command     : MASK-STAT-ITEM  ITEM, PRD
+
+	Description : MASK STATISTICS TABLE PRINT
+
+	Class       : Super User
+
+	Parameters  : SYS = ENUM  : System Name
+                        FAULT : 	FAULT TABLE
+                        LOAD :  	LOAD TABLE
+                        LINK :  	LINK TABLE
+                        ACCOUNT :  	ACCOUNT TABLE
+                        LOGON :  	LOGON TABLE
+                        RULE_SET : 	RULE SET TABLE
+                        RULE_ENT : 	RULE SET ENTRY TABLE
+                        SMS : 		SMS TABLE
+                        DELAY : 	DELAY TABLE
+
+                 PRD = ENUM : TALBE TIME TYPE
+                        HOURLY  : 	HOUR TABLE
+                        DAILY  :  	DAY TABLE
+                        WEEKLY  :  	WEEK TABLE
+                        MONTHLY  : 	MONTHLY TABLE
+
+@HELP
+
+COMMAND umask-stat-item DSCM STMD SU ALARM
+@PARA   ITEM MAND ENUM FAULT LOAD LINK ACCOUNT LOGON RULE_SET RULE_ENT SMS DELAY
+@PARA   PRD OPT ENUM HOURLY DAILY WEEKLY MONTHLY
+@SLOGAN M9019 UNMASK STATISTICS TABLE
+@HELP
+
+	Command     : UMASK-STAT-ITEM  ITEM, PRD
+
+	Description : UNMASK STATISTICS TABLE PRINT
+
+	Class       : Super User
+
+	Parameters  : SYS = ENUM  : System Name
+                        FAULT : 	FAULT TABLE
+                        LOAD :  	LOAD TABLE
+                        LINK :  	LINK TABLE
+                        ACCOUNT :  	ACCOUNT TABLE
+                        LOGON :  	LOGON TABLE
+                        RULE_SET : 	RULE SET TABLE
+                        RULE_ENT : 	RULE SET ENTRY TABLE
+                        SMS : 		SMS TABLE
+                        DELAY : 	DELAY TABLE
+
+                 PRD = ENUM : TALBE TIME TYPE
+                        HOURLY  : 	HOUR TABLE
+                        DAILY  :  	DAY TABLE
+                        WEEKLY  :  	WEEK TABLE
+                        MONTHLY  : 	MONTHLY TABLE
+
+@HELP
+
+COMMAND dis-stat-mask DSCM STMD NU ALARM
+@SLOGAN M9020 DISPLAY MASK STATISTICS INFORMATION
+@HELP
+
+	Command     : DIS-STAT-MASK  
+
+	Description : DISPLAY MASK STATISTICS INFORMATION
+
+	Class       : Normal User
+
+@HELP
+
+#COMMAND dis-stat-ptime DSCM STMD NU ALARM
+#@SLOGAN M9021 DISPLAY STATISTICS PRINT TIME 
+#@HELP
+#
+#	Command     : DIS-STAT-PTIME  
+#
+#	Description : DISPLAY STATISTICS PRINT TIME
+#
+#	Class       : Normal User
+#
+##@HELP
+#
+#COMMAND chg-stat-ptime DSCM STMD SU ALARM
+#@PARA   PRD MAND ENUM HOURLY DAILY WEEKLY MONTHLY
+#@PARA   DTIME MAND DECIMAL 5 60 
+#@SLOGAN M9022 CHANGE DISPLAY TIME
+#@HELP
+#
+#	Command     : CHG-STAT-PTIME  PRD, DTIME
+#
+#	Description : CHANGE DISPLAY TIME
+#
+#	Class       : Super User
+#
+#	Parameters  : PRD = ENUM : TALBE TIME TYPE
+#                        HOURLY  : 	HOUR TABLE
+#                        DAILY  :  	DAY TABLE
+#                        WEEKLY  :  	WEEK TABLE
+#                        MONTHLY  : 	MONTHLY TABLE
+#				DTIME = DECIMAL( 5 ~ 60 ) : 5 Minute ~ 60 Minute 
+#@HELP
+
+#COMMAND dis-stat-schd DSCM STMD NU STATISTICS
+#@SLOGAN M5003 DISPLAY PERIODIC SCHEDULE STATISTICS INFORMATION
+#@HELP
+#
+#    Command     : DIS-STAT-SCHD
+#
+#    Description : DISPLAY PERIODIC SCHEDULE STATISTICS INFORMATION
+#
+#    Class       : Normal User
+#
+#    Parameters  : None
+#@HELP
+#
+#COMMAND del-stat-schd DSCM STMD NU STATISTICS CONFIRM
+#@PARA   JOB MAND DECIMAL 0 28                                                                
+#@SLOGAN M5002 DELETE PERIODIC SCHEDULE STATISTICS
+#@HELP
+#
+#    Command     : DEL-STAT-SCHD  JOB
+#
+#    Description : DELETE PERIODIC SCHEDULE STATISTICS
+#
+#    Class       : Normal User
+#
+#    Parameters  : JOB = DECIMAL (0~28) : Job Number
+#@HELP
+#
+#COMMAND add-stat-schd DSCM STMD NU STATISTICS
+#@PARA   ITEM   MAND  ENUM    FAULT LOAD LINK ACCOUNT LOGON RULE_SET RULE_ENT SMS DELAY
+#@PARA   STIME  OPT   STRING  12 12
+#@PARA   MPRD   OPT   DECIMAL 5 60
+#@SLOGAN M5001 ADD PERIODIC SCHEDULE STATISTICS
+#@HELP
+#
+#    Command     : ADD-STAT-SCHD  ITEM [, STIME] [, MPRD]
+#
+#    Description : ADD PERIODIC SCHEDULE STATISTICS
+#
+#    Class       : Normal User
+#
+#    Parameters  : ITEM   = ENUM      : Statistics Item
+#                           FAULT     : Fault Statistics
+#                           LOAD      : Load Statistics
+#                           LINK      : Total Traffic Statistics
+#                           ACCOUNT   : RADIUS Account Message Statistics
+#                           LOGON     : Log on/off Statistics
+#                           RULE_SET  : RULE SET Statistics
+#                           RULE_ENT  : RULE ENTRY Statistics
+#                           SMS       : SMS  Statistics
+#                           DELAY     : Packet Delay Statistics
+#
+#    Parameters  : STIME  = STRING  (12~12) : Start Time (YYYYMMDDHHMM, ex.200307151400:default = current)
+#    Parameters  : MPRD   = DECIMAL (5~60)  : Measurement Period (default = 5)
+#@HELP
+
+COMMAND add-ipaddr DSCM MMCD SU O&M
+@PARA   IP	MAND STRING 1 15
+@SLOGAN M5101 ADD DSCM IP LIST
+@HELP
+
+    Command     : ADD-USR IP 
+
+    Description : ADD DSCM IP LIST
+
+    Class       : Super User
+
+    Parameters  : IP = STRING (1~15) : IPADDRESS
+@HELP
+
+
+COMMAND del-ipaddr DSCM MMCD SU O&M
+@PARA   IP	MAND STRING  1 15
+@SLOGAN M5102 DELETE DSCM IP LIST
+@HELP
+
+    Command     : DEL-IPADDR IP
+
+    Description : DELETE DSCM IP LIST
+
+    Class       : Super User
+
+    Parameters  : IP = STRING (1~15) : IPADDRESS
+@HELP
+
+COMMAND dis-ipaddr-info DSCM MMCD NU O&M
+@SLOGAN M5104 DISPLAY REGISTERED DSCM IP INFORMATION
+@HELP
+
+    Command     : DIS-IPADDR-INFO
+
+    Description : DISPLAY REGISTERED DSCM IP INFORMATION
+
+    Class       : Normal User
+
+    Parameters  : None
+@HELP
+
+COMMAND dis-flow-cnt DSCM SAMD NU SYSTEM
+@PARA   SYS      MAND ENUM SCEA SCEB ALL
+@SLOGAN M5105 DIS FLOW CNT
+@HELP
+
+    Command     : DIS-FLOW-CNT SYS
+
+    Description : DISPLAY CURRENT SCE ACTIVE FLOWS NUMBER
+
+    Class       : Normal User
+
+    Parameters  : SYS      = ENUM    (SCEA, SCEB, ALL)
+
+@HELP
+
+
+COMMAND clr-alm-sysmsg DSCM MCDM SU SYSTEM
+@PARA   SYS      MAND ENUM DSCM SCMA SCMB ALL
+@PARA   HW       MAND ENUM PWR1 PWR2 FAN1 FAN2 FAN3 ALL
+@SLOGAN M5106 CLEAR H/W ALM INTO SYSMSG
+@HELP
+
+Command     : CLR-ALM-SYSMSG SYS, HW
+
+Description : CLEAR H/W ALM INTO SYSMSG
+
+Class       : SUPER USER
+
+Parameters  : SYS      = ENUM    (DSCM, SCMA, SCMB, ALL)
+
+Parameters  : HW       = ENUM    (PWR1, PWR2, FAN1, FAN2, FAN3, ALL)
+
+@HELP
+
+
+#COMMAND dis-rleg-sess DSCM MCDM SU SYSTEM
+#@PARA   SYS      MAND ENUM SCMA SCMB ALL
+#@SLOGAN M5168 DIS RLEG SESSION
+#@HELP
+#
+#    Command     : dis-rleg-sess SYS
+#
+#    Description : DISPLAY RLEG SESSION
+#
+#    Class       : Normal User                                                          
+#                                                                                       
+#    Parameters  : SYS      = ENUM    (SCMA, SCMB, ALL)                                 
+#                                                                                      
+#@HELP
+
+##R1.1.0 
+
+COMMAND set-session-lmt DSCM FIMD SU ALARM
+@PARA   SYS   MAND ENUM SCMA SCMB SCEA SCEB
+@PARA   TYPE  MAND ENUM RANA USER
+@PARA   LEVEL MAND ENUM MINOR MAJOR CRITICAL
+@PARA   LIMIT MAND DECIMAL  1 999999
+@PARA   DURAT OPT  DECIMAL  1 255
+@SLOGAN M1401 SETUP ALARM LIMITATION
+@HELP
+
+    Command     : SET-SESSION-LMT  SYS, TYPE, LEVEL, LIMIT, [DURAT]
+
+    Description : SETUP ALARM LIMITATION
+
+    Class       : Super User
+
+    Parameters  : SYS   = ENUM : System Name
+                          SCMA : SCM A NODE
+                          SCMB : SCM B NODE
+                          SCEA : Cisco SCE Device A NODE
+                          SCEB : Cisco SCE Device B NODE
+
+                  TYPE  = ENUM  : Resource Type
+                                                  RANA  : SCMA, SCMB
+                                                  USER  : SCEA, SCEB
+
+                  LEVEL = ENUM     : Alarm Level
+                          MINOR    : Minor
+                          MAJOR    : Major
+                          CRITICAL : Critical
+
+                  LIMIT = DECIMAL (1~999999)  : Limit Value
+                  DURAT = DECIMAL (1~255) : Duration (seconds)
+@HELP
+
+
+COMMAND dis-session-lmt DSCM FIMD NU ALARM
+@PARA   SYS  OPT  ENUM SCMA SCMB SCEA SCEB ALL
+@SLOGAN M1402 DISPLAY ALARM LIMITATION
+@HELP
+
+    Command     : DIS-SESSION-LMT  [SYS]
+
+    Description : DISPLAY ALARM LIMITATION
+
+    Class       : Normal User
+
+    Parameters  : SYS  = ENUM : System Name
+                         SCMA : SCM A NODE
+                         SCMB : SCM B NODE
+                         SCEA : Cisco SCE Device A NODE
+                         SCEB : Cisco SCE Device B NODE
+                         ALL   : ALL NODE
+@HELP
+
+
+COMMAND clr-scm-fault DSCM SAMD SU DUPLICATION CONFIRM
+@PARA   SYS      MAND ENUM SCMA SCMB ALL
+@SLOGAN M1308 CLEAR SCM FAULTED STATUS
+@HELP
+
+Command     : CLR-SCM-FAULT
+
+Description : CLEAR SCM FAULTED STATUS
+
+Class       : Super User
+
+Parameters  : SYS     = ENUM(SCMA, SCMB, ALL)
+@HELP
+
+# BY JUNE, 2011-03-16
+#COMMAND set-smbuf-clr DSCM MCDM SU SYSTEM
+#@PARA   SYS     MAND    ENUM SCMA SCMB ALL
+#@PARA   CH_ID    MAND    ENUM  CH0 CH1 CH2 CH3 CH4 ALL
+#@PARA   PERIOD  MAND    DECIMAL 1   30
+#@PARA   HOUR    MAND    DECIMAL 0   23
+#@SLOGAN M7001 SET SMBUF CLR
+#@HELP
+#
+#    Command     : SET-SMBUF-CLR [SYS], CH_ID, PERIOD, HOUR
+#
+#    Description : ENABLE SM BUFFER CLEAR & SET CLEAR PERIOD
+#
+#    Class       : Super User
+#
+#    Parameters  : SYS       = ENUM      (SCMA, SCMB, ALL)
+#    			  CH_ID		= ENUM      (CH0, CH1, CH2, CH3, CH4, ALL)
+#                  PERIOD    = DECIMAL   (1D ~ 30D)
+#                  HOUR      = DECIMAL   (0H ~ 23H)
+#
+#@HELP
+
+COMMAND set-smbuf-clr DSCM MCDM SU SYSTEM
+@PARA   SYS     MAND    ENUM SCMA SCMB ALL
+@PARA   CH_ID   MAND    ENUM  CH0 ALL
+@PARA   PERIOD  MAND    DECIMAL 1   30
+@PARA   HOUR    MAND    DECIMAL 0   23
+@SLOGAN M7001 SET SMBUF CLR
+@HELP
+
+    Command     : SET-SMBUF-CLR [SYS], CH_ID, PERIOD, HOUR
+
+    Description : ENABLE SM BUFFER CLEAR & SET CLEAR PERIOD
+
+    Class       : Super User
+
+    Parameters  : SYS       = ENUM      (SCMA, SCMB, ALL)
+    			  CH_ID		= ENUM      (CH0, ALL)
+                  PERIOD    = DECIMAL   (1D ~ 30D)
+                  HOUR      = DECIMAL   (0H ~ 23H)
+
+@HELP
+
+# BY JUNE, 2011-03-16
+#COMMAND del-smbuf-clr DSCM MCDM SU SYSTEM
+#@PARA   SYS     MAND    ENUM SCMA SCMB ALL
+#@PARA   CH_ID    MAND    ENUM CH0 CH1 CH2 CH3 CH4 ALL
+#@SLOGAN M7002 DEL SMBUF CLR
+#@HELP
+#
+#    Command     : DEL-SMBUF-CLR [SYS] CH_ID
+#
+#    Description : DISABLE SM BUFFER CLEAR
+#
+#    Class       : Super User
+#
+#    Parameters  : SYS		= ENUM		(SCMA, SCMB, ALL)
+#    			  CH_ID		= ENUM		(CH0, CH1, CH2, CH3, CH4, ALL)
+#
+#@HELP
+
+COMMAND del-smbuf-clr DSCM MCDM SU SYSTEM
+@PARA   SYS     MAND    ENUM SCMA SCMB ALL
+@PARA   CH_ID    MAND    ENUM CH0 ALL
+@SLOGAN M7002 DEL SMBUF CLR
+@HELP
+
+    Command     : DEL-SMBUF-CLR [SYS] CH_ID
+
+    Description : DISABLE SM BUFFER CLEAR
+
+    Class       : Super User
+
+    Parameters  : SYS		= ENUM		(SCMA, SCMB, ALL)
+    			  CH_ID		= ENUM		(CH0, ALL)
+
+@HELP
+
+# BY JUNE, 2011-03-16
+COMMAND dis-smbuf-clr DSCM MCDM SU SYSTEM
+@PARA   SYS     MAND    ENUM SCMA SCMB ALL
+@SLOGAN M7003 DIS SMBUF CLR
+@HELP
+
+    Command     : DIS-SMBUF-CLR [SYS]
+
+    Description : DISPLAY SM BUFFER CLEAR
+
+    Class       : Super User
+
+    Parameters  : SYS		= ENUM		(SCMA, SCMB, ALL)
+
+@HELP
+
+#COMMAND dis-cps-info DSCM MCDM SU SYSTEM
+#@PARA   SYS     MAND    ENUM SCMA SCMB ALL
+#@SLOGAN M7004 DIS CPS INFO
+#@HELP
+#
+#    Command     : DIS-CPS-INFO [SYS]
+#
+#    Description : DISPLAY CPS INFO 
+#
+#    Class       : Super User
+#
+#    Parameters  : SYS     = ENUM      (SCMA, SCMB, ALL)
+#
+#@HELP
+
+COMMAND dis-tps-lmt DSCM FIMD NU ALARM
+@PARA   SYS  OPT  ENUM SCMA SCMB ALL
+@SLOGAN M1402 DISPLAY ALARM LIMITATION
+@HELP
+
+    Command     : DIS-TPS-LMT  [SYS]
+
+    Description : DISPLAY ALARM LIMITATION
+
+    Class       : Normal User
+
+    Parameters  : SYS  = ENUM : System Name
+                         SCMA : SCM A NODE
+                         SCMB : SCM B NODE
+                         ALL   : ALL NODE
+@HELP
+
+COMMAND set-tps-lmt DSCM FIMD SU ALARM
+@PARA   SYS   MAND ENUM SCMA SCMB
+@PARA   LEVEL MAND ENUM MINOR MAJOR CRITICAL
+@PARA   LIMIT MAND DECIMAL  1 999999
+@PARA   DURAT OPT  DECIMAL  1 255
+@SLOGAN M1401 SETUP ALARM LIMITATION
+@HELP
+
+    Command     : SET-TPS-LMT  SYS, TYPE, LEVEL, LIMIT, [DURAT]
+
+    Description : SETUP ALARM LIMITATION
+
+    Class       : Super User
+
+    Parameters  : SYS   = ENUM : System Name
+                          SCMA : SCM A NODE
+                          SCMB : SCM B NODE
+
+                  LEVEL = ENUM     : Alarm Level
+                          MINOR    : Minor
+                          MAJOR    : Major
+                          CRITICAL : Critical
+
+                  LIMIT = DECIMAL (1~999999)  : Limit Value
+                  DURAT = DECIMAL (1~255) : Duration (seconds)
+@HELP
+
+COMMAND dis-call-info DSCM MCDM SU SYSTEM
+@PARA   SYS   MAND ENUM SCMA SCMB
+@PARA   TYPE  MAND ENUM CPS TPS RAD-SESS ALL
+@SLOGAN M7005 DIS CALL INFO
+@HELP
+
+    Command     : DIS-CALL-INFO [SYS]
+
+    Description : DISPLAY CALL INFO
+
+    Class       : Super User
+
+    Parameters  : SYS                   = ENUM   (SCMA, SCMB)
+                  TYPE  = ENUM  : Resource Type
+                                                ALL  : SCMA, SCMB
+                                                CPS  : SCMA, SCMB
+                                                TPS  : SCMA, SCMB
+                                                RAD-SESS : SCMA, SCMB
+
+@HELP
