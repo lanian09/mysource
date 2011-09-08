@@ -1,0 +1,146 @@
+#include <sys/time.h>
+#include <glib.h>
+
+#include "udvm.h"
+#include "udvm_state.h"
+
+f80431
+
+[128:80h]
+MULTILOAD 
+0f8604a0c48d00a0c4
+
+
+[137:89h]
+:next_character
+
+INPUT-HUFFMAN
+1e2031020900a0ff8e048cbfff01
+
+[151:97h]
+COMPARE
+17508d0f2306
+
+
+[157:9Dh]
+:literal -------------------------
+
+OUTPUT
+222101
+
+COPY-LITERAL
+13210123
+
+JUMP
+16e5
+
+[166:A6h]
+:length --------------------------
+
+INPUT-BITS
+1d 04 22 e8
+
+ADD
+06 11 03
+
+LOAD
+0e2463
+
+COPY-OFFSET
+14505123
+
+OUTPUT
+225251
+
+JUMP
+169fd2
+
+
+[186:BAh]
+:end_message ---------------------
+
+END-MESSAGE
+230000bfc086a08906
+
+[195:C3h]
+
+
+279a0406e378b200607410184ce61349b842
+
+
+
+char *raw_lz77 = "f802110f8603898d8915888800011c04200d1350512222505116f5230000bfc086a08b060154000101680001016500010120000101520001016500010173000201610001017500010172000101610001016e0001017400010120000101610001020d0002017400010201000301450001016e00010164000101200001016f0001016600010211000501550001016e00010169000101760001016500010172000201650001010a0001"; 
+
+
+
+char *raw = "f802110f8603898d8915888800011c04200d1350512222505116f5230000bfc086a08b06016b000101690001016c000101730001";
+
+char *raw_lzss = "f804310f8604a0c48d00a0c41e2031020900a0ff8e048cbfff0117508d0f23062221011321012316e51d0422e80611030e246314505123225251169fd2230000bfc086a08906279a0406e378b200607410184ce61349b842";
+
+char *raw_lzw = "f804d10f8606a1ce8d00b18f01a0ce13a049032313250125061201175288f4079f681d0a24250812030612b18f125203210ea0480106245013a049032313515025225150169fde230000bfc086a09f0614c6f0806c1bc6e19c201846e190201d0684206b1cc201986f1c9071b06c42c68195111a4731a02102bff0";
+
+char *raw_deflate = "f811110f867aa2528d05a2520003000400050006000700080009000a010b010d010f011102130217021b021f0323032b0333033b04a04304a05304a06304a07305a08305a0a305a0c305a0e300a1020001000200030004010501070209020d031103190421043105a04105a06106a08106a0c107a10107a18108a20108a30109a40109a6010aa8010aac010bb0010bb8010c8020010c8030010d8040010d8060011d03229fb41e20a065040700178040110130a0bf0000a0c0a0c780402901a190a1ffa090175080401109a0461322210113210123169fd1081004125004221d51229fd70612511e209fcf0105001f2f081004125004261d5326f60614530e206314545223225052169f9e230000bfc086a1de06f3c94c4bd55128c9485508cdcb2c4b2d2a4e5548cc4b517005322b4b3232f3d2b900000000ffff00";
+
+char *raw2 = "f900984b1dc02002000004";
+
+main()
+{
+    struct timeval timeout;
+    fd_set fdset;
+    int fd, ilen;
+
+    fd = OpenUDPServerSocket(7239);
+    if (fd < 0) {
+        printf("socket open error\n");
+        exit(0);
+    }
+
+    while (1) {
+        FD_ZERO(&fdset);
+        FD_SET(fd, &fdset);
+
+        timeout.tv_sec = 1;
+        timeout.tv_usec = 1;
+
+        ilen
+
+    }
+
+    
+
+
+    decomp_sig(in, inlen, out);
+}
+
+main()
+{
+    GByteArray *tvb, *cpy;
+	int ret;
+    char out_buff[65536];
+    
+
+
+	printf("sigcomp_init_protocol!\n");
+	sigcomp_init_protocol();
+
+
+
+    /**********/
+    tvb = g_byte_array_new();
+
+	printf("hello!\n");
+	printf("%s!\n", raw);
+    hex_str_to_bytes(raw, tvb, FALSE);
+	printf("0x%x - %d!\n", tvb->data[0], tvb->len);
+
+
+	printf("dissect_sigcomp!\n");
+	ret = dissect_sigcomp(tvb, out_buff);
+	printf("--------------------------\nresult = [%d]\n", ret);
+    if (ret>0) printf("%s!\n", out_buff);
+
+    g_byte_array_free(tvb, TRUE);
+
+
+
+}

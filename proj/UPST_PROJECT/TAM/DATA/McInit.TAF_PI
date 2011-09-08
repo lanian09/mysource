@@ -1,0 +1,21 @@
+##
+## RUNNING WNTAF-GN BLOCK LIST
+##
+##  - '##' COMMENT etc. NOT READING LINE MARK
+##  - '#@' READING LINE
+##  - '#E' END OF FILE
+##
+## ------------------------------------------
+## BLOCK_NAME  RUN_DIRECTORY
+## ------------------------------------------
+##
+#@ CHSMD        /TAFAPP/BIN/CHSMD           ON
+## ALMD         /TAFAPP/BIN/ALMD            ON
+## QMON         /TAFAPP/BIN/QMON            ON
+## S_MNG        /TAFAPP/BIN/S_MNG           ON
+#@ CI_SVC       /TAFAPP/BIN/CI_SVC          ON
+## PRE_A        /TAFAPP/BIN/PRE_A           ON
+## A_RADIUS     /TAFAPP/BIN/A_RADIUS        ON
+## A_TCP        /TAFAPP/BIN/A_TCP           ON
+##
+#E

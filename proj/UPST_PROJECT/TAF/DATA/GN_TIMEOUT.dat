@@ -1,0 +1,5 @@
+## GN CALL TIMEOUT
+#@ GN 600
+#@ FRAG 10
+#@ UPDATE 10
+#E

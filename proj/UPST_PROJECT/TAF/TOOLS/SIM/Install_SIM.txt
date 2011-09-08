@@ -1,0 +1,7 @@
+
+SIM 설치 방법
+
+SIM/lib/ 의 데이터를 /usr/local/lib에 복사
+
+/etc/profile 에 아래 내용 추가
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH

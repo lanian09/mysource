@@ -1,0 +1,24 @@
+##
+## RUNNING TAM_APP BLOCK LIST
+##
+##  - '##' COMMENT etc. NOT READING LINE MARK
+##  - '#@' READING LINE
+##  - '#E' END OF FILE
+##
+## ------------------------------------------
+## BLOCK_NAME  RUN_DIRECTORY
+## ------------------------------------------
+##
+#@ CHSMD		/TAMAPP/BIN/CHSMD		ON
+#@ COND			/TAMAPP/BIN/COND		ON
+#@ MMCD			/TAMAPP/BIN/MMCD		ON
+#@ ALMD			/TAMAPP/BIN/ALMD		ON
+#@ QMON			/TAMAPP/BIN/QMON		ON
+## S_MNG		/TAMAPP/BIN/S_MNG		ON
+#@ SI_SVC		/TAMAPP/BIN/SI_SVC		ON
+#@ FSTAT		/TAMAPP/BIN/FSTAT		ON
+## P_MNG        /TAMAPP/BIN/P_MNG       ON
+## SI_PF        /TAMAPP/BIN/SI_PF       ON
+## PV_IF        /TAMAPP/BIN/PV_IF       ON
+##
+#E

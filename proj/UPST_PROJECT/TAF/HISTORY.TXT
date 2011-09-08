@@ -1,0 +1,4863 @@
+#1. TAG 붙이는 법
+> cvs tag TAG_NAME
+
+# 2. HISTORY.TXT 수정하는 법
+> cvs admin -l HISTORY.TXT
+...<수정>
+> cvs commit -m "log" HISTORY.TXT
+============================================================================
+1. 날  짜 : 2011.09.07(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAF/SRC/*
+	  - CVT_IP 함수를 UTILLIB - util_cvtipaddr 로 바꿈
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/SRC/A_FTP/ftp_svc.c							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_FTP/ftp_svc.h							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_HTTP/Makefile							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_HTTP/http_func.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_HTTP/http_util.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_HTTP/http_util.h						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_IHTTP/ihttp_util.h						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_func.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_main.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_util.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_util.h						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_util.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/Makefile							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_func.c							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_util.c							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_util.h							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/Makefile							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_func.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_util.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_util.h						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/Makefile							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_func.c						1.4
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_main.c						1.4
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_util.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_util.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_ONLINE/online_util.c					1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_RP/arp_func.c							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_RP/arp_func.h							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPM/sipm_util.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_util.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_TCP/Makefile							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_func.c							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_init.c							1.5
+	/cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_main.c							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_msgq.c							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_util.c							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_util.h							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/prea_init.c							1.5
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/prea_main.c							1.4
+============================================================================
+1. 날  짜 : 2011.09.07(수)
+2. 작성자 : 손형석
+3. 내  용 :
+	* Makefile
+	  - S_MNG, PRE_A 추가
+	* A_IM
+	  - SEQ_PROC_A_VT 를 사용하고 있었던 것을 SEQ_PROC_A_IM으로 수정
+	* A_TCP
+	  - shm_init(,,(void**)ptrVal) => shm_init(,,(void**)&ptrVal) 
+		-> address of pointer 를 사용하도록 수정
+	* PRE_A
+	  - UTILLIB 를 사용하도록 수정
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/SRC/Makefile									1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_IM/im_main.c							1.4
+	/cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_init.c							1.4
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/Makefile							1.3
+============================================================================
+1. 날  짜 : 2011.09.07(수)
+2. 작성자 : 손형석
+3. 내  용 :
+	* A_CALL
+	  - ipclib.h added
+	* A_DIAMETER
+	  - Makefile : ANX_LIB, SIP library added //주석처리되어 있었음
+	* A_HTTP
+	  - 잘못된 주석 제거  
+	* INC
+	  - fidb_info.h : removed
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/SRC/A_CALL/call_init.c						1.4
+	/cvs/UPST_PROJECT/TAF/SRC/A_DIAMETER/Makefile						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_HTTP/http_init.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_HTTP/http_main.c						1.3
+	/cvs/UPST_PROJECT/TAF/INC/fidb_info.h								removed
+============================================================================
+1. 날  짜 : 2011.09.06(화)
+2. 작성자 : 함동철 
+3. 내  용 :
+	* TAF/SRC/*
+	  - 헤더 정리, log_print 경고 수정
+4. 파  일 :
+    /cvs/UPST_PROJECT/TAF/SRC/A_SCTP/sctp_main.c                        removed 
+    /cvs/UPST_PROJECT/TAF/SRC/A_SCTP/sctp_func.c                        1.2
+    /cvs/UPST_PROJECT/TAF/SRC/A_SCTP/sctp_func.h                        1.2
+    /cvs/UPST_PROJECT/TAF/SRC/A_SCTP/sctp_init.c                        1.2
+    /cvs/UPST_PROJECT/TAF/SRC/A_SCTP/sctp_init.h                        1.2
+    /cvs/UPST_PROJECT/TAF/SRC/A_SCTP/sctp_main.c                        1.2
+    /cvs/UPST_PROJECT/TAF/SRC/A_SCTP/sctp_serv.c                        1.2
+    /cvs/UPST_PROJECT/TAF/SRC/A_SCTP/sctp_serv.h                        1.2
+    /cvs/UPST_PROJECT/TAF/SRC/A_SCTP/sctpstack.h                        1.2
+    /cvs/UPST_PROJECT/TAF/SRC/A_SCTP/SCTPSTACK_LIB/lib_init.c           1.2                                                  
+    /cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_main.h                          removed                                                
+    /cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_func.h                          1.2                                                
+    /cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_init.c                          1.2                                                         
+    /cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_init.h                          1.2                                                              
+    /cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_main.c                          1.2                                                                
+    /cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_msgq.c                          1.2                                                               
+    /cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_msgq.h                          1.2                                                                 
+    /cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_sess.c                          1.2                                                             
+    /cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_sess.h                          1.2                                                              
+    /cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_util.c                          1.2                                                              
+    /cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_util.h                          1.2                                                                                        
+    /cvs/UPST_PROJECT/TAF/SRC/CAPD_GIFO/Makefile                        1.2                                                         
+    /cvs/UPST_PROJECT/TAF/SRC/CAPD_GIFO/capd_main.h                     removed                                                   
+    /cvs/UPST_PROJECT/TAF/SRC/CAPD_GIFO/capd_func.c                     1.2                                                   
+    /cvs/UPST_PROJECT/TAF/SRC/CAPD_GIFO/capd_func.h                     1.2                                                  
+    /cvs/UPST_PROJECT/TAF/SRC/CAPD_GIFO/capd_init.c                     1.2                                                   
+    /cvs/UPST_PROJECT/TAF/SRC/CAPD_GIFO/capd_init.h                     1.2                                                  
+    /cvs/UPST_PROJECT/TAF/SRC/CAPD_GIFO/capd_main.c                     1.2                                                 
+    /cvs/UPST_PROJECT/TAF/SRC/CAPD_GIFO/capd_test.c                     1.2                                                   
+    /cvs/UPST_PROJECT/TAF/SRC/CAPD_GIFO/capd_test.h                     1.2   
+============================================================================
+1. 날  짜 : 2011.09.06(화)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAF/SRC/*
+	  - 헤더 정리, log_print 경고 수정
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_func.h						1.1
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_init.h						1.1
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_sock.h						1.1
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_util.h						1.1
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/Makefile							1.1
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_extern.h					remove
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_func.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_func_api.h					remove
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_global.h					remove
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_init.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_init_api.h					remove
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_main.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_msg_api.h					remove
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_sock.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_sock_api.h					remove
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_sock_def.h					remove
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/ci_log_util.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/CI_LOG/t.c								remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_api.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_comm.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_func.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_func.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_init.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_init.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_main.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_main.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_msgq.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_msgq.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_sess.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_sess.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_util.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_util.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VOD/Makefile							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VOD/vod_api.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_VOD/vod_head.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_VOD/vod_init.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VOD/vod_init.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VOD/vod_main.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VOD/vod_main.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_VOD/vod_msgq.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VOD/vod_msgq.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VOD/vod_sess.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VOD/vod_sess.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VT/Makefile								1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VT/vt_comm.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_VT/vt_init.c							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_VT/vt_init.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VT/vt_main.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VT/vt_main.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_VT/vt_msgq.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VT/vt_msgq.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WAP20/wap20_api.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_WAP20/wap20_init.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WAP20/wap20_init.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WAP20/wap20_main.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WAP20/wap20_main.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_WAP20/wap20_msgq.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WAP20/wap20_msgq.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIDGET/Makefile							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIDGET/widget_api.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIDGET/widget_init.c					1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIDGET/widget_init.h					1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIDGET/widget_main.c					1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIDGET/widget_msgq.c					1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIDGET/widget_msgq.h					1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIPI/Makefile							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIPI/wipi_api.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIPI/wipi_init.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIPI/wipi_init.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIPI/wipi_main.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIPI/wipi_main.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIPI/wipi_msgq.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIPI/wipi_msgq.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_XCAP/Makefile							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_XCAP/xcap_api.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_XCAP/xcap_func.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_XCAP/xcap_func.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_XCAP/xcap_init.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_XCAP/xcap_init.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_XCAP/xcap_main.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_XCAP/xcap_main.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_XCAP/xcap_msgq.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_XCAP/xcap_msgq.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_XCAP/xcap_util.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_XCAP/xcap_util.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/CAPD_NEW/Makefile							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/CAPD_NEW/capd_func.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/CAPD_NEW/capd_func.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/CAPD_NEW/capd_head.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/CAPD_NEW/capd_init.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/CAPD_NEW/capd_init.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/CAPD_NEW/capd_main.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/CAPD_NEW/capd_main.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/Makefile							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/ip_frag.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/prea_flt.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/prea_flt.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/prea_frag.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/prea_frag.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/prea_init.c							1.4
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/prea_init.h							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/prea_main.c							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/prea_main.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/prea_msgq.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/prea_msgq.h							1.2
+============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAF/INC
+	  - func_time_check.h 삭제, /INC 에 같은 파일 있음
+	* TAF/SRC - A_ITCP, A_MSRPT, A_RP, A_SIPD, A_SIPM
+	  - 헤더 수정
+	* BIN
+	  - binary removed
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/BIN/A_2G										remove
+	/cvs/UPST_PROJECT/TAF/BIN/A_DNS										remove
+	/cvs/UPST_PROJECT/TAF/INC/func_time_check.h							remove
+============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAF/INC
+	  - func_time_check.h 삭제, /INC 에 같은 파일 있음
+	* TAF/SRC - A_ITCP, A_MSRPT, A_RP, A_SIPD, A_SIPM
+	  - 헤더 수정
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/INC/func_time_check.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_api.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_comm.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_func.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_func.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_init.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_init.h						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_main.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_main.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_msgq.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_msgq.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_sess.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_sess.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_util.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_ITCP/itcp_util.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_api.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_func.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_init.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_main.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_msgq.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_util.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_RP/arp_func.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_RP/arp_func.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_RP/arp_init.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_RP/arp_init.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_RP/arp_main.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_RP/arp_main.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_RP/arp_serv.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_RP/arp_serv.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_RP/mmdb_struct.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPD/sip_api.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPD/sip_init.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPD/sip_init.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPD/sip_main.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPD/sip_main.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPD/sip_msgq.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPD/sip_msgq.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPD/sip_util.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPD/sip_util.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPM/Makefile							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPM/sipm_api.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPM/sipm_func.c						1.2		
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPM/sipm_func.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPM/sipm_init.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPM/sipm_init.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPM/sipm_main.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPM/sipm_msgq.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPM/sipm_msgq.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPM/sipm_util.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPM/sipm_util.h						1.2
+============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* DATA
+	  - added
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/DATA/FLT_MNIP.dat								1.1
+	/cvs/UPST_PROJECT/TAF/DATA/FLT_SCTP.dat								1.1
+	/cvs/UPST_PROJECT/TAF/DATA/FLT_SVR.dat								1.1
+	/cvs/UPST_PROJECT/TAF/DATA/Timer.dat								1.1
+============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* A_MSRPM
+	  - header 정리 
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_api.h						removed
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_func.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_func.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_init.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_init.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_main.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_main.h						removed
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_msgq.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_msgq.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_util.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPM/msrpm_util.h						1.2
+============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* A_MMS
+	  - header 정리 
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/SRC/A_MMS/mms_api.h							removed
+	/cvs/UPST_PROJECT/TAF/SRC/A_MMS/mms_init.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MMS/mms_init.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MMS/mms_main.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MMS/mms_main.h							removed
+	/cvs/UPST_PROJECT/TAF/SRC/A_MMS/mms_msgq.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MMS/mms_msgq.h							1.2
+============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC
+	  - tools.h : typedef.h including
+	* A_JNC
+	  - header 정리 
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/INC/tools.h									1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_api.h							removed
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_func.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_func.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_init.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_init.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_main.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_main.h							removed
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_msgq.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_msgq.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_util.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_JNC/jnc_util.h							1.2
+============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* A_JAVA
+	  - header 정리 
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/SRC/A_JAVA/java_api.h							removed
+	/cvs/UPST_PROJECT/TAF/SRC/A_JAVA/java_init.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_JAVA/java_init.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_JAVA/java_main.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_JAVA/java_main.h						removed
+	/cvs/UPST_PROJECT/TAF/SRC/A_JAVA/java_msgq.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_JAVA/java_msgq.h						1.2
+============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* S_MNG
+	  - compile 가능 버젼. header 정리..
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/SRC/S_MNG/Makefile							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/S_MNG/fltmng_api.h						removed
+	/cvs/UPST_PROJECT/TAF/SRC/S_MNG/fltmng_file.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/S_MNG/fltmng_file.h						1.1
+	/cvs/UPST_PROJECT/TAF/SRC/S_MNG/fltmng_func.c						1.3
+	/cvs/UPST_PROJECT/TAF/SRC/S_MNG/fltmng_func.h						1.1
+	/cvs/UPST_PROJECT/TAF/SRC/S_MNG/fltmng_init.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/S_MNG/fltmng_init.h						1.1
+	/cvs/UPST_PROJECT/TAF/SRC/S_MNG/fltmng_log.h						1.1
+	/cvs/UPST_PROJECT/TAF/SRC/S_MNG/fltmng_main.c						1.2
+============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* process 기동 가능하도록 수정한 버젼
+	  - flt_info 위치 변경 => timer setting API() 이 전에 초기화가 되어야 함.
+	* LIBSRC/Makefile
+	  - IPPOOLBIT process 포함
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/LIBSRC/Makefile								1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_DIAMETER/diameter_init.c				1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_FB/Makefile								1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_IM/im_init.c							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_IM/im_main.c							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/A_L2TP/l2tp_init.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_api.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_func.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_init.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_main.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_MSRPT/msrpt_msgq.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_RADIUS/radius_comm.h					1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_RADIUS/radius_init.c					1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_RADIUS/radius_init.h					1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_RADIUS/radius_main.c					1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_RADIUS/radius_main.h					1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_SIPT/sipt_init.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_TCP/tcp_init.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_VT/vt_init.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_WIPI/wipi_init.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/PRE_A/prea_init.c							1.3
+	/cvs/UPST_PROJECT/TAF/SRC/S_MNG/fltmng_func.c						1.2
+============================================================================
+1. 날  짜 : 2011.08.24(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAF/SRC - A_DIAMETER, A_EMS, A_FTP, A_FV, A_GRE, A_IM, A_INET
+	  - 헤더 파일 정리
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAF/SRC/A_DIAMETER/Makefile						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_DIAMETER/diameter_func.c				1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_DIAMETER/diameter_func.h				1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_DIAMETER/diameter_init.c				1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_DIAMETER/diameter_init.h				1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_DIAMETER/diameter_main.c				1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_DIAMETER/diameter_main.h				remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_EMS/ems_init.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_EMS/ems_init.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_EMS/ems_main.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_EMS/ems_main.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_EMS/ems_msgq.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_EMS/ems_msgq.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_FTP/ftp_init.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_FTP/ftp_init.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_FTP/ftp_main.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_FTP/ftp_main.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_FTP/ftp_svc.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_FTP/ftp_svc.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_FTP/MMDBLIST_FTP/mmdb_init.c			1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_FV/fv_init.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_FV/fv_init.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_FV/fv_main.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_FV/fv_main.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_FV/fv_msgq.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_FV/fv_msgq.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_GRE/agre_api.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_GRE/agre_func.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_GRE/agre_func.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_GRE/agre_init.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_GRE/agre_init.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_GRE/agre_main.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_GRE/agre_main.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_GRE/agre_serv.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_GRE/agre_serv.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_IM/im_comm.h							remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_IM/im_init.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_IM/im_init.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_IM/im_main.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_IM/im_main.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_IM/im_msgq.c							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_IM/im_msgq.h							1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_comm.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_func.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_func.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_init.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_init.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_main.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_main.h						remove
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_msgq.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_msgq.h						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_util.c						1.2
+	/cvs/UPST_PROJECT/TAF/SRC/A_INET/inet_util.h						1.2
+============================================================================
+1. 날  짜 : 2011.08.24(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* A_RP
+	  - MAX_QUEUE : OAM/INC/commdef.h 에서 arp_init.h 로 이동
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/A_RP/arp_init.h									1.3
+============================================================================
+1. 날  짜 : 2011.08.24(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* typedef.h
+	  - TAM/INC, TAF/INC 에 있는 typedef.h 삭제, LIB/INC/typedef.h 로 통합
+4. 파  일 :
+	/cvs/DQMS2/TAF/INC/typedef.h										remove
+============================================================================
+1. 날  짜 : 2011.08.21(일)
+2. 작성자 : 손형석
+3. 내  용 :
+	* PRE_A
+	  - 추가됨, 관련 library ( IPPOOLBIT )추가됨
+4. 파  일 :
+	/cvs/DQMS2/TAF/LIBSRC/IPPOOLBIT/Makefile							1.1
+	/cvs/DQMS2/TAF/LIBSRC/IPPOOLBIT/ippoolbit_api.c						1.1
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_api.h								remove
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_comm.h								1.2
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_init.c								1.4
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_msgq.c								1.4
+	/cvs/DQMS2/TAF/SRC/PRE_A/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/PRE_A/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/PRE_A/pre_a_flt.c								remove
+	/cvs/DQMS2/TAF/SRC/PRE_A/pre_a_frag.c								remove
+	/cvs/DQMS2/TAF/SRC/PRE_A/pre_a_init.c								remove
+	/cvs/DQMS2/TAF/SRC/PRE_A/pre_a_load.c								remove
+	/cvs/DQMS2/TAF/SRC/PRE_A/pre_a_log.c								remove
+	/cvs/DQMS2/TAF/SRC/PRE_A/pre_a_main.c								remove
+	/cvs/DQMS2/TAF/SRC/PRE_A/pre_a_msgq.c								remove
+	/cvs/DQMS2/TAF/SRC/PRE_A/pre_a_send.c								remove
+	/cvs/DQMS2/TAF/SRC/PRE_A/prea_flt.c									1.1
+	/cvs/DQMS2/TAF/SRC/PRE_A/prea_flt.h									1.1
+	/cvs/DQMS2/TAF/SRC/PRE_A/prea_frag.c								1.1
+	/cvs/DQMS2/TAF/SRC/PRE_A/prea_frag.h								1.1
+	/cvs/DQMS2/TAF/SRC/PRE_A/prea_init.c								1.1
+	/cvs/DQMS2/TAF/SRC/PRE_A/prea_init.h								1.1
+	/cvs/DQMS2/TAF/SRC/PRE_A/prea_main.c								1.1
+	/cvs/DQMS2/TAF/SRC/PRE_A/prea_main.h								1.1
+	/cvs/DQMS2/TAF/SRC/PRE_A/prea_msgq.c								1.1
+	/cvs/DQMS2/TAF/SRC/PRE_A/prea_msgq.h								1.1
+============================================================================
+1. 날  짜 : 2011.08.21(일)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAF/SRC/*
+	  - path.h, mems/nifo/gifo/cifo 에서 typedef 때문에 나는 오류 수정
+        (common_stg.h 를 mems/nifo/gifo/cifo 이전에 include)
+	  - 컴파일 확인 완료 (PRE_A 제외)
+4. 파  일 :
+	/cvs/DQMS/TAF/SRC/A_2G/a2g_init.h									1.4
+	/cvs/DQMS/TAF/SRC/A_2G/a2g_main.h									1.3
+	/cvs/DQMS/TAF/SRC/A_DIAMETER/diameter_func.h						1.2
+	/cvs/DQMS/TAF/SRC/A_DIAMETER/diameter_init.h						1.2
+	/cvs/DQMS/TAF/SRC/A_DIAMETER/diameter_main.h						1.2
+	/cvs/DQMS/TAF/SRC/A_DNS/adns_init.h									1.2
+	/cvs/DQMS/TAF/SRC/A_DNS/adns_main.h									1.2
+	/cvs/DQMS/TAF/SRC/A_EMS/ems_init.c									1.4
+	/cvs/DQMS/TAF/SRC/A_EMS/ems_main.c									1.4
+	/cvs/DQMS/TAF/SRC/A_EMS/ems_msgq.c									1.4
+	/cvs/DQMS/TAF/SRC/A_FB/fb_init.c									1.4
+	/cvs/DQMS/TAF/SRC/A_FB/fb_main.c									1.4
+	/cvs/DQMS/TAF/SRC/A_FB/fb_msgq.c									1.4
+	/cvs/DQMS/TAF/SRC/A_FTP/ftp_init.h									1.2
+	/cvs/DQMS/TAF/SRC/A_FTP/ftp_main.h									1.2
+	/cvs/DQMS/TAF/SRC/A_FV/fv_init.c									1.4
+	/cvs/DQMS/TAF/SRC/A_FV/fv_main.c									1.4
+	/cvs/DQMS/TAF/SRC/A_FV/fv_msgq.c									1.4
+	/cvs/DQMS/TAF/SRC/A_GRE/agre_init.h									1.2
+	/cvs/DQMS/TAF/SRC/A_GRE/agre_main.h									1.2
+	/cvs/DQMS/TAF/SRC/A_HTTP/http_init.c								1.3
+	/cvs/DQMS/TAF/SRC/A_HTTP/http_main.c								1.4
+	/cvs/DQMS/TAF/SRC/A_IHTTP/ihttp_init.h								1.2
+	/cvs/DQMS/TAF/SRC/A_IHTTP/ihttp_main.h								1.2
+	/cvs/DQMS/TAF/SRC/A_IM/im_init.h									1.2
+	/cvs/DQMS/TAF/SRC/A_IM/im_main.c									1.5
+	/cvs/DQMS/TAF/SRC/A_IM/im_main.h									1.2
+	/cvs/DQMS/TAF/SRC/A_INET/inet_init.h								1.2
+	/cvs/DQMS/TAF/SRC/A_INET/inet_main.h								1.3
+	/cvs/DQMS/TAF/SRC/A_ITCP/itcp_init.h								1.2
+	/cvs/DQMS/TAF/SRC/A_ITCP/itcp_main.h								1.2
+	/cvs/DQMS/TAF/SRC/A_IV/pciv_init.c									1.4
+	/cvs/DQMS/TAF/SRC/A_IV/pciv_main.c									1.5
+	/cvs/DQMS/TAF/SRC/A_JAVA/java_api.h									1.2
+	/cvs/DQMS/TAF/SRC/A_JAVA/java_init.c								1.4
+	/cvs/DQMS/TAF/SRC/A_JAVA/java_main.c								1.4
+	/cvs/DQMS/TAF/SRC/A_JAVA/java_msgq.c								1.4
+	/cvs/DQMS/TAF/SRC/A_JNC/jnc_init.c									1.4
+	/cvs/DQMS/TAF/SRC/A_JNC/jnc_main.c									1.4
+	/cvs/DQMS/TAF/SRC/A_JNC/jnc_msgq.c									1.4
+	/cvs/DQMS/TAF/SRC/A_L2TP/l2tp_init.h								1.2
+	/cvs/DQMS/TAF/SRC/A_L2TP/l2tp_main.h								1.2
+	/cvs/DQMS/TAF/SRC/A_MMS/mms_init.c									1.4
+	/cvs/DQMS/TAF/SRC/A_MMS/mms_main.c									1.4
+	/cvs/DQMS/TAF/SRC/A_MMS/mms_msgq.c									1.4
+	/cvs/DQMS/TAF/SRC/A_MSRPM/msrpm_func.c								1.4
+	/cvs/DQMS/TAF/SRC/A_MSRPM/msrpm_init.c								1.4
+	/cvs/DQMS/TAF/SRC/A_MSRPM/msrpm_main.c								1.4
+	/cvs/DQMS/TAF/SRC/A_MSRPM/msrpm_msgq.c								1.5
+	/cvs/DQMS/TAF/SRC/A_MSRPT/msrpt_init.c								1.3
+	/cvs/DQMS/TAF/SRC/A_MSRPT/msrpt_main.c								1.3
+	/cvs/DQMS/TAF/SRC/A_MSRPT/msrpt_msgq.c								1.3
+	/cvs/DQMS/TAF/SRC/A_ONLINE/online_init.h							1.2
+	/cvs/DQMS/TAF/SRC/A_ONLINE/online_main.h							1.2
+	/cvs/DQMS/TAF/SRC/A_ONLINE/online_msgq.h							1.2
+	/cvs/DQMS/TAF/SRC/A_RADIUS/radius_init.h							1.2
+	/cvs/DQMS/TAF/SRC/A_RADIUS/radius_main.h							1.2
+	/cvs/DQMS/TAF/SRC/A_RP/arp_func.h									1.2
+	/cvs/DQMS/TAF/SRC/A_RP/arp_init.h									1.2
+	/cvs/DQMS/TAF/SRC/A_RP/arp_main.h									1.2
+	/cvs/DQMS/TAF/SRC/A_SCTP/sctp_init.c								1.4
+	/cvs/DQMS/TAF/SRC/A_SCTP/sctp_main.c								1.4
+	/cvs/DQMS/TAF/SRC/A_SIPD/sip_init.h									1.2
+	/cvs/DQMS/TAF/SRC/A_SIPD/sip_main.h									1.2
+	/cvs/DQMS/TAF/SRC/A_SIPD/sip_msgq.h									1.2
+	/cvs/DQMS/TAF/SRC/A_SIPM/sipm_init.h								1.2
+	/cvs/DQMS/TAF/SRC/A_SIPM/sipm_main.h								1.2
+	/cvs/DQMS/TAF/SRC/A_SIPM/sipm_msgq.h								1.2
+	/cvs/DQMS/TAF/SRC/A_SIPT/sipt_init.h								1.2
+	/cvs/DQMS/TAF/SRC/A_SIPT/sipt_main.h								1.2
+	/cvs/DQMS/TAF/SRC/A_SIPT/sipt_msgq.h								1.2
+	/cvs/DQMS/TAF/SRC/A_TCP/tcp_init.c									1.7
+	/cvs/DQMS/TAF/SRC/A_TCP/tcp_main.c									1.4
+	/cvs/DQMS/TAF/SRC/A_TCP/tcp_main.h									1.2
+	/cvs/DQMS/TAF/SRC/A_VOD/vod_init.c									1.4
+	/cvs/DQMS/TAF/SRC/A_VOD/vod_main.c									1.4
+	/cvs/DQMS/TAF/SRC/A_VOD/vod_msgq.c									1.4
+	/cvs/DQMS/TAF/SRC/A_VT/vt_init.h									1.2
+	/cvs/DQMS/TAF/SRC/A_VT/vt_main.h									1.2
+	/cvs/DQMS/TAF/SRC/A_WAP20/wap20_init.c								1.4
+	/cvs/DQMS/TAF/SRC/A_WAP20/wap20_main.c								1.4
+	/cvs/DQMS/TAF/SRC/A_WIDGET/widget_init.h							1.2
+	/cvs/DQMS/TAF/SRC/A_WIDGET/widget_main.h							1.2
+	/cvs/DQMS/TAF/SRC/A_WIDGET/widget_msgq.h							1.2
+	/cvs/DQMS/TAF/SRC/A_WIPI/wipi_init.c								1.4
+	/cvs/DQMS/TAF/SRC/A_WIPI/wipi_main.c								1.4
+	/cvs/DQMS/TAF/SRC/A_XCAP/xcap_init.c								1.4
+	/cvs/DQMS/TAF/SRC/A_XCAP/xcap_main.c								1.4
+	/cvs/DQMS/TAF/SRC/A_XCAP/xcap_msgq.c								1.4
+	/cvs/DQMS/TAF/SRC/CAPD_SIM/capd_init.h								1.2
+	/cvs/DQMS/TAF/SRC/CAPD_SIM/capd_test.h								1.2
+	/cvs/DQMS/TAF/SRC/CI_LOG/ci_log_init.c								1.2
+	/cvs/DQMS/TAF/SRC/CI_LOG/ci_log_main.c								1.2
+============================================================================
+1. 날  짜 : 2011.08.21(일)
+2. 작성자 : 백호현
+3. 내  용 :
+	* CAPD_NEW, CAPD_SIM
+	  - 헤더 정리 완료
+	* A_CALL, A_IM, CI_LOG, A_2G
+	  - OAM/INC/path.h, msgdef.h 수정과 tam_shm2.h 제거와 관련해서 수정중..
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/CAPD_NEW/Makefile								1.2
+	/cvs/DQMS2/TAF/SRC/CAPD_NEW/capd_func.c								1.2
+	/cvs/DQMS2/TAF/SRC/CAPD_NEW/capd_func.h								1.1
+	/cvs/DQMS2/TAF/SRC/CAPD_NEW/capd_head.h								1.2
+	/cvs/DQMS2/TAF/SRC/CAPD_NEW/capd_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/CAPD_NEW/capd_init.h								1.1
+	/cvs/DQMS2/TAF/SRC/CAPD_NEW/capd_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/CAPD_NEW/capd_main.h								1.1
+	/cvs/DQMS2/TAF/SRC/CAPD_NEW/log.h									1.1
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/Makefile								1.2
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/capd_func.c								1.2
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/capd_func.h								1.1
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/capd_head.h								1.2
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/capd_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/capd_init.h								1.1
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/capd_main.c								1.1
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/capd_main.h								1.2
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/capd_test.c								1.1
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/capd_test.h								1.2
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/log.h									1.1
+
+	/cvs/DQMS2/TAF/SRC/A_2G/a2g_init.h									1.3
+	/cvs/DQMS2/TAF/SRC/A_2G/a2g_msgq.h									1.3
+	/cvs/DQMS2/TAF/SRC/A_CALL/call_init.c								1.4
+	/cvs/DQMS2/TAF/SRC/A_CALL/call_main.c								1.4
+	/cvs/DQMS2/TAF/SRC/A_IM/im_main.c									1.4
+	/cvs/DQMS2/TAF/SRC/CI_LOG/ci_log_sock.c								1.2
+============================================================================
+1. 날  짜 : 2011.08.19(금)
+2. 작성자 : 손형석
+3. 내  용 :
+	* A_FTP, A_SCTP, A_SIPT
+	  - make clean 시에 *.a 도 삭제하도록 수정
+	  - A_FTP에서는 불필요한 header( _ftp_hdr.h ) file 제거
+
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/A_FTP/Makefile									1.4
+	/cvs/DQMS2/TAF/SRC/A_FTP/_ftp_hdr.h									removed
+	/cvs/DQMS2/TAF/SRC/A_SCTP/Makefile									1.6
+	/cvs/DQMS2/TAF/SRC/A_SIPT/Makefile									1.6
+============================================================================
+1. 날  짜 : 2011.08.17(목)
+2. 작성자 : 백호현
+3. 내  용 :
+	* A_INET
+	  - 컴파일 오류 수정(헤더 인클루드 수정)
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_main.c								1.4
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_main.h								1.2
+============================================================================
+1. 날  짜 : 2011.08.17(목)
+2. 작성자 : 백호현
+3. 내  용 :
+	* A_CALL
+	  - 컴파일 오류 수정(call.h => call_api.h 로 수정)
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/A_CALL/call_func.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_CALL/call_init.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_CALL/call_main.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_CALL/call_msgq.c								1.3
+============================================================================
+1. 날  짜 : 2011.08.17(목)
+2. 작성자 : 백호현
+3. 내  용 :
+	* A_SIPM
+	  - 헤더정리
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/A_SIPM/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_api.h								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_func.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_func.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_init.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_init.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_main.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_main.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_msgq.c								1.4
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_msgq.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_util.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_util.h								1.1
+============================================================================
+1. 날  짜 : 2011.08.17(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* A_DIAMETER, A_GRE, A_IHTTP, A_INET, A_ITCP, A_L2TP, A_ONLINE,
+	  A_RADIUS, A_RP, A_SIPD, A_SIPT, A_WIDGET
+	  - 헤더정리
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/diameter_comm.h						1.1
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/diameter_func.c						1.3
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/diameter_func.h						1.1
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/diameter_init.c						1.3
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/diameter_init.h						1.1
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/diameter_main.c						1.3
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/diameter_main.h						1.1
+	/cvs/DQMS2/TAF/SRC/A_GRE/agre_func.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_GRE/agre_func.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_GRE/agre_init.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_GRE/agre_init.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_GRE/agre_main.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_GRE/agre_main.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_GRE/agre_serv.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_GRE/agre_serv.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_func.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_func.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_init.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_init.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_main.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_main.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_msgq.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_msgq.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_util.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_util.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_INET/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_comm.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_func.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_func.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_init.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_init.c								1.1
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_main.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_main.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_msgq.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_msgq.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_util.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_util.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_ITCP/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_comm.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_func.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_func.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_init.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_init.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_main.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_main.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_msgq.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_msgq.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_sess.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_sess.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_util.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_util.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_L2TP/l2tp_comm.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_L2TP/l2tp_func.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_L2TP/l2tp_func.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_L2TP/l2tp_init.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_L2TP/l2tp_init.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_L2TP/l2tp_main.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_L2TP/l2tp_main.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/Makefile								1.4
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_func.c							1.3
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_func.h							1.1
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_init.c							1.3
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_init.c							1.1
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_main.c							1.3
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_main.h							1.1
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_msgq.c							1.3
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_msgq.h							1.1
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_util.c							1.3
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_util.h							1.1
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_comm.h							1.1
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_decode.c							1.3
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_decode.h							1.1
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_func.c							1.3
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_func.h							1.1
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_init.c							1.3
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_init.h							1.1
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_main.c							1.3
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_main.h							1.1
+	/cvs/DQMS2/TAF/SRC/A_RP/arp_func.c									1.3
+	/cvs/DQMS2/TAF/SRC/A_RP/arp_func.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_RP/arp_init.c									1.3
+	/cvs/DQMS2/TAF/SRC/A_RP/arp_init.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_RP/arp_main.c									1.3
+	/cvs/DQMS2/TAF/SRC/A_RP/arp_main.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_RP/arp_serv.c									1.3
+	/cvs/DQMS2/TAF/SRC/A_RP/arp_serv.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip_init.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip_init.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip_main.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip_main.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip_msgq.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip_msgq.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip_util.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip_util.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/Makefile									1.5
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_comm.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_func.c								1.4
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_func.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_init.c								1.4
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_init.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_main.c								1.4
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_main.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_msgq.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_msgq.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_sess.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_sess.h								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_util.c								1.4
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_util.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/widget_init.c							1.3
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/widget_init.h							1.1
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/widget_main.c							1.3
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/widget_main.h							1.1
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/widget_msgq.c							1.3
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/widget_msgq.h							1.1
+============================================================================
+1. 날  짜 : 2011.08.12(금)
+2. 작성자 : 백호현
+3. 내  용 :
+	* A_DNS, A_FTP
+	  - 헤더정리
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/A_FTP/_ftp_hdr.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_hdr.h									remove
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_init.c									1.4
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_init.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_main.c									1.4
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_main.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_svc.c									1.4
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_svc.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_DNS/adns_init.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_DNS/adns_init.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_DNS/adns_main.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_DNS/adns_main.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_DNS/adns_serv.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_DNS/adns_serv.h								1.1
+============================================================================
+1. 날  짜 : 2011.08.12(금)
+2. 작성자 : 백호현
+3. 내  용 :
+	* A_IM, A_VT
+	  - 헤더정리 완료
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/A_IM/im_comm.h									1.2
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_comm.h									1.2
+============================================================================
+1. 날  짜 : 2011.08.12(금)
+2. 작성자 : 손형석
+3. 내  용 :
+	* A_FTP
+	  - packet_def.h 제거, Analyze_Ext_Abs.h 추가( into *main.c for INFO_ETH )
+	* Makefile 수정...
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_main.c									1.3
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_init.c									1.3
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_svc.c									1.3
+	/cvs/DQMS2/TAF/Makefile												1.2
+	/cvs/DQMS2/TAF/LIBSRC/Makefile										1.3
+	/cvs/DQMS2/TAF/SRC/A_FTP/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_SCTP/Makefile									1.5
+	/cvs/DQMS2/TAF/SRC/A_SIPT/Makefile									1.4
+============================================================================
+1. 날  짜 : 2011.08.11(목)
+2. 작성자 : 백호현
+3. 내  용 :
+	* A_IM, A_VT
+	  - 헤더 정리 (filter.h, Analyze_Ext_Abs.h 정리 필요)
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/A_IM/im_comm.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_IM/im_init.c									1.3
+	/cvs/DQMS2/TAF/SRC/A_IM/im_init.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_IM/im_main.c									1.3
+	/cvs/DQMS2/TAF/SRC/A_IM/im_main.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_IM/im_msgq.c									1.3
+	/cvs/DQMS2/TAF/SRC/A_IM/im_msgq.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_comm.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_init.c									1.4
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_init.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_main.c									1.4
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_main.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_msgq.c									1.4
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_msgq.h									1.1
+============================================================================
+1. 날  짜 : 2011.08.10(수)
+	2. 작성자 : 함동철
+	3. 내  용 :
+	* INC
+	-현재 TAF 에서 사용되지 않는 헤더 파일 삭제
+	4. 파  일 :
+	/cvs/DQMS2/TAF/INC/tcp_gen.h                                        remove
+	/cvs/DQMS2/TAF/INC/taf_stat.h                                       remove
+	/cvs/DQMS2/TAF/INC/taf_resc.h                                       remove
+	/cvs/DQMS2/TAF/INC/taf_mmcid.h                                      remove
+	/cvs/DQMS2/TAF/INC/taf_mmcif.h                                      remove
+	/cvs/DQMS2/TAF/INC/taf_mmcd.h                                       remove
+	/cvs/DQMS2/TAF/INC/taf_mmc.h                                        remove
+	/cvs/DQMS2/TAF/INC/taf_etc.h                                        remove
+	/cvs/DQMS2/TAF/INC/taf_error.h                                      remove
+	/cvs/DQMS2/TAF/INC/taf_enum.h                                       remove
+	/cvs/DQMS2/TAF/INC/taf_data.h                                       remove
+	/cvs/DQMS2/TAF/INC/pfring.h                                         remove
+	/cvs/DQMS2/TAF/INC/mmdblist_radius.h                                remove
+	/cvs/DQMS2/TAF/INC/mmdblist_frag.h                                  remove
+	/cvs/DQMS2/TAF/INC/mmdblist_diameter.h                              remove
+	/cvs/DQMS2/TAF/INC/mmdb.h                                           remove
+	/cvs/DQMS2/TAF/INC/mmcid.h                                          remove
+	/cvs/DQMS2/TAF/INC/mmcerr.h                                         remove
+	/cvs/DQMS2/TAF/INC/ktf.h                                            remove
+	/cvs/DQMS2/TAF/INC/ipc_define.h                                     remove
+	/cvs/DQMS2/TAF/INC/eth_capd.h                                       remove
+	/cvs/DQMS2/TAF/INC/dump.h                                           remove
+	/cvs/DQMS2/TAF/INC/almstat.h                                        remove
+	/cvs/DQMS2/TAF/INC/IEEE_header.h                                    remove
+	/cvs/DQMS2/TAF/INC/rtsp.h                                           remove
+	/cvs/DQMS2/TAF/INC/rtsp_api.h                                       remove
+	/cvs/DQMS2/TAF/INC/Error.h                                          remove
+	/cvs/DQMS2/TAF/INC/ems.h                                            remove
+	/cvs/DQMS2/TAF/INC/packet_def.h                                     remove
+============================================================================
+1. 날  짜 : 2011.08.11(목)
+2. 작성자 : 손형석
+3. 내  용 :
+	* TAF/LIBSRC
+	  - MMDB_GREENTRY, MMDB_PSESS 추가
+	* A_GRE, A_RP, A_L2TP 
+	  - 신규 library 적용
+	  - gifo 적용
+	* A_ITCP, A_TCP
+	  - shmget 제거, IPCLIB 적용
+4. 파  일 : 
+	/cvs/DQMS2/TAF/LIBSRC/Makefile										1.2
+	/cvs/DQMS2/TAF/LIBSRC/MMDB_GREENTRY/BalanceTree.c					1.1
+	/cvs/DQMS2/TAF/LIBSRC/MMDB_GREENTRY/InitDB.c						1.1
+	/cvs/DQMS2/TAF/LIBSRC/MMDB_GREENTRY/Makefile						1.1
+	/cvs/DQMS2/TAF/LIBSRC/MMDB_GREENTRY/Shm_dis.c						1.1
+	/cvs/DQMS2/TAF/LIBSRC/MMDB_GREENTRY/mmdb_api.c						1.1
+	/cvs/DQMS2/TAF/LIBSRC/MMDB_PSESS/BalanceTree.c						1.1
+	/cvs/DQMS2/TAF/LIBSRC/MMDB_PSESS/InitDB.c							1.1
+	/cvs/DQMS2/TAF/LIBSRC/MMDB_PSESS/Makefile							1.1
+	/cvs/DQMS2/TAF/LIBSRC/MMDB_PSESS/Shm_dis.c							1.1
+	/cvs/DQMS2/TAF/LIBSRC/MMDB_PSESS/mmdb_api.c							1.1
+	/cvs/DQMS2/TAF/SRC/Makefile											1.9
+	/cvs/DQMS2/TAF/SRC/A_GRE/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_GRE/agre_api.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_GRE/agre_func.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_GRE/agre_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_GRE/agre_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_GRE/agre_serv.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_GRE/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_init.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_L2TP/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_L2TP/l2tp_api.h								1.2
+	/cvs/DQMS2/TAF/SRC/A_L2TP/l2tp_func.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_L2TP/l2tp_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_L2TP/l2tp_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_L2TP/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_RP/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_RP/arp_func.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_RP/arp_init.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_RP/arp_main.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_RP/arp_serv.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_RP/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_TCP/tcp_init.c									1.5
+============================================================================
+1. 날  짜 : 2011.08.10(수)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC
+	  - A_IHTTP, A_INET, A_ITCP  각각에서만 사용되는 header file 삭제
+	* A_DNS, A_FTP, A_IHTTP, A_INET, A_ITCP
+	  - 추가됨
+	* etc
+	  - Makefile 수정및 소스 정리. 불필요한 헤더 제거 등.
+4. 파  일 :
+	/cvs/DQMS2/TAF/INC/ihttp_api.h										remove
+	/cvs/DQMS2/TAF/INC/inet_api.h										remove
+	/cvs/DQMS2/TAF/INC/itcp_api.h										remove
+	/cvs/DQMS2/TAF/SRC/Makefile											1.8
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/Makefile								1.3
+	/cvs/DQMS2/TAF/SRC/A_DNS/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_DNS/adns_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_DNS/adns_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_DNS/adns_serv.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_DNS/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_FTP/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_hdr.h									1.2
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_init.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_main.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_FTP/ftp_svc.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_FTP/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_FTP/MMDBLIST_FTP/BalanceTree.c					1.1
+	/cvs/DQMS2/TAF/SRC/A_FTP/MMDBLIST_FTP/Makefile						1.1
+	/cvs/DQMS2/TAF/SRC/A_FTP/MMDBLIST_FTP/mmdb_alloc.c					1.1
+	/cvs/DQMS2/TAF/SRC/A_FTP/MMDBLIST_FTP/mmdb_api.c					1.1
+	/cvs/DQMS2/TAF/SRC/A_FTP/MMDBLIST_FTP/mmdb_init.c					1.1
+	/cvs/DQMS2/TAF/SRC/A_FTP/MMDBLIST_FTP/mmdblist_api.c				1.1
+	/cvs/DQMS2/TAF/SRC/A_HTTP/Makefile									1.4
+	/cvs/DQMS2/TAF/SRC/A_HTTP/http_func.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_HTTP/http_main.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_api.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_func.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_msgq.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/ihttp_util.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_IHTTP/log.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_INET/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_api.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_func.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_msgq.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_INET/inet_util.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_INET/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_ITCP/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_api.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_func.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_msgq.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_sess.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_sess.h								1.2
+	/cvs/DQMS2/TAF/SRC/A_ITCP/itcp_util.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_ITCP/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/Makefile								1.3
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/Makefile								1.3
+	/cvs/DQMS2/TAF/SRC/A_SCTP/Makefile									1.4
+	/cvs/DQMS2/TAF/SRC/A_SIPT/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_func.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_util.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_TCP/Makefile									1.4
+	/cvs/DQMS2/TAF/SRC/A_TCP/t.c										remove
+	/cvs/DQMS2/TAF/SRC/A_TCP/tcp_init.c									1.4
+	/cvs/DQMS2/TAF/SRC/A_TCP/tcp_main.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_TCP/tcp_msgq.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_TCP/tcp_sess.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_TCP/tcp_util.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/Makefile								1.3
+============================================================================
+1. 날  짜 : 2011.08.10(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAF/SRC/Makefile
+	  - A_VT, A_IM 추가
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/Makefile											1.7
+============================================================================
+1. 날  짜 : 2011.08.09(화)
+2. 작성자 : 백호현
+3. 내  용 :
+	* A_VT, A_IM
+	  - 수정.
+4. 파  일 :
+	/cvs/DQMS2/INC/sshm_id.h											1.3
+	/cvs/DQMS2/TAF/INC/vt_api.h											1.2
+	/cvs/DQMS2/TAF/SRC/A_VT/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_init.c									1.3
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_main.c									1.3
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_msgq.c									1.3
+	/cvs/DQMS2/TAF/SRC/A_IM/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_IM/im_init.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_IM/im_main.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_IM/im_msgq.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_IM/log.h										1.1
+============================================================================
+1. 날  짜 : 2011.08.09(화)
+2. 작성자 : 손형석
+3. 내  용 :
+	* A_SIPD, A_WIDGET
+	  - library header file removed
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip.h										remove
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/widget.h								remove
+============================================================================
+1. 날  짜 : 2011.08.09(화)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC 
+	  - local 로 옮겨지거나, library 쪽 INC 밑에 존재하는 header file  제거..
+	  - local 로 옮긴 것 중에서 library 쪽 INC 밑에 존재하는 header file 제거해야 함 ㅜㅡ
+	* TAF/LIBSRC/ANZ_LIB
+	  - added
+	* A_DIAMETER, A_ONLINE, A_RADIUS, A_WIDGET, A_SIPT, A_SIPD 
+	  - 신규 library 적용
+	  - gifo 적용
+	* A_SIPT
+	  - 수정..
+4. 파  일 :
+	/cvs/DQMS2/TAF/INC/online_api.h										remove
+	/cvs/DQMS2/TAF/INC/sip.h											remove
+	/cvs/DQMS2/TAF/INC/widget.h											remove
+	/cvs/DQMS2/TAF/INC/widget_api.h										remove
+	/cvs/DQMS2/TAF/LIBSRC/ANZ_LIB/Analyze_Inf11.c						1.1
+	/cvs/DQMS2/TAF/LIBSRC/ANZ_LIB/Makefile								1.1
+	/cvs/DQMS2/TAF/LIBSRC/ANZ_LIB/VJ.c									1.1
+	/cvs/DQMS2/TAF/LIBSRC/ANZ_LIB/analyze_PPP.c							1.1
+	/cvs/DQMS2/TAF/LIBSRC/TOOLS/Makefile								1.2
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/Makefile								1.2
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/diameter_func.c						1.2
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/diameter_hash.h						1.2
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/diameter_init.c						1.2
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/diameter_main.c						1.2
+	/cvs/DQMS2/TAF/SRC/A_DIAMETER/log.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/Makefile								1.2
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/log.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_api.h							1.1
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_func.c							1.2
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_init.c							1.2
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_main.c							1.2
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_msgq.c							1.2
+	/cvs/DQMS2/TAF/SRC/A_ONLINE/online_util.c							1.2
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/Makefile								1.2
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/log.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_api.h							1.2
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_decode.c							1.2
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_func.c							1.2
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_init.c							1.2
+	/cvs/DQMS2/TAF/SRC/A_RADIUS/radius_main.c							1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPD/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPD/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip_api.h									1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip_msgq.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPD/sip_util.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_msgq.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_api.h								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_init.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_main.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/Makefile								1.2
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/log.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/widget.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/widget_api.h							1.1
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/widget_init.c							1.2
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/widget_main.c							1.2
+	/cvs/DQMS2/TAF/SRC/A_WIDGET/widget_msgq.c							1.2
+============================================================================
+1. 날  짜 : 2011.08.09(화)
+2. 작성자 : 손형석
+3. 내  용 :
+	* 모든 Make file 에서 -I$(KERNEL) 부분 제거
+	  - 컴파일시에 이로인해서 제대로 되지 않는 경우 발생.
+	* A_MSRPM, A_MSRPT, A_SIPT, A_SIPM 
+	  - 신규 library 적용
+	  - gifo 적용
+4. 파  일 :
+	/cvs/DQMS2/TAF/INC/common_def.h										1.3
+	/cvs/DQMS2/TAF/INC/common_tcp.h										1.1
+	/cvs/DQMS2/TAF/INC/filter.h											1.2
+	/cvs/DQMS2/TAF/SRC/Makefile											1.6
+	/cvs/DQMS2/TAF/SRC/A_2G/Makefile									1.4
+	/cvs/DQMS2/TAF/SRC/A_CALL/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_EMS/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_FB/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_FV/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_HTTP/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_IV/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_JAVA/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_JNC/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_MMS/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_MSRPM/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_MSRPM/msrpm_msgq.c								1.3
+	/cvs/DQMS2/TAF/SRC/A_MSRPT/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_MSRPT/log.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_MSRPT/msrpt_api.h								1.2
+	/cvs/DQMS2/TAF/SRC/A_MSRPT/msrpt_func.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_MSRPT/msrpt_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_MSRPT/msrpt_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_MSRPT/msrpt_msgq.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_MSRPT/msrpt_util.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SCTP/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_SIPM/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPM/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_api.h								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_func.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_msgq.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPM/sipm_util.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPT/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPT/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_api.h								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_func.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_msgq.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_sess.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPT/sipt_util.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/Makefile							1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/app.c								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/comp.c							1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/comp_lz77.c						1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/comp_lzss.c						1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/hashtest.c						1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/imsg								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/msg								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/msg1								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/omsg								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/rmsg								1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/sha1.c							1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/sigcomp.c							1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/strutil.c							1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/tvbuff.c							1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/udvm.c							1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/udvm_state.c						1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP/work.txt							1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP_INC/pint.h						1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP_INC/sha1.h						1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP_INC/sigcomp.h						1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP_INC/strutil.h						1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP_INC/tvbuff.h						1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP_INC/udvm.h						1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP_INC/udvm_state.h					1.1
+	/cvs/DQMS2/TAF/SRC/A_SIPT/SIGCOMP_INC/value_string.h				1.1
+	/cvs/DQMS2/TAF/SRC/A_TCP/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_TCP/tcp_init.c									1.3
+	/cvs/DQMS2/TAF/SRC/A_TCP/tcp_sess.h									1.2
+	/cvs/DQMS2/TAF/SRC/A_VOD/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_WAP20/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_WIPI/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_XCAP/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/CI_LOG/Makefile									1.2
+============================================================================
+1. 날  짜 : 2011.08.09(화)
+2. 작성자 : 백호현
+3. 내  용 :
+	* A_VT
+	  - LIB, GIFO 적용
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/A_VT/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_VT/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_init.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_main.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_VT/vt_msgq.c									1.2
+============================================================================
+1. 날  짜 : 2011.08.08(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC/
+	  - Analyze_Ext_Abs.h 에서 tmf_taf.h ? include 제거
+	  - 각 블럭에서만 사용되는 header file 제거
+		fb/fv/java/jnc/mms/tcp/vod_api.h
+	* 다음의 block 에 변경들을 수정함.
+	  - A_2G, A_TCP, A_EMS, A_2G, A_JAVA, A_MMS, A_JNC, A_VOD,
+	    A_FV, A_FB, A_IV, A_XCAP, A_MSRPM 등에 신규 library 및 gifo 적용
+        *) NOT TESTED
+4. 파  일 :
+	/cvs/DQMS2/TAF/INC/Analyze_Ext_Abs.h								1.2
+	/cvs/DQMS2/TAF/INC/fb_api.h											remove
+	/cvs/DQMS2/TAF/INC/fv_api.h											remove
+	/cvs/DQMS2/TAF/INC/java_api.h										remove
+	/cvs/DQMS2/TAF/INC/jnc_api.h										remove
+	/cvs/DQMS2/TAF/INC/mms_api.h										remove
+	/cvs/DQMS2/TAF/INC/tcp_api.h										remove
+	/cvs/DQMS2/TAF/INC/vod_api.h										remove
+	/cvs/DQMS2/TAF/SRC/.Makefile.swp									remove
+	/cvs/DQMS2/TAF/SRC/Makefile											1.5
+	/cvs/DQMS2/TAF/SRC/A_2G/Makefile									1.3
+	/cvs/DQMS2/TAF/SRC/A_EMS/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_EMS/ems_init.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_EMS/ems_main.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_EMS/ems_msgq.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_EMS/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_FB/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_FB/fb_api.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_FB/fb_chunked.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_FB/fb_init.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_FB/fb_main.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_FB/fb_msgq.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_FB/fb_multipart.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_FB/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_FV/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_FV/fv_api.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_FV/fv_init.c									1.1
+	/cvs/DQMS2/TAF/SRC/A_FV/fv_main.c									1.1
+	/cvs/DQMS2/TAF/SRC/A_FV/fv_msgq.c									1.1
+	/cvs/DQMS2/TAF/SRC/A_FV/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_IV/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_IV/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_IV/pciv_api.hi									1.2
+	/cvs/DQMS2/TAF/SRC/A_IV/pciv_func.ci								1.2
+	/cvs/DQMS2/TAF/SRC/A_IV/pciv_init.ci								1.2
+	/cvs/DQMS2/TAF/SRC/A_IV/pciv_main.ci								1.2
+	/cvs/DQMS2/TAF/SRC/A_JAVA/Makefilei									1.2
+	/cvs/DQMS2/TAF/SRC/A_JAVA/java_api.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_JAVA/java_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_JAVA/java_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_JAVA/java_msgq.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_JAVA/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_JNC/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_JNC/jnc_api.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_JNC/jnc_func.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_JNC/jnc_init.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_JNC/jnc_main.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_JNC/jnc_msgq.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_JNC/jnc_util.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_JNC/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_MMS/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_MMS/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_MMS/mms_api.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_MMS/mms_init.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_MMS/mms_main.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_MMS/mms_msgq.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_MSRPM/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_MSRPM/log.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_MSRPM/msrpm_api.h								1.2
+	/cvs/DQMS2/TAF/SRC/A_MSRPM/msrpm_func.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_MSRPM/msrpm_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_MSRPM/msrpm_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_MSRPM/msrpm_msgq.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_MSRPM/msrpm_util.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_SCTP/sctp_head.h								1.2
+	/cvs/DQMS2/TAF/SRC/A_VOD/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_VOD/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_VOD/vod_api.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_VOD/vod_head.h									1.2
+	/cvs/DQMS2/TAF/SRC/A_VOD/vod_init.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_VOD/vod_main.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_VOD/vod_msgq.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_VOD/vod_sess.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_XCAP/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_XCAP/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_XCAP/xcap_api.h								1.2
+	/cvs/DQMS2/TAF/SRC/A_XCAP/xcap_func.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_XCAP/xcap_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_XCAP/xcap_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_XCAP/xcap_msgq.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_XCAP/xcap_util.c								1.2
+============================================================================
+1. 날  짜 : 2011.08.05(금)
+2. 작성자 : 손형석
+3. 내  용 :
+	* A_2G, A_HTTP, A_TCP, A_WAP20, A_WIPI
+	  - library 적용
+	  - gifo 적용
+	  - 자기만 사용하는 header 는 local directory 로 위치시킴
+	* LIB/TOOLS
+	  - INC 아래에 tools.h 생성.
+4. 파  일 :
+	/cvs/DQMS2/TAF/INC/a2g_api.h										remove
+	/cvs/DQMS2/TAF/INC/common_def.h										1.2
+	/cvs/DQMS2/TAF/INC/http_api.h										remove
+	/cvs/DQMS2/TAF/INC/tools.h											1.1
+	/cvs/DQMS2/TAF/INC/wap20_api.h										remove
+	/cvs/DQMS2/TAF/INC/wipi_api.h										remove
+	/cvs/DQMS2/TAF/LIBSRC/TOOLS/platform_type.c							1.2
+	/cvs/DQMS2/TAF/SRC/Makefile											1.4
+	/cvs/DQMS2/TAF/SRC/A_2G/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_2G/a2g_api.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_2G/a2g_init.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_2G/a2g_main.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_2G/a2g_msgq.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_2G/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_HTTP/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_HTTP/http_api.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_HTTP/http_func.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_HTTP/http_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_HTTP/http_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_HTTP/http_msgq.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_HTTP/http_util.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_HTTP/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_TCP/tcp_init.c									1.2
+	/cvs/DQMS2/TAF/SRC/A_WAP20/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_WAP20/log.h									1.1
+	/cvs/DQMS2/TAF/SRC/A_WAP20/wap20_api.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_WAP20/wap20_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_WAP20/wap20_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_WAP20/wap20_msgq.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_WIPI/Makefile									1.2
+	/cvs/DQMS2/TAF/SRC/A_WIPI/log.h										1.1
+	/cvs/DQMS2/TAF/SRC/A_WIPI/wipi_api.h								1.1
+	/cvs/DQMS2/TAF/SRC/A_WIPI/wipi_init.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_WIPI/wipi_main.c								1.2
+	/cvs/DQMS2/TAF/SRC/A_WIPI/wipi_msgq.c								1.2
+============================================================================
+1. 날  짜 : 2011.08.05(금)
+2. 작성자 : 손형석
+3. 내  용 :
+    * HISTORY.swp file removed
+    * SRC/A_SCTP
+      - 추가
+      - SCTP 에서만 사용되는 library 를 source 밑으로 옮김
+      - SCTP 에서만 사용되는 header file을 source 안으로 옮김
+    * A_TCP
+      - Makefile 불필요한 변수 제거
+    * SRC/Makefile
+      - A_SCTP 추가
+4. 파  일 :
+    /cvs/DQMS2/TAF/.HISTORY.TXT.swp                                     remove
+    /cvs/DQMS2/TAF/INC/sctp_head.h                                      remove
+    /cvs/DQMS2/TAF/INC/sctpstack.h                                      remove
+    /cvs/DQMS2/TAF/SRC/Makefile                                         1.2
+    /cvs/DQMS2/TAF/SRC/A_SCTP/Makefile                                  1.2
+    /cvs/DQMS2/TAF/SRC/A_SCTP/log.h                                     1.1
+    /cvs/DQMS2/TAF/SRC/A_SCTP/sctp_func.c                               1.2
+    /cvs/DQMS2/TAF/SRC/A_SCTP/sctp_head.h                               1.1
+    /cvs/DQMS2/TAF/SRC/A_SCTP/sctp_init.c                               1.2
+    /cvs/DQMS2/TAF/SRC/A_SCTP/sctp_main.c                               1.2
+    /cvs/DQMS2/TAF/SRC/A_SCTP/sctp_serv.c                               1.2
+    /cvs/DQMS2/TAF/SRC/A_SCTP/sctpstack.h                               1.1
+    /cvs/DQMS2/TAF/SRC/A_SCTP/SCTPSTACK_LIB/Makefile                    1.1
+    /cvs/DQMS2/TAF/SRC/A_SCTP/SCTPSTACK_LIB/asso_alloc.c                1.1
+    /cvs/DQMS2/TAF/SRC/A_SCTP/SCTPSTACK_LIB/asso_api.c                  1.1
+    /cvs/DQMS2/TAF/SRC/A_SCTP/SCTPSTACK_LIB/asso_tree.c                 1.1
+    /cvs/DQMS2/TAF/SRC/A_SCTP/SCTPSTACK_LIB/lib_api.c                   1.1
+    /cvs/DQMS2/TAF/SRC/A_SCTP/SCTPSTACK_LIB/lib_init.c                  1.1
+    /cvs/DQMS2/TAF/SRC/A_SCTP/SCTPSTACK_LIB/stack_list.c                1.1
+    /cvs/DQMS2/TAF/SRC/A_TCP/Makefile                                   1.2
+
+============================================================================
+1. 날  짜 : 2011.08.05(금)
+2. 작성자 : 손형석
+3. 내  용 :
+	* 신규 Project의 시작
+	  - DQMS R2.0.0 Source
+	  - 일단 기존 TAF 소스를 가지고 오도록 함. SRC 는 Makefile 기준
+	  - Library 는 다 지우고, Project dependency한 것만 새로 만듦
+	  - O&M Module 과 Project 의존적이지 않은 Library 는 별도로 분리됨
+	* 현재 진행 내역
+	  - 신규 library 적용
+	  - gifo 적용
+	  - header 정리 안되어 있음 ===> 반드시 진행되어야 함.
+============================================================================
+NEW HISTORY 2011.08.05
+============================================================================
+
+
+
+============================================================================
+1. 날  짜 : 2011.07.24(일)
+2. 작성자 : 김인영
+3. 내  용 : 
+	S_MNG
+		"TYPE_PDIF 추가"
+4. 파  일 :
+	./INC/INC/filter.h													1.10
+	./SRC/S_MNG/flt_ctrl_func.c											1.50
+============================================================================
+1. 날  짜 : 2011.07.24(일)
+2. 작성자 : 윤진석
+3. 내  용 : "TYPE_PDIF 추가"
+4. 파  일 :
+	./SRC/A_RADIUS/radius_func.c 										1.43
+	./SRC/PRE_A/pre_a_init.c 											1.28
+	./SRC/PRE_A/pre_a_init.c 											1.29
+============================================================================
+1. 날  짜 : 2011.07.21(목)
+2. 작성자 : 소준섭
+3. 내  용 : 
+	"A_RADIUS"
+		불피요한 CRI Log 방지 및 IPPOOL의 로그 __FILE__등의 매크로 제거
+4. 파 일  :
+	./SRC/A_RADIUS/radius_func.c										1.42
+	./SRC/A_RADIUS/radius_init.c                                        1.16
+============================================================================
+1. 날  짜 : 2011.07.19(화)
+2. 작성자 : 소준섭
+3. 내  용 : 
+	"A_RADIUS"
+		ACCESS MSG는 IPPOOL을 안거치도록 처리
+		IPPOOL 세팅 로그 변경
+4. 파 일  :
+	./SRC/A_RADIUS/radius_func.c 										1.40
+	./SRC/A_RADIUS/radius_init.c										1.15
+============================================================================
+1. 날  짜 : 2011.07.15(금)
+2. 작성자 : 소준섭
+3. 내  용 : 
+	"A_RADIUS : IPPOOL FRAMED IP가 0인 경우에 대한 처리"
+    	FRAMED IP가 0인경우 등록대역이 아님에도 통과 하는 버그처리
+4. 파 일  :
+	./SRC/A_RADIUS/radius_func.c 										1.39
+============================================================================
+1. 날  짜 : 2011.07.15(금)
+2. 작성자 : 소준섭
+3. 내  용 : 
+	"A_RADIUS : IPPOOL Type 추가"
+		IPPOOL ARRAY SIZE 20에서 100으로 조정
+		LOG 상세하게 찍도록 수정
+4. 파  일 :
+	./SRC/A_RADIUS/radius_api.h 										1.13
+	./SRC/A_RADIUS/radius_func.c 										1.38
+============================================================================
+1. 날  짜 : 2011.07.12(화)
+2. 작성자 : 소준섭
+3. 내  용 : 
+	"A_RADIUS : IPPOOL Type 추가"
+    	Type에 따라서 IPPOOL에 등록된 IP만 분석 혹은 
+        등록된 IP만 제외하고 분석
+4. 파  일 :
+	./DATA/IPPOOL_INFO.dat 												1.2
+	./SRC/A_RADIUS/Makefile												1.7
+	./SRC/A_RADIUS/radius_api.h 										1.13
+	./SRC/A_RADIUS/radius_func.c 										1.37
+	./SRC/A_RADIUS/radius_init.c 										1.11
+============================================================================
+1. 날  짜 : 2011.07.11(화)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_RADIUS : IPPOOL_INFO.dat 파일에 등록된 RADIUS만 분석"
+4. 파  일 :
+	./DATA/IPPOOL_INFO.dat 												1.1
+	./INC/taf_define.h 													1.6
+	./SRC/A_RADIUS/radius_api.h 										1.12
+	./SRC/A_RADIUS/radius_func.c 										1.36
+	./SRC/A_RADIUS/radius_init.c 										1.10
+	./SRC/A_RADIUS/radius_main.c 										1.11
+============================================================================
+1. 날  짜 : 2011.07.11(월)
+2. 작성자 : 김인영 
+3. 내  용 : 
+	* TAF_RPPI/UTILLIB 복원 
+4. 파  일 :
+	LIBSRC/UTILLIB/make_nid.c											1.5
+	LIBSRC/UTILLIB/multi_util.c											1.3
+	LIBSRC/UTILLIB/time.c												1.5
+	LIBSRC/UTILLIB/type_cvt.c											1.6
+	LIBSRC/UTILLIB/platform_type.c										1.13
+============================================================================
+1. 날  짜 : 2011.06.29(수)
+2. 작성자 : 손형석
+3. 내  용 : 
+	* CHSMD
+	  - HW Check 후 Alarm Report 시, report 후 fidb값을 변경하도록 수정.
+		fidb값을 먼저 변경 후( old alarm level ), report를 함으로 인해, 
+		OMP 에 console 메세지가 white로 표기되는 버그 수정.
+	  - 수정하는 김에 warning 수정
+4. 파  일 :
+	/cvs/DQMS/TAF_RPPI/SRC/CHSMD/chsmd_hw.c								1.27
+	/cvs/DQMS/TAF_RPPI/SRC/CHSMD/chsmd_load.c							1.23
+============================================================================
+1. 날  짜 : 2011.06.23(목)
+2. 작성자 : 손형석
+3. 내  용 : 
+	* INC/dqms_define.h
+	  - 사용되지 않는 MID_O_SVC 삭제
+	* INC/PLAT
+	  - 지워주어야 할 msgq key 추가 - 사용되지 는 않음. 그러나, 생성이 되고 있음.
+4. 파  일 :
+	/cvs/DQMS/TAF_RPPI/INC/dqms_define.h								1.13
+	/cvs/DQMS/TAF_RPPI/INC/PLAT/rsc_list.h								1.32
+============================================================================
+1. 날  짜 : 2011.06.01(수)
+2. 작성자 : 손형석
+3. 내  용 : 
+	* CHSMD
+	  - dis-taf-prc 명령어 수행시, PI 쪽에서 실행 process가 증가된 이후, 
+	    buffer 가 over된 경우, 명령어를 수행하지 않고, return 해버리는 부분 수정
+		=> DBM_CONTINUE 처리하여, 분할하여 메세지를 전달하도록 수정.
+	  - dis-taf-prc 명령어 수행시, version display 하는 방식을 변경 
+	* TIFB/DisMC
+	  - version display 하는 방식을 변경, 이 전에는 엄한 값을 가져와서 보여주었음 
+4. 파  일 :
+	/cvs/DQMS/TAF_RPPI/SRC/CHSMD/chsmd_mmc_func.c						1.11
+	/cvs/DQMS/TAF_RPPI/SRC/TIFB/DisMC.c									1.11
+============================================================================
+TAG NAME : TAG_0_0_3_0_20110526
+TAG DESC : 개별 HISTORY에 Log가 없어서, 확인 차 TAGGING
+TAG USER : 손형석
+============================================================================
+============================================================================
+1. 날  짜 : 2011.05.20(금)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"IP4 타입 unsigned int로 수정"
+4. 파  일 :
+	./TAF_RPPI/INC/typedef.h 											1.2
+============================================================================
+1. 날  짜 : 2011.05.20(금)
+2. 작성자 : 손형석
+3. 내  용 : 
+	* KillMC
+	  - KillMC -v 명령 수행 시, CHSMD 를 제외한 나머지 block 에 대해서
+	    Console message에 TAFNO = 0 으로 표기되는 문제 수정.
+	    KillMC -v 수행시, TAM 으로 전달하는 구조체 값 중에 System No 을 0으로
+		assign 하고 있었음. gucSysNo 을 할당하도록 수정.
+4. 파  일 :
+	./SRC/TIFB/KillMC.c													1.18
+============================================================================
+1. 날  짜 : 2011.05.13(금)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"RP, PI, PIOLD 로 Makefile 분류"
+4. 파  일 :
+	./Makefile 															1.4
+	./SRC/Makefile 														1.27
+	./LIBSRC/Makefile 													1.16
+	../CGALIB/all_conf.sh 												1.4
+	../CGALIB/nifo/MakeLIB 												1.6
+	../CGALIB/memg/MakeLIB												1.1
+============================================================================
+1. 날  짜 : 2011.05.11(수)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"setpriority() 함수 적용 테스트"
+	"CAPD 프로세스에 적용하였으나 A_CALL 프로세스의 성능이 더 떨어져 적용하지 않음"
+4. 파  일 :
+	./SRC/CAPD_NEW/capd_main.c											1.12
+============================================================================
+1. 날  짜 : 2011.05.11(수)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"SIP 로그 A_CALL로 전송부분 버그 수정"
+4. 파  일 :
+	./SRC/A_VT/vt_main.c 												1.44
+============================================================================
+1. 날  짜 : 2011.05.11(수)
+2. 작성자 : 김인영  
+3. 내  용 : 
+	"서비스 ONOFF 목록을 메모리로 유지"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_api.h											1.10
+	/cvs/DQMS/TAF_RPPI/SRC/S_MNG/flt_ctrl_file.c						1.3
+	/cvs/DQMS/TAF_RPPI/SRC/S_MNG/flt_ctrl_init.c						1.6
+============================================================================
+1. 날  짜 : 2011.05.11(수)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_ITCP dAppLog를 잘못 찍는 부분 수정"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_msgq.c											1.8
+============================================================================
+1. 날  짜 : 2011.05.11(수)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"CAPD SLEEP 설정 변경"
+4. 파  일 :
+	./SRC/CAPD_NEW/capd_func.c											1.10
+	./SRC/CAPD_NEW/capd_main.c											1.11
+============================================================================
+1. 날  짜 : 2011.05.11(수)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"메세지 버퍼링 처리"
+4. 파  일 :
+	./INC/pre_a_api.h 													1.11
+	./SRC/PRE_A/Makefile												1.10
+	./SRC/PRE_A/pre_a_init.c											1.27
+	./SRC/PRE_A/pre_a_main.c											1.35
+	./SRC/PRE_A/pre_a_msgq.c											1.3
+============================================================================
+1. 날  짜 : 2011.05.11(수)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"메인 LOOP 20000"
+	"세션 리스트 개수 20만개로 수정"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_main.c 											1.7
+	./SRC/A_ITCP/itcp_sess.h 											1.2
+============================================================================
+1. 날  짜 : 2011.05.11(수)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"메세지 버퍼링 처리"
+4. 파  일 :
+	./INC/inet_api.h													1.7
+	./SRC/A_INET/Makefile												1.2
+	./SRC/A_INET/inet_init.c											1.4
+	./SRC/A_INET/inet_main.c											1.12
+	./SRC/A_INET/inet_msgq.c											1.5
+============================================================================
+1. 날  짜 : 2011.05.10(화)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_INET: dAppLog Level 변경"
+4. 파  일 :
+	./SRC/A_INET/inet_func.c											1.11
+============================================================================
+1. 날  짜 : 2011.05.10(화)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_ITCP: buffering 처리"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_main.c											1.6
+============================================================================
+1. 날  짜 : 2011.05.10(화)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_INET: buffering 처리"
+4. 파  일 :
+	./SRC/A_INET/inet_main.c											1.11
+============================================================================
+1. 날  짜 : 2011.05.10(화)
+2. 작성자 : 김인영 
+3. 내  용 : 
+	"SERVICE ON/OFF 파일 처리"
+4. 파  일 :
+	./SRC/S_MNG/Makefile												1.11
+	./SRC/S_MNG/flt_ctrl_api.h											1.9
+	./SRC/S_MNG/flt_ctrl_func.c											1.48
+	./SRC/S_MNG/flt_ctrl_file.c											1.2
+============================================================================
+1. 날  짜 : 2011.05.10(화)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_CALL 메세지큐 정의 multi 적용"
+4. 파  일 :
+	./INC/PLAT/block_list2.h 											1.15
+	./INC/PLAT/rsc_list.h 												1.31
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 김인영 
+3. 내  용 : 
+	"SERVICE ON/OFF 명령 추가"
+4. 파  일 :
+	./INC/mmcid.h														1.3	
+	./SRC/S_MNG/flt_ctrl_api.h											1.8
+	./SRC/S_MNG/flt_ctrl_func.c											1.46
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_WIPI: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_WIPI/wipi_init.c											1.4
+	./SRC/A_WIPI/wipi_main.c											1.9
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_WAP20: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_WAP20/Makefile												1.5
+	./SRC/A_WAP20/wap20_init.c											1.4
+	./SRC/A_WAP20/wap20_main.c											1.8
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_VOD: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_VOD/Makefile 												1.5
+	./SRC/A_VOD/vod_init.c 												1.4
+	./SRC/A_VOD/vod_main.c 												1.7
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_MMS: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_MMS/Makefile 												1.5
+	./SRC/A_MMS/mms_init.c 												1.4
+	./SRC/A_MMS/mms_main.c 												1.7
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_JNC: A_CALL multi 처리"
+4. 파  일 :
+	./INC/jnc_api.h														1.5
+	./SRC/A_JNC/jnc_init.c												1.4
+	./SRC/A_JNC/jnc_main.c												1.6
+	./SRC/A_JNC/jnc_util.c												1.6
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_JAVA: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_JAVA/Makefile 												1.5
+	./SRC/A_JAVA/java_init.c											1.4
+	./SRC/A_JAVA/java_main.c											1.8
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_HTTP: A_CALL multi 처리"
+4. 파  일 :
+	./INC/http_api.h 													1.5
+	./SRC/A_HTTP/http_func.c 											1.10
+	./SRC/A_HTTP/http_init.c											1.7
+	./SRC/A_HTTP/http_main.c											1.9
+	./SRC/A_HTTP/http_util.c											1.7
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_FV: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_FV/Makefile 												1.5
+	./SRC/A_FV/fv_init.c 												1.4
+	./SRC/A_FV/fv_main.c 												1.8
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_FB: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_FB/Makefile 												1.5
+	./SRC/A_FB/fb_init.c 												1.4
+	./SRC/A_FB/fb_main.c 												1.11
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_EMS: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_EMS/Makefile												1.5
+	./SRC/A_EMS/ems_init.c												1.4
+	./SRC/A_EMS/ems_main.c												1.7
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_CALL: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_CALL/call_init.c 											1.18
+	./SRC/A_CALL/call_main.c 											1.69
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"A_2G: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_2G/Makefile 												1.5
+	./SRC/A_2G/a2g_init.c 												1.4
+	./SRC/A_2G/a2g_main.c 												1.8
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"PRE_A: 서비스 ON/OFF 처리"
+4. 파  일 :
+	./INC/dqms_define.h 												1.12
+	./SRC/PRE_A/pre_a_init.c 											1.25
+	./SRC/PRE_A/pre_a_main.c											1.33
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_TCP: A_CALL multi 처리"
+4. 파  일 :
+	./INC/tcp_api.h														1.8
+	./SRC/A_TCP/tcp_init.c												1.18
+	./SRC/A_TCP/tcp_main.c												1.22
+	./SRC/A_TCP/tcp_msgq.c												1.8
+	./SRC/A_TCP/tcp_util.c												1.12
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_IV: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_IV/pciv_api.h												1.4
+	./SRC/A_IV/pciv_func.c												1.7
+	./SRC/A_IV/pciv_init.c												1.5
+	./SRC/A_IV/pciv_main.c												1.6
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_XCAP: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_XCAP/Makefile												1.5
+	./SRC/A_XCAP/xcap_init.c											1.5
+	./SRC/A_XCAP/xcap_main.c											1.9
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_MSRPT: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_MSRPT/msrpt_func.c											1.9
+	./SRC/A_MSRPT/msrpt_init.c											1.7
+	./SRC/A_MSRPT/msrpt_main.c											1.8
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_SIPD: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_SIPD/sip_init.c												1.5
+	./SRC/A_SIPD/sip_main.c												1.11
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_ONLINE: A_CALL multi 처리"
+4. 파  일 :
+	./INC/online_api.h													1.4
+	./SRC/A_ONLINE/online_func.c										1.6
+	./SRC/A_ONLINE/online_init.c										1.4
+	./SRC/A_ONLINE/online_main.c										1.6
+	./SRC/A_ONLINE/online_util.c										1.3
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_WIDGET: A_CALL multi 처리"
+4. 파  일 :
+	./INC/widget_api.h													1.3
+	./SRC/A_WIDGET/Makefile												1.5
+	./SRC/A_WIDGET/widget_init.c										1.4
+	./SRC/A_WIDGET/widget_main.c										1.7
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_DIAMETER: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_DIAMETER/Makefile											1.8
+	./SRC/A_DIAMETER/diameter_func.c									1.27
+	./SRC/A_DIAMETER/diameter_hash.h									1.10
+	./SRC/A_DIAMETER/diameter_init.c									1.12
+	./SRC/A_DIAMETER/diameter_main.c									1.15
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_RADIUS: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_RADIUS/radius_api.h											1.11
+	./SRC/A_RADIUS/radius_func.c										1.35
+	./SRC/A_RADIUS/radius_init.c										1.9
+	./SRC/A_RADIUS/radius_main.c										1.10
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_VT: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_VT/vt_init.c												1.13
+	./SRC/A_VT/vt_main.c												1.43
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_IM: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_IM/Makefile													1.4
+	./SRC/A_IM/im_init.c												1.8
+	./SRC/A_IM/im_main.c												1.24
+	./SRC/A_IM/im_msgq.c												1.3
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_FTP: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_FTP/ftp_init.c												1.6
+	./SRC/A_FTP/ftp_main.c												1.9
+	./SRC/A_FTP/ftp_svc.c												1.12
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"PRE_A에 특정 서비스 ON/OFF 필터아웃 기능 추가"
+4. 파  일 :
+	./INC/dqms_define.h 												1.11
+	./INC/pre_a_api.h 													1.10
+	./INC/taf_define.h 													1.5
+	./SRC/PRE_A/pre_a_flt.c												1.12
+	./SRC/PRE_A/pre_a_init.c											1.24
+	./SRC/PRE_A/pre_a_main.c											1.32
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_DNS: A_CALL multi 처리"
+4. 파  일 :
+	./SRC/A_DNS/adns_init.c												1.8
+	./SRC/A_DNS/adns_main.c												1.5
+	./SRC/A_DNS/adns_serv.c												1.15
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_IHTTP: A_CALL multi 처리"
+4. 파  일 :
+	./INC/ihttp_api.h													1.5
+	./SRC/A_IHTTP/ihttp_func.c											1.9
+	./SRC/A_IHTTP/ihttp_init.c											1.2
+	./SRC/A_IHTTP/ihttp_main.c											1.2
+	./SRC/A_IHTTP/ihttp_util.c											1.10
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_ITCP: A_CALL multi 처리"
+4. 파  일 :
+	./INC/itcp_api.h													1.7
+	./SRC/A_ITCP/itcp_init.c											1.2
+	./SRC/A_ITCP/itcp_main.c											1.5
+	./SRC/A_ITCP/itcp_msgq.c											1.7
+	./SRC/A_ITCP/itcp_util.c											1.7
+============================================================================
+1. 날  짜 : 2011.05.09(월)
+2. 작성자 : 권상득
+3. 내  용 : 
+	"A_INET: A_CALL multi 처리"
+4. 파  일 :
+	./INC/inet_api.h													1.6
+	./INC/taf_names.h													1.6
+	./SRC/A_INET/inet_func.c											1.10
+	./SRC/A_INET/inet_init.c											1.3
+	./SRC/A_INET/inet_main.c											1.10
+	./SRC/A_INET/inet_msgq.c											1.4
+	./SRC/A_INET/inet_util.c											1.4
+============================================================================
+1. 날  짜 : 2011.05.07
+2. 작성자 : 윤진석
+3. 내  용 : 
+	"VT에서 A_INET으로 전송"
+	"CAPD 에서 BUFFFERING 처리"
+4. 파  일 :
+	./SRC/A_VT/vt_main.c 												1.42
+	./SRC/CAPD_NEW/Makefile 											1.7
+	./SRC/CAPD_NEW/capd_func.c											1.9
+============================================================================
+1. 날  짜 : 2011.05.06
+2. 작성자 : 윤진석
+3. 내  용 : "A_L2TP 종료시 처리 패치"
+4. 파  일 :
+	./SRC/A_L2TP/Makefile 												1.2
+	./SRC/A_L2TP/l2tp_func.c; 											1.26
+	./SRC/A_L2TP/l2tp_init.c; 											1.7
+============================================================================
+1. 날  짜 : 2011.05.06
+2. 작성자 : 윤진석
+3. 내  용 : "VT 세션이 없는 RTP는 A_INET으로 보낸다"
+4. 파  일 :
+	./SRC/A_VT/Makefile													1.4
+	./SRC/A_VT/vt_init.c												1.12
+	./SRC/A_VT/vt_main.c												1.41
+============================================================================
+1. 날  짜 : 2011.05.01
+2. 작성자 : 윤진석
+3. 내  용 : "A_CALL 에 INET 메세지 처리 추가"
+4. 파  일 :
+	./TAF_RPPI/LIBSRC/Makefile 											1.15
+	./TAF_RPPI/SRC/Makefile 											1.23
+	./TAF_RPPI/SRC/A_CALL/call_main.c 									1.68
+============================================================================
+1. 날  짜 : 2011.05.01
+2. 작성자 : 윤진석
+3. 내  용 :
+	"PDSN 정보 입력 및 착신대시 상태 로직 변경"
+4. 파  일 :
+	./SRC/A_CALL/call_func.c 											1.10
+	./SRC/A_CALL/call_main.c 											1.67
+	./SRC/A_RADIUS/radius_func.c 										1.34
+============================================================================
+1. 날  짜 : 2011.04.29(금)
+2. 작성자 : 김승방 
+3. 내  용 :
+	"A_TCP : 기존 Session 있는 경우 새 SYN/SYNACK인식 -> SESSLIST_KEY 추가"
+	"A_ITCP : 기존 Session 있는 경우 새 SYN/SYNACK인식 -> SESSLIST_KEY 추가"
+4. 파  일 :
+	./INC/tcp_api.h														1.7
+	./INC/itcp_api.h													1.6
+	./SRC/A_TCP/tcp_func.c												1.14
+	./SRC/A_ITCP/itcp_func.c											1.18
+============================================================================
+1. 날  짜 : 2011.04.29(금)
+2. 작성자 : 김승방 
+3. 내  용 :
+	"A_TCP : 기존 Session 있는 경우 새 SYN/SYNACK인식 -> SESSLIST_KEY 추가"
+	"A_ITCP : 기존 Session 있는 경우 새 SYN/SYNACK인식 -> SESSLIST_KEY 추가"
+4. 파  일 :
+	./SRC/A_TCP/tcp_func.c												1.13
+	./SRC/A_ITCP/itcp_func.c											1.17
+============================================================================
+1. 날  짜 : 2011.04.27(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"PDSN IP 출력 디버깅코드 추가"
+4. 파  일 :
+	./SRC/A_RP/arp_serv.c												1.32
+============================================================================
+1. 날  짜 : 2011.04.28(수)
+2. 작성자 : 김인영 
+3. 내  용 :
+	"인터넷 서비스에 대한 정보는 FLT_SVR.dat 정보 구성에서 제외"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.45
+============================================================================
+1. 날  짜 : 2011.04.25(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"L4_INET 관련 서비스코드는 TAF 필터에 쓰지 않는다"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.44
+============================================================================
+1. 날  짜 : 2011.04.25(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "4. 착신데이타 수신 이후 A11 REGI START 메세지를 기다릴 타이머 추가"
+	"5. A_RP 와 A_GRE가 공유메모리를 동시에 접근"
+4. 파  일 :
+	./INC/arp_head.h 													1.7
+	./SRC/A_GRE/agre_main.c 											1.13
+	./SRC/A_RP/arp_func.c												1.28
+	./SRC/A_RP/arp_main.c												1.29
+	./SRC/A_RP/arp_serv.c 												1.31
+============================================================================
+1. 날  짜 : 2011.04.24(일)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "5. 착신데이타 수신 이후 ACCOUNTING REQUEST START 메세지를 기다릴 타이머 추가 "
+	"6. 호세션 HASH 데이타에 NIFO 노드 관리."
+4. 파  일 :
+	./SRC/A_CALL/call_func.c 											1.9
+	./SRC/A_CALL/call_main.c 											1.66
+============================================================================
+1. 날  짜 : 2011.04.24(일)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: DATA 세션의 경우 양방향으로 패킷이 있는 경우만 START 전송 (원복)"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_func.c											1.15
+																		1.16
+============================================================================
+1. 날  짜 : 2011.04.24(일)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET: Call Clear 메시지의 node를 삭제하지 않는 버그 수정"
+4. 파  일 :
+	./SRC/A_INET/inet_main.c											1.9
+============================================================================
+1. 날  짜 : 2011.04.24(일)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: Call, Session, 사용량 dAppLog 추가"
+4. 파  일 :
+	./INC/itcp_api.h													1.5
+	./SRC/A_ITCP/itcp_main.c											1.3
+																		1.4
+============================================================================
+1. 날  짜 : 2011.04.24(일)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET: Call, Session, 사용량 dAppLog 추가"
+4. 파  일 :
+	./INC/inet_api.h													1.5
+	./SRC/A_INET/inet_main.c											1.8
+============================================================================
+1. 날  짜 : 2011.04.24(일)
+2. 작성자 : 권상득
+3. 내  용 :
+    "S_MNG: PI_RCALL_SIGWAIT, RP_RCALL_SIGWAIT 추가"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.43
+============================================================================
+1. 날  짜 : 2011.04.23(토)
+2. 작성자 : 윤진석
+3. 내  용 : 
+	1. START_PI_DATA_RECALL_NUM 은 TAM으로 보내지 말아야 한다. 
+	2. PI_SIGNAL 은 CallTime 이후의 시간으로 저장되어야 한다. 
+	3. RADIUS STOP 메세지도 요청을 받았을 때 시그널을 보내야 한다. 
+	4. 시그널에는 ProtoType이 들어가야 한다.
+4. 파  일 :
+	./INC/call_api.h 													1.11
+	./SRC/A_CALL/call_main.c 											1.63
+============================================================================
+1. 날  짜 : 2011.04.23(토)
+2. 작성자 : 윤진석
+3. 내  용 :
+	1. DORMANT TIMEOUT (10800초 )시에 호 정리 
+	2. 착신호 대기 상태에서 새로운 세션 시작시에 새로운 호 정보로 업데이트 
+	3. RP 착신 데이타의 시간은 이전 호의 시간대신 캡쳐 시간을 넣어야 한다. 
+4. 파  일 :
+	./SRC/A_GRE/agre_func.c												1.16
+	./SRC/A_GRE/agre_main.c												1.12
+	./SRC/A_RP/arp_func.c												1.27
+	./SRC/A_RP/arp_main.c												1.28
+	./SRC/A_RP/arp_serv.c												1.30
+============================================================================
+1. 날  짜 : 2011.04.22(금)
+2. 작성자 : 권상득
+3. 내  용 :
+    "S_MNG: PI_RCALL_TIMEOUT, RP_RCALL_TIMEOUT 추가"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.42
+============================================================================
+1. 날  짜 : 2011.04.23(토)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"착신대기 상태로 타임아웃시에 호 정리"
+	"착신호 대기상태에서 새로운 세션시작시 로 정보 업데이트"
+4. 파  일 :
+	./SRC/A_RP/arp_main.c												1.27
+	./SRC/A_RP/arp_serv.c												1.29
+============================================================================
+1. 날  짜 : 2011.04.23(토)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "호가 이전호랑 겹쳐지는 부분을 수정해야함"
+4. 파  일 :
+	./SRC/A_CALL/call_main.c 											1.62
+	./INC/arp_head.h
+	./INC/mmdb_psess.h
+	./SRC/A_GRE/agre_main.c
+	./SRC/A_RP/arp_main.c
+	./SRC/A_RP/arp_serv.c
+============================================================================
+1. 날  짜 : 2011.04.21(목)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET: LOG_INET_Prt 추가"
+4. 파  일 :
+	./SRC/A_INET/inet_msgq.c											1.3
+============================================================================
+1. 날  짜 : 2011.04.21(목)
+2. 작성자 : 권상득
+3. 내  용 :
+    "CI_LOG: PrintTYPE 함수 추가"
+4. 파  일 :
+	./SRC/CI_LOG/ci_log_main.c											1.20
+	./SRC/CI_LOG/ci_log_util.c											1.7
+============================================================================
+1. 날  짜 : 2011.04.20(수)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INc/PLAT/rsc_list.h
+	 - msgq_info 에 추가. nifo_msgq_name? 은 QMON 에서만 사용.
+	 - msgq_info 에 추가해서 KillMC 할 때 지워지도록 추가되어야 함.
+	* define.h, taf_names.h
+	 - MAX_SW_COUNT, NTAF_SW_COM  변수 값 64 ->80 으로 수정
+4. 파  일 :
+	/cvs/DQMS/TAF_RPPI/INC/define.h										1.12
+	/cvs/DQMS/TAF_RPPI/INC/taf_names.h									1.5
+	/cvs/DQMS/TAF_RPPI/INC/PLAT/rsc_list.h								1.29
+============================================================================
+1. 날  짜 : 2011.04.20(수)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC/PLAT/block_list2.h
+	 - PI 쪽 block list 조절
+4. 파  일 :
+	/cvs/DQMS/TAF_RPPI/INC/PLAT/block_list2.h							1.14
+============================================================================
+1. 날  짜 : 2011.04.20(수)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: TCP와 메모리 충돌 버그 수정"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_main.c											1.2
+============================================================================
+1. 날  짜 : 2011.04.20(수)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET: Call Stop 전송시 SessStartTime 비교 추가"
+4. 파  일 :
+	./INC/inet_api.h													1.4
+	./SRC/A_INET/inet_func.c											1.9
+============================================================================
+1. 날  짜 : 2011.04.19(화)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC/PLAT/block_list2.h, rsc_list.h
+	 - SEQ_PROC_# 값은 McInit 기준으로 수정
+	 - msgq, nifo_msgq 값도 McInit 기준으로 수정
+	 - sema, sshm 은 줄만 적당히 조절
+4. 파  일 :
+	/cvs/DQMS/TAF_RPPI/INC/PLAT/block_list2.h							1.13
+	/cvs/DQMS/TAF_RPPI/INC/PLAT/rsc_list.h								1.28
+============================================================================
+1. 날  짜 : 2011.04.19(화)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_IHTTP: PrintRtx 함수 수정"
+4. 파  일 :
+	./SRC/A_IHTTP/ihttp_util.c											1.9
+============================================================================
+1. 날  짜 : 2011.04.19(화)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: 역방향 세션의 Client, Server 상태값 잘못 세팅하는 버그 수정"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_func.c											1.14
+============================================================================
+1. 날  짜 : 2011.04.19(화)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: 에러코드 세팅시 SynRtx 고려 하도록 변경"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_util.c											1.5
+============================================================================
+1. 날  짜 : 2011.04.19(화)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET: if 변경"
+4. 파  일 :
+	./SRC/A_INET/inet_func.c											1.8
+============================================================================
+1. 날  짜 : 2011.04.19(화)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET: timeout 이후 inet hash를 삭제하지 않는 버그 수정"
+4. 파  일 :
+	./SRC/A_INET/inet_main.c											1.7
+============================================================================
+1. 날  짜 : 2011.04.19(화)
+2. 작성자 : 윤진석
+3. 내  용 :	"A_CALL 착신 호 처리"
+4. 파  일 :
+	./INC/call_api.h 													1.10
+	./SRC/A_CALL/call_init.c 											1.17
+	./SRC/A_CALL/call_main.c 											1.61
+	./SRC/A_GRE/agre_main.c 											1.10
+	./SRC/A_RP/arp_serv.c 												1.26
+============================================================================
+1. 날  짜 : 2011.04.19(화)
+2. 작성자 : 손형석
+3. 내  용 :
+	* CHSMD
+	 - link check 수정
+4. 파  일 :
+	/cvs/DQMS/TAF_RPPI/SRC/CHSMD/chsmd_api.h							1.9
+	/cvs/DQMS/TAF_RPPI/SRC/CHSMD/chsmd_init.c							1.23
+============================================================================
+1. 날  짜 : 2011.04.19(화)
+2. 작성자 : 손형석
+3. 내  용 :
+	* CHSMD
+	 - link check 시, file에서 읽어오도록 수정
+4. 파  일 :
+	/cvs/DQMS/TAF_RPPI/SRC/CHSMD/chsmd_api.h							1.8
+	/cvs/DQMS/TAF_RPPI/SRC/CHSMD/chsmd_init.c							1.22
+	/cvs/DQMS/TAF_RPPI/SRC/CHSMD/chsmd_load.c							1.22
+	/cvs/DQMS/TAF_RPPI/SRC/CHSMD/chsmd_main.c							1.16
+============================================================================
+1. 날  짜 : 2011.04.18(월)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET: LOG_INET없는 경우 call 삭제 하로독 변경"
+4. 파  일 :
+	./SRC/A_INET/inet_main.c											1.6
+============================================================================
+1. 날  짜 : 2011.04.18(월)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: data 세션의 경우 Start 보내는 시점 변경"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_func.c											1.13
+============================================================================
+1. 날  짜 : 2011.04.18(월)
+2. 작성자 : 권상득
+3. 내  용 :
+    "L4_INET 변경에 따른 수정"
+4. 파  일 :
+	./LIBSRC/UTILLIB/platform_type.c									1.9
+	./SRC/A_IHTTP/ihttp_func.c											1.8
+	./SRC/A_ITCP/itcp_func.c											1.12
+	./SRC/PRE_A/pre_a_main.c											1.31
+============================================================================
+1. 날  짜 : 2011.04.17(일)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: data호에서 rtx값을 잘못 전달하는 버그 수정"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_func.c											1.11
+============================================================================
+1. 날  짜 : 2011.04.17(일)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP, A_IHTTP: dAppLog 수정"
+4. 파  일 :
+	./SRC/A_IHTTP/ihttp_func.c											1.7
+	./SRC/A_ITCP/itcp_msgq.c											1.6
+============================================================================
+1. 날  짜 : 2011.04.17(일)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: data호의 seq 처리 버그 수정"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_func.c											1.9
+																		1.10
+============================================================================
+1. 날  짜 : 2011.04.17(일)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET: timeout 처리 버그 수정"
+4. 파  일 :
+	./SRC/A_INET/inet_main.c											1.5
+============================================================================
+1. 날  짜 : 2011.04.17(일)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET: timer 등록 시점 변경"
+4. 파  일 :
+	./SRC/A_INET/inet_func.c											1.5
+																		1.6
+																		1.7
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: ReCallStart 전송시 LOG_SIGNAL 사용하도록 변경"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_msgq.c											1.5
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "CI_LOG: 착신, 인터넷 감시 관련 처리"
+4. 파  일 :
+	./SRC/CI_LOG/ci_log_main.c											1.19
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_IHTTP: dGetQID 변경"
+4. 파  일 :
+	./SRC/A_IHTTP/ihttp_util.c											1.8
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "PRE_A: INET 처리 추가"
+4. 파  일 :
+	./SRC/PRE_A/pre_a_init.c											1.23
+	./SRC/PRE_A/pre_a_main.c											1.30
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET: CallTime 세팅"
+4. 파  일 :
+	./SRC/A_INET/inet_func.c											1.4
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: SYN, SYNACK없이 세션을 생성한 경우 RTX = DEF_FROM_NONE 세팅"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_msgq.c											1.4
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_IHTTP: RTX를 모르는 경우 http header를 보고 판단"
+4. 파  일 :
+	./INC/ihttp_api.h													1.4
+	./SRC/A_IHTTP/ihttp_func.c											1.6
+	./SRC/A_IHTTP/ihttp_util.c											1.7
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_IHTTP: GetGap32Time 함수에서 시간이 0보다 큰 경우만 계산"
+4. 파  일 :
+	./SRC/A_IHTTP/ihttp_util.c											1.6
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: Server Port가 80, 8080인 경우만 A_IHTTP로 전송"
+4. 파  일 :
+	./INC/itcp_api.h													1.4
+	./SRC/A_ITCP/itcp_func.c											1.8
+	./SRC/A_ITCP/itcp_util.c											1.4
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: 서버방향에 의해서 세션 생성시 RecallStart 전송"
+4. 파  일 :
+	./INC/itcp_api.h													1.3
+	./SRC/A_ITCP/itcp_func.c											1.7
+	./SRC/A_ITCP/itcp_msgq.c											1.3
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET: TCP Protocol인 경우 A_ITCP로 전송"
+4. 파  일 :
+	./INC/inet_api.h													1.3
+	./SRC/A_INET/inet_main.c											1.4
+	./SRC/A_INET/inet_util.c											1.3
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "UTILLIB: L4_INET, L4_INET_RECV 처리 추가"
+4. 파  일 :
+	./LIBSRC/UTILLIB/platform_type.c									1.8
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: 에러 처리"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_func.c											1.6
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: uiTcpSynAckGapTime 처리"
+4. 파  일 :
+	./INC/itcp_api.h													1.2
+	./SRC/A_ITCP/itcp_func.c											1.5
+	./SRC/A_ITCP/itcp_util.c											1.3
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: 세션 생성 방향성 필드 세팅"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_func.c											1.4
+============================================================================
+1. 날  짜 : 2011.04.16(토)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: SYN, SYNACK 없이 DATA 있는 경우 세션 생성"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_func.c											1.3
+	./SRC/A_ITCP/itcp_util.c											1.2
+============================================================================
+1. 날  짜 : 2011.04.14(목)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_IHTTP: Content-Type 처리 추가"
+4. 파  일 :
+	./INC/http.h														1.3
+	./LIBSRC/HTTP/Makefile												1.2
+	./LIBSRC/HTTP/httpctypeinfo.l										1.1
+	./SRC/A_IHTTP/ihttp_func.c											1.5
+	./SRC/A_IHTTP/ihttp_util.c											1.5
+============================================================================
+1. 날  짜 : 2011.04.14(목)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_IHTTP: GapTime 처리 추가"
+4. 파  일 :
+	./INC/ihttp_api.h													1.3
+	./SRC/A_IHTTP/ihttp_func.c											1.4
+	./SRC/A_IHTTP/ihttp_util.c											1.4
+============================================================================
+1. 날  짜 : 2011.04.14(목)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_IHTTP: Body Buffering off, Log만 전송 하도록 변경"
+4. 파  일 :
+	./SRC/A_IHTTP/ihttp_func.c											1.3
+	./SRC/A_IHTTP/ihttp_util.c											1.3
+============================================================================
+1. 날  짜 : 2011.04.14(목)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP: LOG_TCP_SESS => LOG_ITCP_SESS 변경"
+4. 파  일 :
+	./SRC/A_ITCP/itcp_func.c											1.2
+	./SRC/A_ITCP/itcp_msgq.c											1.2
+============================================================================
+1. 날  짜 : 2011.04.14(목)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_IHTTP: LOG_HTTP_TRANS => LOG_IHTTP_TRANS 변경"
+4. 파  일 :
+	./INC/ihttp_api.h													1.2
+	./SRC/A_IHTTP/ihttp_func.c											1.2
+	./SRC/A_IHTTP/ihttp_util.c											1.2
+============================================================================
+1. 날  짜 : 2011.04.13(수)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET: dProcINETData 처리"
+4. 파  일 :
+	./SRC/A_INET/inet_func.c											1.3
+	./SRC/A_INET/inet_main.c											1.3
+============================================================================
+1. 날  짜 : 2011.04.13(수)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET: dSendINETLog 처리"
+4. 파  일 :
+	./INC/inet_api.h													1.2
+	./SRC/A_INET/inet_func.c											1.2
+	./SRC/A_INET/inet_init.c											1.2
+	./SRC/A_INET/inet_main.c											1.2
+	./SRC/A_INET/inet_msgq.c											1.2
+	./SRC/A_INET/inet_util.c											1.2
+============================================================================
+1. 날  짜 : 2011.04.13(수)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_INET 추가"
+4. 파  일 :
+	./INC/inet_api.h													1.1
+	./SRC/Makefile														1.22
+	./SRC/A_INET/Makefile												1.1
+	./SRC/A_INET/Makefile.mem											1.1
+	./SRC/A_INET/inet_func.c											1.1
+	./SRC/A_INET/inet_init.c											1.1
+	./SRC/A_INET/inet_main.c											1.1
+	./SRC/A_INET/inet_msgq.c											1.1
+	./SRC/A_INET/inet_util.c											1.1
+============================================================================
+1. 날  짜 : 2011.04.12(화)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_ITCP 추가"
+4. 파  일 :
+	./INC/itcp_api.h													1.1
+	./SRC/Makefile														1.21
+	./SRC/A_ITCP/Makefile												1.1
+	./SRC/A_ITCP/Makefile.mem											1.1
+	./SRC/A_ITCP/itcp_func.c											1.1
+	./SRC/A_ITCP/itcp_init.c											1.1
+	./SRC/A_ITCP/itcp_main.c											1.1
+	./SRC/A_ITCP/itcp_msgq.c											1.1
+	./SRC/A_ITCP/itcp_sess.c											1.1
+	./SRC/A_ITCP/itcp_sess.h											1.1
+	./SRC/A_ITCP/itcp_util.c											1.1
+============================================================================
+1. 날  짜 : 2011.04.11(월)
+2. 작성자 : 권상득
+3. 내  용 :
+    "A_IHTTP 추가"
+4. 파  일 :
+	./INC/ihttp_api.h													1.1
+	./SRC/Makefile														1.20
+	./SRC/A_IHTTP/Makefile												1.1
+	./SRC/A_IHTTP/Makefile.mem											1.1
+	./SRC/A_IHTTP/ihttp_func.c											1.1
+	./SRC/A_IHTTP/ihttp_init.c											1.1
+	./SRC/A_IHTTP/ihttp_main.c											1.1
+	./SRC/A_IHTTP/ihttp_msgq.c											1.1
+	./SRC/A_IHTTP/ihttp_util.c											1.1
+============================================================================
+1. 날  짜 : 2011.04.11(월)
+2. 작성자 : 권상득
+3. 내  용 :
+    "Warning 수정"
+4. 파  일 :
+	./LIBSRC/IPPOOLBIT/ippoolbit_api.c									1.3
+==============================================================================
+==============================================================================
+TAG NAME : TAG_0_0_0_4_20110219
+TAG DESC : 2011년 2월 19일 패키지
+TAG USER : 윤진석
+============================================================================
+============================================================================
+1. 날  짜 : 2011.04.11(월)
+2. 작성자 : 손형석
+3. 내  용 :
+    "CHSMD DAG 7.5G2 check module added"
+    "CHSMD hwpower, hwfan count 실제 count를 읽어와서, MAX CNT 보다 적은 경우
+     나머지 power, fan 에 대한 상태는 NOT_EQUIP(0) 로 설정"
+4. 파  일 :
+    ./SRC/CHSMD/chsmd_hw.c												1.25
+============================================================================
+1. 날  짜 : 2011.03.17(목)
+2. 작성자 : 손형석
+3. 내  용 :
+    "TIFB(DisMC) 에서 Start-Time 잘못 보여지는 Buf fix"
+4. 파  일 :
+    ./SRC/TIFB/tifb_util.c                                              1.5
+============================================================================
+1. 날  짜 : 2010.12.07(화)
+2. 작성자 : 손형석 
+3. 내  용 :
+	"CAPD unknown compile option removed, added rp-info prea_chk"
+4. 파  일 :
+	./SRC/CAPD_NEW/Makefile 											1.2
+	./TOOLS/PREA_CHK/prea_chk.c											1.2
+============================================================================
+1. 날  짜 : 2010.09.30(목)
+2. 작성자 : 김재욱
+3. 내  용 :
+	"MMDB 라이브러리 import"
+4. 파  일 :
+	./SRC/A_VOD/vod_sess.c												1.3
+	./SRC/A_VOD/vod_head.h												1.2
+============================================================================
+1. 날  짜 : 2010.09.27(월)
+2. 작성자 : 김재욱
+3. 내  용 :
+	"MMDB 라이브러리 import"
+4. 파  일 :
+	./LIBSRC/MMDB/BalanceTree.c											1.1
+	./LIBSRC/MMDB/LinkedList.c											1.1
+	./LIBSRC/MMDB/Makefile												1.1
+	./LIBSRC/MMDB/Shm_dis.c												1.1
+	./LIBSRC/MMDB/mmdb_api.c											1.1
+	./LIBSRC/Makefile													1.2
+	./INC/mmdb.h														1.1
+============================================================================
+1. 날  짜 : 2010.05.04(화)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"A_CALL NIFO 노드 누수 해결"
+4. 파  일 :
+	./SRC/A_CALL/call_init.c 											1.15
+	./SRC/A_CALL/call_main.c 											1.59
+============================================================================
+1. 날  짜 : 2010.05.04(화)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"A_RP CALLHASH에 세마포어 추가"
+	"A_L2TP NIFO 노드누수 해결"
+4. 파  일 :
+	./INC/arp_head.h													1.4
+	./INC/PLAT/rsc_list.h												1.26
+	./SRC/A_L2TP/l2tp_func.c											1.24
+	./SRC/A_RP/arp_func.c												1.25
+	./SRC/A_RP/arp_init.c												1.9
+	./SRC/A_RP/arp_main.c												1.22
+	./SRC/A_RP/arp_serv.c												1.23
+============================================================================
+1. 날  짜 : 2010.04.23(금)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"TUNNEL_LINK_START/STOP 타입 추가"
+4. 파  일 :
+	./SRC/A_CALL/call_main.c 											1.58
+	./SRC/A_RADIUS/radius_func.c 										1.32
+============================================================================
+1. 날  짜 : 2010.04.09(금)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "A_VT RTP트래픽 업/다운 처리방법 수정"
+4. 파  일 :
+	./TOOLS/SIM/DATA/VT_2CALL.cap 										1.1
+	./INC/vt_api.h 														1.5
+	./SRC/A_VT/vt_main.c 												1.39
+============================================================================
+1. 날  짜 : 2010.03.31(수)
+2. 작성자 : 이동환
+3. 내  용 :
+    "UNKNOWN PCF에 대한 처리를 위한 PRE_A 전처리 수정:버그 수정"
+4. 파  일 :
+	./SRC/PRE_A/pre_a_flt.c                                             1.11
+============================================================================
+1. 날  짜 : 2010.03.29(월)
+2. 작성자 : 이동환 
+3. 내  용 :
+    "UNKNOWN PCF에 대한 처리를 위한 PRE_A 전처리 수정"
+4. 파  일 :
+	./SRC/PRE_A/pre_a_main.c											1.29
+	./SRC/PRE_A/pre_a_flt.c												1.10
+============================================================================
+1. 날  짜 : 2010.03.18(목)
+2. 작성자 : 박한진
+3. 내  용 :
+	"TRACE TYPE에 TRC_TYPE_ROAM_IMSI, TRC_TYPE_ROAM_MDN 추가"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.39
+============================================================================
+1. 날  짜 : 2010.03.18(목)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"TIMER 재구성 함수 추가"
+4. 파  일 :
+	./SRC/A_L2TP/l2tp_func.c 											1.22
+	./SRC/A_L2TP/l2tp_init.c 											1.5
+============================================================================
+1. 날  짜 : 2010.03.15(월)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_L2TP hasho_find 에러 처리 추가"
+4. 파  일 :
+	./SRC/A_L2TP/l2tp_func.c 											1.13
+============================================================================
+1. 날  짜 : 2010.03.11(목)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"ADD TUNNEL, SESSION ID TIMER"
+4. 파  일 :
+	./SRC/A_L2TP/l2tp_func.c 											1.12
+	./SRC/A_L2TP/l2tp_main.c 											1.5
+	./TOOLS/LOCAL/sim.sh 												1.3
+	./TOOLS/SIM/dagconvert.c 											1.4
+============================================================================
+1. 날  짜 : 2010.03.11(목)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"MODIFIED L2TP DECODE FUNCTION"
+4. 파  일 :
+	./LIBSRC/ANZ_LIB/Analyze_Inf11.c 									1.22
+============================================================================
+1. 날  짜 : 2010.03.11(목)
+2. 작성자 : 박한진
+3. 내  용 :
+	"PI_TAF 메시지큐 S_MSGQ_A_L2TP 추가"
+4. 파  일 :
+	./INC/PLAT/rsc_list.h												1.25
+============================================================================
+1. 날  짜 : 2010.03.11(목)
+2. 작성자 : 박한진
+3. 내  용 :
+	"RP_TAF 공유메모리 S_SSHM_A11CALL 추가"
+4. 파  일 :
+	./INC/PLAT/rsc_list.h												1.24
+============================================================================
+1. 날  짜 : 2010.03.10(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"ADD TRACE FUNCTION IN A_L2TP"
+4. 파  일 :
+	./SRC/A_CALL/call_main.c 											1.57
+	./SRC/A_L2TP/l2tp_api.h 											1.6
+	./SRC/A_L2TP/l2tp_func.c 											1.8
+	./SRC/A_L2TP/l2tp_init.c 											1.2
+	./SRC/A_L2TP/l2tp_main.c 											1.3
+============================================================================
+1. DATE   : 2010.03.10(WED)
+2. NAME   : Lee Dong Hwan
+3. DESC   :
+	"ADD S_SSHM_A11CALL FOR CALL MEMORY"
+4. FILE   :
+	./SRC/A_RP/arp_init.c												1.8
+==============================================================================
+TAG NAME : TAG_0_0_0_3_20100308
+TAG DESC : DRMS 패키지 시험 테스트 완료 버전
+TAG USER : 윤진석
+============================================================================
+1. 날  짜 : 2010.03.10(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"A_RADIUS에 ucEquipType 추가"
+4. 파  일 :
+	./SRC/A_RADIUS/radius_func.c 										1.26
+============================================================================
+1. 날  짜 : 2010.03.08(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"A_L2TP FIRST PACKAGES"
+4. 파  일 :
+	./TOOLS/SIM/DATA/china-54-MMS-SEND-3.pcap 							1.1
+	./TOOLS/SIM/DATA/china-54-MMS-send-2.pcap							1.1
+	./TOOLS/SIM/DATA/china-54-MMS-send.pcap								1.1
+	./TOOLS/SIM/DATA/japen-22_game-test-01.pcap							1.1
+	./TOOLS/SIM/DATA/l2tp_1.pcap										1.1
+	./Makefile															1.2
+	./INC/Analyze_Ext_Abs.h												1.2
+	./INC/UDP_header.h													1.6
+	./LIBSRC/ANZ_LIB/Analyze_Inf11.c									1.20
+	./LIBSRC/ANZ_LIB/Makefile											1.4
+	./LIBSRC/ANZ_LIB/analyze_PPP.c										1.9
+	./SRC/A_L2TP/l2tp_api.h												1.4
+	./SRC/A_L2TP/l2tp_func.c											1.4
+	./SRC/A_L2TP/l2tp_main.c											1.3
+	./TOOLS/LOCAL/sim.sh												1.2
+============================================================================
+1. 날  짜 : 2010.03.07(일)
+2. 작성자 : 권상득
+3. 내  용 :
+	"PRE_A cli방향 systype 처리 추가"
+4. 파  일 :
+	./INC/pre_a_api.h													1.9
+	./SRC/PRE_A/pre_a_init.c											1.22
+	./SRC/PRE_A/pre_a_main.c											1.28
+============================================================================
+1. 날  짜 : 2010.03.05(금)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"RP필터에 TYPE_LAC TYPE_LNS TYPE_CRX추가"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c 										1.38
+	./SRC/PRE_A/pre_a_init.c 											1.21
+============================================================================
+1. 날  짜 : 2010.03.05(금)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"L2TP 디코딩 라이브러리 수정"
+	"ZLB Ack 패킷 처리"
+4. 파  일 :
+	./INC/Analyze_Ext_Abs.h 											1.17
+	./LIBSRC/ANZ_LIB/Analyze_Inf11.c 									1.19
+	./SRC/A_L2TP/l2tp_api.h 											1.3
+	./SRC/A_L2TP/l2tp_func.c 											1.3
+	./SRC/A_L2TP/l2tp_init.c 											1.2
+	./SRC/A_L2TP/l2tp_main.c 											1.2
+============================================================================
+1. 날  짜 : 2010.03.04(목)
+2. 작성자 : 이동환
+3. 내  용 :
+    "A_RADIUS 분석 추가 작업"
+4. 파  일 :
+    ./SRC/PRE_A/pre_a_init.c											1.19
+	./SRC/PRE_A/pre_a_main.c											1.27
+============================================================================
+1. 날  짜 : 2010.03.04(목)
+2. 작성자 : 박한진
+3. 내  용 :
+	"FILTER 정보에 TYPE_LNS, TYPE_CRX, TYPE_AAA, TYPE_LAC 추가"
+4. 파  일 :
+	./INC/filter.h														1.9
+	./SRC/S_MNG/flt_ctrl_func.c											1.37
+============================================================================
+1. 날  짜 : 2010.03.04(목)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "A_L2TP PPP 시그널 처리 추가"
+4. 파  일 :
+	./INC/Analyze_Ext_Abs.h 											1.16
+	./LIBSRC/ANZ_LIB/Analyze_Inf11.c 									1.18
+	./SRC/A_L2TP/l2tp_api.h 											1.2
+	./SRC/A_L2TP/l2tp_func.c 											1.2
+============================================================================
+1. 날  짜 : 2010.03.04(목)
+2. 작성자 : 이동환
+3. 내  용 :
+    "A_RADIUS 분석 추가 작업"
+4. 파  일 :
+    ./SRC/A_RADIUS/radius_func.c 										1.25
+============================================================================
+1. 날  짜 : 2010.03.03(수)
+2. 작성자 : 박한진
+3. 내  용 :
+    "A_L2TP 프로세스 추가"
+4. 파  일 :
+	./DATA/McInit.TAF_RP												1.4
+	./INC/PLAT/block_list2.h											1.12
+============================================================================
+1. 날  짜 : 2010.03.03(수)
+2. 작성자 : 박한진
+3. 내  용 :
+    "RP에 S_SSHM_TUNNELID 추가 처리"
+4. 파  일 :
+	./INC/PLAT/rsc_list.h												1.23
+============================================================================
+1. 날  짜 : 2010.03.03(수)
+2. 작성자 : 이동환
+3. 내  용 :
+	"Analyze_L2TP_PPP 함수 추가"
+4. 파  일 :
+	./LIBSRC/ANZ_LIB/analyze_PPP.c										1.7
+============================================================================
+1. 날  짜 : 2010.03.03(화)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "A_L2TP PROCESS 추가"
+4. 파  일 :
+	./SRC/A_L2TP/Makefile 												1.1
+	./SRC/A_L2TP/l2tp_api.h 											1.1
+	./SRC/A_L2TP/l2tp_func.c 											1.1
+	./SRC/A_L2TP/l2tp_init.c 											1.1
+	./SRC/A_L2TP/l2tp_main.c 											1.1
+	./INC/Analyze_Ext_Abs.h 											1.14
+	./INC/UDP_header.h 													1.5
+	./LIBSRC/ANZ_LIB/Analyze_Inf11.c 									1.16
+	./SRC/A_RP/arp_init.c 												1.7
+	./SRC/A_RP/arp_main.c 												1.20
+	./SRC/A_RP/arp_serv.c 												1.22
+============================================================================
+1. 날  짜 : 2010.02.26(금)
+2. 작성자 : 박한진
+3. 내  용 :
+    "A_L2TP 프로세스 추가로 인한 리소스 수정"
+4. 파  일 :
+	./INC/PLAT/block_list2.h											1.11
+	./INC/PLAT/rsc_list.h												1.22
+============================================================================
+1. 날  짜 : 2010.02.24(수)
+2. 작성자 : 박한진
+3. 내  용 :
+    "Delete file(DQMS_MySQL.env)"
+4. 파  일 :
+	./DATA/DQMS_MySQL.env											DELETE
+============================================================================
+1. 날  짜 : 2009.11.19(목)
+2. 작성자 : 이동환
+3. 내  용 :
+    "LCP Echo & IMSI Session"
+4. 파  일 :
+	./INC/arp_head.h													1.3
+	./INC/mmdb_psess.h													1.11
+	./SRC/A_RP/arp_func.c												1.24
+	./SRC/A_RP/arp_serv.c												1.20
+	./SRC/A_RP/arp_init.c												1.6
+	./SRC/A_GRE/agre_func.c												1.13
+	./SRC/A_GRE/agre_serv.c												1.10
+============================================================================
+1. 날  짜 : 2009.11.02(월)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_FB MultiPart Zip overflow 버그 수정"
+4. 파  일 :
+	./SRC/A_FB/fb_main.c												1.8
+																		1.9
+============================================================================
+1. 날  짜 : 2009.11.02(월)
+2. 작성자 : 권상득
+3. 내  용 :
+	"QMON mems_view 버그 수정"
+4. 파  일 :
+	./SRC/QMON/qmon_main.c												1.21
+============================================================================
+1. 날  짜 : 2009.10.27(화)
+2. 작성자 : 박한진
+3. 내  용 :
+	"DIS-TAF-SYS에 NIFO와 TRAFFIC 관련 항목 추가"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_mmc_func.c										1.9
+============================================================================
+1. 날  짜 : 2009.10.26(월)
+2. 작성자 : 이동환
+3. 내  용 :
+    "StartMC에서 옵셥 추가 : 'd'인 경우, 5분 지연 후 프로세스 기동"
+4. 파  일 :
+    ./SRC/TIFB/StartMC.c												1.11
+============================================================================
+1. 날  짜 : 2009.10.26(월)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_HTTP LimitLen 처리 추가"
+4. 파  일 :
+	./SRC/A_HTTP/http_func.c											1.7
+	./SRC/A_HTTP/http_util.c											1.5
+============================================================================
+1. 날  짜 : 2009.10.26(월)
+2. 작성자 : 권상득
+3. 내  용 :
+	"QMON 하루 이상 node dAppLog 추가"
+4. 파  일 :
+	./SRC/QMON/Makefile													1.11
+	./SRC/QMON/qmon_util.c												1.1
+	./SRC/QMON/qmon_main.c												1.20
+============================================================================
+1. 날  짜 : 2009.10.26(월)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_FB dAppLog argument 버그 수정"
+4. 파  일 :
+	./SRC/A_FB/fb_main.c												1.7
+============================================================================
+1. 날  짜 : 2009.10.21(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"실시간 traffic 감시 항목 추가에 따른 명령어 처리 및 메시지 처리 수정"
+4. 파  일 :
+	./INC/almstat.h														1.4
+	./INC/taf_shm.h														1.9
+	./INC/taf_shm2.h													1.12
+	./INC/taf_stat.h													1.10
+	./LIBSRC/INITSHM_LIB/InitShm.c										1.7
+	./SRC/ALMD/almd_main.c												1.31
+	./SRC/CHSMD/chsmd_api.h												1.7
+	./SRC/CHSMD/chsmd_init.c											1.19
+	./SRC/CHSMD/chsmd_load.c											1.20
+	./SRC/CHSMD/chsmd_main.c											1.14
+	./SRC/S_MNG/flt_ctrl_def.h											1.5
+	./SRC/S_MNG/flt_ctrl_func.c											1.36
+	./SRC/S_MNG/flt_ctrl_log.c											1.6
+============================================================================
+1. 날  짜 : 2009.10.13(화)
+2. 작성자 : 권상득
+3. 내  용 :
+	"QMON nifo node 검사시 IMSI를 찍도록 변경"
+4. 파  일 :
+	./SRC/QMON/qmon_main.c												1.19
+============================================================================
+1. 날  짜 : 2009.10.11(일)
+2. 작성자 : 권상득
+3. 내  용 :
+	"QMON mems_garbage_collector => mems_view 원복 조치"
+4. 파  일 :
+	./SRC/QMON/qmon_main.c												1.17
+																		1.18
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_CALL CALL없는 경우 nifo node 누수 문제 수정"
+4. 파  일 :
+	./SRC/A_CALL/call_main.c											1.56
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 이동환
+3. 내  용 :
+    "NIFO 누수 보완"
+4. 파  일 :
+	./SRC/A_RP/arp_main.c												1.18
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 권상득
+3. 내  용 :
+	"QMON 체크 주기 방법 변경"
+4. 파  일 :
+	./SRC/QMON/qmon_main.c												1.16
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 이동환
+3. 내  용 :
+    "NIFO 누수 보완"
+4. 파  일 :
+	./SRC/A_GRE/agre_func.c												1.12
+	./SRC/A_GRE/agre_serv.c												1.9
+	./SRC/A_RP/arp_func.c												1.23
+	./SRC/A_RP/arp_main.c												1.17
+	./SRC/A_RP/arp_serv.c												1.19
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 이동환
+3. 내  용 :
+    "LOG_INFO, LOG_DEBUG 중복 처리"
+4. 파  일 :
+	./INC/define.h														1.11
+	./INC/logutil.h														1.6
+	./SRC/CAPD_NEW/Makefile												1.5
+	./SRC/CAPD_NEW/capd_init.c											1.3
+	./SRC/CAPD_NEW/capd_main.c											1.10
+	./SRC/CAPD_NEW/capd_func.c											1.8
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 권상득
+3. 내  용 :
+	"QMON mems_view => mems_garbage_collector 변경"
+4. 파  일 :
+	./SRC/QMON/qmon_main.c												1.14
+																		1.15
+	./SRC/QMON/Makefile													1.10
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_RADIUS hash key에 ucMsgType 추가"
+4. 파  일 :
+	./SRC/A_RADIUS/radius_api.h											1.9
+	./SRC/A_RADIUS/radius_func.c										1.24
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 박한진
+3. 내  용 :
+	"NIFO 삭제큐와 갯수를 로그로 기록"
+4. 파  일 :
+	./SRC/QMON/qmon_main.c												1.12
+																		1.13
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_RADIUS hasho local => shm, RADIUS_TRANS_CNT 20000 => 20011"
+4. 파  일 :
+	./SRC/A_RADIUS/radius_api.h											1.8
+	./SRC/A_RADIUS/radius_init.c										1.7
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_DIAMETER hasho local => shm, DIAMETER_TRANS_CNT 20000 => 20011"
+4. 파  일 :
+	./SRC/A_DIAMETER/diameter_hash.h									1.8
+	./SRC/A_DIAMETER/diameter_init.c									1.10
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 박한진
+3. 내  용 :
+	"S_SSHM_RADIUS, S_SSHM_DIAMETER 추가"
+4. 파  일 :
+	./INC/PLAT/rsc_list.h												1.21
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 이동환
+3. 내  용 :
+    "LOG레벨 변경 및 RADIUS관련 로그 추가"
+4. 파  일 :
+	./SRC/PRE_A/Makefile												1.9
+	./SRC/PRE_A/pre_a_main.c											1.26
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_FTP nifo node delete 문제 수정"
+4. 파  일 :
+	./SRC/A_FTP/ftp_svc.c												1.11
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_MSRPT dAppLog argument 문제 수정"
+4. 파  일 :
+	./SRC/A_MSRPT/msrpt_util.c											1.3
+============================================================================
+1. 날  짜 : 2009.10.08(목)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_VOD 변수 초기화 문제 수정"
+4. 파  일 :
+	./SRC/A_VOD/vod_sess.c												1.8
+============================================================================
+1. 날  짜 : 2009.10.06(화)
+2. 작성자 : 박한진
+3. 내  용 :
+	"hplog -p 명령어 absent 처리"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_hw.c												1.23
+============================================================================
+1. 날  짜 : 2009.09.24(목)
+2. 작성자 : 박한진
+3. 내  용 :
+	"dagthree 명령어 처리시 오류 처리"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_hw.c												1.21
+																		1.22
+============================================================================
+1. 날  짜 : 2009.09.21(월)
+2. 작성자 : 박한진
+3. 내  용 :
+	"MESSAGE QUEUE 지울 경우에만, fidb->quests.llCur에 반영하도록 수정"
+4. 파  일 :
+	./SRC/QMON/qmon_main.c												1.11
+============================================================================
+1. 날  짜 : 2009.09.14(월)
+2. 작성자 : 이동환
+3. 내  용 :
+    "PPP관련 LOG_SIGNAL 전송 방식의 변경."
+4. 파  일 :
+	./SRC/A_RP/arp_func.c												1.22
+	./SRC/A_RP/arp_serv.c												1.18
+	./SRC/A_GRE/agre_func.c												1.11
+	./SRC/A_GRE/agre_serv.c												1.8
+	./INC/Analyze_Ext_Abs.h												1.13
+============================================================================
+1. 날  짜 : 2009.09.13(월)
+2. 작성자 : 박한진
+3. 내  용 :
+	"NIFO 감시 추가"
+4. 파  일 :
+	./INC/almstat.h														1.3
+	./INC/taf_shm.h														1.8
+	./INC/taf_shm2.h													1.11
+	./INC/PLAT/rsc_list.h												1.19
+	./SRC/ALMD/almd_init.c												1.4
+	./SRC/ALMD/almd_main.c												1.30
+	./SRC/CHSMD/chsmd_api.h												1.6
+	./SRC/CHSMD/chsmd_init.c											1.18
+	./SRC/CHSMD/chsmd_load.c											1.15
+																		1.16
+																		1.17
+																		1.18
+	./SRC/CHSMD/chsmd_main.c											1.13
+	./SRC/QMON/qmon_main.c												1.10
+	./SRC/S_MNG/flt_ctrl_def.h											1.3
+	./SRC/S_MNG/flt_ctrl_func.c											1.35
+============================================================================
+1. 날  짜 : 2009.09.13(일)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"PI프로세스의 uiNASName 필드값 제거"
+4. 파  일 :
+	./SRC/A_HTTP/http_func.c 											1.6
+	./SRC/A_IV/pciv_func.c 												1.6
+	./SRC/A_MSRPT/msrpt_util.c 											1.2
+	./SRC/A_ONLINE/online_func.c 										1.4
+	./SRC/A_RADIUS/radius_func.c 										1.23
+	./SRC/A_SIPT/sipt_util.c 											1.2
+	./SRC/A_TCP/tcp_func.c 												1.11
+	./SRC/A_VOD/vod_sess.c 												1.7
+============================================================================
+1. 날  짜 : 2009.09.07(월)
+2. 작성자 : 박한진
+3. 내  용 :
+	"서버 FILTER에 법인서비스 포함"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.33
+	./SRC/S_MNG/flt_ctrl_init.c											1.5
+	./SRC/S_MNG/flt_ctrl_main.c											1.7
+============================================================================
+1. 날  짜 : 2009.08.30(일)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"Call의 마지막 서비스가 WIPI DN 이면 TCP의 플랫폼타입을 DN으로 변경한다."
+4. 파  일 :
+	./SRC/A_CALL/call_main.c
+============================================================================
+1. 날  짜 : 2009.08.27(목)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"NEXT CALL을 생성할 때 CURR->CallTime보다 빠른 시간이면 콜을 생성하지 않는다"
+4. 파  일 :
+	./SRC/A_CALL/call_main.c 											1.48
+============================================================================
+1. 날  짜 : 2009.08.26(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"SIGKILL 대신 SIGTERM 으로 수정"
+4. 파  일 :
+	./SRC/TIFB/KillMC.c 												1.15
+============================================================================
+1. 날  짜 : 2009.08.25(화)
+2. 작성자 : 박한진
+3. 내  용 :
+	"CHSMD의 dLinkStatus함수 fflush 삭제"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_load.c 											1.14
+============================================================================
+1. 날  짜 : 2009.08.25(화)
+2. 작성자 : 박한진
+3. 내  용 :
+	"KillMC 에서 SysNo 값 수정"
+4. 파  일 :
+	./SRC/TIFB/KillMC.c 												1.14
+============================================================================
+1. 날  짜 : 2009.08.25(화)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"WIPI중 L7CODE가 APP_DOWN인 경우 플랫폼타입을 DOWNLOAD로 변경"
+4. 파  일 :
+	./INC/wipi_api.h 													1.3
+	./SRC/A_WIPI/Makefile 												1.5
+	./SRC/A_WIPI/wipi_main.c 											1.7
+============================================================================
+1. 날  짜 : 2009.08.23(일)
+2. 작성자 : 박한진
+3. 내  용 :
+	"FILTER에 APPCODE의 ETC 추가"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.32
+============================================================================
+1. 날  짜 : 2009.08.23(일)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"ACCEPT_CONTACT 필드로 IM/VT 구분"
+	"INVITE 외의 MSG는 SIPD -> A_VT -> A_IM"
+4. 파  일 :
+	./INC/sip.h 														1.5
+	./LIBSRC/SIP/Makefile 												1.3
+	./LIBSRC/SIP/sip.l 													1.5
+	./SRC/A_SIPD/sip_main.c 											1.9
+	./SRC/A_SIPT/sipt_func.c 											1.12
+	./SRC/A_VT/vt_init.c 												1.10
+	./SRC/A_VT/vt_main.c 												1.28
+============================================================================
+1. 날  짜 : 2009.08.20(목)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_TCP Call Session관리 List 버그 수정"
+4. 파  일 :
+	./SRC/A_TCP/tcp_func.c												1.10
+	./SRC/A_TCP/tcp_sess.c												1.13
+																		1.14
+	./SRC/A_TCP/tcp_sess.h												1.10
+============================================================================
+1. 날  짜 : 2009.08.20(목)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_SIPT Call Session관리 List 버그 수정"
+4. 파  일 :
+	./SRC/A_SIPT/sipt_func.c											1.11
+	./SRC/A_SIPT/sipt_sess.c											1.5
+																		1.6
+	./SRC/A_SIPT/sipt_sess.h											1.3
+============================================================================
+1. 날  짜 : 2009.08.20(목)
+2. 작성자 : 박한진
+3. 내  용 :
+	"MULTI PROCESS STARTMC와 KILLMC 수정"
+4. 파  일 :
+	./SRC/TIFB/KillMC.c													1.13
+	./SRC/TIFB/StartMC.c												1.6
+	./SRC/TIFB/tifb_util.c												1.2
+============================================================================
+1. 날  짜 : 2009.08.20(목)
+2. 작성자 : 박한진
+3. 내  용 :
+	"CHSMD 소스 정리"
+4. 파  일 :
+	./LIBSRC/INITSHM_LIB/InitShm.c										1.6
+	./SRC/CHSMD/chsmd_init.c											1.17
+	./SRC/CHSMD/chsmd_main.c											1.12
+	./SRC/CHSMD/chsmd_sw.c												1.8
+============================================================================
+1. 날  짜 : 2009.08.19(수)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_CALL dAppLog 레벨 변경"
+4. 파  일 :
+	./SRC/A_CALL/call_main.c											1.45
+============================================================================
+1. 날  짜 : 2009.08.19(수)
+2. 작성자 : 권상득
+3. 내  용 :
+	"IM, VT 서비스 에러코드 세팅 변경"
+4. 파  일 :
+	./SRC/A_IM/im_main.c												1.16
+	./SRC/A_VT/vt_main.c												1.26
+																		1.27
+============================================================================
+1. 날  짜 : 2009.08.19(수)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_SIPM, A_MSRPM nifo node full 방어 코드 추가"
+4. 파  일 :
+	./SRC/A_SIPM/sipm_func.c											1.2
+	./SRC/A_MSRPM/msrpm_func.c											1.2
+============================================================================
+1. 날  짜 : 2009.08.19(수)
+2. 작성자 : 권상득
+3. 내  용 :
+	"LOG_XXX_Prt 함수 주석 처리"
+4. 파  일 :
+	./SRC/A_2G/a2g_main.c												1.6
+	./SRC/A_DIAMETER/diameter_func.c									1.18
+	./SRC/A_DNS/adns_serv.c												1.13
+	./SRC/A_EMS/ems_main.c												1.5
+	./SRC/A_FB/fb_main.c												1.6
+	./SRC/A_FTP/ftp_svc.c												1.10
+	./SRC/A_FV/fv_main.c												1.6
+	./SRC/A_HTTP/http_func.c											1.5
+	./SRC/A_IM/im_main.c												1.15
+	./SRC/A_IV/pciv_func.c												1.5
+	./SRC/A_JAVA/java_main.c											1.6
+	./SRC/A_MMS/mms_main.c												1.5
+	./SRC/A_MSRPT/msrpt_func.c											1.4
+	./SRC/A_ONLINE/online_func.c										1.3
+	./SRC/A_SIPD/sip_main.c												1.8
+	./SRC/A_SIPT/sipt_func.c											1.10
+	./SRC/A_TCP/tcp_msgq.c												1.6
+	./SRC/A_VT/vt_main.c												1.25
+	./SRC/A_WAP20/wap20_main.c											1.6
+	./SRC/A_WIDGET/widget_main.c										1.5
+	./SRC/A_WIPI/wipi_main.c											1.6
+	./SRC/A_XCAP/xcap_func.c											1.2
+	./SRC/A_XCAP/xcap_main.c											1.7
+============================================================================
+1. 날  짜 : 2009.08.18(화)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_TCP timer del 버그 수정"
+4. 파  일 :
+	./SRC/A_TCP/tcp_main.c												1.20
+	./SRC/A_TCP/tcp_sess.c												1.12
+	./SRC/A_TCP/tcp_sess.h												1.9
+============================================================================
+1. 날  짜 : 2009.08.18(화)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_HTTP node full 버그 수정"
+4. 파  일 :
+	./SRC/A_HTTP/http_func.c 											1.4
+	./SRC/A_HTTP/http_util.c 											1.4
+============================================================================
+1. 날  짜 : 2009.08.17(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"CALL 세션관리 리스트 버그 수정"
+4. 파  일 :
+	./SRC/A_TCP/tcp_func.c 												1.9
+	./SRC/A_TCP/tcp_main.c 												1.19
+	./SRC/A_TCP/tcp_sess.c 												1.11
+	./SRC/A_TCP/tcp_sess.h 												1.8
+============================================================================
+1. 날  짜 : 2009.08.17(월)
+2. 작성자 : 박한진
+3. 내  용 :
+	"KillMC 메시지 전송 처리 버그 수정"
+4. 파  일 :
+	./SRC/TIFB/KillMC.c 												1.12
+============================================================================
+1. 날  짜 : 2009.08.17(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"CALL 세션관리 리스트 버그 수정"
+4. 파  일 :
+	./SRC/A_SIPT/sipt_api.h 											1.7
+	./SRC/A_SIPT/sipt_main.c 											1.10
+	./SRC/A_SIPT/sipt_sess.c 											1.4
+============================================================================
+1. 날  짜 : 2009.08.17(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"세션관리 메모리를 공유메모리로 변경"
+4. 파  일 :
+	./SRC/A_TCP/tcp_func.c 												1.8
+	./SRC/A_TCP/tcp_init.c 												1.15
+	./SRC/A_TCP/tcp_sess.c 												1.10
+============================================================================
+1. 날  짜 : 2009.08.17(월)
+2. 작성자 : 박한진
+3. 내  용 :
+	"resource 정리"
+4. 파  일 :
+	./INC/PLAT/rsc_list.h 												1.17
+	./SRC/TIFB/KillMC.c 												1.11
+============================================================================
+1. 날  짜 : 2009.08.17(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"세션관리 메모리를 공유메모리로 변경"
+4. 파  일 :
+	./SRC/A_SIPT/sipt_func.c 											1.8
+	./SRC/A_SIPT/sipt_init.c 											1.8
+	./SRC/A_SIPT/sipt_sess.c 											1.3
+============================================================================
+1. 날  짜 : 2009.08.17(월)
+2. 작성자 : 박한진
+3. 내  용 :
+	"KillMC에서 프로세스 종료시 보내는 메시지 수정"
+4. 파  일 :
+	./SRC/TIFB/KillMC.c 												1.8
+																		1.9
+																		1.10
+============================================================================
+1. 날  짜 : 2009.08.16(일)
+2. 작성자 : 박한진
+3. 내  용 :
+	"CHSMD에서 DIS-TAF-PRC에 대한 명령어 처리 수정"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_mmc_func.c 										1.8
+============================================================================
+1. 날  짜 : 2009.08.17(월)
+2. 작성자 : 박한진
+3. 내  용 :
+	"MIRROR 상태 체크 콘솔메시지 처리"
+4. 파  일 :
+	./INC/almstat.h 													1.2
+	./INC/taf_shm2.h													1.10
+	./SRC/CHSMD/chsmd_main.c											1.10
+																		1.11
+============================================================================
+1. 날  짜 : 2009.08.16(일)
+2. 작성자 : 박한진
+3. 내  용 :
+	"CHSMD에서 fidb->mirrorsts 처리 삭제"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_main.c 											1.9
+============================================================================
+1. 날  짜 : 2009.08.16(일)
+2. 작성자 : 박한진
+3. 내  용 :
+	"DAG 4.5G2 모델에 대한 dagconfig 명령 사용하도록 수정"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_hw.c 												1.20
+============================================================================
+1. 날  짜 : 2009.08.15(토)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"NIFO NODE FULL일때 에러처리 추가"
+4. 파  일 :
+	./SRC/A_CALL/call_main.c 											1.32
+============================================================================
+1. 날  짜 : 2009.08.15(토)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"ADD LOG_SIGNAL->uiPCFIP"
+4. 파  일 :
+	./SRC/A_RADIUS/radius_func.c 										1.20
+============================================================================
+1. 날  짜 : 2009.08.15(토)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"CHECK pstRTCP_RR is NULL"
+4. 파  일 :
+	./SRC/A_VT/vt_main.c 												1.20
+============================================================================
+1. 날  짜 : 2009.08.14(금)
+2. 작성자 : 권상득
+3. 내  용 :
+	"dAppLog 파일 갯수(10=>50), 사이즈(10M=>20M) 수정"
+4. 파  일 :
+	./INC/logutil.h														1.5
+============================================================================
+1. 날  짜 : 2009.08.14(금)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_CALL Call 정리시 pstCallDupList->CallDupList 초기화 버그"
+4. 파  일 :
+	./SRC/A_CALL/call_main.c											1.31
+============================================================================
+1. 날  짜 : 2009.08.12(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"CHSMD Link 상태 확인 및 리소스 정리"
+4. 파  일 :
+	./INC/PLAT/rsc_list.h												1.15
+	./SRC/CHSMD/chsmd_hw.c												1.18
+============================================================================
+1. 날  짜 : 2009.08.12(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"DIAMETER 디버그"
+4. 파  일 :
+	./INC/sctp_head.h													1.5
+	./LIBSRC/ANZ_LIB/Analyze_Inf11.c									1.12
+	./SRC/A_DIAMETER/diameter_func.c									1.14
+	./SRC/A_DIAMETER/diameter_init.c									1.9
+	./SRC/A_DIAMETER/diameter_main.c									1.10
+	./SRC/A_RADIUS/radius_init.c										1.6
+	./SRC/A_RADIUS/radius_main.c										1.8
+	./SRC/A_SCTP/sctp_func.c											1.3
+	./SRC/A_SCTP/sctp_serv.c											1.4
+	./SRC/PRE_A/pre_a_main.c											1.23
+	./SRC/S_MNG/flt_ctrl_func.c											1.30
+============================================================================
+1. 날  짜 : 2009.08.11(화)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"패킷이 빠졌을 때 연산에서 MICRO 시간까지 비교"
+4. 파  일 :
+	./SRC/A_HTTP/http_main.c											1.7
+	./SRC/A_TCP/tcp_msgq.c												1.5
+============================================================================
+1. 날  짜 : 2009.08.11(화)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"DESCRIBE에서 Audio/Video TraciID가 없어도 SETUP의 TrackID를 사용"
+4. 파  일 :
+	./SRC/A_VOD/vod_sess.c												1.6
+============================================================================
+1. 날  짜 : 2009.08.11(화)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"pLOG_DIALUP_SESS->SessStartTime 설정"
+4. 파  일 :
+	./SRC/A_CALL/call_main.c											1.29
+============================================================================
+1. 날  짜 : 2009.08.10(월)
+2. 작성자 : 이동환
+3. 내  용 :
+    "SIZE에 대한 수정, DATA 크기에서 Total로 변경"
+4. 파  일 :
+	    ./SRC/A_DNS/adns_serv.c											1.8
+		./SRC/A_FTP/ftp_svc.c											1.8
+============================================================================
+1. 날  짜 : 2009.08.10(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"Add LOG_SIP_TRANS->isUsed Flag"
+4. 파  일 :
+	./SRC/A_IM/im_main.c												1.12
+	./SRC/A_VT/vt_main.c												1.19
+============================================================================
+1. 날  짜 : 2009.08.07(금)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"Dorment 상태에서 로그가 왔을때 업데이트 하지 않음"
+4. 파  일 :
+	./SRC/A_CALL/call_main.c
+============================================================================
+1. 날  짜 : 2009.08.06(목)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"로그레벨 정보 추가"
+4. 파  일 :
+	./INC/call_api.h 													1.9
+	./INC/taf_svc.h 													1.6
+	./SRC/Makefile 														1.14
+	./SRC/A_2G/Makefile 												1.4
+	./SRC/A_2G/a2g_main.c 												1.5
+	./SRC/A_CALL/call_init.c 											1.14
+	./SRC/A_CALL/call_main.c 											1.27
+	./SRC/A_DNS/adns_main.c 											1.4
+	./SRC/A_EMS/Makefile 												1.4
+	./SRC/A_EMS/ems_main.c 												1.4
+	./SRC/A_FB/Makefile 												1.4
+	./SRC/A_FB/fb_main.c 												1.5
+	./SRC/A_FTP/Makefile 												1.3
+	./SRC/A_FTP/ftp_main.c 												1.8
+	./SRC/A_FV/Makefile 												1.4
+	./SRC/A_FV/fv_main.c 												1.5
+	./SRC/A_HTTP/Makefile 												1.5
+	./SRC/A_HTTP/http_main.c 											1.6
+	./SRC/A_IV/Makefile 												1.5
+	./SRC/A_IV/pciv_main.c 												1.4
+	./SRC/A_JAVA/Makefile 												1.4
+	./SRC/A_JAVA/java_main.c 											1.5
+	./SRC/A_JNC/Makefile 												1.5
+	./SRC/A_JNC/jnc_main.c 												1.4
+	./SRC/A_MMS/Makefile 												1.4
+	./SRC/A_MMS/mms_main.c 												1.4
+	./SRC/A_MSRPM/Makefile 												1.3
+	./SRC/A_MSRPM/msrpm_main.c 											1.4
+	./SRC/A_ONLINE/Makefile 											1.5
+	./SRC/A_ONLINE/online_main.c 										1.4
+	./SRC/A_RADIUS/radius_func.c 										1.18
+	./SRC/A_SIPD/Makefile 												1.4
+	./SRC/A_SIPD/sip_main.c 											1.7
+	./SRC/A_SIPM/Makefile 												1.3
+	./SRC/A_SIPM/sipm_main.c 											1.5
+	./SRC/A_SIPT/Makefile 												1.6
+	./SRC/A_SIPT/sipt_api.h 											1.6
+	./SRC/A_SIPT/sipt_func.c 											1.5
+	./SRC/A_SIPT/sipt_init.c 											1.7
+	./SRC/A_SIPT/sipt_main.c 											1.9
+	./SRC/A_SIPT/sipt_sess.c 											1.2
+	./SRC/A_SIPT/sipt_sess.h 											1.2
+	./SRC/A_TCP/tcp_sess.c 												1.9
+	./SRC/A_VOD/Makefile 												1.4
+	./SRC/A_VOD/vod_main.c 												1.5
+	./SRC/A_WAP20/Makefile 												1.4
+	./SRC/A_WAP20/wap20_main.c 											1.5
+	./SRC/A_WIDGET/Makefile 											1.4
+	./SRC/A_WIDGET/widget_main.c 										1.4
+	./SRC/A_WIPI/Makefile 												1.4
+	./SRC/A_WIPI/wipi_main.c 											1.5
+	./SRC/A_XCAP/Makefile 												1.4
+	./SRC/A_XCAP/xcap_main.c 											1.6
+	./SRC/CAPD_NEW/Makefile 											1.4
+	./SRC/CAPD_NEW/capd_main.c 											1.9
+	./SRC/CI_LOG/ci_log_util.c 											1.5
+	./SRC/MEM/Makefile 													1.3
+	./SRC/MEM/mem_main.c 												1.5
+	./SRC/PRE_A/Makefile 												1.8
+	./SRC/PRE_A/pre_a_main.c 											1.22
+============================================================================
+1. 날  짜 : 2009.08.05(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"PI_TAF에 S_SSHM_SIPT_SESS 리소스 정리 추가"
+4. 파  일 :
+	./INC/PLAT/rsc_list.h												1.14
+=============================================================================
+TAG NAME : DQMS_0_0_6_20090805
+TAG DESC : 로그레벨 명령어 처리 전
+TAG USER : 윤진석
+============================================================================
+1. 날  짜 : 2009.08.05(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"resource 정리"
+4. 파  일 :
+	./INC/PLAT/rsc_list.h												1.13
+============================================================================
+1. 날  짜 : 2009.08.05(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"로그레벨 전역변수(gLogLevel) 선언을 LIBSRC/LOGUTIL 로 옮김"
+4. 파  일 :
+	./INC/taf_shm2.h													1.9
+	./SRC/CHSMD/chsmd_init.c											1.6
+	./SRC/CHSMD/mask_func.c												1.4
+	./SRC/S_MNG/flt_ctrl_func.c											1.29
+============================================================================
+1. 날  짜 : 2009.08.05(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"로그레벨 전역변수(gLogLevel) 선언을 LIBSRC/LOGUTIL 로 옮김"
+4. 파  일 :
+	./LIBSRC/LOGUTIL/lwrite.c											1.3
+	./LIBSRC/SHMUTIL_LIB/shmutil.c										1.5
+============================================================================
+1. 날  짜 : 2009.08.05(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"CI_SVC에서 마지막 접속 시간이 현재 시간보다 큰 경우 프로세스 RESTART"
+4. 파  일 :
+	./SRC/CI_SVC/ci_svc_main.c											1.4
+============================================================================
+1. 날  짜 : 2009.08.04(화)
+2. 작성자 : 권상득
+3. 내  용 :
+	"S_MNG dAppLog Log Level 변경 버그 수정 (set-taf-conf)"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.28
+	./INC/logutil.h														1.4
+	./LIBSRC/LOGUTIL/lwrite.c											1.2
+============================================================================
+1. 날  짜 : 2009.08.03(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"TIMER를 공유메모리로 변경"
+4. 파  일 :
+	./SRC/A_CALL/Makefile												1.6
+	./SRC/A_CALL/call_func.c											1.3
+	./SRC/A_CALL/call_init.c											1.13
+	./SRC/A_CALL/call_main.c											1.26
+	./SRC/A_DIAMETER/Makefile											1.6
+	./SRC/A_DIAMETER/diameter_func.c									1.13
+	./SRC/A_DIAMETER/diameter_init.c									1.8
+	./SRC/A_DIAMETER/diameter_main.c									1.9
+	./SRC/A_IM/Makefile													1.3
+	./SRC/A_IM/im_init.c												1.6
+	./SRC/A_IM/im_main.c												1.11
+	./SRC/A_IV/pciv_func.c												1.4
+	./SRC/A_MSRPT/Makefile												1.5
+	./SRC/A_MSRPT/msrpt_func.c											1.3
+	./SRC/A_MSRPT/msrpt_init.c											1.5
+	./SRC/A_MSRPT/msrpt_main.c											1.5
+	./SRC/A_RADIUS/Makefile												1.5
+	./SRC/A_RADIUS/radius_func.c										1.17
+	./SRC/A_RADIUS/radius_init.c										1.5
+	./SRC/A_RADIUS/radius_main.c										1.7
+	./SRC/A_SIPT/Makefile												1.5
+	./SRC/A_SIPT/sipt_func.c											1.4
+	./SRC/A_SIPT/sipt_init.c											1.6
+	./SRC/A_SIPT/sipt_main.c											1.8
+	./SRC/A_TCP/Makefile												1.6
+	./SRC/A_TCP/tcp_func.c												1.7
+	./SRC/A_TCP/tcp_init.c												1.14
+	./SRC/A_TCP/tcp_main.c												1.18
+	./SRC/A_TCP/tcp_sess.c												1.8
+	./SRC/A_VT/Makefile													1.3
+	./SRC/A_VT/vt_init.c												1.9
+	./SRC/A_VT/vt_main.c												1.18
+	./SRC/CI_LOG/ci_log_main.c											1.16
+============================================================================
+1. 날  짜 : 2009.08.03(월)
+2. 작성자 : 박한진
+3. 내  용 :
+	"TIMER에 PI_RAD_TIMEOUT과 PI_DIA_TIMEOUT 추가"
+4. 파  일 :
+	./S_MNG/flt_ctrl_func.c												1.27
+============================================================================
+1. 날  짜 : 2009.08.03(월)
+2. 작성자 : 이동환
+3. 내  용 :
+	"DisMC 에 라인 제거"
+	"Timer.dat 파일 load 함수 수정"
+4. 파  일 :
+	./SRC/TIFB/DisMC.c													1.7
+																		1.8
+																		1.9
+	./SRC/S_MNG/flt_ctrl_func.c											1.25
+============================================================================
+1. 날  짜 : 2009.08.03(월)
+2. 작성자 : 이동환
+3. 내  용 :
+    "FTP관련 추가 변경 사항"
+4. 파  일 :
+	./SRC/A_FTP/ftp_main.c												1.7
+============================================================================
+1. 날  짜 : 2009.08.03(월)
+2. 작성자 : 이동환
+3. 내  용 :
+    "TIMER 관련 변경 처리"
+4. 파  일 :
+	./SRC/A_DNS/Makefile												1.2
+	./SRC/A_DNS/adns_init.c												1.6
+	./SRC/A_DNS/adns_main.c												1.3
+	./SRC/A_DNS/adns_serv.c												1.5
+============================================================================
+1. 날  짜 : 2009.08.03(월)
+2. 작성자 : 박한진
+3. 내  용 :
+	"flt_info 초기화시 S_MNG에서 stTimerInfo 업데이트"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.23
+																		1.24
+	./SRC/S_MNG/flt_ctrl_main.c											1.5
+																		1.6
+============================================================================
+1. 날  짜 : 2009.08.01(토)
+2. 작성자 : 박한진
+3. 내  용 :
+	"TIMEOUT 명령어(DIS-TIMER-INFO, SET-TIMER-INFO) 추가"
+	"TAF 상태정보(DIS-TAF-SYS) 명령어 추가"
+4. 파  일 :
+	./INC/dqms_define.h													1.10
+	./INC/filter.h														1.8
+	./INC/mmcid.h														1.2
+	./SRC/CHSMD/chsmd_api.h												1.3
+	./SRC/CHSMD/chsmd_mmc.c												1.4
+	./SRC/CHSMD/chsmd_mmc_func.c										1.7
+	./SRC/CI_SVC/ci_svc_sock.c											1.5
+	./SRC/S_MNG/flt_ctrl_api.h											1.7
+	./SRC/S_MNG/flt_ctrl_func.c											1.22
+==============================================================================
+1. 날  짜 : 2009.07.31(금)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"TIMER 함수 호출 할 때 CallTime 비교하여 현재 콜 선택"
+4. 파  일 :
+	./INC/call_api.h 													1.8
+	./SRC/A_CALL/call_func.c 											1.2
+	./SRC/A_CALL/call_init.c 											1.12
+	./SRC/A_CALL/call_main.c 											1.25
+	./SRC/A_TCP/tcp_init.c 												1.13
+	./SRC/A_TCP/tcp_main.c 												1.17
+	./SRC/A_TCP/tcp_util.c 												1.9
+	./SRC/CI_LOG/ci_log_util.c 											1.3
+==============================================================================
+1. 날  짜 : 2009.07.31(금)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"vCALLTimerReConstruct 중복콜 구조로 수정"
+4. 파  일 :
+	./SRC/A_CALL/call_init.c 											1.11
+==============================================================================
+1. 날  짜 : 2009.07.31(금)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"RADIUS Continue Session 처리"
+4. 파  일 :
+	./INC/call_api.h 													1.7
+	./A_RADIUS/radius_func.c 											1.16
+	./SRC/A_CALL/Makefile 												1.5
+	./SRC/A_CALL/call_func.c 											1.1
+	./SRC/A_CALL/call_main.c 											1.23
+	./SRC/A_TCP/tcp_func.c 												1.6
+	./SRC/A_TCP/tcp_main.c 												1.16
+	./SRC/A_TCP/tcp_sess.c 												1.7
+	./SRC/A_TCP/tcp_sess.h 												1.7
+==============================================================================
+1. 날  짜 : 2009.07.31(금)
+2. 작성자 : 박한진
+3. 내  용 :
+	"timer.dat, iups_timer.dat 파일 정리"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c 										1.21
+	./SRC/S_MNG/flt_ctrl_api.h 											1.6
+	./DATA/timer.dat													delete
+==============================================================================
+1. 날  짜 : 2009.07.30(목)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "TRACEMSG_HEADER_NUM --> st_TraceMsgHdr_DEF_NUM "
+4. 파  일 :
+	./SRC/A_DIAMETER/diameter_func.c 									1.12
+	./SRC/A_RADIUS/radius_func.c 										1.15
+==============================================================================
+1. 날  짜 : 2009.07.30(목)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "TRACE를 llIMSI로 비교"
+4. 파  일 :
+	./SRC/A_RADIUS/radius_func.c 										1.14
+==============================================================================
+1. 날  짜 : 2009.07.30(목)
+2. 작성자 : 권상득
+3. 내  용 :
+    "S_MNG MDN, IMSI 타입에 상관없이 llIMSI, szMIN 세팅 하도록 변경"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.20
+==============================================================================
+1. 날  짜 : 2009.07.29(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "TCP_STOP pTCPINFO->uiCapTime = pTCPSESS->uiLastUpdateTime"
+4. 파  일 :
+	./SRC/A_TCP/tcp_init.c 												1.12
+	./SRC/A_TCP/tcp_msgq.c 												1.4
+==============================================================================
+TAG NAME : DQMS_0_0_5_20090727
+TAG DESC : A_CALL 중복 콜 관리 적용 전
+TAG USER : 윤진석
+==============================================================================
+1. 날  짜 : 2009.07.27(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "AUDIO/VIDEO 구분"
+4. 파  일 :
+	./SRC/A_VOD/vod_sess.c 												1.5
+==============================================================================
+1. 날  짜 : 2009.07.27(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "MSG_WAIT_TIMEOUT 7로 수정"
+	"TCPSESS LIST 수정"
+4. 파  일 :
+	./SRC/A_IM/im_main.c	 											1.10
+	./SRC/A_TCP/tcp_sess.c	 											1.5
+	./SRC/A_VT/vt_main.c	 											1.17
+==============================================================================
+1. 날  짜 : 2009.07.27(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "ADD CALL_STOP_NUM"
+4. 파  일 :
+	./SRC/CI_LOG/ci_log_main.c 											1.13
+==============================================================================
+1. 날  짜 : 2009.07.26(일)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "DNS 성공이후 전송 여부 판단 플래그 추가"
+4. 파  일 :
+	./SRC/A_CALL/call_main.c 											1.22
+==============================================================================
+1. 날  짜 : 2009.07.25(토)
+2. 작성자 : 이동환
+3. 내  용 :
+    "TCP 처리 추가"
+4. 파  일 :
+	./SRC/A_DNS/adns_init.c												1.4
+	./SRC/A_DNS/adns_main.c												1.2
+	./SRC/A_DNS/adns_serv.c												1.2
+==============================================================================
+1. 날  짜 : 2009.07.22(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "BANKON, VMBANK L4CODE 정리"
+4. 파  일 :
+	./LIBSRC/UTILLIB/platform_type.c									1.4
+==============================================================================
+1. 날  짜 : 2009.07.22(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "중복 메세지가 왔을 때 정리하고 세로운 세션 생성"
+4. 파  일 :
+	./SRC/A_RADIUS/radius_func.c										1.10
+	./SRC/A_RADIUS/radius_main.c										1.5
+==============================================================================
+1. 날  짜 : 2009.07.22(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "DNS 트래픽 패스 처리"
+4. 파  일 :
+	./SRC/A_DNS/adns_init.c 											1.3
+	./SRC/A_TCP/tcp_init.c												1.9
+	./SRC/A_TCP/tcp_main.c												1.12
+	./SRC/A_TCP/tcp_util.c												1.5
+	./SRC/CI_LOG/ci_log_func.c											1.5
+	./SRC/CI_LOG/ci_log_main.c											1.11
+	./SRC/PRE_A/pre_a_init.c											1.16
+	./SRC/PRE_A/pre_a_main.c											1.20
+==============================================================================
+1. 날  짜 : 2009.07.22(수)
+2. 작성자 : 이동환
+3. 내  용 :
+    "STOP_CALL_NUM 처리 추가"
+4. 파  일 :
+	./SRC/A_RP/arp_main.c												1.12
+	./SRC/A_RP/arp_func.c												1.13
+	./SRC/A_RP/arp_serv.c												1.12
+	./SRC/A_CALL/call_main.c											1.19
+==============================================================================
+1. 날  짜 : 2009.07.22(수)
+2. 작성자 : 이동환
+3. 내  용 :
+    "LCP, CHAP 관련 오류 수정"
+4. 파  일 :
+	./SRC/A_GRE/agre_func.c												1.5
+	./SRC/A_GRE/agre_serv.c												1.5
+==============================================================================
+1. 날  짜 : 2009.07.22(수)
+2. 작성자 : 이동환
+3. 내  용 :
+    "STOP_CALL_NUM -> CLEAR_CALL_NUM"
+4. 파  일 :
+    ./SRC/A_IM/im_main.c												1.9
+	./SRC/A_TCP/tcp_main.c												1.12
+	./SRC/A_VT/vt_main.c												1.16
+==============================================================================
+1. 날  짜 : 2009.07.22(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"PI_TAF에 QMON관리 SHARED MEMORY에 S_SSHM_DNS_SESS 추가"
+4. 파  일 :
+	./INC/PLAT/rsc_list.h												1.12
+==============================================================================
+1. 날  짜 : 2009.07.22(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"L4CODE에서 BANKON, VMBANK로 변경"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.19
+==============================================================================
+1. 날  짜 : 2009.07.21(화)
+2. 작성자 : 박한진
+3. 내  용 :
+   	"TAF의 FIDB에 Endace port Link 위치 변경(fidb->hwport:fidb->mirrorsts)"
+4. 파  일 :
+    ./SRC/CHSMD/chsmd_hw.c                                            	1.15
+    																	원복
+==============================================================================
+1. 날  짜 : 2009.07.20(월)
+2. 작성자 : 이동환
+3. 내  용 :
+   	"S_SSHM_DNS_SESS 변경 "
+4. 파  일 :
+    ./SRC/A_DNS/adns_init.c                                            	1.2
+==============================================================================
+1. 날  짜 : 2009.07.20(월)
+2. 작성자 : 박한진
+3. 내  용 :
+    "McInit.TAF_PI에 A_DNS 추가"
+4. 파  일 :
+    ./DATA/McInit.TAF_PI												1.3
+==============================================================================
+1. 날  짜 : 2009.07.20(월)
+2. 작성자 : 박한진
+3. 내  용 :
+    "L4CODE, L7CODE, APPCODE 정리"
+4. 파  일 :
+    ./SRC/S_MNG/flt_ctrl_func.c											1.18
+    ./INC/ipc_define.h													1.4
+==============================================================================
+1. 날  짜 : 2009.07.20(월)
+2. 작성자 : 박한진
+3. 내  용 :
+    "정리"
+4. 파  일 :
+    ./INC/PLAT/block_list2.h                                            1.9
+    ./INC/PLAT/rsc_list.h												1.10
+==============================================================================
+1. 날  짜 : 2009.07.20(월)
+2. 작성자 : 이동환
+3. 내  용 :
+    "PRE_A에서 RP인 경우, S_MSGQ_A_VT를 사용하지 않도록 수정"
+4. 파  일 :
+    ./SRC/PRE_A/pre_a_init.c                                            1.16
+==============================================================================
+1. 날  짜 : 2009.07.20(월)
+2. 작성자 : 박한진
+3. 내  용 :
+    "TAF DATA McInit 추가 및 변경"
+4. 파  일 :
+	./DATA/McInit.TAF_PI												NEW(1.1)
+																		1.2
+	./DATA/McInit.TAF_RP												NEW(1.1)
+																		1.2
+	./DATA/McInit.gi													DELETE
+	./DATA/McInit.gn													DELETE
+	./DATA/McInit.grx													DELETE
+==============================================================================
+1. 날  짜 : 2009.07.20(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+    "ETC 트래픽 패스 변경"
+4. 파  일 :
+	./SRC/A_IM/im_main.c 												1.8
+	./SRC/A_SIPM/sipm_main.c											1.4
+	./SRC/A_SIPT/sipt_main.c											1.6
+	./SRC/A_TCP/tcp_main.c												1.11
+	./SRC/A_VT/vt_main.c												1.15
+	./SRC/PRE_A/pre_a_main.c											1.19
+==============================================================================
+1. 날  짜 : 2009.07.20(월)
+2. 작성자 : 이동환
+3. 내  용 :
+    "PRE_A에서 RP인 경우, S_MSGQ_A_VT를 사용하지 않도록 수정"
+4. 파  일 :
+    ./SRC/PRE_A/pre_a_init.c											1.16
+==============================================================================
+1. 날  짜 : 2009.07.20(월)
+2. 작성자 : 이동환
+3. 내  용 :
+    "DNS 서비스 분석 프로세스 추가"
+4. 파  일 :
+	./SRC/A_DNS/Makefile												1.1
+	./SRC/A_DNS/adns_init.c												1.1
+	./SRC/A_DNS/adns_main.c												1.1
+	./SRC/A_DNS/adns_serv.c												1.1
+==============================================================================
+1. 날  짜 : 2009.07.20(월)
+2. 작성자 : 이동환
+3. 내  용 :
+    "초기화 관련 버그 수정 작업"
+4. 파  일 :
+    ./SRC/A_FTP/ftp_init.c												1.5
+	./SRC/A_FTP/ftp_main.c												1.5
+	./SRC/A_FTP/ftp_svc.c												1.5
+==============================================================================
+1. 날  짜 : 2009.07.20(월)
+2. 작성자 : 이동환
+3. 내  용 :
+    "ProcPPPSess 불필요한 파라미터 제거"
+4. 파  일 :
+    ./SRC/A_GRE/agre_serv.c												1.4
+==============================================================================
+1. 날  짜 : 2009.07.20(월)
+2. 작성자 : 이동환
+3. 내  용 :
+    "ADD A11 TIMER FLOW"
+4. 파  일 :
+	./SRC/A_RP/arp_func.c												1.12
+	./SRC/A_RP/arp_init.c												1.3
+	./SRC/A_RP/arp_main.c												1.11
+	./SRC/A_RP/arp_serv.c												1.11
+	./INC/call_api.h													1.6
+==============================================================================
+1. 날  짜 : 2009.07.20(월)
+2. 작성자 : 이동환
+3. 내  용 :
+    "A11 정보 추가"
+4. 파  일 :
+    ./INC/Analyze_Ext_Abs.h												1.11
+	./INC/mmdb_psess.h													1.7
+	./LIBSRC/ANZ_LIB/Analyze_Inf11.c									1.11
+==============================================================================
+1. 날  짜 : 2009.07.19(일)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"타이머 업데이트 및 콜스탑 메세지 처리"
+4. 파  일 :
+	./SRC/A_CALL/call_main.c 											1.19
+	./SRC/A_IM/im_main.c 												1.7
+	./SRC/A_VT/vt_main.c 												1.14
+	./SRC/CI_LOG/ci_log_main.c 											1.11
+==============================================================================
+1. 날  짜 : 2009.07.17(금)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"CALL_STOP_NUM 메세지 처리"
+4. 파  일 :
+	./SRC/A_CALL/call_init.c 											1.10
+	./SRC/A_CALL/call_main.c 											1.18
+	./SRC/A_IM/im_main.c 												1.6
+	./SRC/A_MSRPT/msrpt_api.h 											1.4
+	./SRC/A_SIPT/sipt_api.h 											1.5
+	./SRC/A_TCP/tcp_sess.h 												1.6
+	./SRC/A_VT/vt_main.c 												1.13
+==============================================================================
+1. 날  짜 : 2009.07.16(금)
+2. 작성자 : 박한진
+3. 내  용 :
+	"CHSMD _NO_HPLOG 적용하여 hplog 파일의 존재 여부 평가 테스트로 변경"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_hw.c												1.13
+																		1.14
+	./SRC/CHSMD/Makefile												1.4
+==============================================================================
+1. 날  짜 : 2009.07.17(목)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"A_CALL 재시작 할때 포인터를 복구하도록 offset 추가"
+4. 파  일 :
+	./INC/call_api.h 													1.5
+	./SRC/A_CALL/call_init.c 											1.8
+																		1.9
+	./SRC/A_CALL/call_main.c 											1.17
+==============================================================================
+1. 날  짜 : 2009.07.17(목)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"Sh, Rf 구간 메세지 추가"
+4. 파  일 :
+	./INC/define.h 														1.8
+	./INC/Analyze_Ext_Abs.h 											1.10
+	./LIBSRC/ANZ_LIB/Analyze_Inf11.c 									1.10
+	./SRC/A_DIAMETER/diameter_func.c 									1.11
+	./SRC/A_DIAMETER/diameter_main.c 									1.8
+==============================================================================
+1. 날  짜 : 2009.07.16(목)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"ADD PROCESS FOR L4_PHONE_ETC"
+4. 파  일 :
+	./SRC/A_CALL/call_main.c 											1.15
+																		1.16
+	./SRC/A_CALL/call_init.c											1.7
+==============================================================================
+1. 날  짜 : 2009.07.15(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"set_version 위치 및 Plastform Type 변경"
+4. 파  일 :
+	./SRC/A_2G/a2g_main.c												1.4
+	./SRC/A_EMS/ems_main.c												1.3
+	./SRC/A_FB/fb_main.c												1.4
+	./SRC/A_FV/fv_main.c												1.4
+	./SRC/A_IV/Makefile													1.4
+	./SRC/A_IV/pciv_api.h												1.3
+	./SRC/A_IV/pciv_func.c												1.3
+	./SRC/A_IV/pciv_init.c												1.3
+	./SRC/A_IV/pciv_main.c												1.3
+	./SRC/A_JAVA/java_main.c											1.4
+	./SRC/A_JNC/Makefile												1.4
+	./SRC/A_JNC/jnc_func.c												1.3
+	./SRC/A_JNC/jnc_main.c												1.3
+	./SRC/A_JNC/jnc_util.c												1.4
+	./SRC/A_MSRPM/msrpm_main.c											1.3
+	./SRC/A_SCTP/sctp_main.c											1.3
+	./SRC/A_SIPD/sip_api.h												1.4
+	./SRC/A_SIPD/sip_main.c												1.6
+	./SRC/A_SIPD/sip_util.c												1.4
+	./SRC/A_SIPM/sipm_main.c											1.3
+	./SRC/A_VOD/vod_head.h												1.3
+	./SRC/A_VOD/vod_main.c												1.4
+	./SRC/A_VOD/vod_sess.c												1.4
+	./SRC/A_VT/vt_main.c												1.1
+	./SRC/A_WAP20/wap20_main.c											1.4
+	./SRC/A_WIDGET/widget_main.c										1.3
+	./SRC/A_WIPI/wipi_main.c											1.4
+	./SRC/A_XCAP/xcap_main.c											1.5
+	./SRC/CAPD_NEW/capd_main.c											1.8
+	./SRC/CI_LOG/ci_log_func.c											1.5
+	./SRC/CI_LOG/ci_log_main.c											1.10
+==============================================================================
+1. 날  짜 : 2009.07.15(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"ADD vRADIUSTimerReConstruct()"
+4. 파  일 :
+	./SRC/A_RADIUS/radius_api.h 										1.5
+	./SRC/A_RADIUS/radius_func.c 										1.10
+	./SRC/A_RADIUS/radius_init.c 										1.4
+	./SRC/A_RADIUS/radius_main.c 										1.5
+==============================================================================
+1. 날  짜 : 2009.07.15(수)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_SIPT vSIPTimerReConstruct 추가"
+4. 파  일 :
+	./SRC/A_SIPT/sipt_api.h												1.4
+	./SRC/A_SIPT/sipt_init.c											1.5
+==============================================================================
+1. 날  짜 : 2009.07.15(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"ADD vMSRPTimerReConstruct()"
+4. 파  일 :
+	./SRC/A_MSRPT/msrpt_api.h											1.3
+	./SRC/A_MSRPT/msrpt_func.c											1.2
+	./SRC/A_MSRPT/msrpt_init.c											1.4
+	./SRC/A_MSRPT/msrpt_main.c											1.4
+==============================================================================
+1. 날  짜 : 2009.07.15(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"ADD vIMSESSTimerReConstruct()"
+4. 파  일 :
+	./INC/im_api.h														1.3
+	./SRC/A_IM/im_init.c												1.5
+	./SRC/A_IM/im_main.c												1.5
+==============================================================================
+1. 날  짜 : 2009.07.15(수)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_TCP vTCPTimerReConstruct 추가"
+4. 파  일 :
+	./INC/tcp_api.h														1.6
+	./SRC/A_TCP/tcp_init.c												1.9
+==============================================================================
+1. 날  짜 : 2009.07.15(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"ADD vDIATRANSTimerReConstruct()"
+4. 파  일 :
+	./SRC/A_DIAMETER/diameter_func.c                                    1.10
+	./SRC/A_DIAMETER/diameter_hash.h                                    1.4
+	./SRC/A_DIAMETER/diameter_init.c                                    1.7
+==============================================================================
+1. 날  짜 : 2009.07.15(수)
+2. 작성자 : 권상득
+3. 내  용 :
+	"A_VT vVTTimerReConstruct 추가"
+4. 파  일 :
+	./SRC/A_VT/vt_init.c												1.7
+																		1.8
+	./INC/vt_api.h														1.2
+																		1.3
+==============================================================================
+1. 날  짜 : 2009.07.15(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"ADD vCALLTimerReConstruct()"
+	"ADD DIAL-UP ACCESS PROCESS"
+4. 파  일 :
+	./INC/call_api.h													1.4
+	./SRC/A_CALL/call_init.c											1.6
+	./SRC/A_CALL/call_main.c											1.14
+==============================================================================
+1. 날  짜 : 2009.07.15(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"ADD DIAL-UP ACCESS FILTER"
+4. 파  일 :
+	./SRC/PRE_A/pre_a_main.c											1.18
+==============================================================================
+1. 날  짜 : 2009.07.15(수)
+2. 작성자 : 권상득
+3. 내  용 :
+	"PRE_A vIPFRAGTimerReConstruct 추가"
+4. 파  일 :
+	./SRC/PRE_A/pre_a_init.c											1.14
+																		1.15
+	./INC/pre_a_api.h													1.8
+============================================================================
+1. 날  짜 : 2009.07.14(화)
+2. 작성자 : 박한진
+3. 내  용 :
+	"gen_info에 ETCStat 추가"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.17
+============================================================================
+1. 날  짜 : 2009.07.13(월)
+2. 작성자 : 박한진
+3. 내  용 :
+	"MID-FLT-SVC 메세지에 L4_FTP, APP_FTP 항목 추가"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.17
+============================================================================
+1. 날  짜 : 2009.07.10(금)
+2. 작성자 : 박한진
+3. 내  용 :
+	"nifo 로그 1분 주기로 로그 남기도록 수정"
+4. 파  일 :
+	./SRC/QMON/qmon_main.c												1.8
+																		1.9
+==============================================================================
+1. 날  짜 : 2009.07.03(금)
+2. 작성자 : 박한진
+3. 내  용 :
+	"RP에 S_MSGQ_A_GRE 추가"
+4. 파  일 :
+	./INC/PLAT/rsc_list.h												1.8
+==============================================================================
+1. 날  짜 : 2009.07.03(금)
+2. 작성자 : 박한진
+3. 내  용 :
+	"DIS-NTAF-PRC 명령어에 버전 정보 표시 수정"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_mmc_func.c										1.5
+==============================================================================
+1. 날  짜 : 2009.07.03(금)
+2. 작성자 : 박한진
+3. 내  용 :
+	"taf nifo에 tEventUpTime 배열 수정"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_func.c											1.5
+	./INC/taf_shm2.h													1.8
+==============================================================================
+1. 날  짜 : 2009.07.02(목)
+2. 작성자 : 박한진
+3. 내  용 :
+	"FILTER MNIP 2000 개 확장"
+4. 파  일 :
+	./INC/define.h														1.7
+==============================================================================
+1. 날  짜 : 2009.07.02(목)
+2. 작성자 : 박한진
+3. 내  용 :
+	"DisMC 명령 수정"
+4. 파  일 :
+	./SRC/TIFB/DisMC.c													1.7
+	./SRC/TIFB/KillMC.c													1.7
+	./SRC/TIFB/StartMC.c												1.5
+==============================================================================
+1. 날  짜 : 2009.07.02(목)
+2. 작성자 : 박한진
+3. 내  용 :
+	"DISK 상태 감시 수정"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_disk.c											1.6
+==============================================================================
+1. 날  짜 : 2009.07.02(목)
+2. 작성자 : 박한진
+3. 내  용 :
+	"DISK 상태 감시 4개까지 확장"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_api.h												1.2
+	./SRC/CHSMD/chsmd_disk.c											1.2
+	./SRC/CHSMD/chsmd_init.c											1.4
+	./SRC/CHSMD/chsmd_main.c											1.5
+	./DATA/SYS_CFG														1.2
+	./INC/taf_shm.h														1.6
+	./INC/taf_shm2.h													1.7
+==============================================================================
+1. 날  짜 : 2009.06.30(화)
+2. 작성자 : 박한진
+3. 내  용 :
+	"DAG 카드 상태 감시 추가"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_hw.c												1.4
+==============================================================================
+1. 날  짜 : 2009.06.30(화)
+2. 작성자 : 박한진
+3. 내  용 :
+	"TAF 프로세스 갯수 32->40 수정"
+4. 파  일 :
+	./INC/taf_shm2.h													1.5
+==============================================================================
+1. 날  짜 : 2009.06.29(월)
+2. 작성자 : 박한진
+3. 내  용 :
+	"nifo_init return 값 체크 추가"
+4. 파  일 :
+	./SRC/A_2G/a2g_init.c												1.2
+	./SRC/A_CALL/call_init.c											1.5
+	./SRC/A_DIAMETER/diameter_init.c									1.5
+	./SRC/A_EMS/ems_init.c												1.2
+	./SRC/A_FB/fb_init.c												1.2
+	./SRC/A_FTP/ftp_init.c												1.3
+	./SRC/A_FV/fv_init.c												1.2
+	./SRC/A_HTTP/http_init.c											1.4
+	./SRC/A_IM/im_init.c												1.3
+	./SRC/A_IV/pciv_init.c												1.2
+	./SRC/A_JAVA/java_init.c											1.2
+	./SRC/A_JNC/jnc_init.c												1.2
+	./SRC/A_MMS/mms_init.c												1.2
+	./SRC/A_MSRPM/msrpm_init.c											1.2
+	./SRC/A_MSRPT/msrpt_init.c											1.3
+	./SRC/A_ONLINE/online_init.c										1.2
+	./SRC/A_RADIUS/radius_init.c										1.2
+	./SRC/A_RP/arp_main.c												1.5
+	./SRC/A_SCTP/sctp_init.c											1.3
+	./SRC/A_SIPD/sip_init.c												1.3
+	./SRC/A_SIPM/sipm_init.c											1.2
+	./SRC/A_SIPT/sipt_init.c											1.3
+	./SRC/A_TCP/tcp_init.c												1.7
+	./SRC/A_VOD/vod_init.c												1.2
+	./SRC/A_VT/vt_init.c												1.5
+	./SRC/A_WAP20/wap20_init.c											1.2
+	./SRC/A_WIDGET/widget_init.c										1.2
+	./SRC/A_WIPI/wipi_init.c											1.2
+	./SRC/A_XCAP/xcap_init.c											1.3
+	./SRC/CAPD_NEW/capd_main.c											1.6
+	./SRC/CI_LOG/ci_log_init.c											1.3
+	./SRC/MEM/mem_init.c												1.2
+	./SRC/PRE_A/pre_a_init.c											1.11
+	./SRC/QMON/qmon_main.c												1.7
+	./SRC/S_MNG/flt_ctrl_main.c											1.4
+==============================================================================
+1. 날  짜 : 2009.06.28(일)
+2. 작성자 : 박한진
+3. 내  용 :
+	"NMIP Netmask 변경 "
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.13
+==============================================================================
+1. 날  짜 : 2009.06.28(일)
+2. 작성자 : 박한진
+3. 내  용 :
+	"SvcUrl_Tbl 삭제 "
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c											1.12
+==============================================================================
+1. 날  짜 : 2009.06.28(일)
+2. 작성자 : 박한진
+3. 내  용 :
+	"필터 파일 IP 출력 수정"
+4. 파  일 :
+	./SRC/S_MNG/flt_ctrl_func.c 										1.11
+==============================================================================
+1. 날  짜 : 2009.06.28(일)
+2. 작성자 : 박한진
+3. 내  용 :
+	"메시지 length 에 대한 type 변경 USHORT->UINT"
+4. 파  일 :
+	./INC/taf_svc.h 													1.4
+==============================================================================
+1. 날  짜 : 2009.06.26(목)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"프로세스 분배 UP/DOWN 보고 결정"
+4. 파  일 :
+	./INC/debug.h 														1.3
+	./INC/logutil.h 													1.3
+	./SRC/A_TCP/tcp_func.c 												1.4
+	./SRC/A_TCP/tcp_main.c 												1.8
+	./SRC/A_TCP/tcp_msgq.c 												1.2
+	./SRC/A_VT/vt_main.c 												1.9
+	./SRC/CI_LOG/ci_log_main.c 											1.3
+	./SRC/MEM/mem_main.c 												1.2
+==============================================================================
+1. 날  짜 : 2009.06.24(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"st_NTAF 구조체 8bytes alignment 수정"
+4. 파  일 :
+	./INC/taf_shm2.h													1.3
+==============================================================================
+1. 날  짜 : 2009.06.22(월)
+2. 작성자 : 박한진
+3. 내  용 :
+	"MID_FLT_SCTP 파일 수정"
+4. 파  일 :
+	./INC/filter.h														1.7
+	./SRC/S_MNG/flt_ctrl_func.c											1.9
+==============================================================================
+1. 날  짜 : 2009.06.22(월)
+2. 작성자 : 박한진
+3. 내  용 :
+	"SID_FLT/MID_FLT_SCTPID 삭제"
+4. 파  일 :
+	./INC/dqms_define.h													1.9
+	./INC/filter.h														1.6
+	./SRC/S_MNG/flt_ctrl_api.h											1.5
+	./SRC/S_MNG/flt_ctrl_func.c											1.8
+==============================================================================
+1. 날  짜 : 2009.06.21(일)
+2. 작성자 : 박한진
+3. 내  용 :
+	"SID_FLT/MID_FLT_SCTP 메시지 처리"
+4. 파  일 :
+	./INC/define.h														1.6
+	./INC/filter.h														1.5
+	./SRC/S_MNG/flt_ctrl_api.h											1.4
+	./SRC/S_MNG/flt_ctrl_func.c											1.7
+==============================================================================
+1. 날  짜 : 2009.06.21(일)
+2. 작성자 : 박한진
+3. 내  용 :
+	"SID_FLT/MID_FLT_SVC 메시지 처리"
+4. 파  일 :
+	./INC/define.h														1.5
+	./INC/filter.h														1.4
+	./SRC/S_MNG/flt_ctrl_api.h											1.3
+	./SRC/S_MNG/flt_ctrl_func.c											1.6
+	./SRC/S_MNG/flt_ctrl_log.c											1.5
+==============================================================================
+1. 날  짜 : 2009.06.21(일)
+2. 작성자 : 박한진
+3. 내  용 :
+	"MID_FLT_SCTP 추가"
+4. 파  일 :
+	./INC/dqms_define.h													1.8
+==============================================================================
+1. 날  짜 : 2009.06.21(일)
+2. 작성자 : 박한진
+3. 내  용 :
+	"SID_CHKREQ, SID_CHKRES, MID_DIS_NTAF_CONF 추가"
+4. 파  일 :
+	./INC/dqms_define.h													1.7
+	./SRC/CI_SVC/ci_svc_msgq.c											1.4
+	./SRC/CI_SVC/ci_svc_sock.c											1.4
+	./SRC/S_MNG/flt_ctrl_func.c											1.5
+==============================================================================
+1. 날  짜 : 2009.06.20(토)
+2. 작성자 : 박한진
+3. 내  용 :
+	"SID_CHKREQ, SID_CHKRES, MID_FLT_FTP, MID_FLT_SVCURL, MID_FLT_ROAM 삭제"
+	"ADD-FLT-CLT, DEL-FLT-CLT, DIS-FLT-CLT 명령어 추가"
+4. 파  일 :
+	./INC/define.h														1.4
+	./INC/dqms_define.h													1.6
+	./INC/filter.h														1.3
+	./INC/ipc_define.h													1.2
+	./SRC/CI_SVC/ci_svc_msgq.c											1.3
+	./SRC/CI_SVC/ci_svc_sock.c											1.3
+	./SRC/S_MNG/flt_ctrl_api.h											1.2
+	./SRC/S_MNG/flt_ctrl_def.h											1.2
+	./SRC/S_MNG/flt_ctrl_extern.h										1.2
+	./SRC/S_MNG/flt_ctrl_func.c											1.4
+	./SRC/S_MNG/flt_ctrl_global.h										1.4
+	./SRC/S_MNG/flt_ctrl_init.c											1.4
+	./SRC/S_MNG/flt_ctrl_log.c											1.4
+	./SRC/S_MNG/flt_ctrl_main.c											1.2
+	./SRC/S_MNG/Makefile												1.8
+	./SRC/S_MNG/flt_ctrl_lib.c											DELETED
+==============================================================================
+1. 날  짜 : 2009.06.20(토)
+2. 작성자 : 박한진
+3. 내  용 :
+	"소스 정리"
+4. 파  일 :
+	./INC/taf_mmc.h														1.2
+	./LIBSRC/SHMUTIL_LIB/shmutil.c										1.4
+==============================================================================
+1. 날  짜 : 2009.06.20(토)
+2. 작성자 : 박한진
+3. 내  용 :
+	"trace 구조체 common_stg.h 중복 처리"
+4. 파  일 :
+	./INC/filter.h														1.2
+==============================================================================
+1. 날  짜 : 2009.06.17(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"TRAFFIC 통계 관련 SHARED MEMORY 구조 변경"
+4. 파  일 :
+	./INC/taf_stat.h													1.5
+	./SRC/ALMD/almd_main.c												1.9
+==============================================================================
+1. 날  짜 : 2009.06.16(화)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"로그 변경에 따른 수정, 멀티프로세스 MSGQ 초기화 수정"
+4. 파  일 :
+	./INC/http_api.h 													1.3
+	./INC/utillib.h 													1.2
+	./LIBSRC/UTILLIB/Makefile 											1.4
+	./SRC/A_CALL/Makefile 												1.3
+	./SRC/A_CALL/call_init.c 											1.4
+	./SRC/A_CALL/call_main.c 											1.8
+	./SRC/A_DIAMETER/Makefile 											1.4
+	./SRC/A_DIAMETER/diameter_func.c 									1.6
+	./SRC/A_HTTP/http_func.c 											1.2
+	./SRC/A_HTTP/http_util.c 											1.2
+	./SRC/A_RADIUS/Makefile 											1.2
+	./SRC/A_RADIUS/radius_api.h 										1.3
+	./SRC/A_RADIUS/radius_func.c 										1.4
+	./SRC/A_TCP/Makefile 												1.4
+	./SRC/A_TCP/tcp_util.c 												1.4
+	./SRC/PRE_A/Makefile 												1.4
+	./SRC/PRE_A/pre_a_main.c 											1.4
+	./SRC/PRE_A/pre_a_util.c 											1.4
+==============================================================================
+1. 날  짜 : 2009.06.15(월)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"멀티 프로세스 지원"
+4. 파  일 :
+	./INC/taf_names.h 													1.4
+	./INC/tcp_api.h 													1.3
+	./SRC/A_HTTP/http_init.c 											1.2
+	./SRC/A_HTTP/http_main.c 											1.2
+	./SRC/A_TCP/tcp_func.c 												1.3
+	./SRC/A_TCP/tcp_init.c 												1.3
+	./SRC/A_TCP/tcp_main.c 												1.5
+	./SRC/A_TCP/tcp_util.c 												1.2
+	./SRC/PRE_A/pre_a_init.c 											1.2
+	./SRC/PRE_A/pre_a_main.c 											1.2
+==============================================================================
+TAG NAME : DQMS_0_0_4_20090614
+TAG DESC : 멀티프로세스 적용 전
+TAG USER : 윤진석
+==============================================================================
+1. 날  짜 : 2009.06.13(토)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"ADD CI_LOG Process"
+4. 파  일 :
+	./INC/taf_define.h 													1.3
+	./SRC/CI_LOG/Makefile 												1.2
+	./SRC/CI_LOG/ci_log_extern.h 										1.2
+	./SRC/CI_LOG/ci_log_func.c 											1.2
+	./SRC/CI_LOG/ci_log_global.h 										1.2
+	./SRC/CI_LOG/ci_log_init.c 											1.2
+	./SRC/CI_LOG/ci_log_init_api.h 										1.2
+	./SRC/CI_LOG/ci_log_main.c 											1.2
+	./SRC/CI_LOG/ci_log_sock.c 											1.2
+	./SRC/CI_LOG/ci_log_util.c 											1.2
+==============================================================================
+1. 날  짜 : 2009.06.12(금)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"common_stg.h의 LOG_COMMON 변경으로 인한 컴파일 오류 수정"
+4. 파  일 :
+	./SRC/A_2G/a2g_main.c 												1.2
+	./SRC/A_FB/fb_main.c 												1.2
+	./SRC/A_FV/fv_main.c 												1.2
+	./SRC/A_IV/pciv_func.c 												1.2
+	./SRC/A_JAVA/java_main.c 											1.2
+	./SRC/A_JNC/jnc_func.c 												1.2
+	./SRC/A_JNC/jnc_util.c 												1.2
+	./SRC/A_MMS/mms_main.c 												1.2
+	./SRC/A_VOD/vod_main.c 												1.2
+	./SRC/A_VOD/vod_sess.c 												1.2
+	./SRC/A_WAP20/wap20_main.c 											1.2
+	./SRC/A_WIPI/wipi_main.c 											1.2
+	./SRC/CILOG/cilog_log.c 											1.2
+==============================================================================
+1. 날  짜 : 2009.06.12(금)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"ADD A_VT Process"
+4. 파  일 :
+	./SRC/A_VT/vt_main.c 												1.3
+==============================================================================
+TAG NAME : DQMS_0_0_3_20090611
+TAG DESC : watas.h --> common_stg.h, st_MsgQ --> st_MsgQ_NIFO
+TAG USER : 윤진석
+==============================================================================
+1. 날  짜 : 2009.06.10(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"QMON이 NIFO 전체노드와 현재 사용중인 노드 정보를 수집해 NIFO에 상태 반영 기능"
+
+4. 파  일 :
+	./INC/taf_define.h													1.2
+	./INC/PLAT/rsc_list.h												1.3
+	./SRC/QMON/Makefile													1.5
+	./SRC/QMON/qmon_main.c												1.4
+==============================================================================
+1. 날  짜 : 2009.06.10(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"FIDB 구조체 변경에 따른 소스 정리"
+4. 파  일 :
+	./SRC/CHSMD/chsmd_func.c 											1.3
+==============================================================================
+1. 날  짜 : 2009.06.10(수)
+2. 작성자 : 박한진
+3. 내  용 :
+	"FIDB 구조체 변경"
+4. 파  일 :
+	./INC/taf_shm2.h 													1.2
+==============================================================================
+1. 날  짜 : 2009.06.09(화)
+2. 작성자 : 윤진석
+3. 내  용 :
+	"A_TCP CALL 정리 루틴 추가"
+4. 파  일 :
+	./LIBSRC/CGALIB/watas.pstg 											1.7
+	./SRC/A_TCP/Makefile												1.2
+	./SRC/A_TCP/tcp_func.c												1.2
+	./SRC/A_TCP/tcp_init.c												1.2
+	./SRC/A_TCP/tcp_main.c												1.2
+	./SRC/A_TCP/tcp_sess.c												1.2
+	./SRC/A_TCP/tcp_sess.h												1.2
+==============================================================================
+1. 날  짜 : 2009.06.09(화)
+2. 작성자 : 박한진
+3. 내  용 :
+	"Load 통계 수정"
+4. 파  일 :
+	./INC/dqms_define.h													1.5
+	./INC/taf_shm.h														1.2
+	./INC/taf_stat.h													1.2
+	./INC/taf_svc.h														1.3
+	./LIBSRC/INITSHM_LIB/InitShm.c										1.4
+	./SRC/ALMD/almd_main.c												1.4
+==============================================================================
+TAG NAME : TAG_0_0_0_2_20080102
+TAG DESC : 운용관리 블럭이 watas.h 공통 헤더파일을 참조하게 수정 함
+TAG USER : 윤진석
+==============================================================================
+TAG NAME : TAG_0_0_0_1_20080102
+TAG DESC : 운용관리 블럭이 따로 정의된 헤더파일을 참조함
+TAG USER : 윤진석
+==============================================================================
+1. 날  짜 : 2009.06.04(목)
+2. 작성자 : 권상득
+3. 내  용 :
+	"timerN : invoke시 다른 timer를 삭제하면 발생하는 버그 수정"
+4. 파  일 :
+	./LIBSRC/CGALIB/timerN/timerN.c										1.2
+==============================================================================
+1. 날  짜 : 2009.05.27(수)
+2. 작성자 : 윤진석
+3. 내  용 :
+	WATAS 프로세스 적용
+	A_SCTP 추가
+4. 파  일 :
+	./INC/Analyze_Ext_Abs.h												1.2
+	./INC/Errcode.h														1.2
+	./INC/dqms_define.h													1.2
+	./INC/logutil.h														1.2
+	./INC/sctp_head.h													1.2
+	./INC/taf_names.h													1.2
+	./LIBSRC/Makefile													1.2
+	./LIBSRC/ANZ_LIB/Analyze_Inf11.c									1.2
+	./LIBSRC/CGALIB/watas.pstg											1.2
+	./LIBSRC/SCTPSTACK_LIB/Makefile										1.1
+	./LIBSRC/UTILLIB/Makefile											1.2
+	./SRC/README.txt													1.2
+	./SRC/ALMD/Makefile													1.2
+	./SRC/ALMD/almd_init.c												1.2
+	./SRC/ALMD/almd_main.c												1.2
+	./SRC/A_SCTP/Makefile												1.2
+	./SRC/A_SCTP/sctp_func.c											1.2
+	./SRC/A_SCTP/sctp_init.c											1.2
+	./SRC/A_SCTP/sctp_main.c											1.2
+	./SRC/A_SCTP/sctp_serv.c											1.2
+==============================================================================
+1. 날  짜 : 2009.05.20(수)
+2. 작성자 : 박한진
+3. 내  용 :
+    HISTORY.TXT 최초 작성
+4. 파  일 :
+    HISTORY.TXT
+==============================================================================

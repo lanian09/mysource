@@ -1,0 +1,812 @@
+##1. TAG 붙이는 법
+> cvs tag TAG_NAME
+
+# 2. HISTORY.TXT 수정하는 법
+> cvs admin -l HISTORY.TXT
+...<수정>
+> cvs commit -m "log" HISTORY.TXT
+############################################################################
+============================================================================
+1. DATE   : 2011.09.07 (WED)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* UTIL
+	  - PrintTIME 추가
+4. FILES  :
+	/cvs/UPST_LIB/SRC/UTIL/utillib.c									1.2
+	/cvs/UPST_LIB/INC/utillib.h											1.4
+============================================================================
+1. DATE   : 2011.09.07 (WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :	
+	* Makefile
+	  - ANZ_LIB 추가 
+4. FILES  :
+	/cvs/UPST_LIB/SRC/Makefile											1.4
+============================================================================
+1. DATE   : 2011.09.05 (MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :	
+	* CIFO
+	  - error log 위치 정보 추가
+	* TIMERN
+	  - debug log 는 DEBUG 처리( make debug 로 컴파일시에만 작동..)
+4. FILES  :
+	/cvs/UPST_LIB/SRC/CIFO/cifo.c										1.4
+	/cvs/UPST_LIB/SRC/TIMERN/hashg.c									1.3
+============================================================================
+1. DATE   : 2011.09.04 (SUN)
+2. AUTHOR : Hohyun Baek
+3. LOG    :	
+	* INC/dblib.h
+	  - XXXX_XXXX_PERIOD enum 추가	(FSTAT, S_MNG 에서 사용)
+4. FILES  :
+	/cvs/UPST_LIB/INC/dblib.h											1.4
+============================================================================
+1. DATE   : 2011.09.01 (THU)
+2. AUTHOR : Hyungsek Son
+3. LOG    :	
+	* INC/define.h
+	  - S_MNG 에서 사용되는 define 변수 정의 -> 다른 곳에서도 사용되는 상수들
+	* INC/loglib.h
+	  - 모든 api를 extern 처리
+	  - log_print() 에 format checker 추가 :: 이에 따른 소스 수정 불가피 !!
+	* INC/verlib.h
+	  - 모든 api를 extern 처리
+	* NSOCK
+	  - warning message type 변경
+	* SRC/Makefile
+	  - ANZ_LIB 제거. 누가 넣어 놓은 겁니까...혹시 ANZ_LIB 디렉토리를 빼놓으신 건가요
+		어쨌든 Makefile 에만 있기에 제거 합니다.
+4. FILES  :
+	/cvs/UPST_LIB/INC/define.h											1.3
+	/cvs/UPST_LIB/INC/loglib.h											1.5
+	/cvs/UPST_LIB/INC/verlib.h											1.6
+	/cvs/UPST_LIB/SRC/NSOCK/nsock.c										1.3
+	/cvs/UPST_LIB/SRC/Makefile											1.3
+============================================================================
+1. DATE   : 2011.08.31 (WED)
+2. AUTHOR : Hohyun Baek
+3. LOG    :	
+	* INC
+	  - SIDB_DATE_LEN 중복 제거
+4. FILES  :
+	/cvs/UPST_LIB/INC/nsocklib.h										1.13
+============================================================================
+1. DATE   : 2011.08.31 (WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :	
+	* INC/commdef.h
+	  - "#define _FREE free" 
+	* CIFO, HASHO, NIFO, TIMERN
+	  - print 부분 ifdef DEBUG 로 처리
+	  - debug 활성은 make debug 로 컴파일시 활성화됨
+	* VERSION
+	  - 테스트로 version 값 세팅하는 부분 주석처리 해놨던 것 해제
+4. FILES  :
+	/cvs/UPST_LIB/INC/commdef.h											1.3
+	/cvs/UPST_LIB/SRC/CIFO/Makefile										1.2
+	/cvs/UPST_LIB/SRC/CIFO/cifo.c										1.3
+	/cvs/UPST_LIB/SRC/GIFO/Makefile										1.2
+	/cvs/UPST_LIB/SRC/GIFO/gifo.c										1.3
+	/cvs/UPST_LIB/SRC/HASHO/Makefile									1.2
+	/cvs/UPST_LIB/SRC/HASHO/memg.c										1.2
+	/cvs/UPST_LIB/SRC/NIFO/Makefile										1.2
+	/cvs/UPST_LIB/SRC/NIFO/mems.c										1.3
+	/cvs/UPST_LIB/SRC/NIFO/nifo.c										1.3
+	/cvs/UPST_LIB/SRC/TIMERN/hashg.c									1.2
+	/cvs/UPST_LIB/SRC/TIMERN/timerN.c									1.2
+	/cvs/UPST_LIB/SRC/VERSION/version.c									1.5
+============================================================================
+1. DATE   : 2011.08.30 (TUE)
+2. AUTHOR : Hohyun Baek
+3. LOG    :	
+	* INC
+	  - FREE define 삭제, TAM/SRC/SNMPIF 에서 
+		/usr/include/net-snmp/library/snmp_impl.h 와 충돌
+4. FILES  :
+	/cvs/UPST_LIB/INC/commdef.h											1.2
+============================================================================
+1. DATE   : 2011.08.28 (SUN)
+2. AUTHOR : Hyungsek Son
+3. LOG    :	
+	* CIFO, GIFO, NIFO
+	  - FPRINTF 끝에, 줄바꿈 문자 추가
+	* VERSION
+	  - DEBUG mode 추가 => fprintf
+4. FILES  :
+	/cvs/UPST_LIB/SRC/CIFO/cifo.c										1.2
+	/cvs/UPST_LIB/SRC/GIFO/gifo.c										1.2
+	/cvs/UPST_LIB/SRC/NIFO/mems.c										1.2
+	/cvs/UPST_LIB/SRC/NIFO/nifo.c										1.2
+	/cvs/UPST_LIB/SRC/VERSION/Makefile									1.2
+	/cvs/UPST_LIB/SRC/VERSION/version.c									1.4
+============================================================================
+1. DATE   : 2011.08.28 (SUN)
+2. AUTHOR : Hyungsek Son
+3. LOG    :	
+	* VERSION library
+	  - error code modified, 소문자 v를 대문자로 변경;;;;
+4. FILES  :
+	/cvs/UPST_LIB/INC/verlib.h											1.5
+	/cvs/UPST_LIB/SRC/VERSION/version.c									1.3
+============================================================================
+1. DATE   : 2011.08.28 (SUN)
+2. AUTHOR : Hyungsek Son
+3. LOG    :	
+	* VERSION library
+	  - error code define
+	  - return code 분류 :: 모두 -1 이었음.
+	  - version_remove 성공시 -1 리턴됨. 정상인지????? >>> 확인 바람.
+4. FILES  :
+	/cvs/UPST_LIB/INC/verlib.h											1.4
+	/cvs/UPST_LIB/SRC/VERSION/version.c									1.2
+============================================================================
+1. DATE   : 2011.08.24 (WED)
+2. AUTHOR : Hohyun Baek
+3. LOG    :	
+	* typedef.h
+	  - ifndef 수정 __TYPEDEF_H__ 하나로 통합
+4. FILES  :
+	/cvs/UPST_LIB/INC/typedef.h											1.3
+============================================================================
+1. DATE   : 2011.08.24 (WED)
+2. AUTHOR : Hohyun Baek
+3. LOG    :	
+	* typedef.h 통합
+	  - DQMS2/TAF/INC, TAM/INC 에 있는 typedef.h 내용을 LIB 쪽으로 통합
+	  - TAF, TAM 에 있는 typedef.h 삭제 필요
+4. FILES  :
+	/cvs/UPST_LIB/INC/typedef.h											1.2
+============================================================================
+1. DATE   : 2011.08.19 (FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :	
+	* shm_init 파라메터 수정 
+	  - shm_init 에서 두번째 파라메터인 구조체의 size를 받을 때, int type
+		에서 long type으로 변환. st_MonTotal size가 3.1G 를 넘어갔음.
+	  - 그에 따른 api 수정( int -> long )
+4. FILES  :
+	/cvs/UPST_LIB/INC/ipclib.h											1.4
+	/cvs/UPST_LIB/SRC/IPC/shm.c											1.2
+============================================================================
+1. DATE   : 2011.08.19 (FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :	
+	* UPST_LIB project를 별도로 생성
+	* CGA는 DQMS - 즉, Project Dependency 한 소스로 규정하여 LIB에서는 빠짐
+============================================================================
+1. DATE   : 2011.08.12 (FRI)
+2. AUTHOR : Hohyun Baek
+3. LOG    :	
+	* CGA
+	  - CGA 안에 있는 lex 라이브러리가 CGA 컴파일시 생성되는 common_stg.h 를
+		참조하도록 Makefile 수정
+	  - common_stg.pstg 안에 MAX_URL_LEN, MAX_URL_SIZE 를 원래대로 살리고
+		utillib.h 에서는 제거
+4. FILES  :
+	/cvs/LIB/LIBSRC/CGA/EMS/Makefile									1.2
+	/cvs/LIB/LIBSRC/CGA/FB/Makefile										1.2
+	/cvs/LIB/LIBSRC/CGA/FV/Makefile										1.2
+	/cvs/LIB/LIBSRC/CGA/HTTP/Makefile									1.2
+	/cvs/LIB/LIBSRC/CGA/MSRP/Makefile									1.2
+	/cvs/LIB/LIBSRC/CGA/PAGE/Makefile									1.2
+	/cvs/LIB/LIBSRC/CGA/RTSP/Makefile									1.2
+	/cvs/LIB/LIBSRC/CGA/SIP/Makefile									1.2
+	/cvs/LIB/LIBSRC/CGA/WIDGET/Makefile									1.2
+	/cvs/LIB/LIBSRC/CGA/XCAP/Makefile									1.2
+	/cvs/LIB/LIBSRC/CGA/common_stg.pstg									1.4
+	/cvs/LIB/INC/utillib.h												1.5
+============================================================================
+1. DATE   : 2011.08.09 (TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :	
+	* HASHO
+	  - file add
+4. FILES  :
+	/cvs/LIB/LIBSRC/HASHO/stHASHOINFO_Prt.c								1.1
+	/cvs/LIB/LIBSRC/HASHO/stHASHONODE_Prt.c								1.1
+============================================================================
+1. DATE   : 2011.08.09 (TUE)
+2. AUTHOR : Dongcheol Ham 
+3. LOG    :	
+	* INC
+	  - crTime delete 
+	* UTIL 
+	  - crTime delete 
+	/cvs/LIB/INC/utillib.h		              							1.4
+	/cvs/LIB/LIBSRC/UTIL/utillib.c										1.7
+============================================================================
+1. DATE   : 2011.08.08 (MON)
+2. AUTHOR : Hohyun Baek
+3. LOG    :	
+	* LIBSRC
+	  - LEX 삭제 하고 CGA 디렉토리 안에 생성
+	* CGA
+	  - LEX 파일도 같이 컴파일 하도록 Makefile 수정
+	* INC
+	  - LEX 헤더가 common_stg.h 를 사용하도록 수정
+	  - LEX 안에 Makefile 수정
+4. FILES  :
+	/cvs/LIB/INC/ems.h													1.2
+	/cvs/LIB/INC/fv.h													1.2
+	/cvs/LIB/INC/http.h													1.2
+	/cvs/LIB/INC/msrp.h													1.2
+	/cvs/LIB/INC/page.h													1.2
+	/cvs/LIB/INC/rtsp.h													1.2
+	/cvs/LIB/INC/sip.h													1.3
+	/cvs/LIB/INC/widget.h												1.2
+	/cvs/LIB/INC/xcap.h													1.2
+
+	/cvs/LIB/LIBSRC/CGA/Makefile										1.2
+	/cvs/LIB/LIBSRC/CGA/common_stg.pstg									1.3
+	/cvs/LIB/LIBSRC/Makefile											1.13
+
+	/cvs/LIB/LIBSRC/CGA/EMS/Makefile									1.1
+	/cvs/LIB/LIBSRC/CGA/EMS/emsreqbody.l								1.1
+	/cvs/LIB/LIBSRC/CGA/EMS/emsrespbody.l								1.1
+	/cvs/LIB/LIBSRC/CGA/FB/Makefile										1.1
+	/cvs/LIB/LIBSRC/CGA/FB/fb_min.l										1.1
+	/cvs/LIB/LIBSRC/CGA/FV/Makefile										1.1
+	/cvs/LIB/LIBSRC/CGA/FV/fv_type.l									1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/Makefile									1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/a2g_dn.l									1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/httpctype.l								1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/httpctypeinfo.l							1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/httphdrinfo.l								1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/httpheader.l								1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/httpheader.y								1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/httphost.l									1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/mms_from.l									1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/mms_from_dn.l								1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/mms_to.l									1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/mms_to_dn.l								1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/ssl.l										1.1
+	/cvs/LIB/LIBSRC/CGA/HTTP/vod_dn.l									1.1
+	/cvs/LIB/LIBSRC/CGA/MSRP/Makefile									1.1
+	/cvs/LIB/LIBSRC/CGA/MSRP/msrp.l										1.1
+	/cvs/LIB/LIBSRC/CGA/MSRP/msrp_min.l									1.1
+	/cvs/LIB/LIBSRC/CGA/MSRP/msrpheader.l								1.1
+	/cvs/LIB/LIBSRC/CGA/PAGE/Makefile									1.1
+	/cvs/LIB/LIBSRC/CGA/PAGE/page_js.l									1.1
+	/cvs/LIB/LIBSRC/CGA/RTSP/Makefile									1.1
+	/cvs/LIB/LIBSRC/CGA/RTSP/rtsp_reqhdr.l								1.1
+	/cvs/LIB/LIBSRC/CGA/RTSP/rtsp_requrl.l								1.1
+	/cvs/LIB/LIBSRC/CGA/RTSP/rtsp_resbody.l								1.1
+	/cvs/LIB/LIBSRC/CGA/RTSP/rtsp_reshdr.l								1.1
+	/cvs/LIB/LIBSRC/CGA/SIP/Makefile									1.1
+	/cvs/LIB/LIBSRC/CGA/SIP/sip.l										1.1
+	/cvs/LIB/LIBSRC/CGA/SIP/sip_clientip.l								1.1
+	/cvs/LIB/LIBSRC/CGA/SIP/sip_contentlen.l							1.1
+	/cvs/LIB/LIBSRC/CGA/SIP/sip_ctype.l									1.1
+	/cvs/LIB/LIBSRC/CGA/SIP/sip_invite.l								1.1
+	/cvs/LIB/LIBSRC/CGA/SIP/sip_min.l									1.1
+	/cvs/LIB/LIBSRC/CGA/SIP/sip_model.l									1.1
+	/cvs/LIB/LIBSRC/CGA/SIP/sip_service.l								1.1
+	/cvs/LIB/LIBSRC/CGA/SIP/sip_trans_key.l								1.1
+	/cvs/LIB/LIBSRC/CGA/SIP/sipheader.l									1.1
+	/cvs/LIB/LIBSRC/CGA/WIDGET/Makefile									1.1
+	/cvs/LIB/LIBSRC/CGA/WIDGET/widgetack.l								1.1
+	/cvs/LIB/LIBSRC/CGA/WIDGET/widgetmsgtype.l							1.1
+	/cvs/LIB/LIBSRC/CGA/XCAP/Makefile									1.1
+	/cvs/LIB/LIBSRC/CGA/XCAP/xcap_min.l									1.1
+============================================================================
+1. DATE   : 2011.08.05 (FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* TAF SOURCE 적용하면서 관련 내용 변경.
+	* FILE
+	  - get_block_num 추가
+	* CGA
+	  - common_stg 에서 SEQ_PROC, S_MSGQ, S_SSHM 정리
+	* UTIL
+	  - util_getabsurl() 과 MAX_URL_LEN 을 disable 시킴
+	  - util_crTime 함수 disable 시킴. 이유) 변수 미선언, 컴파일 안됨.
+	  - utillib.h 를 UTIL 안에서 제거함. INC 밑에 있는 것을 사용하도록 수정
+4. FILES  :
+	/cvs/LIB/INC/filelib.h												1.8
+	/cvs/LIB/INC/utillib.h												1.2
+	/cvs/LIB/LIBSRC/CGA/common_stg.pstg									1.2
+	/cvs/LIB/LIBSRC/FILE/file_mcinit.c									1.5
+	/cvs/LIB/LIBSRC/HASHO/Makefile										1.2
+	/cvs/LIB/LIBSRC/UTIL/Makefile										1.5
+	/cvs/LIB/LIBSRC/UTIL/utillib.c										1.5
+	/cvs/LIB/LIBSRC/UTIL/utillib.h										remove
+============================================================================
+1. DATE   : 2011.08.03 (WED)
+2. AUTHOR : Dongcheol Ham 
+3. LOG    :
+	* UTIL 
+	  - util_crTime 함수 추가
+4. FILES  :
+	/cvs/LIB/LLIBSRC/UTIL/utillib.c                                     1.2
+	/cvs/LIB/LLIBSRC/UTIL/utillib.h                                     1.1
+============================================================================
+1. DATE   : 2011.08.03 (WED)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* TIMERN
+	  - FSTAT 에서 libSTGtimerN, libhashg 사용을 하지 않기 위해 파일 추가
+4. FILES  :
+	/cvs/LIB/LIBSRC/TIMERN/Makefile										1.2
+	/cvs/LIB/LIBSRC/TIMERN/stTIMERNKEY_Prt.c							1.1
+	/cvs/LIB/LIBSRC/TIMERN/stTIMERNINFO_Prt.c							1.1
+============================================================================
+1. DATE   : 2011.08.03 (WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC
+	  - hasho library 관련 header added : memg.h hasho.h
+	  - tiemrN library 관련 header added : hashg.h timerN.h
+	* LIB/LIBSRC/Makefile
+	  - HASHO, TIMERN, CGA 적용
+	* CGA, HASHO, TIMERN
+	  - 각각 init
+4. FILES  :
+	/cvs/LIB/INC/hashg.h												1.1
+	/cvs/LIB/INC/hasho.h												1.1
+	/cvs/LIB/INC/memg.h													1.1
+	/cvs/LIB/INC/timerN.h												1.1
+	/cvs/LIB/LIBSRC/Makefile											1.2
+	/cvs/LIB/LIBSRC/CGA/*												1.1
+	/cvs/LIB/LIBSRC/HASHO/*												1.1
+	/cvs/LIB/LIBSRC/TIMERN/*											1.1
+============================================================================
+1. DATE   : 2011.08.01 (MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC
+	  - config.h added included "MAX_SW_COUNT"
+	  - init_shm.h, swdef.h removed
+	* LIB/LIBSRC/Makefile
+	  - NIFO, CIFO, GIFO 적용
+4. FILES  :
+	/cvs/LIB/LIBSRC/Makefile											1.11
+	/cvs/LIB/INC/config.h												1.1
+	/cvs/LIB/INC/init_shm.h												remove
+	/cvs/LIB/INC/loglib.h												1.5
+	/cvs/LIB/INC/swdef.h												remove
+	/cvs/LIB/INC/verlib.h												1.2
+============================================================================
+1. DATE   : 2011.08.01 (MON)
+2. AUTHOR : Dongcheol Ham 
+3. LOG    :
+	* FILE 
+	* INC 
+	  - comming soon write
+4. FILES  :
+	/cvs/LIB/LIBSRC/FILE/file_mcinit.c                                  1.2
+    /cvs/LIB/INC/filelib.h                                              1.4
+============================================================================
+1. DATE   : 2011.07.29 (FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* SRC/Makefile
+	  - VERSION 추가
+	* VERSION
+	  - 기 존재하는 version 공유 메모리를 attach 성공했을 때 return 값을 
+		-1에서 0으로 수정
+4. FILES  :
+	/cvs/LIB/LIBSRC/Makefile											1.10
+	/cvs/LIB/LIBSRC/VERSION/version.c									1.3
+============================================================================
+1. DATE   : 2011.07.27 (WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC/dblib.h, fidblib.h
+	  - api를 전부 extern 으로 변경
+	* INC/filelib.h
+	  - api 추가 
+	* FIDB
+	  - fidb_mask file 추가
+	* FILE
+	  - file write, read function 추가
+4. FILES  :
+	/cvs/LIB/INC/dblib.h												1.3
+	/cvs/LIB/INC/fidblib.h												1.2
+	/cvs/LIB/INC/filelib.h												1.3
+	/cvs/LIB/LIBSRC/FIDB/Makefile										1.3
+	/cvs/LIB/LIBSRC/FIDB/fidb.c											1.2
+	/cvs/LIB/LIBSRC/FIDB/fidb_mask.c									1.1
+	/cvs/LIB/LIBSRC/FILE/file_func.c									1.12
+============================================================================
+1. DATE   : 2011.07.26 (TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* IPC
+	  - ipclib.h 에서 표준 헤더파일 제거
+	* INC/nsocklib.h
+	  - st_ClientInfo, st_FDInfo moved from sockio.h
+4. FILES  :
+	/cvs/LIB/INC/nsocklib.h												1.4
+	/cvs/LIB/INC/ipclib.h												1.2
+	/cvs/LIB/LIBSRC/IPC/msgq.c											1.3
+	/cvs/LIB/LIBSRC/IPC/shm.c											1.2
+============================================================================
+1. DATE   : 2011.07.26 (TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* FILE
+	  - get_ip_conf() 추가
+	* NSOCK
+	  - nsocklib.h 에서 DEF_MAX_SOCK_SIZE 변경.
+4. FILES  :
+	/cvs/LIB/INC/filelib.h												1.2
+	/cvs/LIB/INC/nsocklib.h												1.3
+	/cvs/LIB/LIBSRC/FILE/file_func.c									1.11
+============================================================================
+1. DATE   : 2011.07.25 (MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* FILE
+	  - get_db_conf() return value 는 valid line counting
+	* INC
+	  - nsocklib.h, included time.h, sys/types.h for time_t, fd_set
+4. FILES  :
+	/cvs/LIB/LIBSRC/FILE/file_func.c									1.10
+	/cvs/LIB/INC/nsocklib.h												1.2
+============================================================================
+1. DATE   : 2011.07.25 (MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* FILE
+	  - get_db_conf() api 추가
+	  - Makefile 수정 - header file 은 INC 밑으로 옮김. local 에서는 삭제
+	  - file_func.c 내용은 file_mcinit.c 로 옮겨짐.
+	* INC 
+	  - filelib.h 추가됨
+4. FILES  :
+	/cvs/LIB/INC/filelib.h												1.1
+	/cvs/LIB/LIBSRC/FILE/Makefile										1.3
+	/cvs/LIB/LIBSRC/FILE/file_func.c									1.9
+	/cvs/LIB/LIBSRC/FILE/file_mcinit.c									1.1
+	/cvs/LIB/LIBSRC/FILE/filelib.h										remove
+============================================================================
+1. DATE   : 2011.07.22 (FRI)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* FILE 
+	  - api function name 및 변명 수정, 비효율정 코드 수정 
+4. FILES  :
+    /cvs/LIB/LIBSRC/FILE/filelib.h                                      1.7
+	/cvs/LIB/LIBSRC/FILE/file_func.c                                    1.8
+============================================================================
+1. DATE   : 2011.07.21 (THU)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC
+	  - local directory 에 저장되어 있던 header file INC 밑으로 이동
+	* DB_MYSQL, FIDB, IPC, NSOCK
+	  - file permission 664 로 수정
+	* UTIL
+	  - util_cvtipaddr(), 첫번째 파라메터에 따라서 변환 방법 다르게 수정.
+4. FILES  :
+	/cvs/LIB/INC/dblib.h												1.2
+	/cvs/LIB/INC/fidblib.h												1.1
+	/cvs/LIB/INC/ipclib.h												1.1
+	/cvs/LIB/INC/nsocklib.h												1.1
+	/cvs/LIB/LIBSRC/DB_MYSQL/db_func.c									1.3
+	/cvs/LIB/LIBSRC/FIDB/Makefile										1.2
+	/cvs/LIB/LIBSRC/FIDB/fidblib.h										remove
+	/cvs/LIB/LIBSRC/IPC/Makefile										1.4
+	/cvs/LIB/LIBSRC/IPC/ipclib.h										remove
+	/cvs/LIB/LIBSRC/NSOCK/Makefile										1.4
+	/cvs/LIB/LIBSRC/NSOCK/nsocklib.h									remove
+	/cvs/LIB/LIBSRC/UTIL/utillib.c										1.2
+============================================================================
+1. DATE   : 2011.07.21 (THU)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* DB_MYSQL
+	  - api 정리, st_ConnInfo structure 제거, dblib.h file 위치 수정( into INC)
+4. FILES  :
+	/cvs/LIB/INC/dblib.h												1.1
+	/cvs/LIB/LIBSRC/DB_MYSQL/Makefile									1.2
+	/cvs/LIB/LIBSRC/DB_MYSQL/db_con.c									1.2
+	/cvs/LIB/LIBSRC/DB_MYSQL/db_func.c									1.2
+	/cvs/LIB/LIBSRC/DB_MYSQL/db_core.c									remove
+	/cvs/LIB/LIBSRC/DB_MYSQL/dblib.h									remove
+	/cvs/LIB/LIBSRC/DB_MYSQL/dblib_extern.h								remove
+	/cvs/LIB/LIBSRC/DB_MYSQL/dblib_global.h								remove
+============================================================================
+1. DATE   : 2011.07.19 (TUE)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* FILE
+	- Message Queue관련 API추가
+	  (file_mgsq_keycnt/file_msgq_allkey/file_msgq_allname)
+4. FILES  :
+	/cvs/LIB/LIBSRC/FILE/file_func.c									1.7
+	/cvs/LIB/LIBSRC/FILE/filelib.h	     								1.6
+============================================================================
+1. DATE   : 2011.07.19 (TUE)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* FILE
+	- OAM쪽에 BUF_LEN,PRC_NAME_LEN이 존재하여, 
+	  BUF_LEN => BUFLEN, PROC_NAME_LEN => PRC_NAME_LEN 으로 수정 
+4. FILES  :
+	/cvs/LIB/LIBSRC/FILE/file_func.c									1.6
+	/cvs/LIB/LIBSRC/FILE/filelib.h	     								1.5
+============================================================================
+1. DATE   : 2011.07.18 (MON)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* FILE
+	- shared memory api 파일명 인자(char *fName) 추가
+4. FILES  :
+	/cvs/LIB/LIBSRC/FILE/file_func.c									1.4
+	/cvs/LIB/LIBSRC/FILE/filelib.h	     								1.3
+============================================================================
+1. DATE   : 2011.07.18 (MON)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* FILE
+	- function name modify
+    - shm_get_KeyCnt => file_shm_keycnt
+	- shm_get_AllKey => file_shm_allkey
+	- shm_get_key    => file_shm_key
+	- proc_getSeq    => file_proc_seq
+	- nifo_useYn     => file_nifo_useyn
+	- msgq_getKey    => file_msgq_key
+4. FILES  :
+	/cvs/LIB/LIBSRC/FILE/file_func.c									1.3
+============================================================================
+1. DATE   : 2011.07.18 (MON)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* FILE
+	  - shm_get_KeyCnt(SHM_INFO파일에 정의된 전체 공유메모리 개수get)
+	  - shm_get_AllKey(SHM_INFO파일에 정의된 전체 공유메모리get)
+	  - shm_get_key(SHM_INFO파일에 정의된 특정 공유메모리get)
+4. FILES  :
+	/cvs/LIB/LIBSRC/FILE/file_func.c									1.2
+	/cvs/LIB/LIBSRC/FILE/filelib.h										1.2
+============================================================================
+1. DATE   : 2011.07.18 (MON)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* FILECTRL
+	  - FILECTRL => FILE로 변경
+4. FILES  :
+============================================================================
+1. DATE   : 2011.07.18 (MON)
+2. AUTHOR : Hyngsek Son
+3. LOG    :
+	* FIDB
+	  - fidb handle library added, NOT COMPLETE!
+4. FILES  :
+	/cvs/LIB/LIBSRC/Makefile											1.9
+	/cvs/LIB/LIBSRC/FIDB/Makefile										1.1
+	/cvs/LIB/LIBSRC/FIDB/fidb.c											1.1
+	/cvs/LIB/LIBSRC/FIDB/fidblib.h										1.1
+============================================================================
+1. DATE   : 2011.07.13 (WED)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* LOG
+	  - loglib.h header define modified " _UTILLIB_H_=>_LOGLIB_H_ "
+4. FILES  :
+	/cvs/LIB/INC/loglib.h												1.4
+============================================================================
+1. DATE   : 2011.07.13 (WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* LOG
+	  - log_debug, log_write API disable note...
+4. FILES  :
+	/cvs/LIB/INC/loglib.h												1.3
+============================================================================
+1. DATE   : 2011.07.13 (WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* LOG
+	  - include swdef.h 제거
+	  - MAX_SW_COUNT define 128.
+4. FILES  :
+	/cvs/LIB/INC/loglib.h												1.2
+	/cvs/LIB/LIBSRC/LOG/Makefile										1.3
+============================================================================
+1. DATE   : 2011.07.12 (TUE)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* FILECTRL 
+	  - FILECTRL추가(file_func.c filelib.h)
+4. FILES  :
+	/cvs/LIB/LIBSRC/FILECTRL/file_func.c                                1.3
+	/cvs/LIB/LIBSRC/FILECTRL/filelib.h                                  1.2
+	/cvs/LIB/LIBSRC/FILECTRL/Makefile									1.1
+============================================================================
+1. DATE   : 2011.07.11 (MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* SIP
+	  - logutil.h 참조 부분 제거
+	* LIBSRC
+	  - Makefile 수정 
+	* LOG(UTIL)
+	  - logutil.h 대신 loglib.h 로 사용되도록 수정
+	* IPC, LOG, NSOCK, UTIL
+	  - Makefile 수정하여 XXXLIB.a 파일이 떨구어 지도록 수정..
+4. FILES  :
+	/cvs/LIB/LIBSRC/IPC/Makefile										1.3
+	/cvs/LIB/LIBSRC/LOG/Makefile										1.2
+	/cvs/LIB/LIBSRC/NSOCK/Makefile										1.3
+	/cvs/LIB/LIBSRC/UTIL/Makefile										1.4
+	/cvs/LIB/INC/sip.h													1.2
+	/cvs/LIB/LIBSRC/Makefile											1.2
+	/cvs/LIB/LIBSRC/LOG/lwrite.c										1.2
+============================================================================
+1. DATE   : 2011.07.11 (MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* LOGUTIL -> LOG
+	* UTILLIB -> UTIL
+	* DBLIB_MYSQL -> DB_MYSQL
+	* VERSION
+	  - Header file, version -> verlib.h 로 변경
+4. FILES  :
+	/cvs/LIB/LIBSRC/UTILLIB/Makefile									delete
+	/cvs/LIB/LIBSRC/UTILLIB/utillib.c									delete
+	/cvs/LIB/LIBSRC/UTILLIB/utillib.h									delete
+	/cvs/LIB/INC/logutil.h												delete
+	/cvs/LIB/INC/version.h												delete
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/Makefile								delete
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/MySQL.conf								delete
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/db_con.c								delete
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/db_core.c								delete
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/db_func.c								delete
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/dblib.h									delete
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/dblib_global.h							delete
+	/cvs/LIB/LIBSRC/LOGUTIL/Makefile									delete
+	/cvs/LIB/LIBSRC/LOGUTIL/lwrite.c									delete
+	/cvs/LIB/LIBSRC/UTIL/Makefile										1.3
+	/cvs/LIB/LIBSRC/UTIL/utillib.c										1.1
+	/cvs/LIB/LIBSRC/UTIL/utillib.h										1.1
+	/cvs/LIB/INC/loglib.h												1.1
+	/cvs/LIB/INC/verlib.h												1.1
+	/cvs/LIB/LIBSRC/DB_MYSQL/Makefile									1.1
+	/cvs/LIB/LIBSRC/DB_MYSQL/MySQL.conf									1.1
+	/cvs/LIB/LIBSRC/DB_MYSQL/db_con.c									1.1
+	/cvs/LIB/LIBSRC/DB_MYSQL/db_core.c									1.1
+	/cvs/LIB/LIBSRC/DB_MYSQL/db_func.c									1.1
+	/cvs/LIB/LIBSRC/DB_MYSQL/dblib.h									1.1
+	/cvs/LIB/LIBSRC/DB_MYSQL/dblib_extern.h								1.1
+	/cvs/LIB/LIBSRC/DB_MYSQL/dblib_global.h								1.1
+	/cvs/LIB/LIBSRC/LOG/Makefile										1.1
+	/cvs/LIB/LIBSRC/LOG/lwrite.c										1.1
+	/cvs/LIB/LIBSRC/VERSION/Makefile									1.3
+	/cvs/LIB/LIBSRC/VERSION/version.c									1.2
+============================================================================
+1. DATE   : 2011.07.11 (MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* IPCLIB
+	  - msgq api name re-defined. ( msgq_init, msgq_read, msgq_write )
+4. FILES  :
+	/cvs/LIB/LIBSRC/IPC/ipclib.h										1.4
+	/cvs/LIB/LIBSRC/IPC/msgq.c											1.2
+============================================================================
+1. DATE   : 2011.07.11 (MON)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* UTILLIB
+	  - Makefile 정리
+	  - utillib.c 에 있는 system 헤더 utillib.h 로 이동
+4. FILES  :
+	/cvs/LIB/LIBSRC/UTILLIB/Makefile									1.2
+	/cvs/LIB/LIBSRC/UTILLIB/utillib.h									1.3
+	/cvs/LIB/LIBSRC/UTILLIB/utillic.c									1.3
+============================================================================
+1. DATE   : 2011.07.11 (MON)
+2. AUTHOR : DongCheol Ham
+3. LOG    :
+	* IPC
+	- Message Queue Common Function added 
+	  ( init_Msgq, read_Msgq, write_Msgq )
+4. FILES  :
+	/cvs/LIB/LIBSRC/IPC/msgq.c                                          1.1
+	/cvs/LIB/LIBSRC/IPC/ipclib.h                                        1.3
+	/cvs/LIB/LIBSRC/IPC/Makefile                                        1.2
+============================================================================
+1. DATE   : 2011.07.11 (MON)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* UTILLIB
+	  - typedef.h 인클루드 제거
+4. FILES  :
+	/cvs/LIB/LIBSRC/UTILLIB/utillib.h									1.2
+	/cvs/LIB/LIBSRC/UTILLIB/utillic.c									1.2
+============================================================================
+1. DATE   : 2011.07.11 (MON)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* UTILLIB
+	  - 추가됨
+4. FILES  :
+	/cvs/LIB/LIBSRC/UTILLIB/utillib.h									1.1
+	/cvs/LIB/LIBSRC/UTILLIB/utillic.h									1.1
+	/cvs/LIB/LIBSRC/UTILLIB/Makefile									1.1
+============================================================================
+1. DATE   : 2011.07.11 (MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC
+	  - 불필요한 header files 제거됨
+	* LIBSRC
+	  - UTIL 제거됨 => UTILLIB 로 대체
+	* DBLIB_MYSQL
+	  - 추가됨
+4. FILES  :
+	/cvs/LIB/LIBSRC/UTIL/Makefile										delete
+	/cvs/LIB/LIBSRC/UTIL/util.c											delete
+	/cvs/LIB/INC/ippool_bitarray.h										delete
+	/cvs/LIB/INC/shmutil.h												delete
+	/cvs/LIB/INC/maskutil.h												delete
+	/cvs/LIB/INC/packmq.h												delete
+	/cvs/LIB/INC/util.h													delete
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/Makefile								1.1
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/MySQL.conf								1.1
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/db_con.c								1.1
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/db_core.c								1.1
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/db_func.c								1.1
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/dblib.h									1.1
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/dblib_extern.h							1.1
+	/cvs/LIB/LIBSRC/DBLIB_MYSQL/dblib_global.h							1.1
+============================================================================
+1. DATE   : 2011.07.08 (FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* IPCLIB
+	  - ipclib.h 수정. API 추가
+	* MASKUTIL, IPPOOLBIT, PACKMQ_LIB, SHMUTIL_LIB
+	  - 제거됨 
+4. FILES  :
+	/cvs/LIB/LIBSRC/MASKUTIL/Makefile									delete
+	/cvs/LIB/LIBSRC/MASKUTIL/maskutil.c									delete
+	/cvs/LIB/LIBSRC/IPPOOLBIT/Makefile									delete
+	/cvs/LIB/LIBSRC/IPPOOLBIT/ippoolbit_api.c							delete
+	/cvs/LIB/LIBSRC/PACKMQ_LIB/Makefile									delete
+	/cvs/LIB/LIBSRC/PACKMQ_LIB/ipc_create.c								delete
+	/cvs/LIB/LIBSRC/SHMUTIL_LIB/Makefile								delete
+	/cvs/LIB/LIBSRC/SHMUTIL_LIB/shmutil.c								delete
+	/cvs/LIB/LIBSRC/IPC/ipclib.h										1.2
+============================================================================
+1. DATE   : 2011.07.08 (FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* LIBSRC
+	  - Makefile 정리, IPC 추가
+	  - IPC library 추가
+	  - NSOCK library 정리
+4. FILES  :
+	/cvs/LIB/LIBSRC/Makefile											1.3
+	/cvs/LIB/LIBSRC/IPC/Makefile										1.1
+	/cvs/LIB/LIBSRC/IPC/ipclib.h										1.1
+	/cvs/LIB/LIBSRC/IPC/shm.c											1.1
+	/cvs/LIB/LIBSRC/NSOCK/Makefile										1.2
+	/cvs/LIB/LIBSRC/NSOCK/nsock.c										1.2
+	/cvs/LIB/LIBSRC/NSOCK/nsocklib.h									1.2
+============================================================================
+1. DATE   : 2011.07.07 (THU)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* LIBSRC
+	  - NSOCK : Socket library init. 앞으로 변경해 가야 할 듯.
+	  - Makefile : NSOCK 추가 
+4. FILES  :
+	/cvs/LIB/LIBSRC/Makefile											1.2
+	/cvs/LIB/LIBSRC/NSOCK/Makefile										1.1
+	/cvs/LIB/LIBSRC/NSOCK/nsock.c										1.1
+	/cvs/LIB/LIBSRC/NSOCK/nsocklib.h									1.1
+============================================================================
+1. DATE   : 2011.07.07 (THU)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* HISTORY.TXT init
+	* LIBSRC
+	  - Makefile init
+4. FILES  :
+	/cvs/LIB/HISTORY.TXT												1.1
+	/cvs/LIB/LIBSRC/Makefile											1.1
+============================================================================

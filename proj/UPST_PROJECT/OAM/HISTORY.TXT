@@ -1,0 +1,1736 @@
+##1. TAG 붙이는 법
+> cvs tag TAG_NAME
+
+# 2. HISTORY.TXT 수정하는 법
+> cvs admin -l HISTORY.TXT
+...<수정>
+> cvs commit -m "log" HISTORY.TXT
+############################################################################
+=============================================================================
+1. DATE   : 2011.09.07(WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* ALMD
+	  - gpLoadStat 변수에 대하여, init.c 안에 Init_LoadStat() 에서 초기화 하도록
+		되어 있는데, main 에 중복 정의되어 있음. main 에 있는 것 삭제
+		+ 간략한 소스 정리( init.c 의 앞대가리만... )
+	* ALMD_F
+	  - shm_init(S_SSHM_GENINFO, DEF_WNTAM_SIZE,,)
+		-> shm_init(S_SSHM_GENINFO, sizeof(st_GEN_INFO),,)..
+4. FILES  :
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD/almd_init.c							1.4
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD/almd_init.h							1.3
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD/almd_main.c							1.6
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD_F/almd_init.c						1.5
+=============================================================================
+1. DATE   : 2011.09.07(WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* ALMD_F
+	  - 실행 가능하도록 수정...
+	* TIFB
+	  - process_info.c : "A_SIP" -> "A_SIPD" 로 수정
+4. FILES  :
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD_F/Makefile							1.3
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD_F/almd_init.c						1.4
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD_F/almd_main.c						1.5
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/process_info.c						1.3
+=============================================================================
+1. DATE   : 2011.09.06(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* TIFB
+	  - DisMC : version display 되도록 수정
+	  			loglib.h 제거
+	  - StartMC, KillMC : loglib.h 제거
+	  - Makefile : 불필요한 define 제거 ( APPLOG, DEBUG, etc.. ) 
+4. FILES  :
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/DisMC.c								1.6
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/KillMC.c								1.6
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/Makefile								1.3
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/StartMC.c							1.9
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/process_info.c						1.2
+=============================================================================
+1. DATE   : 2011.09.06(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* TIFB
+	  - DisMC : version display 되도록 수정
+				=> process seq_id 와 process name 간의 mapping 정보 를 기록한
+				   파일( process_info.c ) 을 추가.
+				   앞으로, process 가 추가되면 이것에도 추가되어야 함.
+	  - StartMC : unused variable 'offset' removed
+4. FILES  :
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/process_info.c						1.1
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/process_info.h						1.1
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/DisMC.c								1.5
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/Makefile								1.2
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/StartMC.c							1.8
+=============================================================================
+1. DATE   : 2011.09.06(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* MMCD/ERRPRNLIB
+	  - MMCD 에서 사용되는 동적 라이브러리 소스 추가
+	  - 그에 따른 MMCD/Makefile 수정 
+	* MMCD
+	  - 실행할 수 있도록 수정
+4. FILES  :
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/Makefile								1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/ERRPRNLIB/ERR_PRT.c					1.1
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/ERRPRNLIB/Makefile					1.1
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/ERRPRNLIB/OSTAT_PRT.c				1.1
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/ERRPRNLIB/RET_PRT.c					1.1
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_main.c							1.5
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_mem.c							1.5
+=============================================================================
+1. DATE   : 2011.09.06(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* CHSMD
+	  - version 공유 메모리를 초기화 하는 경우 실패로 처리하는 부분 수정
+		: 실패 아님
+	* TIFB
+	  - StartMC : freopen() 주석 처리하여 로그가 출력 되도록 수정
+4. FILES  :
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD/chsmd_main.c						1.5
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/StartMC.c							1.7
+=============================================================================
+1. DATE   : 2011.09.06(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* TIFB
+	  - StartMC.c : 불필요한 로그 제거 >> 단발성 데몬이기에 특별히 로그가 필요 없음
+	  - KillMC.c  : pointer 할당해야할 곳에 변수를 할당함.
+4. FILES  :
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/KillMC.c								1.5
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/StartMC.c							1.6
+=============================================================================
+1. DATE   : 2011.09.05(MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* FSTAT
+	  - 실행 가능하도록 수정
+	* Makefile
+	  - ALMD, ALMD_F 추가
+	* ALMD
+	  - 실행 가능하도록 수정. 
+		i) gpLoadStat 초기화
+		ii) gifo_read() 실패시, return couning 하여, while(1) 밖의 기능 수행
+			하도록 수정
+4. FILES  :
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_main.c						1.5
+	/cvs/UPST_PROJECT/OAM/SRC/Makefile									1.3
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD/almd_main.c							1.5
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD/almd_mem.c							1.4
+=============================================================================
+1. DATE   : 2011.09.04(SUN)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* FSTAT, MMCD
+	  - 소스파일, 헤더파일 분리 규칙 적용
+4. FILES  :
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_comm.h						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_db.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_db.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_fault.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_fault.h						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_init.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_init.h						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_load.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_load.h						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_main.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_main.h						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_traffic.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_traffic.h						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/m_msgq.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/m_msgq.h							1.3
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/builtin.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/builtin.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/cmd_get.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/cmd_get.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/cmd_load.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/cmd_load.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/cmd_user.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/cmd_user.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/help_proc.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/help_proc.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/lib_load.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/lib_load.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_db.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_db.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_init.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_init.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_main.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_main.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_mem.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_mem.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_sock.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_sock.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_util.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_util.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/para_load.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/para_load.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/reload.c								1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/reload.h								1.2
+=============================================================================
+1. DATE   : 2011.09.01(THU)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* SRC/*
+	  - Correct compile error caused by header modification.
+4. FILES  :
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD/almd_main.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD/almd_main.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD/almd_mem.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD/almd_sock.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD_F/Makefile							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD_F/almd_func.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD_F/almd_init.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD_F/almd_main.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/ALMD_F/almd_main.h						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/COND/cond_init.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/COND/cond_main.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/fstat_comm.h						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/FSTAT/m_msgq.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/MMCD/mmcd_main.h							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/QMON/qmon_main.c							1.2
+=============================================================================
+1. DATE   : 2011.09.01(THU)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* CHSMD
+	  - 기동 가능하도록 수정
+	  - log_init 시에 참조하는 공유 메모리 key 변경 VERSION -> LOG_LEVEL
+	  - log_print 시, 누락 파라메터 추가
+	  - 컴파일 옵션중 -O 옵션을 주석처리 -> -g 옵션과 함께 하면 예상치 못한 결과가
+		나온다고 man 페이지에 나와 있음...
+	* TIFB
+      - Multiprocess 기동이 가능하도록 수정.
+      - gifo 를 활용한 프로세스 기동이 가능하도록 수정.
+      - 현재 StartMC 에서 표준 출력이 되지 않는 문제 있음
+        => DisMC, KillMC 는 정상적으로 됨.( freopen 때문인 것 같은데, 일단 또 실험해 보고 )
+      - StartMC, KillMC 중 어느 한가지가 꼬이는 경우, FIDB attach가 되지 않아
+        작동되지 않는 문제 있음. => 전체 컴파일 후에 발생하지 않음... 메모리가 남아 있는 경우에만
+		발생하는 문제로 보임
+4. FILES  :
+	Checking in StartMC.c;
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD/Makefile							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD_F/Makefile							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD_F/chsmd_main.c						1.3
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD_F/chsmd_msg.c						1.3
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/DisMC.c								1.3
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/KillMC.c								1.3
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/StartMC.c							1.3,1.4
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/tifb_util.c							1.3,1.4
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/tifb_util.h							1.2,1.3
+=============================================================================
+1. DATE   : 2011.09.01(THU)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* Makefile
+	  - make taf, tam 으로 구분, default 는 taf
+	* CHSMD, CHSMD_F, CI_SVC, SI_SVC, TIFB
+	  - log_print format checker 적용된 버젼=> warning 처리 
+4. FILES  :
+	/cvs/UPST_PROJECT/OAM/Makefile										1.2
+	/cvs/UPST_PROJECT/OAM/SRC/Makefile									1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD/chsmd_disk.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD/chsmd_func.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD/chsmd_hw.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD/chsmd_init.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD/chsmd_main.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD/chsmd_mmc_func.c					1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD/chsmd_ntp.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD/chsmd_sw.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD_F/chsmd_func.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD_F/chsmd_init.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD_F/chsmd_load.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD_F/chsmd_main.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD_F/chsmd_msg.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD_F/chsmd_ntpd.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CHSMD_F/chsmd_sw.c						1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CI_SVC/if_func.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/CI_SVC/if_main.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/SI_SVC/if_chnl.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/SI_SVC/if_func.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/SI_SVC/if_init.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/SI_SVC/if_main.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/SI_SVC/if_msgq.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/SI_SVC/if_sock.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/DisMC.c								1.2
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/KillMC.c								1.2
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/StartMC.c							1.2
+	/cvs/UPST_PROJECT/OAM/SRC/TIFB/tifb_util.c							1.2
+=============================================================================
+1. DATE   : 2011.08.30(TUE)
+2. AUTHOR : Hohyun Baek
+3. LOG    :   
+	* INC
+	  - timesec.h 삭제 (UPST_PROJECT/INC 로 이동)
+4. FILES  :
+	/cvs/UPST_PROJECT/OAM/INC/timesec.h									remove
+=============================================================================
+1. DATE   : 2011.08.29(MON)
+2. AUTHOR : Hohyun Baek
+3. LOG    :   
+	* INC
+	  - timesec 추가 (SEC_OF_XXXX)
+4. FILES  :
+	/cvs/UPST_PROJECT/OAM/INC/timesec.h									1.1
+=============================================================================
+1. DATE   : 2011.08.24(WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* INC
+	  - commdef.h : S_SEMA_NIFO, S_SEMA_CALL, MAX_QUEUE 주석처리
+					S_SEMA_NIFO : nifo.h 에 있음
+					S_SEMA_CALL : A_RP 로 이동
+	* QMON
+	  - MAX_QUEUE : commdef.h 에서 qmon_init.c 로 이동
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.35
+	/cvs/OAM/SRC/QMON/qmon_main.c										1.13
+=============================================================================
+1. DATE   : 2011.08.24(WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* almstat.h
+	  - st_NtafStat 추가됨
+	* CHSMD_F
+	  - PARENT_PATH, HOME_PATH defined constant remove -> 'path.h' 참조로 대체
+	* MMCD
+	  - MML_RESULT 제거 -> mmcdef.h 에 선언되어 있음. 
+4. FILES  :
+	/cvs/OAM/INC/almstat.h												1.14
+	/cvs/OAM/SRC/CHSMD_F/chsmd_sw.c										1.4
+	/cvs/OAM/SRC/CHSMD_F/chsmd_sw.h										1.3
+	/cvs/OAM/SRC/MMCD/mmcd_main.h										1.11
+=============================================================================
+1. DATE   : 2011.08.24(WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* 각 LIB 참조 directory 수정 
+4. FILES  :
+	/cvs/OAM/SRC/ALMD/Makefile											1.7
+	/cvs/OAM/SRC/ALMD_F/Makefile										1.6
+	/cvs/OAM/SRC/ALMD_T/Makefile										1.5
+	/cvs/OAM/SRC/CHSMD/Makefile											1.11
+	/cvs/OAM/SRC/CHSMD_F/Makefile										1.8
+	/cvs/OAM/SRC/CI_SVC/Makefile										1.5
+	/cvs/OAM/SRC/COND/Makefile											1.10
+	/cvs/OAM/SRC/FSTAT/Makefile											1.8
+	/cvs/OAM/SRC/MMCD/Makefile											1.11
+	/cvs/OAM/SRC/QMON/Makefile											1.9
+	/cvs/OAM/SRC/SI_SVC/Makefile										1.6
+	/cvs/OAM/SRC/TIFB/Makefile											1.7
+=============================================================================
+1. DATE   : 2011.08.24(WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* filedb.h
+	  - MAX_NTAF_COUNT 10 -> 8 :: 기존 DQMS 설정값을 따름
+	* mmcdef.h, msgdef.h
+	  - MAX_TMR_REC 128 추가
+	  - 몇가지 SID 제거 : SID_MML/PATCH/FLT/GFLT/CHKRES/CHKREQ
+		및 msgdef.h 로 이동
+	* mmcid.h
+	  - 몇가지 mmcerr 값 추가
+	* MMCD/Makefile
+	  - Library 및 INC 참조 directory 변경
+4. FILE   :
+	/cvs/OAM/INC/filedb.h												1.22
+	/cvs/OAM/INC/mmcdef.h												1.15
+	/cvs/OAM/INC/mmcid.h												1.7
+	/cvs/OAM/INC/msgdef.h												1.18
+	/cvs/OAM/SRC/MMCD/Makefile											1.10
+=============================================================================
+1. DATE   : 2011.08.23(TUE)
+2. AUTHOR : Hohyun Baek
+3. LOG    :   
+	* OAM/SRC/*/Makefile
+	  - UPST_LIB 를 LIB 로 변경, OAM/LIB 가 심볼릭 링크로 있어야 함
+4. FILE   :
+	/cvs/OAM/HISTORY.TXT												1.85
+	/cvs/OAM/SRC/ALMD/Makefile											1.6
+	/cvs/OAM/SRC/ALMD_F/Makefile										1.5
+	/cvs/OAM/SRC/ALMD_T/Makefile										1.4
+	/cvs/OAM/SRC/CHSMD/Makefile											1.10
+	/cvs/OAM/SRC/CHSMD_F/Makefile										1.7
+	/cvs/OAM/SRC/COND/Makefile											1.9
+	/cvs/OAM/SRC/FSTAT/Makefile											1.7
+	/cvs/OAM/SRC/MMCD/Makefile											1.9
+	/cvs/OAM/SRC/QMON/Makefile											1.8
+	/cvs/OAM/SRC/SI_SVC/Makefile										1.5
+	/cvs/OAM/SRC/TIFB/Makefile											1.6
+=============================================================================
+1. DATE   : 2011.08.22(MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* TAM/A_RPPI 관련 Svc 블럭에서 사용되는 MID 값 추가됨 
+4. FILE   :
+	/cvs/OAM/INC/msgdef.h												1.17
+=============================================================================
+1. DATE   : 2011.08.21(SUN)
+2. AUTHOR : Hohyun Baek
+3. LOG    :   
+	* OAM/SRC/*
+	  - Makefile 에서 LIB ==> UPST_LIB 로 라이브러리 참조위치 변경
+4. FILE   :
+	/cvs/OAM/SRC/Makefile												1.5
+	/cvs/OAM/SRC/CHSMD/Makefile											1.9
+	/cvs/OAM/SRC/CHSMD_F/Makefile										1.6
+	/cvs/OAM/SRC/CI_SVC/Makefile										1.4
+	/cvs/OAM/SRC/COND/Makefile											1.7
+	/cvs/OAM/SRC/FSTAT/Makefile											1.6
+	/cvs/OAM/SRC/MMCD/Makefile											1.8
+	/cvs/OAM/SRC/QMON/Makefile											1.7
+	/cvs/OAM/SRC/SI_SVC/Makefile										1.4
+	/cvs/OAM/SRC/TIFB/Makefile											1.5
+=============================================================================
+1. DATE   : 2011.08.21(SUN)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* CHSMD, CHSMD_F
+	  - isRecevedMessage 에서 st_MsgQ pointer의 pointer를 넘겨서 메세지를
+		받아오도록 수정.( <- gifo node 할당 후 주소 return )
+4. FILE   :
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.16
+	/cvs/OAM/SRC/CHSMD/chsmd_main.h										1.3
+	/cvs/OAM/SRC/CHSMD_F/chsmd_main.c									1.10
+	/cvs/OAM/SRC/CHSMD_F/chsmd_main.h									1.2
+=============================================================================
+1. DATE   : 2011.08.21(SUN)
+2. AUTHOR : Hohyun Baek
+3. LOG    :   
+	* OAM/INC
+	  - almstat.h 에서 st_SysCONDMSg 삭제
+	  - MID_XXX_XXX, commdef.h 에서 msgdef.h 로 이동
+	* MMCD, FSTAT
+	  - MID_XXX_XXX 관련 수정
+4. FILE   :
+	/cvs/OAM/INC/almstat.h												1.2
+	/cvs/OAM/INC/commdef.h												1.34
+	/cvs/OAM/INC/mmcdef.h												1.14
+	/cvs/OAM/INC/msgdef.h												1.16
+	/cvs/OAM/SRC/FSTAT/fstat_load.h										1.3
+	/cvs/OAM/SRC/MMCD/cmd_user.h										1.7
+=============================================================================
+1. DATE   : 2011.08.20(SAT)
+2. AUTHOR : Hohyun Baek
+3. LOG    :   
+	* OAM/INC
+	  - commdef.h 에서 path 관련된 부분은 path.h 로 분리
+	  - path 값을 사용하는 OAM 블럭 수정
+	* MMCD, FSTAT
+	  - 사용하지 않는 파일, 주석 제거
+4. FILE   :
+	/cvs/OAM/SRC/MMCD/builtin.h											1.6
+	/cvs/OAM/SRC/MMCD/cmd_get.c											1.4
+	/cvs/OAM/SRC/MMCD/cmd_get.h											1.6
+	/cvs/OAM/SRC/MMCD/cmd_load.c										1.5
+	/cvs/OAM/SRC/MMCD/cmd_load.h										1.7
+	/cvs/OAM/SRC/MMCD/cmd_user.c										1.5
+	/cvs/OAM/SRC/MMCD/cmd_user.h										1.6
+	/cvs/OAM/SRC/MMCD/help_proc.c										1.5
+	/cvs/OAM/SRC/MMCD/help_proc.h										1.5
+	/cvs/OAM/SRC/MMCD/lib_load.c										1.3
+	/cvs/OAM/SRC/MMCD/lib_load.h										1.5
+	/cvs/OAM/SRC/MMCD/mmcd_db.c											1.3
+	/cvs/OAM/SRC/MMCD/mmcd_db.h											1.4
+	/cvs/OAM/SRC/MMCD/mmcd_def.h										removed
+	/cvs/OAM/SRC/MMCD/mmcd_extern.h										removed
+	/cvs/OAM/SRC/MMCD/mmcd_global.h										removed
+	/cvs/OAM/SRC/MMCD/mmcd_init.c										1.7
+	/cvs/OAM/SRC/MMCD/mmcd_init.h										1.7
+	/cvs/OAM/SRC/MMCD/mmcd_main.c										1.7
+	/cvs/OAM/SRC/MMCD/mmcd_main.h										1.10
+	/cvs/OAM/SRC/MMCD/mmcd_mem.c										1.5
+	/cvs/OAM/SRC/MMCD/mmcd_mem.h										1.6
+	/cvs/OAM/SRC/MMCD/mmcd_sock.c										1.4
+	/cvs/OAM/SRC/MMCD/mmcd_sock.h										1.5
+	/cvs/OAM/SRC/MMCD/mmcd_util.c										1.4
+	/cvs/OAM/SRC/MMCD/mmcd_util.h										1.5
+	/cvs/OAM/SRC/MMCD/para_load.c										1.4
+	/cvs/OAM/SRC/MMCD/para_load.h										1.6
+	/cvs/OAM/SRC/MMCD/reload.c											1.4
+	/cvs/OAM/SRC/MMCD/reload.h											1.5
+	/cvs/OAM/SRC/FSTAT/fstat_api.h										removed
+	/cvs/OAM/SRC/FSTAT/fstat_db.c										1.3
+	/cvs/OAM/SRC/FSTAT/fstat_extern.h									removed
+	/cvs/OAM/SRC/FSTAT/fstat_fault.c									1.3
+	/cvs/OAM/SRC/FSTAT/fstat_global.h									removed
+	/cvs/OAM/SRC/FSTAT/fstat_init.c										1.7
+	/cvs/OAM/SRC/FSTAT/fstat_init.h										1.3
+	/cvs/OAM/SRC/FSTAT/fstat_load.c										1.5
+	/cvs/OAM/SRC/FSTAT/fstat_load.h										1.2
+	/cvs/OAM/SRC/FSTAT/fstat_main.c										1.6
+	/cvs/OAM/SRC/FSTAT/fstat_main.h										1.4
+	/cvs/OAM/SRC/FSTAT/fstat_traffic.c									1.3
+	/cvs/OAM/SRC/FSTAT/m_msgq.c											1.4
+	/cvs/OAM/SRC/FSTAT/m_msgq.h											1.3
+	/cvs/OAM/INC/commdef.h												1.33
+	/cvs/OAM/INC/path.h													1.1
+	/cvs/OAM/SRC/Makefile												1.4
+	/cvs/OAM/SRC/ALMD/almd_init.c										1.6
+	/cvs/OAM/SRC/ALMD/almd_main.c										1.8
+	/cvs/OAM/SRC/CHSMD/chsmd_hw.c										1.8
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.14
+	/cvs/OAM/SRC/CHSMD/chsmd_link.c										1.7
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.15
+	/cvs/OAM/SRC/CHSMD/chsmd_mask.c										1.5
+	/cvs/OAM/SRC/CHSMD/chsmd_sw.c										1.4
+	/cvs/OAM/SRC/CHSMD_F/chsmd_hw.c										1.3
+	/cvs/OAM/SRC/CHSMD_F/chsmd_init.c									1.5
+	/cvs/OAM/SRC/CHSMD_F/chsmd_main.c									1.9
+	/cvs/OAM/SRC/CHSMD_F/chsmd_mmc_func.c								1.6
+	/cvs/OAM/SRC/CI_SVC/if_init.c										1.4
+	/cvs/OAM/SRC/CI_SVC/if_main.c										1.5
+	/cvs/OAM/SRC/CI_SVC/if_sock.c										1.6
+	/cvs/OAM/SRC/COND/cond_init.c										1.6
+	/cvs/OAM/SRC/COND/cond_main.c										1.8
+	/cvs/OAM/SRC/COND/cond_mem.c										1.5
+	/cvs/OAM/SRC/QMON/qmon_main.c										1.12
+	/cvs/OAM/SRC/QMON/qmon_restart.c									1.7
+	/cvs/OAM/SRC/SI_SVC/if_init.c										1.3
+	/cvs/OAM/SRC/SI_SVC/if_main.c										1.7
+	/cvs/OAM/SRC/SI_SVC/if_msgq.c										1.7
+	/cvs/OAM/SRC/TIFB/DisMC.c											1.6
+	/cvs/OAM/SRC/TIFB/KillMC.c											1.8
+	/cvs/OAM/SRC/TIFB/StartMC.c											1.6
+	/cvs/OAM/SRC/TIFB/tifb_util.c										1.6
+=============================================================================
+1. DATE   : 2011.08.20(SAT)
+2. AUTHOR : Hohyun Baek
+3. LOG    :   
+	* FSTAT
+	  - FSTAT/LIB 삭제
+	  - fstat_load 에서 nifosts[] 오류 부분 주석처리
+4. FILE   :
+	/cvs/OAM/SRC/FSTAT/LIB/hashg.h										removed
+	/cvs/OAM/SRC/FSTAT/LIB/libSTGhashg.a								removed
+	/cvs/OAM/SRC/FSTAT/LIB/libSTGtimerN.a								removed
+	/cvs/OAM/SRC/FSTAT/LIB/libhashg.a									removed
+	/cvs/OAM/SRC/FSTAT/LIB/libtimerN.a									removed
+	/cvs/OAM/SRC/FSTAT/LIB/timerN.h										removed
+	/cvs/OAM/SRC/FSTAT/fstat_load.c										1.4
+=============================================================================
+1. DATE   : 2011.08.19(FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* S_MSG 관련 msgqid.h 제거
+	* CHSMD
+	  - S_MSGQ 참조하는 부분 제거
+4. FILE   :
+	/cvs/OAM/INC/msgdef.h												1.15
+	/cvs/OAM/INC/msgqid.h												removed
+	/cvs/OAM/SRC/CHSMD/chsmd_msg.c										1.7
+	/cvs/OAM/SRC/CHSMD/chsmd_ntp.c										1.6
+=============================================================================
+1. DATE   : 2011.08.16(TUE)
+2. AUTHOR : Hohyun Baek
+3. LOG    :   
+	* INC/commdef.h
+	  - S_SEMA_CALL 주석 제거 (A_RP 에서 사용)
+4. FILE   :
+	/cvs/OAM/INC/commdef.h												1.32
+=============================================================================
+1. DATE   : 2011.08.05(FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* INC/commdef.h
+	  - S_SEMA 위치 변경
+	* INC/procid.h sshmid.h
+	  - item 들을 define 에서 enum 으로 변경
+	* CHSMD, CHSMD_F, COND
+	  - 자잘한 소스 정리
+
+4. FILE   :
+	/cvs/OAM/INC/commdef.h												1.31
+	/cvs/OAM/INC/procid.h												1.9
+	/cvs/OAM/INC/sshmid.h												1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_hw.c										1.7
+	/cvs/OAM/SRC/CHSMD/chsmd_hw.h										1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_mask.c										1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_mask.h										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc.c										1.6
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc_func.c									1.10
+	/cvs/OAM/SRC/CHSMD/chsmd_msg.c										1.6
+	/cvs/OAM/SRC/CHSMD_F/chsmd_init.c									1.4
+	/cvs/OAM/SRC/CHSMD_F/chsmd_load.c									1.3
+	/cvs/OAM/SRC/CHSMD_F/chsmd_main.c									1.8
+	/cvs/OAM/SRC/CHSMD_F/chsmd_mmc_func.c								1.5
+	/cvs/OAM/SRC/CHSMD_F/chsmd_msg.c									1.4
+	/cvs/OAM/SRC/CHSMD_F/chsmd_ntpd.c									1.4
+	/cvs/OAM/SRC/CHSMD_F/chsmd_sw.c										1.3
+	/cvs/OAM/SRC/COND/cond_main.c										1.7
+	/cvs/OAM/SRC/COND/cond_mem.c										1.4
+=============================================================================
+1. DATE   : 2011.08.04(THU)
+2. AUTHOR : Hohyun Baek 
+3. LOG    :   
+	* MMCD, FSTAT
+	  - NIFO, CIFO, GIFO 환경파일 적용부분 상수로 대체
+4. FILE   :
+	/cvs/OAM/SRC/MMCD/mmcd_init.c										1.6
+	/cvs/OAM/SRC/MMCD/mmcd_init.h										1.6
+	/cvs/OAM/SRC/MMCD/mmcd_main.c										1.6
+	/cvs/OAM/SRC/MMCD/mmcd_main.h										1.9
+
+	/cvs/OAM/SRC/FSTAT/fstat_init.c										1.6
+	/cvs/OAM/SRC/FSTAT/fstat_main.c										1.5
+=============================================================================
+1. DATE   : 2011.08.03(WED)
+2. AUTHOR : Hohyun Baek 
+3. LOG    :   
+	* MMCD, FSTAT
+	  - gifo 적용
+4. FILE   :
+	/cvs/OAM/SRC/FSTAT/Makefile											1.5
+	/cvs/OAM/SRC/FSTAT/fstat_init.c										1.5
+	/cvs/OAM/SRC/FSTAT/fstat_init.h										1.2
+	/cvs/OAM/SRC/FSTAT/fstat_load.c										1.3
+	/cvs/OAM/SRC/FSTAT/fstat_main.c										1.4
+	/cvs/OAM/SRC/FSTAT/fstat_main.h										1.3
+	/cvs/OAM/SRC/FSTAT/m_msgq.c											1.3
+	/cvs/OAM/SRC/FSTAT/m_msgq.h											1.2
+
+	/cvs/OAM/SRC/MMCD/Makefile											1.6				
+	/cvs/OAM/SRC/MMCD/mmcd_init.c										1.4
+	/cvs/OAM/SRC/MMCD/mmcd_init.h										1.4
+	/cvs/OAM/SRC/MMCD/mmcd_main.c										1.4
+	/cvs/OAM/SRC/MMCD/mmcd_main.h										1.7
+	/cvs/OAM/SRC/MMCD/mmcd_mem.c										1.3
+	/cvs/OAM/SRC/MMCD/mmcd_mem.h										1.4
+=============================================================================
+1. DATE   : 2011.08.03(WED)
+2. AUTHOR : Dongcheol Ham 
+3. LOG    :   
+	* ALMD_F 
+	  - 일단 컴파일~~~~
+4. FILE   :
+	/cvs/OAM/SRC/ALMD/almd_main.c     							    	1.2
+	/cvs/OAM/SRC/ALMD/almd_main.h      							    	1.1
+	/cvs/OAM/SRC/ALMD/almd_init.c      							    	1.2
+	/cvs/OAM/SRC/ALMD/almd_init.h      							    	1.1
+=============================================================================
+1. DATE   : 2011.08.03(WED)
+2. AUTHOR : Dongcheol Ham 
+3. LOG    :   
+	* ALMD 
+	  - 일단 컴파일~~~~
+4. FILE   :
+	/cvs/OAM/SRC/ALMD/almd_main.c     							    	1.2
+	/cvs/OAM/SRC/ALMD/almd_main.h      							    	1.1
+	/cvs/OAM/SRC/ALMD/almd_init.c      							    	1.2
+	/cvs/OAM/SRC/ALMD/almd_init.h      							    	1.1
+	/cvs/OAM/SRC/ALMD/almd_mem.c      							    	1.2
+	/cvs/OAM/SRC/ALMD/almd_mem.h      							    	1.1
+	/cvs/OAM/SRC/ALMD/almd_sock.c      							    	1.2
+	/cvs/OAM/SRC/ALMD/almd_sock.h      							    	1.1
+	/cvs/OAM/SRC/ALMD/fstat_mmc.c      							    	1.2
+	/cvs/OAM/SRC/ALMD/fstat_mmc.h      							    	1.1
+	/cvs/OAM/SRC/ALMD/almd_api.h      							    	1.2
+=============================================================================
+1. DATE   : 2011.08.03(WED)
+2. AUTHOR : Dongcheol Ham 
+3. LOG    :   
+	* TIFB 
+	  - message queue를 gifo 교체 
+	  - KillMC -v(전체 프로세스 deactive)시에 queue clear기능 제거 
+	    (channel status, nifo status)
+	  - 소스 정리
+4. FILE   :
+	/cvs/OAM/SRC/TIFB/DisMC.c	        								1.5
+	/cvs/OAM/SRC/TIFB/DisMC.h	        								1.2
+	/cvs/OAM/SRC/TIFB/KillMC.c        							    	1.6
+	/cvs/OAM/SRC/TIFB/KillMC.h       							    	1.3
+	/cvs/OAM/SRC/TIFB/StartMC.c       							    	1.5
+	/cvs/OAM/SRC/TIFB/StartMC.h	       							    	1.2
+	/cvs/OAM/SRC/TIFB/tifb_util.c      							    	1.5
+	/cvs/OAM/SRC/TIFB/tifb_util.h      							    	1.3
+=============================================================================
+1. DATE   : 2011.08.03(WED)
+2. AUTHOR : Dongcheol Ham 
+3. LOG    :   
+	* QMON 
+	  - message queue를 gifo 교체 
+	  - nifo zone/cifo 감시 기능 추가
+	    (channel status, nifo status)
+	  - 기존 Queue 감시 제거
+	  - 소스 정리 
+4. FILE   :
+	/cvs/OAM/SRC/QMON/qmon_main.c	       								1.7
+	/cvs/OAM/SRC/QMON/qmon_main.h	       								1.6
+	/cvs/OAM/SRC/QMON/qmon_restart.c       								1.6
+	/cvs/OAM/SRC/QMON/qmon_restart.h       								1.2
+	/cvs/OAM/SRC/QMON/qmon_func.c	       								1.2
+	/cvs/OAM/SRC/QMON/qmon_func.h	       								1.2
+=============================================================================
+1. DATE   : 2011.08.03(WED)
+2. AUTHOR : Dongcheol Ham 
+3. LOG    :   
+	* INC
+	  - QMON의 nifo zone/cifo 감시 기능 추가에 따른 fidb 멤버 추가 
+	    (channel status, nifo status)
+4. FILE   :
+	/cvs/OAM/INC/commdef.h		         								1.30
+=============================================================================
+1. DATE   : 2011.08.03(WED)
+2. AUTHOR : Dongcheol Ham 
+3. LOG    :   
+	* INC
+	  - gifo적용에 따라, TIFB의 CHSMD noti를 위해 SEQ_PROC_TIFB 추가 
+4. FILE   :
+	/cvs/OAM/INC/procid.h		         								1.7
+=============================================================================
+1. DATE   : 2011.08.02(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* CHSMD, CI_SVC, COND, SI_SVC
+	  - gifo 적용 후 소스 정리
+4. FILE   :
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc_func.c									1.9
+	/cvs/OAM/SRC/CHSMD_F/chsmd_mmc_func.c								1.4
+	/cvs/OAM/SRC/CI_SVC/if_func.c										1.2
+	/cvs/OAM/SRC/CI_SVC/if_func.h										1.2
+	/cvs/OAM/SRC/CI_SVC/if_init.c										1.3
+	/cvs/OAM/SRC/CI_SVC/if_msgq.c										1.3
+	/cvs/OAM/SRC/CI_SVC/if_sock.c										1.5
+	/cvs/OAM/SRC/COND/cond_db.c											1.3
+	/cvs/OAM/SRC/SI_SVC/if_chnl.c										1.6
+	/cvs/OAM/SRC/SI_SVC/if_func.c										1.2
+	/cvs/OAM/SRC/SI_SVC/if_func.h										1.2
+	/cvs/OAM/SRC/SI_SVC/if_msgq.c										1.6
+=============================================================================
+1. DATE   : 2011.08.02(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* CI_SVC
+	  - gifo 적용. compile ok, not running test
+	* CHSMD, CHSMD_F, SI_SVC
+	  - code 정리.불필요한 msgq access 제거
+4. FILE   :
+	/cvs/OAM/SRC/CHSMD/chsmd_func.c										1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.13
+	/cvs/OAM/SRC/CHSMD_F/chsmd_main.c									1.7
+	/cvs/OAM/SRC/CI_SVC/Makefile										1.3
+	/cvs/OAM/SRC/CI_SVC/if_func.c										1.1
+	/cvs/OAM/SRC/CI_SVC/if_func.h										1.1
+	/cvs/OAM/SRC/CI_SVC/if_init.c										1.2
+	/cvs/OAM/SRC/CI_SVC/if_main.c										1.4
+	/cvs/OAM/SRC/CI_SVC/if_msgq.c										1.2
+	/cvs/OAM/SRC/CI_SVC/if_sock.c										1.4
+	/cvs/OAM/SRC/SI_SVC/if_chnl.c										1.5
+	/cvs/OAM/SRC/SI_SVC/if_main.c										1.6
+	/cvs/OAM/SRC/SI_SVC/if_msgq.c										1.5
+=============================================================================
+1. DATE   : 2011.08.02(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* SI_SVC
+	  - gifo 적용. compile ok, not running test
+4. FILE   :
+	/cvs/OAM/SRC/SI_SVC/if_func.c										1.1
+	/cvs/OAM/SRC/SI_SVC/if_func.h										1.1
+	/cvs/OAM/SRC/SI_SVC/Makefile										1.3
+	/cvs/OAM/SRC/SI_SVC/if_chnl.c										1.4
+	/cvs/OAM/SRC/SI_SVC/if_init.c										1.2
+	/cvs/OAM/SRC/SI_SVC/if_main.c										1.5
+	/cvs/OAM/SRC/SI_SVC/if_msgq.c										1.4
+	/cvs/OAM/SRC/SI_SVC/if_msgq.h										1.3
+	/cvs/OAM/SRC/SI_SVC/if_sock.c										1.5
+	/cvs/OAM/SRC/SI_SVC/if_sock.h										1.3
+=============================================================================
+1. DATE   : 2011.08.02(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* COND
+	  - gifo 적용. compile ok, not running test
+4. FILE   :
+	/cvs/OAM/SRC/COND/cond_ipc.c										1.1
+	/cvs/OAM/SRC/COND/cond_ipc.h										1.1
+	/cvs/OAM/SRC/COND/Makefile											1.6
+	/cvs/OAM/SRC/COND/cond_init.c										1.5
+	/cvs/OAM/SRC/COND/cond_init.h										1.2
+	/cvs/OAM/SRC/COND/cond_main.c										1.6
+	/cvs/OAM/SRC/COND/cond_mem.c										1.3
+	/cvs/OAM/SRC/COND/cond_msg.c										1.5
+	/cvs/OAM/INC/procid.h												1.6
+=============================================================================
+1. DATE   : 2011.08.01(MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* CHSMD(TAF)
+	  - gifo 적용. 일단 complete. compile ok, not running test
+4. FILE   :
+	/cvs/OAM/SRC/CHSMD_F/chsmd_func.c									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_func.h									1.1
+	/cvs/OAM/SRC/CHSMD_F/Makefile										1.5
+	/cvs/OAM/SRC/CHSMD_F/chsmd_init.c									1.3
+	/cvs/OAM/SRC/CHSMD_F/chsmd_main.c									1.6
+	/cvs/OAM/SRC/CHSMD_F/chsmd_mmc_func.c								1.3
+	/cvs/OAM/SRC/CHSMD_F/chsmd_msg.c									1.3
+	/cvs/OAM/SRC/CHSMD_F/chsmd_ntpd.c									1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_func.c										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.12
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.14
+=============================================================================
+1. DATE   : 2011.08.01(MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* INC
+	  - SEQ_PROC_ALMD 추가
+	* CHSMD
+	  - gifo 적용. 일단 complete. compile ok, not running test
+4. FILE   :
+	/cvs/OAM/INC/procid.h												1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_func.c										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_func.h										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.11
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.13
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc_func.c									1.8
+	/cvs/OAM/SRC/CHSMD/chsmd_msg.c										1.5
+	/cvs/OAM/SRC/CHSMD/chsmd_ntp.c										1.5
+	/cvs/OAM/SRC/CHSMD/chsmd_func.c										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_func.h										1.2
+	/cvs/OAM/SRC/CHSMD/Makefile											1.8
+=============================================================================
+1. DATE   : 2011.08.01(MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* CHSMD
+	  - gifo 적용 1st 버젼
+4. FILE   :
+	/cvs/OAM/SRC/CHSMD/chsmd_func.c										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_func.h										1.1
+	/cvs/OAM/SRC/CHSMD/Makefile											1.8
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.10
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.12
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc_func.c									1.7
+	/cvs/OAM/INC/commdef.h												1.29
+	/cvs/OAM/INC/msgdef.h												1.14
+=============================================================================
+1. DATE   : 2011.08.01(MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+	* CHSMD
+	  - loglib.h 에서 MAX_SW_COUNT 제거, 그에 따른 소스 정리
+	  - library, library-header symbolic link 재설정
+	* CI_SVC, COND, SI_SVC, CHSMD_F
+	  - library, library-header symbolic link 재설정
+	* INC/filedb.h
+	  - loglib.h 제거( MAX_SW_COUNT ), config.h 참조로 변경, time_t.h 추가
+4. FILES  :
+	/cvs/OAM/INC/filedb.h												1.16
+	/cvs/OAM/SRC/CHSMD/Makefile											1.7
+	/cvs/OAM/SRC/CHSMD/chsmd_mask.c										1.3
+	/cvs/OAM/SRC/CHSMD_F/Makefile										1.4
+	/cvs/OAM/SRC/CI_SVC/Makefile										1.2
+	/cvs/OAM/SRC/CI_SVC/log.h											1.1
+	/cvs/OAM/SRC/COND/Makefile											1.5
+	/cvs/OAM/SRC/SI_SVC/Makefile										1.2
+=============================================================================
+1. DATE   : 2011.08.01(MON)
+2. AUTHOR : Hohyun Baek
+3. LOG    :   
+    * MMCD, FSTAT
+	  - Makefile 수정
+4. FILES  :
+	/cvs/OAM/SRC/FSTAT/Makefile											1.4
+	/cvs/OAM/SRC/MMCD/Makefile											1.6
+=============================================================================
+1. DATE   : 2011.08.01(MON)
+2. AUTHOR : Hohyun Baek
+3. LOG    :   
+    * FSTAT
+	  - dReadSubSysInfoFile 파일 Path 오류 수정
+4. FILES  :
+	/cvs/OAM/SRC/FSTAT/fstat_init.c										1.4
+=============================================================================
+1. DATE   : 2011.08.01(MON)
+2. AUTHOR : Hohyun Baek
+3. LOG    :   
+    * FSTAT
+	  - dReadSubSysInfoFile 오류 메세지 수정
+4. FILES  :
+	/cvs/OAM/SRC/FSTAT/fstat_init.c										1.3
+=============================================================================
+1. DATE   : 2011.08.01(MON)
+2. AUTHOR : Hohyun Baek
+3. LOG    :   
+    * FSTAT
+	  - LIB 디렉토리 생성
+	  - LIB 안에 CGALIB 중 hashg, timerN 추가
+4. FILES  :
+	/cvs/OAM/SRC/FSTAT/fstat_main.h										1.2
+	/cvs/OAM/SRC/FSTAT/fstat_main.c										1.3
+	/cvs/OAM/SRC/FSTAT/LIB/hashg.h										1.1
+	/cvs/OAM/SRC/FSTAT/LIB/libhashg.a									1.1
+	/cvs/OAM/SRC/FSTAT/LIB/libSTGhashg.a								1.1
+	/cvs/OAM/SRC/FSTAT/LIB/timerN.h										1.1
+	/cvs/OAM/SRC/FSTAT/LIB/libtimerN.a									1.1
+	/cvs/OAM/SRC/FSTAT/LIB/libSTGtimerN.a								1.1
+=============================================================================
+1. DATE   : 2011.08.01(MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :   
+    * INC 
+	  - commdef.h conflict corrupted --> sshmid.h 파일의 적용
+	  - sshmid.h 수정
+	  - procid.h SEQ_PROC_S_MNG 추가
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.28
+	/cvs/OAM/INC/procid.h												1.3
+	/cvs/OAM/INC/sshmid.h												1.2
+=============================================================================
+1. DATE   : 2011.08.01(MON)
+2. AUTHOR : Dongcheol Ham 
+3. LOG    :   
+    * INC 
+	  - comming soon write
+4. FILES  :
+    /cvs/OAM/INC/commdef.h      										1.27 
+=============================================================================
+1. DATE   : 2011.07.29(FRI)
+2. AUTHOR : Hohyun Baek
+3. LOG    :   
+    * MMCD
+      - Makefile 에 필요 라이브러리 추가
+      - MMC_COM, MMC_ENUM 파일 선언 수정
+      - DB LIB 함수 적용
+	  - 실행 가능 버전
+4. FILES  :
+    /cvs/OAM/SRC/MMCD/Makefile											1.5 
+    /cvs/OAM/SRC/MMCD/mmcd_comm.h										1.3 
+    /cvs/OAM/SRC/MMCD/Mmmcd_db.c										1.2 
+    /cvs/OAM/SRC/MMCD/mmcd_db.h											1.3 
+    /cvs/OAM/SRC/MMCD/mmcd_main.c										1.4 
+    /cvs/OAM/SRC/MMCD/mmcd_main.h										1.7 
+    /cvs/OAM/SRC/MMCD/para_load.h										1.5 
+=============================================================================
+1. DATE   : 2011.07.29(FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* SI_SVC
+	  - IP log 표기 형식을 IPv4로 알아보기 쉽게 바꿈( 일부만.. )
+4. FILES  :
+	/cvs/OAM/SRC/SI_SVC/if_chnl.c										1.3
+	/cvs/OAM/SRC/SI_SVC/if_sock.c										1.4
+=============================================================================
+1. DATE   : 2011.07.29(FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* CHSMD
+	  - exit code 정리
+	* CHSMD_F
+	  - log 정리, ENCLOSER 사용 부분 주석 처리(disable )
+	* CI_SVC
+	  - IP log 표기 형식을 IPv4로 알아보기 쉽게 바꿈( 일부만.. )
+4. FILES  :
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.11
+	/cvs/OAM/SRC/CHSMD_F/Makefile										1.3
+	/cvs/OAM/SRC/CHSMD_F/chsmd_main.c									1.5
+	/cvs/OAM/SRC/CI_SVC/if_main.c										1.3
+	/cvs/OAM/SRC/CI_SVC/if_sock.c										1.3
+=============================================================================
+1. DATE   : 2011.07.29(FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC/commdef.h
+	  - COND 에서 사용되는 McInit file name을 define
+	* CHSMD
+	  - log 정리
+	  - link 쪽 log 값이 잘못나오는 부분 수정.
+	* COND
+	  - WNTA* define name 수정. 사용하지 않는 'IUPS', 'GRX', 'SG' 등등 제거
+	  - 일부 log 정리
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.26
+	/cvs/OAM/SRC/CHSMD/chsmd_hw.c										1.6
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.9
+	/cvs/OAM/SRC/CHSMD/chsmd_init.h										1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_link.c										1.6
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.10
+	/cvs/OAM/SRC/COND/cond_main.c										1.5
+	/cvs/OAM/SRC/COND/cond_main.h										1.2
+	/cvs/OAM/SRC/COND/cond_msg.c										1.4
+	/cvs/OAM/SRC/COND/cond_msg.h										1.3
+=============================================================================
+1. DATE   : 2011.07.29(FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC/msgqid.h
+	  - msgqid 에 MSGQ_DEFINE 8000 추가
+	* INC/sshmid.h
+	  - 별도 파일로 분리 S_SSHM_KEY
+	* INC/commdef.h
+	  - 별도 파일로 분리된 S_SSHM_KEY 를 포함한 헤더파일 추가 
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.25
+	/cvs/OAM/INC/msgqid.h												1.2
+	/cvs/OAM/INC/sshmid.h												1.1
+=============================================================================
+1. DATE   : 2011.07.29(FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* CHSMD_F
+	  - log.h 추가
+	* CHSMD
+	  - log 관련 정보 수정
+4. FILES  :
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.9
+	/cvs/OAM/SRC/CHSMD_F/chsmd_main.c									1.4
+=============================================================================
+1. DATE   : 2011.07.29(FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* CHSMD_F
+	  - LOG_PATH 재 설정 : LOG_PATH"CHSMD" -> LOG_PATH"/CHSMD"
+4. FILES  :
+	/cvs/OAM/SRC/CHSMD_F/chsmd_main.c									1.3
+=============================================================================
+1. DATE   : 2011.07.28(THU)
+2. AUTHOR : DongCheol Ham
+3. LOG    :
+    * TIFB
+      - 변경된 QUEUE/SHARED MEMORY/SEMAPHORE API 적용 및 소스 정리(미완료)
+4. FILES  :
+	/cvs/OAM/SRC/TIFB/DisMC.c                                           1.2
+	/cvs/OAM/SRC/TIFB/DisMC.h                                           1.1
+	/cvs/OAM/SRC/TIFB/KillMC.c                                          1.2
+	/cvs/OAM/SRC/TIFB/KillMC.h                                          1.1
+	/cvs/OAM/SRC/TIFB/Makefile                                          1.2
+	/cvs/OAM/SRC/TIFB/StartMC.c                                         1.2
+	/cvs/OAM/SRC/TIFB/StartMC.h                                         1.1
+	/cvs/OAM/SRC/TIFB/tifb_util.c                                       1.2
+	/cvs/OAM/SRC/TIFB/tifb_util.h                                       1.1
+=============================================================================
+1. DATE   : 2011.07.28(THU)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* CHSMD_F
+	  - VM 에서 compile test 완료
+	* INC
+	  - TAF 용 CHSMD commit 에 따른 define 상수 작업
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.24
+	/cvs/OAM/INC/filedb.h												1.15
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.8
+	/cvs/OAM/SRC/CHSMD/chsmd_mask.c										1.2
+	/cvs/OAM/SRC/CHSMD_F/Makefile										1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_disk.c									1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_disk.h									1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_hw.c										1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_hw.h										1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_init.c									1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_init.h									1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_load.c									1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_load.h									1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_main.c									1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_main.h									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_mmc.h									1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_mmc_func.c								1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_msg.c									1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_msg.h									1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_ntpd.c									1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_ntpd.h									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_sw.c										1.2
+	/cvs/OAM/SRC/CHSMD_F/chsmd_sw.h										1.2
+=============================================================================
+1. DATE   : 2011.07.27(WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* CHSMD_F
+	  - TAF 용 CHSMD commit. 미완 main 남음
+	* INC
+	  - TAF 용 CHSMD commit 에 따른 define 상수 작업
+4. FILES  :
+	/cvs/OAM/INC/almstat.h												1.9
+	/cvs/OAM/INC/commdef.h												1.23
+	/cvs/OAM/INC/filedb.h												1.14
+	/cvs/OAM/SRC/Makefile												1.3
+	/cvs/OAM/SRC/CHSMD/Makefile											1.6
+	/cvs/OAM/SRC/CHSMD/chsmd_ntp.h										1.4
+	/cvs/OAM/SRC/CHSMD_F/Makefile										1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_disk.c									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_disk.h									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_hw.c										1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_hw.h										1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_init.c									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_init.h									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_load.c									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_load.h									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_main.c									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_mmc.c									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_mmc.h									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_mmc_func.c								1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_msg.c									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_msg.h									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_ntpd.c									1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_sw.c										1.1
+	/cvs/OAM/SRC/CHSMD_F/chsmd_sw.h										1.1
+	/cvs/OAM/SRC/CHSMD_F/log.h											1.1
+=============================================================================
+1. DATE   : 2011.07.27(WED)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* MMCD
+	  - 컴파일 오류 수정완료
+	* FSTAT
+	  - 컴파일 오류 수정완료
+4. FILES  :
+	/cvs/OAM/SRC/MMCD/builtin.h         								1.5 
+	/cvs/OAM/SRC/MMCD/cmd_get.h         								1.5 
+	/cvs/OAM/SRC/MMCD/cmd_load.h        								1.6 
+	/cvs/OAM/SRC/MMCD/cmd_user.h        								1.5 
+	/cvs/OAM/SRC/MMCD/help_proc.h       								1.4 
+	/cvs/OAM/SRC/MMCD/lib_load.h        								1.4 
+	/cvs/OAM/SRC/MMCD/mmcd_db.h         								1.2 
+	/cvs/OAM/SRC/MMCD/mmcd_init.h       								1.4 
+	/cvs/OAM/SRC/MMCD/mmcd_main.h       								1.6 
+	/cvs/OAM/SRC/MMCD/mmcd_mem.h        								1.4 
+	/cvs/OAM/SRC/MMCD/mmcd_sock.h       								1.4 
+	/cvs/OAM/SRC/MMCD/mmcd_util.h       								1.4 
+	/cvs/OAM/SRC/MMCD/para_load.h       								1.4 
+	/cvs/OAM/SRC/MMCD/reload.h          								1.4 
+	/cvs/OAM/SRC/FSTAT/fstat_comm.h     								1.1 
+	/cvs/OAM/SRC/FSTAT/fstat_db.h       								1.1 
+	/cvs/OAM/SRC/FSTAT/fstat_fault.h        							1.1 
+	/cvs/OAM/SRC/FSTAT/fstat_init.h     								1.1 
+	/cvs/OAM/SRC/FSTAT/fstat_load.h     								1.1 
+	/cvs/OAM/SRC/FSTAT/fstat_main.h     								1.1 
+	/cvs/OAM/SRC/FSTAT/fstat_traffic.h  								1.1 
+	/cvs/OAM/SRC/FSTAT/m_msgq.h         								1.1 
+	/cvs/OAM/SRC/FSTAT/fstat_db.c           							1.2 
+	/cvs/OAM/SRC/FSTAT/fstat_fault.c        							1.2 
+	/cvs/OAM/SRC/FSTAT/fstat_init.c     								1.2 
+	/cvs/OAM/SRC/FSTAT/fstat_load.c     								1.2 
+	/cvs/OAM/SRC/FSTAT/fstat_main.c     								1.2 
+	/cvs/OAM/SRC/FSTAT/fstat_traffic.c      							1.2 
+	/cvs/OAM/SRC/FSTAT/m_msgq.c         								1.2 
+=============================================================================
+1. DATE   : 2011.07.27(WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* SI_SVC
+	  - nsock library를 사용하는부분을 local source 쪽으로 porting
+4. FILES  :
+	/cvs/OAM/SRC/SI_SVC/if_main.c										1.4
+	/cvs/OAM/SRC/SI_SVC/if_sock.c										1.3
+=============================================================================
+1. DATE   : 2011.07.27(WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC/commdef.h
+	  - FILE_MASK 추가
+	* INC/filedb.h
+	  - MASK 정보를 저장하기 위한 구조체 정보 추가. fidb의 값이 필요하기 때문에
+		=> 차후 library 화 예정
+	* CHSMD
+	  - mask module 추가
+	  - channel 관리 항목 관련해서 dWriteMaskInfo api 호출하도록 수정
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.22
+	/cvs/OAM/INC/filedb.h												1.13
+	/cvs/OAM/SRC/CHSMD/Makefile											1.5
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.7
+	/cvs/OAM/SRC/CHSMD/chsmd_init.h										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_link.c										1.5
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.8
+	/cvs/OAM/SRC/CHSMD/chsmd_mask.c										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_mask.h										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc.c										1.5
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc.h										1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc_func.c									1.6
+	/cvs/OAM/SRC/SI_SVC/if_msgq.c										1.3
+=============================================================================
+1. DATE   : 2011.07.27(WED)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* INC
+	  - st_NtafStat, st_NtafStatList 제거
+4. FILES  :
+	/cvs/OAM/INC/almstat.h												1.8
+=============================================================================
+1. DATE   : 2011.07.26(TUE)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* INC
+	  - st_NtafStat, stNtafStatList 추가
+	  - SEQ_PROC_FSTAT 추가
+	  - MID_STAT_TRAFFIC, MID_LOG_STATISTICS 추가
+4. FILES  :
+	/cvs/OAM/INC/almstat.h												1.7
+	/cvs/OAM/INC/procid.h												1.2
+	/cvs/OAM/INC/msgdef.h												1.13
+=============================================================================
+1. DATE   : 2011.07.26(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC/msgdef.h
+	  - msgqlist 를 위한 msgqid.h file 추가
+	  - seq_proc_id 를 위한 procid.h file 추가
+	* INC/sockio.h
+	  - st_ClientInfo, st_FDInfo 제거 -> nsocklib.h 로 옮겨짐
+	* CI_SVC, SI_SVC
+	  - sockio.h 변경에 따른 소스 수정
+4. FILES  :
+	/cvs/OAM/INC/msgdef.h												1.12
+	/cvs/OAM/INC/msgqid.h												1.1
+	/cvs/OAM/INC/procid.h												1.1
+	/cvs/OAM/INC/sockio.h												1.6
+	/cvs/OAM/SRC/CI_SVC/if_main.c										1.2
+	/cvs/OAM/SRC/CI_SVC/if_sock.c										1.2
+	/cvs/OAM/SRC/SI_SVC/if_chnl.c										1.2
+	/cvs/OAM/SRC/SI_SVC/if_main.c										1.3
+	/cvs/OAM/SRC/SI_SVC/if_msgq.c										1.2
+	/cvs/OAM/SRC/SI_SVC/if_msgq.h										1.2
+	/cvs/OAM/SRC/SI_SVC/if_sock.c										1.2
+	/cvs/OAM/SRC/SI_SVC/if_sock.h										1.2
+=============================================================================
+1. DATE   : 2011.07.26(TUE)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* INC
+	  - st_NTAF 구조체 추가
+4. FILES  :
+	/cvs/OAM/INC/filedb.h												1.12
+=============================================================================
+1. DATE   : 2011.07.26(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* CHSMD, COND
+	  - ipclib.h 에서 표준 헤더파일 빠짐.
+	* Makefile
+	  - COND, CI_SVC, SI_SVC 추가
+4. FILES  :
+	/cvs/OAM/SRC/Makefile												1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.6
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.7
+	/cvs/OAM/SRC/CHSMD/chsmd_msg.c										1.4
+	/cvs/OAM/SRC/COND/cond_init.c										1.4
+=============================================================================
+1. DATE   : 2011.07.26(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* CHSMD, COND
+	  - OLD FIDB 구조체를 참조 하도록 수정
+	* SI_SVC
+	  - 내부 API 수정
+	* INC
+	  - OLD FIDB 참조하기 위한 상수값 수정
+4. FILES  :
+	/cvs/OAM/INC/almstat.h												1.6
+	/cvs/OAM/INC/commdef.h												1.21
+	/cvs/OAM/INC/filedb.h												1.10
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.5
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.6
+	/cvs/OAM/SRC/COND/cond_func.c										1.4
+	/cvs/OAM/SRC/COND/cond_init.c										1.3
+	/cvs/OAM/SRC/COND/cond_main.c										1.4
+	/cvs/OAM/SRC/COND/cond_msg.c										1.3
+	/cvs/OAM/SRC/COND/cond_msg.h										1.2
+	/cvs/OAM/SRC/SI_SVC/if_main.c										1.2
+=============================================================================
+1. DATE   : 2011.07.26(TUE)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* INC
+	  - message queue list, shared memory list, semaphore list,
+	    nifo message queue list added
+4. FILES  :
+	/cvs/OAM/INC/msgdef.h												1.10
+=============================================================================
+1. DATE   : 2011.07.26(TUE)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* INC
+	  - MID_CHG_TIME 추가
+4. FILES  :
+	/cvs/OAM/INC/msgdef.h												1.9
+=============================================================================
+1. DATE   : 2011.07.26(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* CHSMD
+	  - 원래대로 DQMS TAM 에서 사용되는 FIDB 적용
+4. FILES  :
+	/cvs/OAM/SRC/CHSMD/chsmd_cpu.c										1.5
+	/cvs/OAM/SRC/CHSMD/chsmd_cpu.h										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_disk.c										1.5
+	/cvs/OAM/SRC/CHSMD/chsmd_disk.h										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_hw.c										1.5
+	/cvs/OAM/SRC/CHSMD/chsmd_hw.h										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_init.h										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_link.c										1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_link.h										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.5
+	/cvs/OAM/SRC/CHSMD/chsmd_main.h										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_mem.c										1.5
+	/cvs/OAM/SRC/CHSMD/chsmd_mem.h										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc.c										1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc.h										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc_func.c									1.5
+	/cvs/OAM/SRC/CHSMD/chsmd_msg.c										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_msg.h										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_ntp.c										1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_ntp.h										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_sw.c										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_sw.h										1.2
+=============================================================================
+1. DATE   : 2011.07.26(TUE)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC
+	  - CI_SVC 관련 define 변수 추가
+	* COND, CI_SVC
+	  - 새롭게 추가됨
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.18
+	/cvs/OAM/INC/mmcdef.h												1.13
+	/cvs/OAM/INC/msgdef.h												1.8
+	/cvs/OAM/INC/sockio.h												1.5
+	/cvs/OAM/SRC/CI_SVC/Makefile										1.1
+	/cvs/OAM/SRC/CI_SVC/if_init.c										1.1
+	/cvs/OAM/SRC/CI_SVC/if_init.h										1.1
+	/cvs/OAM/SRC/CI_SVC/if_main.c										1.1
+	/cvs/OAM/SRC/CI_SVC/if_main.h										1.1
+	/cvs/OAM/SRC/CI_SVC/if_msgq.c										1.1
+	/cvs/OAM/SRC/CI_SVC/if_msgq.h										1.1
+	/cvs/OAM/SRC/CI_SVC/if_sock.c										1.1
+	/cvs/OAM/SRC/CI_SVC/if_sock.h										1.1
+	/cvs/OAM/SRC/COND/cond_db.h											1.1
+	/cvs/OAM/SRC/COND/cond_func.h										1.1
+	/cvs/OAM/SRC/COND/cond_init.h										1.1
+	/cvs/OAM/SRC/COND/cond_main.h										1.1
+	/cvs/OAM/SRC/COND/cond_mem.h										1.1
+	/cvs/OAM/SRC/COND/cond_msg.h										1.1
+	/cvs/OAM/SRC/COND/cond_sock.h										1.1
+	/cvs/OAM/SRC/COND/log.h												1.1
+=============================================================================
+1. DATE   : 2011.07.25(MON)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* INC
+	  - MID_STAT_LOAD 추가
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.20
+=============================================================================
+1. DATE   : 2011.07.25(MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC
+	  - SI_SVC 관련 define 변수 추가
+	  - 과거 FIDB 구조체( st_WNTAM, st_NTAM... ) 추가됨...
+	* SI_SVC
+	  - 새롭게 추가됨
+4. FILES  :
+	/cvs/OAM/INC/filedb.h												1.9
+	/cvs/OAM/INC/mmcdef.h												1.12
+	/cvs/OAM/INC/mmcid.h												1.5
+	/cvs/OAM/INC/msgdef.h												1.7
+	/cvs/OAM/INC/sockio.h												1.4
+	/cvs/OAM/SRC/SI_SVC/Makefile										1.1
+	/cvs/OAM/SRC/SI_SVC/if_chnl.c										1.1
+	/cvs/OAM/SRC/SI_SVC/if_chnl.h										1.1
+	/cvs/OAM/SRC/SI_SVC/if_init.c										1.1y
+	/cvs/OAM/SRC/SI_SVC/if_init.h										1.1
+	/cvs/OAM/SRC/SI_SVC/if_main.c										1.1
+	/cvs/OAM/SRC/SI_SVC/if_main.h										1.1
+	/cvs/OAM/SRC/SI_SVC/if_msgq.c										1.1
+	/cvs/OAM/SRC/SI_SVC/if_msgq.h										1.1
+	/cvs/OAM/SRC/SI_SVC/if_sock.c										1.1
+	/cvs/OAM/SRC/SI_SVC/if_sock.h										1.1
+	/cvs/OAM/SRC/SI_SVC/log.h											1.1
+=============================================================================
+1. DATE   : 2011.07.25(MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC
+	  - filedb.h 에 신규 fidb 에 Endace card port 감시 항목 추가
+	  - commdef.h 에 FILE_MYSQL_CONF path 추가
+	* CHSMD
+	  - TAF 인 경우에 대하여, ENDACE CARD PORT 감시 (mirror port)..추가
+	* COND
+	  - FILE LIBRARY 추가
+	  - get_db_conf 내용 추가, 임시 함수 제거
+4. FILES  :
+	/cvs/OAM/INC/filedb.h												1.8
+	/cvs/OAM/INC/commdef.h												1.14
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.4
+	/cvs/OAM/SRC/COND/Makefile											1.4
+	/cvs/OAM/SRC/COND/cond_func.c										1.3
+	/cvs/OAM/SRC/COND/cond_main.c										1.3
+=============================================================================
+1. DATE   : 2011.07.22(FRI)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* QMON 
+	  - QMON 1차 정리 버젼 update 
+4. FILES  :
+	/cvs/OAM/SRC/QMON/qmon_main.c										1.2
+	/cvs/OAM/SRC/QMON/qmon_main.h										1.1
+	/cvs/OAM/SRC/QMON/qmon_restart.c									1.2
+	/cvs/OAM/SRC/QMON/Makefile								        	1.2
+=============================================================================
+1. DATE   : 2011.07.21(THU)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC
+	  - COND 관련 정보 추가
+	* COND
+	  - header file 변경, 신규 library 추가( 미완 - library 수정 후 적용해야 함 )
+4. FILES  :
+	/cvs/OAM/INC/almstat.h												1.5
+	/cvs/OAM/INC/commdef.h												1.13
+	/cvs/OAM/INC/filedb.h												1.7
+	/cvs/OAM/INC/msgdef.h												1.6
+	/cvs/OAM/INC/sockio.h												1.3
+	/cvs/OAM/SRC/COND/Makefile											1.3
+	/cvs/OAM/SRC/COND/cond_api.h										remove
+	/cvs/OAM/SRC/COND/cond_db.c											1.2
+	/cvs/OAM/SRC/COND/cond_func.c										1.2
+	/cvs/OAM/SRC/COND/cond_init.c										1.2
+	/cvs/OAM/SRC/COND/cond_main.c										1.2
+	/cvs/OAM/SRC/COND/cond_mem.c										1.2
+	/cvs/OAM/SRC/COND/cond_msg.c										1.2
+	/cvs/OAM/SRC/COND/cond_sock.c										1.2
+=============================================================================
+1. DATE   : 2011.07.20(WED)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* INC
+	  - mmcdef.h 에 st_ConnInfo 구조체 추가
+	* MMCD
+	  - LOGLIB 수정 사항 반영
+	  - MMCD DB 함수 추가 (mmcd_db.h mmcd_db.c)
+4. FILES  :
+	/cvs/OAM/SRC/MMCD/Makefile											1.4
+	/cvs/OAM/SRC/MMCD/builtin.c											1.3
+	/cvs/OAM/SRC/MMCD/cmd_get.c											1.3
+	/cvs/OAM/SRC/MMCD/cmd_load.c										1.4
+	/cvs/OAM/SRC/MMCD/cmd_user.c										1.4
+	/cvs/OAM/SRC/MMCD/cmd_user.h										1.4
+	/cvs/OAM/SRC/MMCD/help_proc.c										1.4
+	/cvs/OAM/SRC/MMCD/mmcd_comm.h										1.2
+	/cvs/OAM/SRC/MMCD/mmcd_init.c										1.4
+	/cvs/OAM/SRC/MMCD/mmcd_main.c										1.3
+	/cvs/OAM/SRC/MMCD/mmcd_main.h										1.3
+	/cvs/OAM/SRC/MMCD/mmcd_mem.c										1.3
+	/cvs/OAM/SRC/MMCD/mmcd_sock.c										1.3
+	/cvs/OAM/SRC/MMCD/mmcd_util.c										1.3
+	/cvs/OAM/SRC/MMCD/para_load.c										1.3
+	/cvs/OAM/SRC/MMCD/mmcd_db.h											1.1
+	/cvs/OAM/SRC/MMCD/mmcd_db.c											1.1
+	/cvs/OAM/INC/mmcdef.h												1.11
+============================================================================
+1. DATE   : 2011.07.20(WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* CHSMD
+	  - TAF, TAM 감시 항목 통합. system별 분리는 차후...
+4. FILES  :
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.3
+============================================================================
+1. DATE   : 2011.07.20(WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* CHSMD
+	  - 수정됨. 미완
+4. FILES  :
+	/cvs/OAM/INC/filedb.h												1.6
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc.h										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc_func.c									1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_ntp.c										1.3
+	/cvs/OAM/SRC/MMCD/Makefile											1.3
+============================================================================
+1. DATE   : 2011.07.20(WED)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* INC
+	  - 시간상수/offset/semaphore상수 정의 
+4. FILES  :
+    /cvs/OAM/INC/commdef.h                                       1.12
+============================================================================
+1. DATE   : 2011.07.19(TUE)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* INC
+	  - MMCD 관련 헤더파일 내용 추가&정리
+	* MMCD
+	  - MMCD 공동 헤더파일 mmcd_comm.h 추가
+	  - 헤더정리, LOGLIB 관련 오류 수정 필요
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.11
+	/cvs/OAM/INC/mmcdef.h												1.10
+	/cvs/OAM/INC/msgdef.h												1.5
+	/cvs/OAM/SRC/MMCD/mmcd_comm.h										1.1
+	/cvs/OAM/SRC/MMCD/builtin.h											1.4
+	/cvs/OAM/SRC/MMCD/cmd_get.h											1.4
+	/cvs/OAM/SRC/MMCD/cmd_load.h										1.5
+	/cvs/OAM/SRC/MMCD/cmd_user.h										1.3
+	/cvs/OAM/SRC/MMCD/help_proc.h										1.3
+	/cvs/OAM/SRC/MMCD/lib_load.h										1.3
+	/cvs/OAM/SRC/MMCD/mmcd_init.h										1.3
+	/cvs/OAM/SRC/MMCD/mmcd_main.h										1.4
+	/cvs/OAM/SRC/MMCD/mmcd_mem.h										1.3
+	/cvs/OAM/SRC/MMCD/mmcd_sock.h										1.3
+	/cvs/OAM/SRC/MMCD/mmcd_util.h										1.3
+	/cvs/OAM/SRC/MMCD/para_load.h										1.3
+	/cvs/OAM/SRC/MMCD/reload.h											1.3
+	/cvs/OAM/SRC/MMCD/mmcd_init.c										1.3
+============================================================================
+1. DATE   : 2011.07.19(TUE)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* INC
+	  - MMCD 관련 헤더파일 내용 추가
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.10
+	/cvs/OAM/INC/mmcdef.h												1.9
+	/cvs/OAM/INC/mmcid.h												1.4
+	/cvs/OAM/INC/msgdef.h												1.4
+============================================================================
+1. DATE   : 2011.07.18(MON)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* INC
+	  - commdef.h 업데이트 (BUF_SIZE 1024 변경 등..)
+	  - mmcdef.h 업데이트
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.9
+	/cvs/OAM/INC/mmcdef.h												1.6
+============================================================================
+1. DATE   : 2011.07.18(MON)
+2. AUTHOR : Hohyun Baek
+3. LOG    :
+	* INC
+	  - mmcdef.h 업데이트
+	  - mmcid.h 업데이트
+4. FILES  :
+	/cvs/OAM/INC/mmcdef.h												1.5
+	/cvs/OAM/INC/mmcid.h												1.3
+============================================================================
+1. DATE   : 2011.07.18(MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* CHSMD
+	  - TAF/TAM 통합 작업 미완.
+4. FILES  :
+	/cvs/OAM/INC/almstat.h												1.4
+	/cvs/OAM/INC/filedb.h												1.5
+	/cvs/OAM/SRC/CHSMD/Makefile											1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_cpu.c										1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_cpu.h										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_disk.c										1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_disk.h										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_hw.c										1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_hw.h										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_mem.c										1.4
+	/cvs/OAM/SRC/CHSMD/chsmd_mem.h										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc.c										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc_func.c									1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_msg.c										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_msg.h										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_ntp.c										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_ntp.h										1.2
+	/cvs/OAM/SRC/CHSMD/log.h											1.2
+============================================================================
+1. DATE   : 2011.07.18(MON)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* INC 
+	  - shared memory info file 공통 경로 추가(FILE_SHM_INFO)
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.8
+============================================================================
+1. DATE   : 2011.07.15(FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* CHSMD
+	  - header file 정리 1차 완료( 컴파일까지 )
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.7
+	/cvs/OAM/INC/filedb.h												1.4
+	/cvs/OAM/INC/msgdef.h												1.3
+	/cvs/OAM/SRC/CHSMD/Makefile											1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_cpu.c										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_cpu.h										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_define.h									removed
+	/cvs/OAM/SRC/CHSMD/chsmd_disk.c										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_disk.h										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_hw.c										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_hw.h										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_init.h										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_link.c										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_link.h										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_main.h										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_mem.c										1.3
+	/cvs/OAM/SRC/CHSMD/chsmd_mem.h										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc.c										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc.h										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc_func.c									1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_msg.c										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_msg.h										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_ntp.c										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_ntp.h										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_ntpd.c										removed
+	/cvs/OAM/SRC/CHSMD/chsmd_sw.c										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_sw.h										1.1
+	/cvs/OAM/SRC/CHSMD/log.h											1.1
+	/cvs/OAM/SRC/CHSMD/mtime.c											removed
+	/cvs/OAM/SRC/COND/Makefile											1.2
+============================================================================
+1. DATE   : 2011.07.15(FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC
+	  - FILE_TAM/TAF_LOAD_DATA path define
+	  - FILE PATH modified;;;
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.6
+============================================================================
+1. DATE   : 2011.07.15(FRI)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC
+	  - CHSMD 에서 사용되는 header file 정보 추가됨
+4. FILES  :
+	/cvs/OAM/INC/almstat.h												1.3
+	/cvs/OAM/INC/commdef.h												1.5
+	/cvs/OAM/INC/filedb.h												1.2
+	/cvs/OAM/INC/mmcdef.h												1.2
+	/cvs/OAM/INC/mmcid.h												1.2
+	/cvs/OAM/INC/msgdef.h												1.2
+	/cvs/OAM/INC/sockio.h												1.2
+============================================================================
+1. DATE   : 2011.07.14(TUR)
+2. AUTHOR : DongCheol Ham 
+3. LOG    :
+	* INC
+	  - DATA/LOG PATH 추가(진행중)
+4. FILES  :
+	/cvs/OAM/INC/commdef.h												1.3
+============================================================================
+1. DATE   : 2011.07.13 (WED)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC
+	  - CHSMD, COND + Alarm Status 관련 header file define. NOT COMPLETE
+	* CHSMD
+	  - header file 정리중, NOT COMPLETE
+4. FILES  :
+	/cvs/OAM/INC/almstat.h												1.2
+	/cvs/OAM/INC/filedb.h												1.2
+	/cvs/OAM/SRC/CHSMD/Makefile											1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_cpu.c										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_disk.c										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_hw.c										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_link.c										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_mem.c										1.2
+	/cvs/OAM/SRC/CHSMD/chsmd_ntpd.c										1.2
+============================================================================
+1. DATE   : 2011.07.11 (MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* INC
+	  - O&M 에서 사용되는 공통 header file 정리및 배포
+	    ( 값들은 이제 채워나가야 함 )
+4. FILES  :
+	/cvs/OAM/INC/almstat.h												1.1
+	/cvs/OAM/INC/commdef.h												1.1
+	/cvs/OAM/INC/filedb.h												1.1
+	/cvs/OAM/INC/mmcdef.h												1.1
+	/cvs/OAM/INC/mmcid.h												1.1
+	/cvs/OAM/INC/msgdef.h												1.1
+	/cvs/OAM/INC/sockio.h												1.1
+============================================================================
+1. DATE   : 2011.07.11 (MON)
+2. AUTHOR : Hyungsek Son
+3. LOG    :
+	* HISTORY.TXT init
+	* SRC
+	  - Makefile init
+	  - Block added ( CHSMD, COND, MMCD, FSTAT, QMON, TIFB )
+4. FILES  :
+	/cvs/OAM/SRC/Makefile												1.1
+	/cvs/OAM/SRC/CHSMD/Makefile											1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_cpu.c										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_define.h									1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_disk.c										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_hw.c										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_init.c										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_link.c										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_main.c										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_mem.c										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc.c										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_mmc_func.c									1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_ntpd.c										1.1
+	/cvs/OAM/SRC/CHSMD/chsmd_sw.c										1.1
+	/cvs/OAM/SRC/CHSMD/mtime.c											1.1
+	/cvs/OAM/SRC/COND/Makefile											1.1
+	/cvs/OAM/SRC/COND/cond_api.h										1.1
+	/cvs/OAM/SRC/COND/cond_db.c											1.1
+	/cvs/OAM/SRC/COND/cond_func.c										1.1
+	/cvs/OAM/SRC/COND/cond_init.c										1.1
+	/cvs/OAM/SRC/COND/cond_main.c										1.1
+	/cvs/OAM/SRC/COND/cond_mem.c										1.1
+	/cvs/OAM/SRC/COND/cond_msg.c										1.1
+	/cvs/OAM/SRC/COND/cond_sock.c										1.1
+	/cvs/OAM/SRC/FSTAT/Makefile											1.1
+	/cvs/OAM/SRC/FSTAT/fstat_api.h										1.1
+	/cvs/OAM/SRC/FSTAT/fstat_db.c										1.1
+	/cvs/OAM/SRC/FSTAT/fstat_extern.h									1.1
+	/cvs/OAM/SRC/FSTAT/fstat_fault.c									1.1
+	/cvs/OAM/SRC/FSTAT/fstat_global.h									1.1
+	/cvs/OAM/SRC/FSTAT/fstat_init.c										1.1
+	/cvs/OAM/SRC/FSTAT/fstat_load.c										1.1
+	/cvs/OAM/SRC/FSTAT/fstat_main.c										1.1
+	/cvs/OAM/SRC/FSTAT/fstat_traffic.c									1.1
+	/cvs/OAM/SRC/FSTAT/m_msgq.c											1.1
+	/cvs/OAM/SRC/MMCD/Makefile											1.1
+	/cvs/OAM/SRC/MMCD/builtin.c											1.1
+	/cvs/OAM/SRC/MMCD/builtin.h											1.1
+	/cvs/OAM/SRC/MMCD/cmd_get.c											1.1
+	/cvs/OAM/SRC/MMCD/cmd_get.h											1.1
+	/cvs/OAM/SRC/MMCD/cmd_load.c										1.1
+	/cvs/OAM/SRC/MMCD/cmd_load.h										1.1
+	/cvs/OAM/SRC/MMCD/cmd_user.c										1.1
+	/cvs/OAM/SRC/MMCD/cmd_user.h										1.1
+	/cvs/OAM/SRC/MMCD/help_proc.c										1.1
+	/cvs/OAM/SRC/MMCD/help_proc.h										1.1
+	/cvs/OAM/SRC/MMCD/lib_load.c										1.1
+	/cvs/OAM/SRC/MMCD/lib_load.h										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_api.h										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_def.h										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_extern.h										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_global.h										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_init.c										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_init.h										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_main.c										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_main.h										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_mem.c										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_mem.h										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_sock.c										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_sock.h										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_util.c										1.1
+	/cvs/OAM/SRC/MMCD/mmcd_util.h										1.1
+	/cvs/OAM/SRC/MMCD/para_load.c										1.1
+	/cvs/OAM/SRC/MMCD/para_load.h										1.1
+	/cvs/OAM/SRC/MMCD/reload.c											1.1
+	/cvs/OAM/SRC/MMCD/reload.h											1.1
+	/cvs/OAM/SRC/QMON/Makefile											1.1
+	/cvs/OAM/SRC/QMON/qmon_main.c										1.1
+	/cvs/OAM/SRC/QMON/qmon_restart.c									1.1
+	/cvs/OAM/SRC/TIFB/DisMC.c											1.1
+	/cvs/OAM/SRC/TIFB/KillMC.c											1.1
+	/cvs/OAM/SRC/TIFB/Makefile											1.1
+	/cvs/OAM/SRC/TIFB/StartMC.c											1.1
+	/cvs/OAM/SRC/TIFB/tifb_extern.h										1.1
+	/cvs/OAM/SRC/TIFB/tifb_util.c										1.1
+============================================================================
