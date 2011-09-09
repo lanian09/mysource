@@ -1,0 +1,21 @@
+REGISTER sip:ss2.wcom.com SIP/2.0
+Via: SIP/2.0/UDP there.com:5060
+From: LittleGuy <sip:UserB@there.com>
+To: LittleGuy <sip:UserB@there.com>
+Call-ID: 123456789@there.com
+CSeq: 2 REGISTER
+Contact: <sip:UserB@110.111.112.113>
+Contact: <sip:+1-972-555-2222@gw1.wcom.com;user=phone>
+Contact: tel:+1-972-555-2222
+Authorization:Digest username="UserB",
+realm="MCI WorldCom SIP",
+nonce="ea9c8e88df84f1cec4341ae6cbe5a359", opaque="",
+uri="sip:ss2.wcom.com", response="dfe56131d1958046689cd83306477ecc"
+Content-Length: 0
+Via: SIP/2.0/UDP ss2.wcom.com:5060;branch=721e418c4.1
+Via: SIP/2.0/UDP there.com:5060
+From: LittleGuy <sip:UserB@there.com>;tag=314159
+To: BigGuy <sip:UserA@here.com>
+Call-ID: 12345601@here.com
+CSeq: 1 BYE
+Content-Length: 0

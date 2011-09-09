@@ -1,0 +1,59 @@
+prefix = /usr/local
+exec_prefix = ${prefix}
+bindir = ${exec_prefix}/bin
+include= ${prefix}/include
+libdir = ${exec_prefix}/lib
+
+CFLAGS= -Wall -Wimplicit -Wformat -O2 -DNDEBUG -DHAVE_CONFIG_H -pipe
+
+INCLUDE = -I./include 
+CFLAGS += -D_GNU_SOURCE -D_LARGEFILE64_SOURCE
+CFLAGS += $(INCLUDE)
+#LDLIBS = -L./lib -ldag  -lpcap
+LDLIBS = -L$(libdir) -ldag  -lpcap
+INSTALL= /usr/bin/install -c
+
+CSRC    = $(wildcard *.c)
+OBJS	= $(CSRC:.c=.o)
+BINS	= dagconvert
+
+#
+# Flex and bison allow you to specify the prefixes of the global symbols
+# used by the generated parser.  This prevents name clashes if
+# tools/dagopts.o is linked with other projects that have their own parsers.
+#
+# This needs to be here as well as in tools because of the ../../lib/dagopts.c
+# dependency above. Ugly. This needs to be re-arranged.
+#
+LEX = flex -Pdagopt
+YACC = bison -y -p dagopt
+
+.PHONY: all clean distclean install depend
+
+all: $(BINS)
+
+clean:
+	$(RM) *~ *.o $(BINS)
+
+distclean:
+	$(RM) *~ *.o $(BINS) Makefile .depend
+
+install: $(BINS)
+	$(INSTALL) $(BINS) $(bindir)
+
+depend: .depend
+
+dagconvert: $(OBJS)
+
+.depend: $(CSRC) Makefile
+	@echo -n "rebuilding .depend ... "
+	@$(CC) -M -MG $(INCLUDE) $(CSRC) | \
+		sed -e '/\\$$/N' -e 's/\\\n//' | sed -e '/\\$$/N' -e 's/\\\n//' | \
+		sed -e '/\\$$/N' -e 's/\\\n//' | sed -e '/\\$$/N' -e 's/\\\n//' | \
+		sed -e '/\\$$/N' -e 's/\\\n//' | sed -e '/\\$$/N' -e 's/\\\n//' | \
+		sed -e 's%/usr/[a-zA-Z0-9\._/-]*%%g' -e 's/  */ /g' >.depend
+	@echo "done"
+
+ifneq ($(MAKECMDGOALS),depend)
+include .depend
+endif

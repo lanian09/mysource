@@ -1,0 +1,26 @@
+# sun solaris 10 link infomation
+# num link-name
+0 e1000g0
+1 e1000g1
+2 e1000g2
+3 e1000g3
+4 e1000g4
+5 e1000g5
+6 e1000g6
+7 e1000g7
+8 mysql
+9 timesten
+10 sm
+11 cm
+12 SMCONN_A
+13 SMSYNC_A
+14 SMCONN_B
+15 SMSYNC_B
+16 DISK1
+17 DISK2
+18 FAN1
+19 FAN2
+20 FAN3
+21 PWR1
+22 PWR2
+#@

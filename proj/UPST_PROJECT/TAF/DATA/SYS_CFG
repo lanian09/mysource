@@ -1,0 +1,37 @@
+############################################
+##
+## LOAD DATA
+#@ LOAD NUM 3
+#@ LOAD NAME CPU
+#@ LOAD NAME MEM
+#@ LOAD NAME QUEUE
+##
+## NET INFO
+#@ NET ETH0 ENABLE
+#@ NET ETH1 DISABLE
+#@ NET ETH2 ENABLE
+#@ NET ETH3 DISABLE
+##
+## DISK INFO
+#@ DISK NUM 2
+#@ DISK PATH /
+#@ DISK PATH /DATA
+##
+## QUE INFO
+#@ QUE NUM 20000
+##
+## SMSNAME
+#@ SMS NAME SQM
+##
+## SYSNO ################################
+#@ SYS NO 21
+##
+## POWER and FAN CHECK  ##################
+#@ HPLOG DIR /sbin
+##
+## DAG BIN DIR ###########################
+#@ DAGBIN DIR   /usr/local/bin
+##
+## SYSTEM TYPE (GN,GI,GRX,SG,IUPS)
+#@ SYS TYPE GN
+#E

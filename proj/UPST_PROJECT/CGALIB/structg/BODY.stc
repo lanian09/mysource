@@ -1,0 +1,511 @@
+FileName : BODY.l
+Lex_Compile_Option : -i
+Set : iterate_comments = OFF
+
+/* scanner for a toy Pascal-like language */
+
+%{
+/* need this for the call to atof() below */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <timerN.h>
+#include <hashg.h>
+#include "common_stg.h"
+
+#define   FILEREF	"file:///"
+#define   FILEREF_LEN	8
+
+static BODY	*gpBODY;
+static st_LIST	*gpUrlParseLIST;
+static stMEMSINFO *pMEMSINFO;
+
+int brace_cnt;
+int href_brace_cnt;
+
+
+#define IMG_TYPE	1
+extern void put_body_list(char *text , int leng);
+
+%}
+
+DIGIT    [0-9]
+ID       [A-Za-z0-9]*
+ac		</a>
+%s		HREF
+%s		IMG
+%s		BGIMG
+%s		LEXBODY
+%s		LINK
+%s		META
+%s		BGURL
+%s		INPUTIMG
+%s		INPUTIMGURL
+%s		IFRAME
+%s		IFRAMEURL
+%s		JS
+%s		JSURL
+
+%%
+
+^"url=http://"[^ \t;]* {
+	FPRINTF(LOG_LEVEL,"\nREDIRECT HTTP  %s\n",yytext);
+	gpBODY->redirect_url_type = REDIRECT_HTTP;
+	yyleng -= 4;
+	if(yyleng > MAX_BODY_STR_LEN){
+		gpBODY->redirect_url_len = MAX_BODY_STR_LEN;
+		memcpy(gpBODY->redirect_url ,yytext+4,MAX_BODY_STR_SIZE);
+		gpBODY->redirect_url[MAX_BODY_STR_LEN] = 0;
+	} else {
+		gpBODY->redirect_url_len = yyleng;
+		memcpy(gpBODY->redirect_url ,yytext+4,yyleng);
+		gpBODY->redirect_url[yyleng] = 0;
+	}
+	return  1;
+}
+
+^"url=rtsp://"[^ \t;]* {
+	FPRINTF(LOG_LEVEL,"\nREDIRECT RTSP  %s\n",yytext);
+	gpBODY->redirect_url_type = REDIRECT_RTSP;
+	yyleng -= 4;
+	if(yyleng > MAX_BODY_STR_LEN){
+		gpBODY->redirect_url_len = MAX_BODY_STR_LEN;
+		memcpy(gpBODY->redirect_url ,yytext+4,MAX_BODY_STR_SIZE);
+		gpBODY->redirect_url[MAX_BODY_STR_LEN] = 0;
+	} else {
+		gpBODY->redirect_url_len = yyleng;
+		memcpy(gpBODY->redirect_url ,yytext+4,yyleng);
+		gpBODY->redirect_url[yyleng] = 0;
+	}
+	return  1;
+}
+
+"<"[ \t]*bgsound {
+		FPRINTF(LOG_LEVEL,"IMG: %s [H]\n",yytext);
+		BEGIN IMG;
+		brace_cnt = -1;
+}
+
+"<"[ \t]*img {
+		FPRINTF(LOG_LEVEL,"IMG: %s [H]\n",yytext);
+		BEGIN IMG;
+		brace_cnt = -1;
+}
+<IMG>\r\n		{ BEGIN 0; }
+<IMG>\< {
+		brace_cnt --;
+		//FPRINTF(LOG_LEVEL,"HREF: <  brace %d\n",brace_cnt);
+}
+<IMG>\> {
+		brace_cnt ++;
+		if(brace_cnt == 0){ 
+			BEGIN 0; 
+		}
+		FPRINTF(LOG_LEVEL,"IMG: >  brace %d\n",brace_cnt);
+}
+<IMG>"src='"[ \t]*[^ \t\r\n>\\'"]+  {
+	if(brace_cnt == -1){
+		FPRINTF(LOG_LEVEL,"IMG src: %s [H]\n",yytext);
+		put_body_list(yytext+5,yyleng-5);
+	}
+}
+<IMG>"src=\""[ \t]*[^ \t\r\n>\\'"]+  {
+	if(brace_cnt == -1){
+		FPRINTF(LOG_LEVEL,"IMG src: %s [H]\n",yytext);
+		put_body_list(yytext+5,yyleng-5);
+	}
+}
+<IMG>"src="[ \t]*[^ \t\r\n>\\'"]+  {
+	if(brace_cnt == -1){
+		FPRINTF(LOG_LEVEL,"IMG src: %s [H]",yytext);
+		put_body_list(yytext+4,yyleng-4);
+	}
+}
+
+"<"[ \t]*link {
+		FPRINTF(LOG_LEVEL,"LINK: %s [H]\n",yytext);
+		BEGIN LINK;
+		brace_cnt = -1;
+}
+<LINK>\r\n		{ BEGIN 0; }
+<LINK>\< {
+		brace_cnt --;
+		//FPRINTF(LOG_LEVEL,"HREF: <  brace %d\n",brace_cnt);
+}
+<LINK>\> {
+		brace_cnt ++;
+		if(brace_cnt == 0){ 
+			BEGIN 0; 
+		}
+		FPRINTF(LOG_LEVEL,"LINK: >  brace %d\n",brace_cnt);
+}
+<LINK>"href='"[ \t]*[^ \t\r\n>\\'"]+  {
+	if(brace_cnt == -1){
+		FPRINTF(LOG_LEVEL,"LINK src1: %s [H]\n",yytext);
+		put_body_list(yytext+6,yyleng-6);
+	}
+}
+<LINK>"href=\""[ \t]*[^ \t\r\n>\\'"]+  {
+	if(brace_cnt == -1){
+		FPRINTF(LOG_LEVEL,"LINK src2: %s [H]\n",yytext);
+		put_body_list(yytext+6,yyleng-6);
+	}
+}
+<LINK>"href="[ \t]*[^ \t\r\n>\\'"]+  {
+	if(brace_cnt == -1){
+		FPRINTF(LOG_LEVEL,"LINK src3: %s [H]\n",yytext);
+		put_body_list(yytext+5,yyleng-5);
+	}
+}
+
+"<"[ \t]*meta[ \t]*http-equiv[ \t]*=[ \t'"]*refresh[ \t'"]*content[ \t]*=[ \t'"]*[0-9]+;[ \t]* {
+	FPRINTF(LOG_LEVEL,"META: %s [H]\n",yytext);
+	BEGIN META;
+	brace_cnt = -1;
+}
+<META>\r\n		{ BEGIN 0; }
+<META>\< {
+	brace_cnt --;
+	//FPRINTF(LOG_LEVEL,"HREF: <  brace %d\n",brace_cnt);
+}
+<META>\> {
+	brace_cnt ++;
+	if(brace_cnt == 0){ 
+		BEGIN 0; 
+	}
+	FPRINTF(LOG_LEVEL,"META: >  brace %d\n",brace_cnt);
+}
+<META>"url="[ \t]*[^ \t\r\n>\\'"]+  {
+	if(brace_cnt == -1){
+		FPRINTF(LOG_LEVEL,"META src: %s [H]\n",yytext);
+		put_body_list(yytext+4,yyleng-4);
+	}
+}
+
+"<"[ \t]*body {
+		FPRINTF(LOG_LEVEL,"LEXBODY: %s [H]\n",yytext);
+		BEGIN LEXBODY;
+		brace_cnt = -1;
+}
+<LEXBODY>\r\n		{ BEGIN 0; }
+<LEXBODY>\< {
+		brace_cnt --;
+		//FPRINTF(LOG_LEVEL,"HREF: <  brace %d\n",brace_cnt);
+}
+<LEXBODY>\> {
+		brace_cnt ++;
+		if(brace_cnt == 0){ 
+			BEGIN 0; 
+		}
+		FPRINTF(LOG_LEVEL,"LEXBOX: >  brace %d\n",brace_cnt);
+}
+<LEXBODY>"background='"[ \t]*[^ \t\r\n>\\'"]+  {
+	if(brace_cnt == -1){
+		FPRINTF(LOG_LEVEL,"LEXBODY background: %s [H]\n",yytext);
+		put_body_list(yytext+12,yyleng-12);
+	}
+}
+<LEXBODY>"background=\""[ \t]*[^ \t\r\n>\\'"]+  {
+	if(brace_cnt == -1){
+		FPRINTF(LOG_LEVEL,"LEXBODY background: %s [H]\n",yytext);
+		put_body_list(yytext+12,yyleng-12);
+	}
+}
+<LEXBODY>"background="[ \t]*[^ \t\r\n>\\'"]+  {
+	if(brace_cnt == -1){
+		FPRINTF(LOG_LEVEL,"LEXBODY background: %s [H]\n",yytext);
+		put_body_list(yytext+11,yyleng-11);
+	}
+}
+
+
+
+
+"background-image"[ \t]*:[ \t]* {
+		FPRINTF(LOG_LEVEL,"BGIMG: %s [H]\n",yytext);
+		BEGIN BGURL;
+}
+
+background[ \t]*:[ \t]* {
+		FPRINTF(LOG_LEVEL,"BGIMG: %s [H]\n",yytext);
+		BEGIN BGURL;
+}
+
+<BGURL>url[ \t]*"("[ \t]* {
+		FPRINTF(LOG_LEVEL,"BGURL: %s [H]\n",yytext);
+		BEGIN 0;
+		BEGIN BGIMG;
+}
+
+<BGURL>\r\n		{ BEGIN 0; }
+<BGURL>[ \t]*[>)]+  {
+	FPRINTF(LOG_LEVEL,"BGURL background-img: %s [H]\n",yytext);
+	BEGIN 0;
+}
+<BGIMG>\r\n		{ BEGIN 0; }
+<BGIMG>[ \t]*[^ \t\r\n>\\'")]+  {
+	FPRINTF(LOG_LEVEL,"BGIMG background-img: %s [H]\n",yytext);
+	put_body_list(yytext,yyleng);
+	BEGIN 0;
+}
+
+"<"input[ \t]*type[ \t]*=[ \t]*[\'\"]*[ \t]*image[\'\"]*[ \t]* {
+		FPRINTF(LOG_LEVEL,"INPUTIMG: %s [H]\n",yytext);
+		BEGIN INPUTIMG;
+}
+
+<INPUTIMG>src[ \t]*=[ \t]*[\'\"]*[ \t]* {
+		FPRINTF(LOG_LEVEL,"INPUTIMG: %s [H]\n",yytext);
+		BEGIN 0;
+		BEGIN INPUTIMGURL;
+}
+
+<INPUTIMG>\r\n		{ BEGIN 0; }
+<INPUTIMG>[ \t]*[>)]+  {
+	FPRINTF(LOG_LEVEL,"INPUTIMG input type=\"image\": %s [H]\n",yytext);
+	BEGIN 0;
+}
+<INPUTIMGURL>\r\n		{ BEGIN 0; }
+<INPUTIMGURL>[ \t]*[^ \t\r\n>\\'")]+  {
+	FPRINTF(LOG_LEVEL,"INPUTIMGURL input type=\"image\": %s [H]\n",yytext);
+	put_body_list(yytext,yyleng);
+	BEGIN 0;
+}
+
+"<"script[ \t]*type[ \t]*=[ \t]*[\'\"]*[ \t]*"text/javascript"[\'\"]*[ \t]* {
+		FPRINTF(LOG_LEVEL,"JS: %s [H]\n",yytext);
+		BEGIN JS;
+}
+
+"<"script[ \t]*language[ \t]*=[ \t]*[\'\"]*[ \t]*"javascript"[\'\"]*[ \t]* {
+		FPRINTF(LOG_LEVEL,"JS: %s [H]\n",yytext);
+		BEGIN JS;
+}
+
+<JS>src[ \t]*=[ \t]*[\'\"]*[ \t]* {
+		FPRINTF(LOG_LEVEL,"JS: %s [H]\n",yytext);
+		BEGIN 0;
+		BEGIN JSURL;
+}
+
+<JS>\r\n		{ BEGIN 0; }
+<JS>[ \t]*[>)]+  {
+	FPRINTF(LOG_LEVEL,"JSURL script type=\"text/javascript\": %s [H]\n",yytext);
+	BEGIN 0;
+}
+<JSURL>\r\n		{ BEGIN 0; }
+<JSURL>[ \t]*[^ \t\r\n>\\'")]+  {
+	FPRINTF(LOG_LEVEL,"JSURL script type=\"text/javascript\": %s [H]\n",yytext);
+	put_body_list(yytext,yyleng);
+	BEGIN 0;
+}
+
+"<"[ \t]*iframe {
+		FPRINTF(LOG_LEVEL,"IFRAME: %s [H]\n",yytext);
+		BEGIN IFRAME;
+}
+
+<IFRAME>src[ \t]*=[ \t]*[\'\"]*[ \t]* {
+		FPRINTF(LOG_LEVEL,"IFRAME: %s [H]\n",yytext);
+		BEGIN 0;
+		BEGIN IFRAMEURL;
+}
+
+<IFRAME>\r\n		{ BEGIN 0; }
+<IFRAME>[ \t]*[>)]+  {
+	FPRINTF(LOG_LEVEL,"IFRAMEURL iframe: %s [H]\n",yytext);
+	BEGIN 0;
+}
+<IFRAMEURL>\r\n		{ BEGIN 0; }
+<IFRAMEURL>[ \t]*[^ \t\r\n>\\'")]+  {
+	FPRINTF(LOG_LEVEL,"IFRAMEURL iframe: %s [H]\n",yytext);
+	put_body_list(yytext,yyleng);
+	BEGIN 0;
+}
+
+
+
+[\r\n]
+.	
+
+
+
+%%
+
+void put_body_list(char *text , int leng){
+	int space=0;
+	FPRINTF(LOG_LEVEL,"text-[%s]\n",text);
+
+	for(;leng>0;text++,leng--){
+		switch(*text){
+			case ' ':
+			case '\t':
+			case '\n':
+			case '\r':
+				break;
+			default:
+				space = 1;
+				break;
+		}
+		if(space == 1) break;
+	}
+
+	if(leng == 0) return;
+
+	if(gpBODY->aLIST.listcnt >= MAX_URL_CNT) {
+		U8		*pHEADNODE, *pNEWNODE;
+		BODY	*pTMPBODY = gpBODY;
+
+		pHEADNODE = (U8 *)nifo_ptr(pMEMSINFO, nifo_get_offset_node(pMEMSINFO, (U8 *)gpBODY));
+
+		if((pNEWNODE = nifo_node_alloc(pMEMSINFO)) == NULL) {
+			FPRINTF(LOG_BUG, "[%s][%s.%d] NODE IS NULL", __FILE__, __FUNCTION__, __LINE__);
+			gpBODY = NULL;
+		}
+		else if((gpBODY = (BODY *)nifo_tlv_alloc(pMEMSINFO, pNEWNODE, BODY_DEF_NUM, BODY_SIZE, DEF_MEMSET_OFF)) == NULL) {
+			FPRINTF(LOG_BUG, "[%s][%s.%d] TLV IS NULL", __FILE__, __FUNCTION__, __LINE__);
+			nifo_node_delete(pMEMSINFO, pNEWNODE);
+			pNEWNODE = NULL;
+		}
+
+		if(gpBODY != NULL) {
+			nifo_node_link_cont_next(pMEMSINFO, pHEADNODE, pNEWNODE);
+			gpBODY->redirect_url_type = 0;
+			gpBODY->redirect_url_len = 0;
+			gpBODY->redirect_url[0] = 0x00;
+			gpBODY->link_cnt = 0;
+			gpBODY->href_cnt = 0;
+			gpBODY->aLIST.listcnt = 0;
+		}
+		else {
+			gpBODY = pTMPBODY;
+			gpBODY->link_cnt++;
+			return;
+		}
+	}
+
+	if( (leng < FILEREF_LEN) || memcmp(text, FILEREF, FILEREF_LEN) ){
+		FPRINTF(LOG_LEVEL,"PUTBODY : Len=%d < FILEREF_LEN(%d) SRC %s (curcnt=%d) BODY_SIZE=%ld\n",
+			leng, FILEREF_LEN, text, gpBODY->aLIST.listcnt, sizeof(BODY));
+		S32 dRet;
+		gpBODY->aLIST.strlist[gpBODY->aLIST.listcnt].type = IMG_TYPE;
+		if(leng > MAX_BODY_STR_LEN)
+			leng = MAX_BODY_STR_LEN;
+		memcpy(gpBODY->aLIST.strlist[gpBODY->aLIST.listcnt].str,text,leng);
+		gpBODY->aLIST.strlist[gpBODY->aLIST.listcnt].str[leng] = 0;
+		gpBODY->aLIST.strlist[gpBODY->aLIST.listcnt].len = leng;
+		dRet = Make_Absolute_URL_Buf_URLLIST( gpUrlParseLIST, leng, text, &gpBODY->aLIST.strlist[gpBODY->aLIST.listcnt].len, gpBODY->aLIST.strlist[gpBODY->aLIST.listcnt].str);
+		if(dRet < 0)
+			FPRINTF(LOG_BUG, "Make_Absolute_URL_Buf_URLLIST RET=[%d]", dRet); 
+		gpBODY->aLIST.listcnt++;
+		gpBODY->link_cnt++;
+	} else {
+		FPRINTF(LOG_LEVEL,"PUTBODY : Len=%d >= FILEREF_LEN(%d) SRC %s (curcnt=%d) BODY_SIZE=%ld\n",
+			leng, FILEREF_LEN, text, gpBODY->aLIST.listcnt, sizeof(BODY));
+	}
+	return ;
+}
+
+int BODYwrap(){
+	return 1;
+}
+
+Set : function_def{BODY_LEX} = "int BODY_LEX (char *sp, int slen, U8 *dp, st_LIST *listp, stMEMSINFO *pmem)"
+int BODY_LEX (char *sp
+		,int slen
+		,U8 *dp
+		,st_LIST *listp
+		,stMEMSINFO *pmem
+		)
+{
+
+	BODY	*pROOTBODY;
+
+	FPRINTF(LOG_LEVEL,"%s : slen %d\n",(char *)__FUNCTION__,slen);
+	brace_cnt = 0;
+	href_brace_cnt = 0;
+	pROOTBODY = (BODY *) dp;
+	gpBODY = (BODY *) dp;
+	gpUrlParseLIST = listp;
+	gpBODY->redirect_url_type = 0;
+	gpBODY->redirect_url_len = 0;
+	gpBODY->redirect_url[0] = 0x00;
+	gpBODY->link_cnt = 0;
+	gpBODY->href_cnt = 0;
+	gpBODY->aLIST.listcnt = 0;
+	pMEMSINFO = pmem;
+	BODY_scan_bytes(sp,slen);
+	BODYlex();
+	BODY_delete_buffer(yy_current_buffer);
+	yy_init = 1;
+
+#if defined(APPLOG)
+
+	int		i;
+
+	/* BODY_Prt("BODY", pROOTBODY); */
+	FPRINTF(LOG_LEVEL, "%s : redirect_url_type %d, link_cnt : %d, href_cnt : %d\n", (char *)__FUNCTION__, pROOTBODY->redirect_url_type, pROOTBODY->link_cnt, pROOTBODY->href_cnt);
+	FPRINTF(LOG_LEVEL, "%s : redirect_url  %d : %.*s\n", (char *)__FUNCTION__, pROOTBODY->redirect_url_len, pROOTBODY->redirect_url_len, pROOTBODY->redirect_url);
+
+
+	if(pROOTBODY == gpBODY) {
+		for(i = 0; i < gpBODY->aLIST.listcnt; i++) {
+			FPRINTF(LOG_LEVEL, "%s : [%d] body str  %d : %s\n", (char *)__FUNCTION__, i, gpBODY->aLIST.strlist[i].len, gpBODY->aLIST.strlist[i].str);
+		}
+	} 
+	else {
+		int		j = 0;
+		OFFSET	offset;
+		U8		*pROOTNODE, *pDATA, *pNEXT;
+		BODY	*pPRINTBODY; 
+		pROOTNODE = (U8 *)nifo_ptr(pMEMSINFO, nifo_get_offset_node(pMEMSINFO, (U8 *)pROOTBODY));
+		pDATA = pROOTNODE;	
+
+		while(pDATA != NULL) {
+			offset = nifo_offset(pMEMSINFO, pDATA);
+
+			pPRINTBODY = (BODY *)nifo_get_value(pMEMSINFO, BODY_DEF_NUM, offset);
+			
+			for(i = 0; i < pPRINTBODY->aLIST.listcnt; i++) {
+				FPRINTF(LOG_LEVEL, "%s : [T:%d][C:%d] body str  %d : %s\n", (char *)__FUNCTION__, j++, i, pPRINTBODY->aLIST.strlist[i].len, pPRINTBODY->aLIST.strlist[i].str);
+			}
+
+			pNEXT = (U8 *)nifo_entry(nifo_ptr(pMEMSINFO, ((NIFO *)pDATA)->cont.offset_next), NIFO, cont);
+			if(pROOTNODE == pNEXT) pNEXT = NULL;
+
+			pDATA = pNEXT;
+		}
+	}
+
+#endif
+
+	return 1;
+}
+
+#ifdef TEST
+main( argc, argv )
+int argc;
+char **argv;
+{
+	int size=0;
+	char buf[BUFSIZ];
+	char s[BUFSIZ],d[BUFSIZ];
+	FILE *fp;
+
+	memset(s,0,BUFSIZ);
+	memset(d,0,BUFSIZ);
+
+	fp = fopen("../DATA/BODY.DAT","r");
+
+	while(fgets(buf,BUFSIZ,fp)){
+		if( (size + strlen(buf)) >= BUFSIZ) break;
+		sprintf(s,"%s%s\n",s,buf);
+		size += strlen(buf);
+	};
+
+    BODY_LEX(s,size,d,0,0);
+}
+#endif
+
+

@@ -1,0 +1,115 @@
+Cisco Service Control Management Suite - C SM API
+=================================================
+
+SUPPORTED PLATFORMS
+-------------------
+The SCMS SM C/C++ API was developed and tested on Windows, Solaris
+and Linux platforms. 
+
+CONTENTS OF THE PACKAGE
+-----------------------
+The SCMS SM C/C++ API  distribution is provided as part of the SCMS SM-LEG distribution file
+and is located in the sm_api directory that contains the following:
+
+- winnt folder  - contains the smapi.dll file, which is the Windows API Executable. It also contains additional DLL and LIB files necessary for the Windows API operation.
+- solaris folder - contains the libsmapi.so file, which is the Solaris API Executable.
+- linux folder - contains the libsmapi.so file, which is the Linux API Executable.
+- include folder - contains the API C/C++ header files.
+- include/system folder contains the C++ API internal header files.
+ 
+INSTALLATION
+------------
+
+To install the distribution on a UNIX platform:
+
+1) Extract the SCMS SM-LEG distribution file and locate the C/C++ SM API 
+   distribution tar sm-c-api-dist.tar file
+   
+2) Extract the C/C++ SM API package tar: tar -xvf sm-c-api-dist.tar
+
+To install the distribution on a Windows platform:
+
+ Use a zip extractor (such as WinZip). 
+
+
+
+COMPILING AND RUNNING
+---------------------
+
+To compile and run a program that uses the SCMS SM C/C++ API:
+
+Windows
+-------
+
+1) Ensure that smapi.dll and the other DLL files are in your path or in the 
+   directory of your executable. 
+   This can be done in one of the following ways:
+   a) add the winnt directory to the system path in the system environment settings.
+   b) copy the DLL files to the executable directory.
+   c) copy the DLL files to a directory that is already in the path.
+   
+2) Ensure that the include folder is in your include path of the compilation:
+
+   Example using Microsoft Visual C++ 6:
+   a) Enter the project settings, click the C++ tab, and then choose the 
+      Preprocessor category. 
+   b) Add the include directory path in the Additional Include directories line.
+   
+3) Ensure that the smapi.lib file is in your linkage path.
+
+   Example using Microsoft Visual C++ 6:
+   a) Enter the project settings and click the Link tab. 
+   b) Add smapi.lib to the Object\Library modules line.
+
+4) Include the relevant API header file in your source code, and compile your code.
+
+Solaris
+-------
+
+1) Ensure that libsmapi.so is in your LD_LIBRARY_PATH.
+   For example, when using the Bash shell type, use the following command line:
+   bash-2.03$ export set LD_LIBRARY_PATH=$LD
+   LIBRARY_PATH:the-libsmapi.so-folder
+ 
+2) Ensure that the include folder is in your include path of the compilation.
+   For example, when using the GCC, add the include folder after the -I option 
+   flag, as follows:
+   > gcc -c -o TestSmApi.o -Ism-api-header-file-folder 
+     -Ism-api-header-file-folder/system/ TestSmApi.cpp
+ 
+3) Ensure that the libsmapi.so file is in your linkage line or load it dynamically. 
+   Link your object file to the pthread and socket library, as follows:
+   > gcc -o testSmApi TestSmApi.o -lsmapi -lpthread -lsocket
+
+Linux (Red Hat)
+---------------
+
+1) Ensure that libsmapi.so is in your LD_LIBRARY_PATH.
+   For example, when using the Bash shell type, use the following command line:
+   bash-2.03$ export set LD_LIBRARY_PATH=$LD
+   LIBRARY_PATH:the-libsmapi.so-folder
+2) Ensure that the include folder is in your include path of the compilation.
+   For example, when using the GCC, add the include folder after the -I option 
+   flag, as follows:
+   > gcc -c -o TestSmApi.o -Ism-api-header-file-folder
+     -Ism-api-header-file-folder/system/ TestSmApi.cpp
+3) Ensure that the libsmapi.so file is in your linkage line or load it dynamically.
+   Specify the location of libsmapi.so using the -L option flag. 
+   Link your object file to the pthread and stdc++ libraries, as follows:
+   > gcc -o testSmApi TestSmApi.o -lsmapi -lpthread -lstdc++ -L<lib path>
+   
+ADDITIONAL INFORMATION
+----------------------
+For additional information, see the Cisco SCMS SM C/C++ API Programmer Guide.
+
+REPORTING PROBLEMS
+------------------
+
+Report problems you encounter via the Cisco TAC WEB site www.cisco.com/tac.  
+Please attach you program and any logs or output-dumps you have.
+
+If you have any further questions or comments on what you would like to 
+see in the product or what is difficult to use or understand, please 
+communicate them to us.  Your feedback is important to us.  Please let 
+us know how it works out for you - either good or bad.
+

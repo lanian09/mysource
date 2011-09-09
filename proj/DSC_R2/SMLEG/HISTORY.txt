@@ -1,0 +1,3819 @@
+======================================================================
+1. ³¯  Â¥ : 2011.06.07(TUE)
+2. ÀÛ¾÷ÀÚ : uamyd 
+3. ³»  ¿ë :
+	* SCRIPT
+	 - »õ·Î Ãß°¡µÈ resource Ç×¸ñ Ãß°¡, ¾ø¾îÁø resource Ç×¸ñ Á¦°Å
+	* INC
+	 - TPS Ç×¸ñ Ãß°¡·Î ÀÎÇÑ, RLEG °ü·Ã ±¸Á¶Ã¼ »çÀÌÁî º¯°æ
+	* MMCR
+	 - DIS-CALL-INFO Ç×¸ñ¿¡ TPS Ç×¸ñ Ãß°¡, format Á¤·Ä
+	* RANA
+	 - TPS Ç×¸ñ Ãß°¡·Î ÀÎÇÑ, Á¶È¸ (dis-tps....) ¸í·É ·ÎÁ÷ º¯°æ, º¯¼ö º¯°æ
+	 - °øÀ¯ ¸Þ¸ð¸® Ãß°¡
+	* RLEG
+	 - RLEG1,2,3,4 Makefile ¿¡¼­ Á¦°Å
+	* SAMD
+	 - ºÒÇÊ¿äÇÑ º¯¼ö Á¦°Å
+4. ÆÄ  ÀÏ :
+	/cvs/DSC_R2/SMLEG/SCRIPT/remove.sh								1.2
+	/cvs/DSC_R2/SMLEG/include/ipaf_stat.h							1.12
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_hld.c							1.6
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_hld.h							1.5
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_proc.c							1.10
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_init.c							1.8
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_main.c							1.8
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_init.c							1.8
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_main.c							1.15
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_msgq.c							1.7
+	/cvs/DSC_R2/SMLEG/src/RLEG/Makefile								1.12
+	/cvs/DSC_R2/SMLEG/src/SAMD/samd_main.c							1.3
+======================================================================
+1. ³¯  Â¥ : 2011.06.07(TUE)
+2. ÀÛ¾÷ÀÚ : uamyd 
+3. ³»  ¿ë :
+	* configuration
+	  - MP A,B @STP configuration file added
+4. ÆÄ  ÀÏ :
+	/cvs/DSC_R2/SMLEG/DATA/sysconfig.mpa							1.1
+	/cvs/DSC_R2/SMLEG/DATA/sysconfig.mpb							1.1
+======================================================================
+1. ³¯  Â¥ : 2011.06.01(WED)
+2. ÀÛ¾÷ÀÚ : dcham 
+3. ³»  ¿ë :
+	* MMCR
+	* 
+	  - dis-call-info Ãß°¡ 
+4. ÆÄ  ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_hld.c							1.5
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_proc.c							1.9
+=======================================================================
+1. ³¯  Â¥ : 2011.06.01(WED)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* RANA
+	  - SM Connection 5->1 º¯°æ ÀÛ¾÷.
+4. ÆÄ  ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_main.c							1.14
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_msgq.c							1.6
+=======================================================================
+1. ³¯  Â¥ : 2011.05.31(TUE)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* include
+	  - MAX_RLEG_CNT 5->1 modify
+	* MMCR
+	  LEG_DATA STRUCTURE -> CALL_DATA modify
+	  LEG_DATA_SUM instans name modify
+	* RLEG
+	  LEG_DATA_SUM instans name modify
+
+4. ÆÄ  ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_proc.c							1.8
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_init.c							1.7
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_main.c							1.7
+	/cvs/DSC_R2/SMLEG/include/comm_msgtypes.h						1.5
+	/cvs/DSC_R2/SMLEG/include/comm_session.h						1.6
+	/cvs/DSC_R2/SMLEG/include/ipaf_stat.h							1.11
+	/cvs/DSC_R2/SMLEG/include/sfm_msgtypes.h						1.6
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_init.c							1.10
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_main.c							1.16
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sce_comm.c						1.10
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sm_sess.c						1.6
+========================================================================
+1. ³¯  Â¥ : 2011.05.30(TUE)
+2. ÀÛ¾÷ÀÚ : dcham 
+3. ³»  ¿ë :
+	* RLEG
+        * IFB
+        * SAMD
+          - SM Connectiion 5->1 º¯°æ ÀÛ¾÷ 
+4. ÆÄ  ÀÏ :
+    /cvs/DSC_R2/SMLEG/src/RLEG/leg_main.c                           1.15
+    /cvs/DSC_R2/SMLEG/src/IFB/ifb_comm.c                            1.5
+    /cvs/DSC_R2/SMLEG/src/SAMD/samd_proc.c                          1.10
+	/cvs/DSC_R2/SMLEG/include/ipaf_names.h                          1.3
+=======================================================================
+1. ³¯  Â¥ : 2011.05.25(FRI)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+    * R200 Doksan Debugging Complet
+	* MMCR
+	  - call process block mmc function add
+	* CAPD
+	  - Bufferring Add
+	* PANA
+	  - Bufferring Add
+	* RANA
+	  - Trace Function Add
+	  - PDNS Data Management Bug Modify
+	  - Call Log Optimizing
+	  - MMC Command Processing Delete.
+	  - TPS Collection Function Add 
+	* RLEG
+	  - Call Log Optimizing
+	  - Sess Timer Reconstructor Bug Modify
+	  - SM Reconnect Function Delete.
+	  - SM Session Time Invoke Add.
+	  - MMC Command Processing Delete.
+	* IFB
+	  - Abnormal Process Down Check.
+	  - The totality Process killprc -v Check.
+	  - OMC Process Map Process Down Bug.
+	* IXPC
+	  - signal handling modify.
+	* RDRANA
+	  - linkege information notification message modify
+	* SMPP
+	  - linkege information notification message modify
+	* SAMD
+	  - process management modify.
+	  - process abnormal down - alarm report
+	  - killprc -v processing.
+	  - omc process map - process down performed.
+	  - process mask bug modify
+4. ÆÄ  ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_hld.c							1.4
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_hld.h							1.4
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_proc.c							1.7
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_init.c							1.6
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_main.c							1.6
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_rxtxmsg.c						1.4
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_util.c							1.4
+	/cvs/DSC_R2/SMLEG/src/CAPD/Makefile								1.6
+	/cvs/DSC_R2/SMLEG/src/CANA/capd_bfr.h							1.1
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_dlpi.c							1.2
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_main.c							1.6
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_msgq.c							1.3
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_test.c							1.4
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_bfr.h							1.1
+	/cvs/DSC_R2/SMLEG/src/PANA/Makefile								1.7
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_init.c							1.4
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_main.c							1.9
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_msgq.c							1.4
+	/cvs/DSC_R2/SMLEG/src/RANA/Makefile								1.10
+	/cvs/DSC_R2/SMLEG/src/RANA/rana.h								1.6
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_init.c							1.7
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_main.c							1.13
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_mmc_hld.c						1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_mmc_proc.c						1.6
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_msgq.c							1.5
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_session.c						1.4
+	/cvs/DSC_R2/SMLEG/src/RLEG/Makefile								1.11
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg.h								1.13
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_init.c							1.9
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_main.c							1.13
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_mmc_proc.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_radius.c							1.10
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sce_comm.c						1.9
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_session.c						1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sm_sess.c						1.5
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sm_sess.h						1.3
+	/cvs/DSC_R2/SMLEG/src/IFB/Makefile								1.2
+	/cvs/DSC_R2/SMLEG/src/IFB/ifb_comm.c							1.4
+	/cvs/DSC_R2/SMLEG/src/IFB/ifb_proto.h							1.2
+	/cvs/DSC_R2/SMLEG/src/IFB/killprc.c								1.5
+	/cvs/DSC_R2/SMLEG/src/IFB/startprc.c							1.3
+	/cvs/DSC_R2/SMLEG/src/IXPC/ixpc_init.c							1.2
+	/cvs/DSC_R2/SMLEG/src/IXPC/ixpc_main.c							1.2
+	/cvs/DSC_R2/SMLEG/src/IXPC/ixpc_proto.h							1.2
+	/cvs/DSC_R2/SMLEG/src/IXPC/ixpc_route.c							1.2
+	/cvs/DSC_R2/SMLEG/src/RDRANA/main.c								1.4
+	/cvs/DSC_R2/SMLEG/src/SMPP/Makefile								1.3
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp.h								1.3
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp_init.c							1.3
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp_log.c							1.2
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp_main.c							1.4
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp_mmc.c							1.2
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp_proto.c							1.2
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp_trace.c							1.3
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp_msgQ.c							1.3
+	/cvs/DSC_R2/SMLEG/src/SAMD/samd.h								1.2
+	/cvs/DSC_R2/SMLEG/src/SAMD/samd_init.c							1.2
+	/cvs/DSC_R2/SMLEG/src/SAMD/samd_main.c							1.2
+	/cvs/DSC_R2/SMLEG/src/SAMD/samd_ping.c							1.2
+	/cvs/DSC_R2/SMLEG/src/SAMD/samd_proc.c							1.8
+	/cvs/DSC_R2/SMLEG/src/SAMD/samd_rxtxmsg.c						1.2
+	/cvs/DSC_R2/SMLEG/src/SAMD/showlocdb.c							1.2
+	/cvs/DSC_R2/SMLEG/src/SAMD/samd_proc.c							1.9
+=======================================================================
+1. ³¯  Â¥ : 2011.05.25(FRI)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* include
+	  - Call Error Code Add
+	  - TPS Function Add
+4. ÆÄ  ÀÏ :
+	/cvs/DSC_R2/SMLEG/include/comm_define.h							1.2
+	/cvs/DSC_R2/SMLEG/include/comm_msgtypes.h						1.4
+	/cvs/DSC_R2/SMLEG/include/ipaf_stat.h							1.9
+	/cvs/DSC_R2/SMLEG/include/sfm_msgtypes.h						1.4
+	/cvs/DSC_R2/SMLEG/include/sm_subs_info.h						1.4
+	/cvs/DSC_R2/SMLEG/include/comm_call_errcode.h					1.1
+	/cvs/DSC_R2/SMLEG/include/hashg.h								1.2
+	/cvs/DSC_R2/SMLEG/include/hasho.h								1.3
+	/cvs/DSC_R2/SMLEG/include/memg.h								1.3
+	/cvs/DSC_R2/SMLEG/include/mems.h								1.4
+	/cvs/DSC_R2/SMLEG/include/timerN.h								1.2
+=======================================================================
+1. ³¯  Â¥ : 2011.04.29(FRI)
+2. ÀÛ¾÷ÀÚ : jjinri.
+3. ³»  ¿ë :
+	* bin/Makefile : RLEG -> RLEG*
+	* RANA
+	  - sce_log_out : ¸í·É¾î result Ã³¸® 
+	* RLEG
+	  - sce_log_out : ¸í·É¾î result Ã³¸® 
+4. ÆÄ  ÀÏ :
+	/cvs/DSC_R2/SMLEG/bin/Makefile									1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg.h								1.12
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_main.c							1.12
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_mmc_hld.h						1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_mmc_proc.c						1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_radius.c							1.9
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sce_comm.c						1.8
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_main.c							1.12
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_mmc_hld.h						1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_mmc_proc.c						1.5
+=======================================================================
+1. ³¯  Â¥ : 2011.04.29(FRI)
+2. ÀÛ¾÷ÀÚ : jjinri.
+3. ³»  ¿ë :
+	* CAPD
+	  - BUFFERING Makefile define
+	* PANA
+	  - BUFFERING Makefile define
+	  - ReadFLTIDX ÃÊ±âÈ­ ¹ö±× ¼öÁ¤ . 
+	* RANA
+	  - LOG_CRI, LOG_DEBUG Á¤¸® : Filter ºÎºÐ . 
+	  - sce_log_out : SID_LOG_OUT_MMC Ãß°¡ 
+	* RDRANA, SMPP
+	  - ReadFLTIDX ÃÊ±âÈ­ ¹ö±× ¼öÁ¤ . 
+	* RLEG
+	  - SID_LOG_OUT_MMC Ãß°¡ : ±¸ÇöÁß.
+	* IXPC
+	  - Remote: // jjinri ÁÖ¼® 
+4. ÆÄ  ÀÏ :
+	/cvs/DSC_R2/SMLEG/include/mems.h							1.3
+	/cvs/DSC_R2/SMLEG/include/packet_def.h						1.3
+	/cvs/DSC_R2/SMLEG/include/sm_subs_info.h					1.2
+	/cvs/DSC_R2/SMLEG/src/CAPD/Makefile							1.5
+	/cvs/DSC_R2/SMLEG/src/IXPC/ixpc_proc.c						1.5
+	/cvs/DSC_R2/SMLEG/src/PANA/Makefile							1.6
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_init.c						1.3
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_main.c						1.8
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_msgq.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/Makefile							1.9
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_main.c						1.11
+	/cvs/DSC_R2/SMLEG/src/RDRANA/main.c							1.3
+	/cvs/DSC_R2/SMLEG/src/RLEG/Makefile							1.10
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_init.c						1.8
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_radius.c						1.8
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp_main.c						1.3
+=======================================================================
+1. ³¯  Â¥ : 2011.04.29(FRI)
+2. ÀÛ¾÷ÀÚ : JUNE.
+3. ³»  ¿ë :
+	* RANA
+	  - Call Control °ü·Ã dAppLog Á¤¸®(¼º´É °ü·Ã)
+	  - Error Code ·Î Á¤¸®.
+	  - °¢ Error Code ¿¡ ´ëÇÑ ¼³¸íÀº rana.h ¿¡  Á¤ÀÇ.
+4. ÆÄ  ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/RANA/rana.h							1.5
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_main.c						1.10
+=======================================================================
+1. ³¯  Â¥ : 2011.04.28(THU)
+2. ÀÛ¾÷ÀÚ : jjinri.
+3. ³»  ¿ë :
+	* MMCR
+	- CPS IDX NewIdx ·Î ¹Ù²ÙÁö ¾Ê´ø ¹®Á¦ ¼öÁ¤. 
+	* RANA
+	- ¼º´É ÃøÁ¤ NO_FILTER DEFINE Ãß°¡ 
+	- SysLabel Init Ãß°¡
+	* RLEG
+	- CONNECTED »óÅÂ°¡ ¾Æ´Ï¾îµµ msgrcv ÇÏµµ·Ï º¯°æ 
+4. ÆÄ  ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_proc.c						1.6
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_main.c						1.5
+	/cvs/DSC_R2/SMLEG/src/RANA/Makefile							1.8
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_init.c						1.6
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_main.c						1.9
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_main.c						1.11
+=======================================================================
+1. ³¯  Â¥ : 2011.04.28(THU)
+2. ÀÛ¾÷ÀÚ : JUNE.
+3. ³»  ¿ë :
+	* LIBSRC
+		UTILLIB ³» dAppWrite MODIFY
+		CRI LOG ´Â DEBUG DIRECTORY ¿¡ ÀúÀå ¾ÈÇÔ.(¼º´É ÀÌ½´)
+4. ÆÄ  ÀÏ :
+	/cvs/DSC_R2/SMLEG/libsrc/UTILLIB/lwrite.c					1.4
+=====================================================================
+1. ³¯  Â¥ : 2011.04.27(WED)
+2. ÀÛ¾÷ÀÚ : jjinri
+3. ³»  ¿ë :
+	* CAPD, PANA, RANA, RLEG
+     - ½Ã¹Ä·¹ÀÌ¼Ç Å×½ºÆ® ÈÄ ¹ö±× ¼öÁ¤ .
+	* DEBUGLOG
+	 - RLEG0,1,2,3,4 µð¹ö±× ·Î±× ¾È»ý±â´Â ¹®Á¦ ÇØ°á.
+	 * DATA
+	 - ½Ã¹Ä·¹ÀÌ¼Ç ÆÐÅ¶À» À§ÇÑ config ÆÄÀÏ ¼öÁ¤ .
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/DATA/LOG_LEVEL.conf						1.2
+	/cvs/DSC_R2/SMLEG/DATA/NOTI_INIT.conf						1.2
+	/cvs/DSC_R2/SMLEG/DATA/PDSN.conf							1.2
+	/cvs/DSC_R2/SMLEG/DATA/RULESET_USED.conf					1.2
+	/cvs/DSC_R2/SMLEG/DATA/nifo_zone.conf						1.3
+	/cvs/DSC_R2/SMLEG/DATA/smpp.conf							1.2
+	/cvs/DSC_R2/SMLEG/include/comm_loglevel.h					1.3
+	/cvs/DSC_R2/SMLEG/libsrc/NIFO/nifo.c						1.2
+	/cvs/DSC_R2/SMLEG/libsrc/UTILLIB/lwrite.c					1.3
+	/cvs/DSC_R2/SMLEG/src/CAPD/Makefile							1.4
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_init.c						1.3
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_main.c						1.5
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_msgq.c						1.2
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_test.c						1.3
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_test.h						1.2
+	/cvs/DSC_R2/SMLEG/src/IXPC/ixpc_proc.c						1.2
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_proc.c						1.5
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_init.c						1.5
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_main.c						1.4
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_rxtxmsg.c					1.3
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_shmprc.c					1.3
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_util.c						1.3
+	/cvs/DSC_R2/SMLEG/src/PANA/Makefile							1.5
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_main.c						1.7
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_msgq.c						1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_main.c						1.8
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_msgq.c						1.4
+======================================================================
+1. ³¯  Â¥ : 2011.04.27(WED)
+2. ÀÛ¾÷ÀÚ : dcham
+3. ³»  ¿ë :
+	* IFB/killprc
+     - WarnningÁ¦°Å(pid_tÃâ·Â intÇüÀ¸·Î type casting)
+	* IFB/ifb_comm
+     - processº° version indexÁ¤¸®(»ç¿ëÇÏÁö ¾Ê´Â °ª ÁÖ¼®Ã³¸®)
+	* SAMD/samd_proc
+     - StartPrc¸í·É(MMC)À¸·Î ³Ñ¾î¿À´Â ÆÄ¶ó¸ÞÅÍ(ÇÁ·Î¼¼½º¸í)
+       ´ë¹®ÀÚ·Î º¯È¯ÇÏ¿© execlÀÎÀÚ·Î ¼³Á¤ => RLEGÇÁ·Î¼¼½º´Â
+	   execlÀÇ ÇÁ·Î¼¼½º¸íÀ» ÀÎÀÚ·Î ¹Þ¾Æ¼­ sysconfigÀÇ
+	   ÇÁ·Î¼¼½º¸í°ú ºñ±³ÇÏ±â ¶§¹®¿¡...
+     - processº° version indexÁ¤¸®(»ç¿ëÇÏÁö ¾Ê´Â °ª ÁÖ¼®Ã³¸®)
+	4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/IFB/killprc.c                             1.4
+	/cvs/DSC_R2/SMLEG/src/IFB/ifb_comm.c                            1.3
+	/cvs/DSC_R2/SMLEG/src/IFB/samd_proc.c                           1.7
+======================================================================
+1. ³¯  Â¥ : 2011.04.27(WED)
+2. ÀÛ¾÷ÀÚ : jjinri
+3. ³»  ¿ë :
+	* CAPD
+	 - test_func2 : ÆÄÀÏ read ½Ã¹Ä·¹ÀÌ¼Ç Ã³¸® 
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_main.c							1.4
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_test.c							1.2
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_test.h							1.1
+======================================================================
+1. ³¯  Â¥ : 2011.04.27(WED)
+2. ÀÛ¾÷ÀÚ : jjinri
+3. ³»  ¿ë :
+    * leg.h ¿Í rana.h ¿¡¼­ »ç¿ëµÇ´ø °øÅë ±¸Á¶Ã¼ ÅëÇÕ. 
+	 - sm_subs_info.h, common_ana.h
+	* DATA
+	 - NOTI_INIT.conf : °øÀ¯¸Þ¸ð¸® NOTI ±¸Á¶¿¡¼­ »ç¿ëµÇ´Â ÆÄÀÏ. 
+	 - sysconfig : °øÀ¯¸Þ¸ð¸® Ãß°¡, 
+	 - nifo_zone.conf : sysconfig ¿¡¼­ ¤¶´ø SHM_NIFO ¿Å°Ü¿È. 
+ 	* library
+	 - HASH : hasho_reset, memg_reset Ãß°¡ 
+	* MMCR
+	 - RLEG ¸í·É¾î Ã³¸® ºÎºÐ -> MMCR 
+	 - Shared Memory NOTIFY ±¸Á¶ 
+	* PANA
+	 - MMCR ·Î ºÎÅÍ PDSN NOTI ¹Þ¾Æ¼­ Ã³¸®
+	* RANA
+	 - MMCR ·Î ºÎÅÍ TRC, PDSN, RULESET, RULEUSE, CPSOVLD, TIMER NOTI 	
+	* RLEG
+	 - MMCR ·Î ºÎÅÍ TIMER NOTI 	
+	* RDRANA
+	 - MMCR ·Î ºÎÅÍ TRACE NOTI 	
+	* SMPP
+	 - MMCR ·Î ºÎÅÍ TRACE, TIMER NOTI 	
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/DATA/NOTI_INIT.conf							1.1
+	/cvs/DSC_R2/SMLEG/DATA/nifo_zone.conf							1.2
+	/cvs/DSC_R2/SMLEG/DATA/sysconfig								1.6
+	/cvs/DSC_R2/SMLEG/include/comm_msgtypes.h						1.3
+	/cvs/DSC_R2/SMLEG/include/common_ana.h							1.1
+	/cvs/DSC_R2/SMLEG/include/hasho.h								1.2
+	/cvs/DSC_R2/SMLEG/include/ipaf_define.h							1.3
+	/cvs/DSC_R2/SMLEG/include/ipaf_stat.h							1.8
+	/cvs/DSC_R2/SMLEG/include/ipaf_svc.h							1.5
+	/cvs/DSC_R2/SMLEG/include/memg.h								1.2
+	/cvs/DSC_R2/SMLEG/include/nifo.h								1.3
+	/cvs/DSC_R2/SMLEG/include/sm_subs_info.h						1.1
+	/cvs/DSC_R2/SMLEG/libsrc/HASH/hasho.c							1.2
+	/cvs/DSC_R2/SMLEG/libsrc/HASH/memg.c							1.2
+	/cvs/DSC_R2/SMLEG/src/MMCR/Makefile								1.3
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_hld.c							1.3
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_hld.h							1.3
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_proc.c							1.4
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr.h								1.2
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_init.c							1.4
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_main.c							1.3
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_rxtxmsg.c						1.2
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_util.c							1.2
+	/cvs/DSC_R2/SMLEG/src/PANA/pana.h								1.2
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_init.c							1.2
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_main.c							1.6
+	/cvs/DSC_R2/SMLEG/src/RANA/Makefile								1.7
+	/cvs/DSC_R2/SMLEG/src/RANA/rana.h								1.4
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_init.c							1.5
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_main.c							1.7
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_mmc_proc.c						1.4
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_msgq.c							1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_session.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RDRANA/Makefile							1.2
+	/cvs/DSC_R2/SMLEG/src/RDRANA/capd_init.c						1.2
+	/cvs/DSC_R2/SMLEG/src/RDRANA/main.c								1.2
+	/cvs/DSC_R2/SMLEG/src/REANA/Makefile							1.2
+	/cvs/DSC_R2/SMLEG/src/REANA/re_main.c							1.2
+	/cvs/DSC_R2/SMLEG/src/REANA/re_msgq.c							1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg.h								1.11
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_init.c							1.7
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_main.c							1.10
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_radius.c							1.7
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sm_sess.c						1.4
+	/cvs/DSC_R2/SMLEG/src/SMPP/Makefile								1.2
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp.h								1.2
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp_init.c							1.2
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp_main.c							1.2
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp_msgQ.c							1.2
+	/cvs/DSC_R2/SMLEG/src/SMPP/smpp_trace.c							1.2
+======================================================================
+1. ³¯  Â¥ : 2011.04.26(TUE)
+2. ÀÛ¾÷ÀÚ : uamyd
+3. ³»  ¿ë :
+	* IFB/killprc
+	 - noti2samd ÈÄ¿¡ kill º¯°æ
+	* SAMD
+	 -checkProcessStatus ¿¡¼­ process È®ÀÎ ÇÏ±â Àü¿¡, msg read
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/IFB/killprc.c							1.3
+	/cvs/DSC_R2/SMLEG/src/SAMD/samd_proc.c						1.5
+======================================================================
+1. ³¯  Â¥ : 2011.04.26(TUE)
+2. ÀÛ¾÷ÀÚ : jjinri
+3. ³»  ¿ë :
+	* nifo_zone library 
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/DATA/nifo_zone.conf						1.1
+	/cvs/DSC_R2/SMLEG/include/comm_loglevel.h					1.2
+	/cvs/DSC_R2/SMLEG/include/ipaf_define.h						1.2
+	/cvs/DSC_R2/SMLEG/include/mems.h							1.2
+	/cvs/DSC_R2/SMLEG/include/nifo.h							1.2
+	/cvs/DSC_R2/SMLEG/libsrc/Makefile							1.2
+	/cvs/DSC_R2/SMLEG/libsrc/NIFO/Makefile						1.1
+	/cvs/DSC_R2/SMLEG/libsrc/NIFO/mems.c						1.1
+	/cvs/DSC_R2/SMLEG/libsrc/NIFO/nifo.c						1.1
+	/cvs/DSC_R2/SMLEG/libsrc/NIFO/nifo_conf.c					1.1
+	/cvs/DSC_R2/SMLEG/libsrc/NIFO/stMEMSINFO_Prt.c				1.1
+	/cvs/DSC_R2/SMLEG/libsrc/NIFO/stMEMSNODEHDR_Prt.c			1.1
+	/cvs/DSC_R2/SMLEG/libsrc/NIFO/st_MEMSZONE_Prt.c				1.1
+	/cvs/DSC_R2/SMLEG/src/CAPD/Makefile							1.3
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_init.c						1.2
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_main.c						1.3
+	/cvs/DSC_R2/SMLEG/src/PANA/Makefile							1.4
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_main.c						1.5
+	/cvs/DSC_R2/SMLEG/src/RANA/Makefile							1.6
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_main.c						1.6
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_msgq.c						1.2
+======================================================================
+1. ³¯  Â¥ : 2011.04.26(TUE)
+2. ÀÛ¾÷ÀÚ : jjinri
+3. ³»  ¿ë :
+	* SMLEG/Makefile
+	  - src libsrc ¼ø¼­ ¹Ù²Þ. libsrc src
+	* DATA/sysconfig
+	  - NEW/BIN/RLEG ¸¦ RLEG0, 1, 2, 3, 4·Î ¹Ù²Þ. /proc/¿¡ RLEG0°¡ ¾Æ´Ñ
+	  					RLEG·Î µÇ¾î ÀÖÀ½. 
+	* RLEG
+	  - Makefile¿¡¼­ RLEG ¹ÙÀÌ³Ê¸®¸¦ RLEG0, 1, 2, 3, 4 ·Î º¹»ç
+	* IFB
+	  - execl¿¡¼­ panmeÀ» ¼Ò¹®ÀÚ·Î ¹Ù²Ù´Â ºÎºÐ Á¦°Å 
+	* CAPD, PANA, RANA, RDRCAPD, MMCR, SAMD
+	  - SEQ_PROC_SESSANA -> SEQ_PROC_SESSANA0 º¯°æ Àû¿ë
+      - initial ¹ö±× ¼öÁ¤. 	  
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/Makefile									1.3
+	/cvs/DSC_R2/SMLEG/DATA/sysconfig							1.5
+	/cvs/DSC_R2/SMLEG/libsrc/UTILLIB/lwrite.c					1.2
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_main.c						1.2
+	/cvs/DSC_R2/SMLEG/src/IFB/startprc.c						1.2
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_init.c						1.3
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_shmprc.c					1.2
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_main.c						1.4
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_main.c						1.5
+	/cvs/DSC_R2/SMLEG/src/RDRCAPD/rcapd_main.c					1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/Makefile							1.9
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_init.c						1.6
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_main.c						1.9
+	/cvs/DSC_R2/SMLEG/src/SAMD/samd_proc.c						1.4
+======================================================================
+1. ³¯  Â¥ : 2011.04.26(TUE)
+2. ÀÛ¾÷ÀÚ : jjinri
+3. ³»  ¿ë :
+	* IFB
+	  - RLEG0, 1, 2, 3, 4:  SEQ_PROC_SESSANA0, 1,2,3,4
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/include/ipaf_names.h						1.2
+	/cvs/DSC_R2/SMLEG/src/IFB/ifb_comm.c						1.2
+======================================================================
+1. ³¯  Â¥ : 2011.04.25(MON)
+2. ÀÛ¾÷ÀÚ : jjinri
+3. ³»  ¿ë :
+	* PANA
+	  - ¼Ò½º ÆÄÀÏÀÌ¸§ Á¤¸® ¹× Á¦°Å
+	* RANA
+	  - ¼Ò½º ÆÄÀÏÀÌ¸§ Á¤¸® ¹× Á¦°Å
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/include/Analyze_Ext_Abs.h					1.3
+	/cvs/DSC_R2/SMLEG/include/ipaf_svc.h						1.4
+	/cvs/DSC_R2/SMLEG/src/PANA/Makefile							1.3
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_main.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/rana.h							1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_init.c						1.4
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_main.c						1.4
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_mmc_proc.c					1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_session.c					1.2
+	/cvs/DSC_R2/SMLEG/src/REANA/re_define.h						1.2
+	/cvs/DSC_R2/SMLEG/src/REANA/re_init.c						1.2
+======================================================================
+1. ³¯  Â¥ : 2011.04.25(MON)
+2. ÀÛ¾÷ÀÚ : JUNE.
+3. ³»  ¿ë :
+	* CAPD
+	  - ¼Ò½º ÆÄÀÏÀÌ¸§ Á¤¸® ¹× Á¦°Å
+	* RANA
+	  - ¼Ò½º ÆÄÀÏÀÌ¸§ Á¤¸® ¹× Á¦°Å
+	* RLEG
+	  - SM °ü·Ã API MODIFY.
+	  - LOGON/LOGOUT TRY FAIL CASE ¿¡ ´ëÇÑ TRACE ADD.
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd.c							del
+	/cvs/DSC_R2/SMLEG/src/CAPD/pcapfunc.c						del
+	/cvs/DSC_R2/SMLEG/src/CAPD/Makefile							1.2
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_main.c						1.1
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd_dlpi.c						1.1
+	/cvs/DSC_R2/SMLEG/src/PANA/ana.h							del
+	/cvs/DSC_R2/SMLEG/src/PANA/statdef.h						del
+	/cvs/DSC_R2/SMLEG/src/PANA/ana.c							del
+	/cvs/DSC_R2/SMLEG/src/PANA/ana_init.c						del
+	/cvs/DSC_R2/SMLEG/src/PANA/ana_msgq.c						del
+	/cvs/DSC_R2/SMLEG/src/PANA/Makefile							1.2
+	/cvs/DSC_R2/SMLEG/src/PANA/pana.h							1.1
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_stat.h						1.1
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_main.c						1.1
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_init.c						1.1
+	/cvs/DSC_R2/SMLEG/src/PANA/pana_msgq.c						1.1
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg.h							1.10
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_main.c						1.7
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_radius.c						1.5
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sce_comm.c					1.7
+======================================================================
+1. ³¯  Â¥ : 2011.04.25(MON)
+2. ÀÛ¾÷ÀÚ : jjinri
+3. ³»  ¿ë :
+	* RANA
+	  - ¼Ò½º ÆÄÀÏÀÌ¸§ Á¤¸® ¹× Á¦°Å
+	* RLEG
+	  - ¼Ò½º ÆÄÀÏÀÌ¸§ Á¤¸® ¹× Á¦°Å
+	* libsrc/INITSHM_LIB
+	  - radius_stat Á¦°Å 
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/libsrc/INITSHM_LIB/InitShm.c				1.3
+
+	/cvs/DSC_R2/SMLEG/src/RANA/conflib.c						del
+	/cvs/DSC_R2/SMLEG/src/RANA/conflib.h						del
+	/cvs/DSC_R2/SMLEG/src/RANA/leg.h							del
+	/cvs/DSC_R2/SMLEG/src/RANA/leg_sce_comm.c					del
+	/cvs/DSC_R2/SMLEG/src/RANA/leg_session.c					del
+	/cvs/DSC_R2/SMLEG/src/RANA/leg_session.h					del
+	/cvs/DSC_R2/SMLEG/src/RANA/make_nidtid.c					del
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_hld.c						del
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_hld.h						del
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_proc.c						del
+	/cvs/DSC_R2/SMLEG/src/RANA/radius_init.c					del
+	/cvs/DSC_R2/SMLEG/src/RANA/radius_main.c					del
+	/cvs/DSC_R2/SMLEG/src/RANA/radius_msgq.c					del
+	/cvs/DSC_R2/SMLEG/src/RANA/statdef.h						del
+	/cvs/DSC_R2/SMLEG/src/RANA/tmo.c							del
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_sce_comm.c					del
+	/cvs/DSC_R2/SMLEG/src/RANA/Makefile							1.5
+	/cvs/DSC_R2/SMLEG/src/RANA/rana.h							1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_init.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_main.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_mmc_hld.c					1.1
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_mmc_hld.h					1.1
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_mmc_proc.c					1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_msgq.c						1.1
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_session.c					1.1
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_session.h					1.1
+	/cvs/DSC_R2/SMLEG/src/RANA/rana_tmo.c						1.1
+
+	/cvs/DSC_R2/SMLEG/src/RLEG/conflib.c						del
+	/cvs/DSC_R2/SMLEG/src/RLEG/conflib.h						del
+	/cvs/DSC_R2/SMLEG/src/RLEG/mmc_hld.c						del
+	/cvs/DSC_R2/SMLEG/src/RLEG/mmc_hld.h						del
+	/cvs/DSC_R2/SMLEG/src/RLEG/mmc_proc.c						del
+	/cvs/DSC_R2/SMLEG/src/RLEG/tmo.c							del
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_msgq.c						del
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_util.c						del
+	/cvs/DSC_R2/SMLEG/src/RLEG/Makefile							1.7
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg.h							1.8
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_main.c						1.5
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_mmc_hld.c					1.1
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_mmc_hld.h					1.1
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_mmc_proc.c					1.1
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_tmo.c						1.1
+======================================================================
+1. ³¯  Â¥ : 2011.04.25(MON)
+2. ÀÛ¾÷ÀÚ : jjinri
+3. ³»  ¿ë :
+	* RANA
+	  - mmc_sce_log_out ½Ã CheckTrace() ·Î TraceFlag Àü´Þ.
+	* RLEG
+	  - LOGIN/LOGOUT_SUCCESS/FAIL Trace Ãß°¡ 
+	  - SM_SESS_BODY ¿¡ SUBS_INFO ±¸Á¶Ã¼ Ãß°¡ 
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_proc.c						1.8
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg.h							1.6
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_radius.c						1.4
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sce_comm.c					1.5
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sm_sess.h					1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_thread.c						1.6
+	/cvs/DSC_R2/SMLEG/src/RLEG/mmc_proc.c						1.5
+======================================================================
+1. ³¯  Â¥ : 2011.04.25(MON)
+2. ÀÛ¾÷ÀÚ : jjinri
+3. ³»  ¿ë :
+	* RANA
+	  - gpTimer : global variable -> ¿øº¹, MMCR ¿¡¼­ »ç¿ëÁß . 
+	  - ACC µðÄÚµù ±¸Á¶Ã¼ ÃÖÀûÈ­, 
+	  - session °ü¸® ¼öÁ¤.  
+	* RLEG
+	  - gpTimer : global variable -> ¿øº¹, MMCR ¿¡¼­ »ç¿ëÁß . 
+	  -	MTYPE_SM_BUF_CLR Ãß°¡ 
+	* MMCR
+	  - set_sm_buf_clr, del, dis, dis-cps-info ¸í·É¾î Ãß°¡ 
+	  - Init_shm Library Makefile Ãß°¡ 
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/include/comm_msgtypes.h					1.2
+	/cvs/DSC_R2/SMLEG/include/comm_session.h					1.4
+	/cvs/DSC_R2/SMLEG/include/ipaf_svc.h						1.3
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_hld.c						1.2
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_hld.h						1.2
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmc_proc.c						1.3
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_init.c						1.2
+	/cvs/DSC_R2/SMLEG/src/MMCR/mmcr_main.c						1.2
+	/cvs/DSC_R2/SMLEG/src/MMCR/Makefile							1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/leg.h							1.5
+	/cvs/DSC_R2/SMLEG/src/RANA/leg_session.c					1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_hld.c						1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_hld.h						1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_proc.c						1.7
+	/cvs/DSC_R2/SMLEG/src/RANA/radius_main.c					1.11
+	/cvs/DSC_R2/SMLEG/src/RLEG/Makefile							1.5
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg.h							1.5
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_init.c						1.5
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_main.c						1.4
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_radius.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sm_sess.c					1.3
+	/cvs/DSC_R2/SMLEG/src/RLEG/mmc_hld.h						1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/mmc_proc.c						1.4
+======================================================================
+1. ³¯  Â¥ : 2011.04.24(SUN)
+2. ÀÛ¾÷ÀÚ : jjinri
+3. ³»  ¿ë :
+	* DATA
+	  - TIMEOUT.conf : SM_SESS TIMER 2
+	  - RANA_PANA nifo_msgq ¼½¼Ç Ãß°¡ 
+	* CAPD
+	  - pBuffer+14 : °¡»ó ethernet Á¦°Å, PANA¿¡¼­ IP Çì´õºÎÅÍ µðÄÚµù.  
+	* RANA
+	  - gpTimer : shared memory -> global variable	
+	  - radius session °ü¸® : SendToRLEG ¼º°ø ÀÌÈÄ 
+	  - SM Connection Sum Check : Ãß°¡ 
+	  - logonFiltering Á¤¸® 
+	* RLEG
+	  - sm session °ü¸® Ãß°¡ 
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/DATA/TIMEOUT.conf							1.2
+	/cvs/DSC_R2/SMLEG/DATA/sysconfig							1.4
+	/cvs/DSC_R2/SMLEG/include/comm_session.h					1.3
+	/cvs/DSC_R2/SMLEG/src/CAPD/pcapfunc.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/leg.h							1.4
+	/cvs/DSC_R2/SMLEG/src/RANA/leg_session.c					1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_proc.c						1.6
+	/cvs/DSC_R2/SMLEG/src/RANA/radius_main.c					1.9
+	/cvs/DSC_R2/SMLEG/src/RLEG/Makefile							1.3
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg.h							1.4
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_init.c						1.4
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_main.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sce_comm.c					1.4
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sm_sess.c					1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_thread.c						1.5
+======================================================================
+1. ³¯  Â¥ : 2011.04.22(FRI)
+2. ÀÛ¾÷ÀÚ : JUNE
+3. ³»  ¿ë :
+	* LIBRARY
+	  - All Library Makefile ¼öÁ¤.
+	  - cp ¸í·ÉÀÌ vcs¿Í °ãÄ¡±â ¶§¹®¿¡ CP·Î º¯°æ.
+	  - aout.a copy ÈÄ *.o »èÁ¦.
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/libsrc/ANZ_LIB/Makefile						1.2
+	/cvs/DSC_R2/SMLEG/libsrc/COMM/Makefile							1.2
+	/cvs/DSC_R2/SMLEG/libsrc/HASH/Makefile							1.2
+	/cvs/DSC_R2/SMLEG/libsrc/INITSHM_LIB/Makefile					1.2
+	/cvs/DSC_R2/SMLEG/libsrc/IPCLIB/Makefile						1.2
+	/cvs/DSC_R2/SMLEG/libsrc/IPPOOLBIT/Makefile						1.2
+	/cvs/DSC_R2/SMLEG/libsrc/MIF/Makefile							1.2
+	/cvs/DSC_R2/SMLEG/libsrc/MMDB_DESTIP/Makefile					1.2
+	/cvs/DSC_R2/SMLEG/libsrc/MMDB_DESTPORT/Makefile					1.2
+	/cvs/DSC_R2/SMLEG/libsrc/SHMUTIL_LIB/Makefile					1.2
+	/cvs/DSC_R2/SMLEG/libsrc/UTILLIB/Makefile						1.2
+	/cvs/DSC_R2/SMLEG/libsrc/CGALIB/hashg/Makefile					1.2
+	/cvs/DSC_R2/SMLEG/libsrc/CGALIB/memg/Makefile					1.2
+	/cvs/DSC_R2/SMLEG/libsrc/CGALIB/timerN/Makefile					1.2
+======================================================================
+1. ³¯  Â¥ : 2011.04.22(FRI)
+2. ÀÛ¾÷ÀÚ : jjinri
+3. ³»  ¿ë :
+	* RLEG
+	  - cps , logon count Ãß°¡ 
+	* RANA
+	  - LEG_TOT_STAT_t ±¸Á¶Ã¼ º¯°æ ºÎºÐ Àû¿ë
+	  - SM API patch Àû¿ë 
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/include/ipaf_stat.h							1.7
+	/cvs/DSC_R2/SMLEG/src/RANA/radius_msgq.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_proc.c							1.5
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg.h								1.3
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sce_comm.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_thread.c							1.4
+======================================================================
+1. ³¯  Â¥ : 2011.04.22(FRI)
+2. ÀÛ¾÷ÀÚ : JUNE
+3. ³»  ¿ë :
+	* SMAPI
+	  - patch version upload
+	  - lib binary add
+	  - *.v1 Àº ÀÌÀü ¹öÀüÀÇ lib
+	* Source Directory Tree ±¸¼º.
+	  - OMP/SMLEG bin & lib µð·ºÅä¸® Ãß°¡.
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/libsrc/SM_API/include/SmApiNonBlocking.h		1.2
+	/cvs/DSC_R2/SMLEG/libsrc/SM_API/include/SmApiNonBlocking_c.h	1.2
+	/cvs/DSC_R2/SMLEG/libsrc/SM_API/include/SmApiNonBlocking.h.v1	1.1
+	/cvs/DSC_R2/SMLEG/libsrc/SM_API/include/SmApiNonBlocking_c.h.v1	1.1
+	/cvs/DSC_R2/SMLEG/libsrc/SM_API/linux/libsmapi.so				1.1
+	/cvs/DSC_R2/SMLEG/libsrc/SM_API/solaris/libsmapi.so				1.1
+	/cvs/DSC_R2/SMLEG/libsrc/SM_API/solaris/libsmapi.so.v1			1.1
+======================================================================
+1. ³¯  Â¥ : 2011.04.22(FRI)
+2. ÀÛ¾÷ÀÚ : jjinri 
+3. ³»  ¿ë :
+	* RLEG
+	  - RLEG main flow Á¤¸® 
+	* STAT_UNIT -> DEF_STAT_UNIT À¸·Î º¯°æ 
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/include/ipaf_stat.h						1.6
+	/cvs/DSC_R2/SMLEG/include/packet_def.h						1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_proc.c						1.4
+	/cvs/DSC_R2/SMLEG/src/RANA/radius_main.c					1.6
+	/cvs/DSC_R2/SMLEG/src/RLEG/Makefile							1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg.h							1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_init.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_main.c						1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_msgq.c						1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_radius.c						1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_sce_comm.c					1.2
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_thread.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RLEG/mmc_proc.c						1.2
+======================================================================
+1. ³¯  Â¥ : 2011.04.22(FRI)
+2. ÀÛ¾÷ÀÚ : jjinri 
+3. ³»  ¿ë :
+	* RANA
+	  - SM CONN : DISCONNECTED °ª -1 
+	  - TraceFlag °ªÀ» IMSI, IP ·Î Á¤ÀÇ 
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/include/ipaf_stat.h						1.5
+	/cvs/DSC_R2/SMLEG/include/sfm_msgtypes.h					1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_proc.c						1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/radius_main.c					1.5
+======================================================================
+1. ³¯  Â¥ : 2011.04.22(FRI)
+2. ÀÛ¾÷ÀÚ : uamyd 
+3. ³»  ¿ë :
+	* IFB/killprc
+	  - SAMDº¸´Ù ¸ÕÀú Á¾·áµÇ´Â ºí·°¿¡ ´ëÇØ¼­, SAMD°¡ Àç±âµ¿ ½ÃÅ°´Â Çö»ó
+		ÀÌ ¹ß»ýÇÏ´Â °æ¿ì°¡ ¹ß»ý.
+		SAMD BlockÀº IXPC Block Á÷Àü¿¡ ±âµ¿µÇ°í, IXPC BlockÀº °¡Àå ³ªÁß¿¡
+		±âµ¿µÇ¾î¾ß ÇÏ¹Ç·Î, 
+		¿ª¼øÀ¸·Î Process¸¦ Á¾·á½ÃÅ°µµ·Ï ¼ø¼­¸¦ ¹Ù²Þ.
+	* DATA/sysconfig
+	  - process µî·Ï½Ã, ¼ø¼­¿¡ ÁÖÀÇÇØ¾ß ÇÏ´Â process¿¡ ´ëÇÑ note Ãß°¡
+		first MMCR, last IXPC, before IXPC, SAMD 
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/DATA/sysconfig							1.3
+	/cvs/DSC_R2/SMLEG/src/IFB/killprc.c							1.2
+======================================================================
+1. ³¯  Â¥ : 2011.04.22(FRI)
+2. ÀÛ¾÷ÀÚ : jjinri 
+3. ³»  ¿ë :
+	* RANA
+	  - RLEG ¿¡¼­ Initial ºÎºÐ RANA ·Î °¡Á®¿È. Config ÆÄÀÏ ·Îµù 
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/RANA/leg.h							1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/Makefile							1.4
+	/cvs/DSC_R2/SMLEG/src/RANA/conflib.c						1.1
+	/cvs/DSC_R2/SMLEG/src/RANA/conflib.h						1.1
+	/cvs/DSC_R2/SMLEG/src/RANA/radius_init.c					1.4
+	/cvs/DSC_R2/SMLEG/src/RANA/radius_main.c					1.4
+======================================================================
+1. ³¯  Â¥ : 2011.04.22(FRI)
+2. ÀÛ¾÷ÀÚ : uamyd 
+3. ³»  ¿ë :
+	* SAMD
+	  - ¼º°øÇÏ´Â °æ¿ì¿¡ noti¸¦ ÁÖ´Â ¹æ¹ý¿¡ ´ëÇØ¼­, Á×Àº PROCESS°¡ ÀÖ´Ù¸é
+		½ÇÆÐ¸¦ ÇÏ´õ¶óµµ, DEAD »óÅÂ¸¦ Àü´ÞÇØ ÁÖµµ·Ï ¼öÁ¤
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/SAMD/samd_proc.c						1.3
+======================================================================
+1. ³¯  Â¥ : 2011.04.22(FRI)
+2. ÀÛ¾÷ÀÚ : uamyd 
+3. ³»  ¿ë :
+	* SAMD
+	  - ÁÖ±âÀûÀ¸·Î FIMD·Î »óÅÂ Á¤º¸¸¦ Àü¼ÛÇÏ´Â ·ÎÁ÷¿¡
+		PROCESS RESTART °¡ 1°Ç ÀÌ»ó ¹ß»ýÇßÀ» ¶§¿¡µµ FIMD·Î »óÅÂ Á¤º¸¸¦
+		Àü¼ÛÇÏµµ·Ï ¼öÁ¤
+4. ÆÄ ÀÏ :
+	/cvs/DSC_R2/SMLEG/src/SAMD/samd_proc.c						1.2
+======================================================================
+1. ³¯  Â¥ : 2011³â 4.22(FRI)
+2. ÀÛ¾÷ÀÚ : jjinri 
+3. ³»  ¿ë :
+    * CAPD
+	  - ¼Ò½º ÁÖ¼® Á¦°Å
+	* PANA
+	  - HASH Ãß°¡ : PDSN IP ÇÊÅÍ¸µ
+	  - µðÄÚµù ¹æ½Ä º¯°æ 
+	  - µðÄÚµù ±¸Á¶Ã¼, TLV ±¸Á¶Ã¼ ÅëÇÕ
+	  - MSGQ Tlv Á¦°Å 
+	* RANA
+	  - RLEG ÀÇ logon °ü·Ã ±â´É Æ÷ÆÃ
+	  - RLEG Routing 
+	  - PDSN ÇÊÅÍ¸µ ÇØ½¬ Ãß°¡
+	  - RADIUS ¼¼¼Ç¿¡ RLEG Routing index °ü¸®
+
+4. ÆÄ  ÀÏ :
+	/cvs/DSC_R2/SMLEG/DATA/sysconfig 							1.2
+	/cvs/DSC_R2/SMLEG/include/Analyze_Ext_Abs.h 				1.2
+	/cvs/DSC_R2/SMLEG/include/comm_session.h					1.2
+	/cvs/DSC_R2/SMLEG/include/hash_pdsn.h						1.1
+	/cvs/DSC_R2/SMLEG/include/hash_svctype.h					1.2
+	/cvs/DSC_R2/SMLEG/include/init_shm.h						1.2
+	/cvs/DSC_R2/SMLEG/include/ipaf_stat.h						1.4
+	/cvs/DSC_R2/SMLEG/include/ipaf_svc.h						1.2
+	/cvs/DSC_R2/SMLEG/include/sfm_msgtypes.h					1.2
+	/cvs/DSC_R2/SMLEG/include/shm.h								1.2
+	/cvs/DSC_R2/SMLEG/libsrc/ANZ_LIB/Analyze_Inf.c				1.2
+	/cvs/DSC_R2/SMLEG/libsrc/INITSHM_LIB/InitShm.c				1.2
+	/cvs/DSC_R2/SMLEG/libsrc/IPCLIB/shm.c						1.2
+	/cvs/DSC_R2/SMLEG/src/CAPD/capd.c							1.2
+	/cvs/DSC_R2/SMLEG/src/CAPD/pcapfunc.c						1.2
+	/cvs/DSC_R2/SMLEG/src/PANA/ana.c							1.2
+	/cvs/DSC_R2/SMLEG/src/PANA/ana.h							1.1
+	/cvs/DSC_R2/SMLEG/src/PANA/ana_init.c						1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/Makefile							1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/leg.h							1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/leg_sce_comm.c					1.1
+	/cvs/DSC_R2/SMLEG/src/RANA/leg_session.c					1.1
+	/cvs/DSC_R2/SMLEG/src/RANA/leg_session.h					1.1
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_hld.c						1.1
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_hld.h						1.1
+	/cvs/DSC_R2/SMLEG/src/RANA/mmc_proc.c						1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/radius_init.c					1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/radius_main.c					1.3
+	/cvs/DSC_R2/SMLEG/src/RANA/radius_msgq.c					1.2
+	/cvs/DSC_R2/SMLEG/src/RANA/tmo.c							1.1
+	/cvs/DSC_R2/SMLEG/src/RLEG/leg_init.c						1.2
+======================================================================
+1. ³¯  Â¥ : 2011³â 3.23 (WED)
+2. ÀÛ¾÷ÀÚ : JUNE 
+3. ³»  ¿ë :
+    * DLPI_CAPD
+	  - ¼º´É ÃøÁ¤ ·çÆ¾ Ãß°¡. 
+	* IXPC
+	  - printf Á¦°Å
+    *  RLEG
+	  - RAD SESS COUNT, TIMER COUNT µð¹ö±ë LOG Ãß°¡.
+	  - Thread Period Define Á¤ÀÇ.
+	  - SM BUFFER CLEAR ±â´É Ãß°¡. MMC ¸í·É Ãß°¡.
+	    (mmc_set_smbuf_clr, mmc_del_smbuf_clr, mmc_dis_smbuf_clr) 
+	* TimerN
+	  - timerN_invoke ÇÔ¼ö ¹ö±× ¼öÁ¤
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/DLPI_CAPD/pcapfunc.c					1.3
+	/cvs/LGT_DSC/SMLEG/src/IXPC/ixpc_route.c					1.3
+	/cvs/LGT_DSC/SMLEG/src/RLEG/Makefile						1.9
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h							1.7
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_main.c						1.4
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.8
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_session.c					1.5
+	/cvs/LGT_DSC/SMLEG/src/RLEG/mmc_hld.c						1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/mmc_hld.h						1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/mmc_proc.c						1.5
+	/cvs/LGT_DSC/SMLEG/libsrc/cgalib/timerN/Makefile			1.2
+	/cvs/LGT_DSC/SMLEG/libsrc/cgalib/timerN/timerN.c			1.4
+	/cvs/LGT_DSC/OMP/data/mml_commands							1.4
+	/cvs/LGT_DSC/OMP/data/mcdm_distr_mmc						1.2
+======================================================================
+1. ³¯  Â¥ : 2011³â 3.15 (TUE)
+2. ÀÛ¾÷ÀÚ : ÇÔµ¿Ã¶ 
+3. ³»  ¿ë :
+	* RDRANA_CSV 
+	  - RDR data deleteÀÛ¾÷ ¸Å 5ºÐ ÁÖ±â·Î END_TIMEÀÌ 1½Ã°£ ÀÌ»ó ÀÌÀü 
+	    µ¥ÀÌÅ¸ »èÁ¦ 
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/main.c                     1.10
+======================================================================
+1. ³¯  Â¥ : 2011³â 3.15 (TUE)
+2. ÀÛ¾÷ÀÚ : ¼ÕÇü¼®
+3. ³»  ¿ë :
+	* SAMD
+      - dis-sys-sts ¸í·É¾î Ã³¸® °á°ú º¸°í½Ã, ¸¶Áö¸· ¶óÀÎÀÌ
+        ¹öÆÛ¿¡ ³²Àº Ã¼·Î, ±¸ºÐ ÁÙÀÌ Ãß°¡(strcat)°¡ µÇ¾î¼­,
+        ¸í·É¾î °á°ú¿¡ º¸¿©Áö´Â ºÎºÐÀ», ±¸ºÐ ÁÙ¸¸ Ãß°¡µÇµµ·Ï(sprint)
+        ¼öÁ¤
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_proc.c                     1.2
+======================================================================
+1. ³¯  Â¥ : 2011³â 3.14 (MON)
+2. ÀÛ¾÷ÀÚ : JUNE 
+3. ³»  ¿ë :
+    *  RLEG
+	  - SM API Return -1ÀÇ °æ¿ì LOGON Åë°è Fail Count¿¡ ¹Ý¿µ.
+	    (ÀÎ½ºÇÁ¸®Æ® ¾ç¼ºÁ¶C ¿äÃ»).
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sce_comm.c					1.10
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_session.c					1.4
+=======================================================================
+1. ³¯  Â¥ : 2011³â 3.11 (FRI)
+2. ÀÛ¾÷ÀÚ : JUNE 
+3. ³»  ¿ë :
+    *  RLEG
+	  - RULE SET USED FLAG OFF ÀÎ °æ¿ì LOG Level DEBUG ·Î º¯°æ.
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.7
+======================================================================
+1. ³¯  Â¥ : 2011³â 3.9 (WED)
+2. ÀÛ¾÷ÀÚ : JUNE 
+3. ³»  ¿ë :
+    < DOKSAN PACKAGE CVS UP >
+    * CAPD
+	  - BUFSIZ ½Ã½ºÅÛ º¯¼ö¸¦ »©°í DEFINE ÇÑ Å©±â·Î º¯°æ
+	  - BUFSIZ ´Â ½Ã½ºÅÛ ¸¶´Ù Å©±â°¡ ´Ù¸¦¼ö ÀÖ±â ¶§¹®¿¡ °íÁ¤ Å©±â·Î º¯°æ.
+	  - PACKET_MON_PRT Ãß°¡.
+	* RLEG
+	  - FUNC_TIME_CHECK Ãß°¡(login/logout delay time measurement)
+	  - "used flag zero and non-logon session" LOG LEVEL CRI->DEBUG
+	    ¾ç¼ºÁ¶C ¿ä±¸.
+	  - logout smapi return -1 ¿¡ ´ëÇØ log ¹× Åë°è ÀÛ¾÷
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/DLPI_CAPD/Makefile					1.2
+	/cvs/LGT_DSC/SMLEG/src/DLPI_CAPD/pcapfunc.c					1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/Makefile						1.8
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_init.c						1.8
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.6
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sce_comm.c					1.9
+======================================================================
+1. ³¯  Â¥ : 2011³â 3.4 (FRI)
+2. ÀÛ¾÷ÀÚ : JUNE 
+3. ³»  ¿ë :
+    * RLEG, SMPP, MMCR, include
+	  - SM ¼¼¼Ç°ü¸® ÀÌÀü ¹öÁ¯À¸·Î rollback
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/include/comm_msgtypes.h                  1.2
+	/cvs/LGT_DSC/SMLEG/include/comm_session.h                   1.2
+	/cvs/LGT_DSC/SMLEG/include/comm_timer.h                     1.2
+	/cvs/LGT_DSC/SMLEG/src/MMCR/mmcr_init.c						1.6
+	/cvs/LGT_DSC/SMLEG/src/MMCR/mmc_proc.c						1.6
+  	/cvs/LGT_DSC/SMLEG/src/SMPP/smpp_init.c						1.3
+   	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h							1.6
+   	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_init.c						1.7
+   	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_msgq.c						1.4
+   	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.5
+   	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sce_comm.c					1.8
+   	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_session.c					1.3
+   	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_thread.c					1.5
+   	/cvs/LGT_DSC/SMLEG/src/RLEG/mmc_proc.c						1.4
+======================================================================
+1. ³¯  Â¥ : 2011³â 3.4 (FRI)
+2. ÀÛ¾÷ÀÚ : JUNE 
+3. ³»  ¿ë :
+    * RLEG
+	  - SM API(login,logout) ¼º´É ÃøÁ¤ Ãß°¡.
+	* Version R1.2.0 º¯°æ.
+	  - RLEG, SAMD, MMCR, RDRANA_CSV
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_init.c						1.5
+	/cvs/LGT_DSC/SMLEG/src/MMCR/mmc_proc.c						1.5
+	/cvs/LGT_DSC/SMLEG/src/MMCR/mmcr_init.c						1.4
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/main.c					1.7
+======================================================================
+1. ³¯  Â¥ : 2011³â 3.3 (THU)
+2. ÀÛ¾÷ÀÚ : JUNE 
+3. ³»  ¿ë :
+    * RLEG
+      - SM_SESSION °ü¸® ·ÎÁ÷ Á¦°Å
+	  - SM API(login,logout) ¼º´É ÃøÁ¤ Ãß°¡.
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/RLEG/Makefile						1.6
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h							1.5
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_init.c						1.6
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_main.c						1.3
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sce_comm.c					1.7
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sm_sess.c					1.4
+======================================================================
+1. ³¯  Â¥ : 2011³â 3.2 (WED)
+2. ÀÛ¾÷ÀÚ : JUNE 
+3. ³»  ¿ë :
+    * RLEG
+      - SM_SESSION °ü¸® ·ÎÁ÷ Á¦°Å
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/RLEG/Makefile						1.5
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_init.c						1.5
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.4
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sce_comm.c					1.6
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_thread.c					1.4
+======================================================================
+1. ³¯  Â¥ : 2011³â 2.28 (THE)
+2. ÀÛ¾÷ÀÚ : ¼ÕÇü¼®
+3. ³»  ¿ë :
+    * RLEG
+      - µ¶»ê¿¡¼­ Å×½ºÆ® ÇÑ ÈÄ, ¸¶°¨µÈ ¼Ò½º
+      - SM_SESSION °ü¸® ·ÎÁ÷ Ãß°¡( by ÀÌ»óÁØK )
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/libsrc/cgalib/timerN/timerN.c			1.3
+	/cvs/LGT_DSC/SMLEG/src/RLEG/Makefile						1.4
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h							1.4
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_init.c						1.4
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_main.c						1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_msgq.c						1.3
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sce_comm.c					1.5
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sm_sess.c					1.3
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sm_sess.h					1.3
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_thread.c					1.3
+======================================================================
+1. ³¯  Â¥ : 2011³â 2.28 (THE)
+2. ÀÛ¾÷ÀÚ : ¼ÕÇü¼®
+3. ³»  ¿ë :
+    * SAMD
+      - fopen ÈÄ, fclose ÇÏÁö ¾Ê´Â ºÎºÐ¿¡ fclose Ãß°¡
+      - init_disk_info() ¿¡¼­ »ç¿ëµÇÁö ¾Ê´Â ¼Ò½º ºÎºÐÀÌ±â´Â ÇÏ³ª,
+        fopen À¸·Î ¹Þ¾Æ¿Â fd ¸¦ close ÇÏ´Â ºÎºÐÀÌ ¾ø±â¿¡ Ãß°¡(570ÁîÀ½)
+      - samd_initPingAddrTbl() ¿¡¼­ fopen ¼öÇà ¼º°øÁ÷ÈÄ, configuration
+        Á¤º¸¸¦ ÀÐ¾î ¿Ã ¶§ ½ÇÆÐÇÏ´Â °æ¿ì, fclose() Ãß°¡(659ÁîÀ½)
+4. ÆÄ ÀÏ :
+    /cvs/LGT_DSC/SMLEG/src/SAMD/samd_init.c                     1.4
+======================================================================
+1. ³¯  Â¥ : 2011³â 2.24 (THU)
+2. ÀÛ¾÷ÀÚ : ¼ÕÇü¼®
+3. ³»  ¿ë :
+    * MMCR
+      - set-tmr-info ¸í·É¾î ¼öÇà½Ã, "ACC_SESS" ÀÇ °æ¿ì, buffer size¿Í
+        µ¿ÀÏÇÑ °ü°è·Î, strcasecmp °¡ Á¤»óÀûÀ¸·Î ¼öÇàµÇÁö ¾ÊÀ½.
+        buffer size¸¦ 16À¸·Î Áõ°¡ ½ÃÅ² ÈÄ Á¤»óÀÛµ¿ È®ÀÎ.
+4. ÆÄ ÀÏ :
+    /cvs/LGT_DSC/SMLEG/src/MMCR/mmc_proc.c                      1.4
+======================================================================
+1. ³¯  Â¥ : 2011³â 2.24 (THU)
+2. ÀÛ¾÷ÀÚ : ¼ÕÇü¼®
+3. ³»  ¿ë :
+    * MMCR
+      - set-tmr-info ¸í·É¾î ¼öÇà½Ã, file·Î ÀúÀåÇÒ ¶§, sess °ªÀ¸·Î ÀúÀåÀÌ
+        µÇµµ·Ï µÇ¾î ÀÖ¾úÀ½. sm_sess °ªÀ» ÀúÀåÇØ¾ß ÇÔ.
+4. ÆÄ ÀÏ :
+    /cvs/LGT_DSC/SMLEG/src/MMCR/mmcr_init.c                     1.3
+======================================================================
+1. ³¯  Â¥ : 2011³â 2.22 (MON)
+2. ÀÛ¾÷ÀÚ : dcham
+3. ³»  ¿ë : REAL, TEST, ISSUE »èÁ¦ÇÏ°í, REAL¹æ½Ä ÇÏ³ª·Î ÅëÀÏ
+4. ÆÄ ÀÏ : 
+    /cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/main.c                1.4
+======================================================================
+1. ³¯  Â¥ : 2011³â 2.21 (MON)
+	2. ÀÛ¾÷ÀÚ : dcham
+3. ³»  ¿ë :
+	* RDRANA_CSV 
+	  - 3Á¾·ùÀÇ compile ¹æ½Ä Ãß°¡
+	  - ISSUE : ±âÁ¸ÀÇ ÀýÃ¼½Ã hang¹®Á¦ ¹ß»ý ¹öÁ¯(±¸¹öÁ¯)
+	  - REAL  : ¹®Á¦ ÇØ°á ¹Ý¿µ ¹öÁ¯
+	  - TEST  : T/BÈ¯°æ Á¦¾à¿¡ µû¸¥ ÀÎÀ§ÀûÀ¸·Î 
+	            BLOCK_RDR data insert
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/main.c				1.3
+======================================================================
+1. ³¯  Â¥ : 2011³â 2.18 (FRI)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* MISALIGN library
+	  - STP ¿¡ ÀÖÁö¸¸, CVS´Â ¾ø´Â library Ãß°¡~!
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/libsrc/MISALIGN/misalign.o				1.1
+	/cvs/LGT_DSC/SMLEG/libsrc/MISALIGN/misalign_64.o			1.1
+======================================================================
+1. ³¯  Â¥ : 2011³â 2.18 (FRI)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* DATA
+	  - TIMEOUT.conf - SM_SESS TIMER ADDED
+	  - sysconfig    - SM_SESS HASH KEY ADDED
+	  - remove.sh	 - SM_SESS HASH KEY REMOVE ±â´É Ãß°¡
+	* IXPC
+	  - MMC ROUTING COMMAND LOG ADDED
+	* MMCR
+	  - SM_SESSION TIMER COMMAND ADDED(DIS/SET)
+	* RDRANA_CSV
+	  - TR/BLOCK/LUR TABLE DELETE FUNC ADDED
+	  - acc hash key º¯°æ¿¡ µû¸¥ hash func ¼öÁ¤
+	* RLEG
+	  - SM_SESSION PROCESS ADDED AND LOGON STATISTICS MOD
+	* SAMD
+	  - log , disk warning ¼öÁ¤, »ç¿ëÇÏÁö ¾Ê´Â º¯¼ö »èÁ¦
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/DATA/TIMEOUT.conf						1.3
+	/cvs/LGT_DSC/SMLEG/DATA/sysconfig							1.2
+	/cvs/LGT_DSC/SMLEG/SCRIPT/remove.sh							1.2
+	/cvs/LGT_DSC/SMLEG/src/IXPC/ixpc_route.c					1.2
+	/cvs/LGT_DSC/SMLEG/src/MMCR/mmc_proc.c						1.3
+	/cvs/LGT_DSC/SMLEG/src/MMCR/mmcr_main.c						1.2
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/Makefile					1.2
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/main.c					1.3
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/rdrheader.h				1.2
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/rdr_session.c				1.2
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/rdr_session.h				1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/Makefile						1.3
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h							1.3
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_init.c						1.3
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.3
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sce_comm.c					1.3
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sm_sess.c					1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sm_sess.h					1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/mmc_proc.c						1.3
+	/cvs/LGT_DSC/SMLEG/src/SAMD/check_sys_msg.c					1.2
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_disk.c						1.2
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_init.c						1.3
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_main.c						1.3
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_ping.c						1.2
+======================================================================
+1. ³¯  Â¥ : 2011³â 2.17 (THU)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* include
+	  - LOGON_STAT ±¸Á¶Ã¼ APITimeout, APIReqErr Ãß°¡.
+	  - _mem_check ¿¡ sm_sess Ãß°¡.
+	  - MPTimer ±¸Á¶Ã¼¿¡ sm_sess_timeout Ãß°¡.
+	* DATA
+	  - TIMEOUT.conf ¿¡ SM_SESS Ãß°¡.
+	* MMCR
+	  - mmcr_mmc_dis_tmr_info ¿¡ sm_sess_timer Ãß°¡.
+	  - gpMPTimer->sm_sess_timeout Ãß°¡.
+	* SMPP 
+	  - mmcr_mmc_dis_tmr_info ¿¡ sm_sess_timer Ãß°¡.
+	  - gpMPTimer->sm_sess_timeout Ãß°¡.
+	* RLEG
+	  - Makefile:D_SM_CONN_FIND, DSMAPI_ERR, DSM_SESS_CNT, D_SM_CONN_CHECK
+		Flag Ãß°¡.
+	  - SM SESS Ãß°¡.
+	  - LEG Åë°è¿¡ SM_SESS_TIMEOUT, SM_API_ERR Ãß°¡.
+	  - MMC LOGOUT ¸í·É Ãß°¡.
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/include/comm_msgtypes.h					1.2
+	/cvs/LGT_DSC/SMLEG/include/comm_session.h					1.2
+	/cvs/LGT_DSC/SMLEG/include/comm_timer.h						1.2
+	/cvs/LGT_DSC/SMLEG/DATA/TIMEOUT.conf						1.2
+	/cvs/LGT_DSC/SMLEG/src/MMCR/mmc_proc.c						1.2
+	/cvs/LGT_DSC/SMLEG/src/MMCR/mmcr_init.c						1.2
+	/cvs/LGT_DSC/SMLEG/src/SMPP/smpp_init.c						1.2
+	/cvs/LGT_DSC/SMLEG/src/SMPP/smpp_msgQ.c						1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h							1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_init.c						1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_msgq.c						1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sce_comm.c					1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_session.c					1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_thread.c					1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/mmc_proc.c						1.2
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sm_sess.c					1.1
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sm_sess.h					1.1
+	/cvs/LGT_DSC/SMLEG/src/RLEG/Makefile						1.2
+=====================================================================
+1. ³¯  Â¥ : 2011³â 02.08 (THE)
+2. ÀÛ¾÷ÀÚ : dcham
+3. ³»  ¿ë :
+	* RDRANA_CSV 
+	- RDR DATA »èÁ¦ Äõ¸® Ãß°¡ : 
+	  STMD hang isuue¿¡ µû¶ó, ¿øÀÎÀÌ µÈ, ´©Àû µ¥ÀÌÅÍ¸¦ ¹æÁöÇÏ±âÀ§ÇØ 
+	  RDR TR, RDR BLOCK, RDR LUR µ¥ÀÌÅ¸¸¦ ÁÖ±âÀûÀ¸·Î Table¿¡¼­
+	  »èÁ¦ÇÑ´Ù. 10ºÐ ÁÖ±â·Î between -10ºÐ and -20ºÐ »èÁ¦
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/main.c                    1.2
+======================================================================
+1. ³¯  Â¥ : 2011³â 2.11 (FRI)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* SAMD
+	- ÃÊ±â ±âµ¿ ¹®Á¦ ¼öÁ¤: Link Configuration ºÎºÐ ¹ö±×
+	  - ÇÁ·Î¼¼½º Àç±âµ¿ ¹®Á¦ ¼öÁ¤: kstat lib »ç¿ë½Ã kernel fail ·Î ÀÎÇØ
+	    exit ·Î ÇÁ·Î¼¼½º Á¾·á-> ÇÁ·Î¼¼½º Á¾·áÇÏÁö ¾Ê°í »óÅÂ°¨½Ã ¾ÈµÇ´Â
+		°ÍÀ¸·Î º¯°æ(¿äÃ»»çÇ×,¾ç¼ºÁ¶)
+	  - signal ¼öÁ¤: signal handler¿¡ log Ãß°¡, SIGCHLD HANDLER Ãß°¡
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_init.c						1.2
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_main.c						1.2
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_sys.c						1.2
+====================================================================
+1. ³¯  Â¥ : 2010³â 12.22 (WED)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* include
+	* DLPI_CAPD
+	  - lan prove device configuration ÀÛ¾÷.
+	* SAMD
+	  - lan device pingtest ·ÎÁ÷ ¹× Ã³¸® À§Ä¡ ¼öÁ¤
+	* DATA
+	  - lan prove device configuration Ãß°¡.
+	  
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/include/capd_def.h						1.3
+	/cvs/LGT_DSC/SMLEG/src/DLPI_CAPD/pcapfunc.c					1.4
+	/cvs/LGT_DSC/SMLEG/src/DLPI_CAPD/capd_init.c				1.4
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_main.c						1.51
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_ping.c						1.28
+	/cvs/LGT_DSC/SMLEG/DATA/sysconfig							1.15
+====================================================================
+1. ³¯  Â¥ : 2010³â 11.15 (MON)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* RLEG
+	  - session timeout log¿¡ min Ãß°¡.
+	  - account request stop ¿¡¼­ del_rad_sess Á¦°Å
+4. ÆÄ  ÀÏ :
+    /cvs/LGT_DSC/SMLEG/src/RLEG/leg_session.c					1.16
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.57
+====================================================================
+1. ³¯  Â¥ : 2010³â 10.15 (FRI)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* µ¶»ê ¼öÁ¤ ÀÛ¾÷ ¹Ý¿µ
+	* °³¹ßÈ®ÀÎ½ÃÇè ¿Ï·á
+	  - ¼º´É Çâ»ó ¿Ï·á.(CAPD, RLEG)
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/DLPI_CAPD/Makefile					1.2
+	/cvs/LGT_DSC/SMLEG/src/DLPI_CAPD/capd.c						1.5
+	/cvs/LGT_DSC/SMLEG/src/DLPI_CAPD/capd_msgq.c				1.3
+	/cvs/LGT_DSC/SMLEG/src/DLPI_CAPD/pcapfunc.c					1.2
+	/cvs/LGT_DSC/SMLEG/src/DLPI_CAPD/pcapfunc.c					1.3
+====================================================================
+1. ³¯  Â¥ : 2010³â 10.13 (MON)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* µ¶»ê ¼öÁ¤ ÀÛ¾÷ ¹Ý¿µ
+	* RLEG
+	  - ¼º´É DEBUGGING
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/include/comm_session.h					1.5
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h							1.46
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.55
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_session.c					1.15
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_session.h					1.5
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_thread.c					1.27
+	/cvs/LGT_DSC/SMLEG/src/RLEG/mmc_proc.c						1.31
+====================================================================
+1. ³¯  Â¥ : 2010³â 10.10 (MON)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* µ¶»ê ¼öÁ¤ ÀÛ¾÷ ¹Ý¿µ
+	* RLEG
+	  - HASH BODYÀÇ IMSI Á¦°Å.
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.54
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_session.c					1.14
+	/cvs/LGT_DSC/SMLEG/src/RLEG/mmc_proc.c						1.30
+	/cvs/LGT_DSC/SMLEG/include/comm_session.h					1.4
+====================================================================
+1. ³¯  Â¥ : 2010³â 10.07 (THU)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* µ¶»ê ¼öÁ¤ ÀÛ¾÷ ¹Ý¿µ
+	* PANA
+	  - UDP PORT 3799 Ãß°¡(RADIUS DISCONNECT MESSAGE)
+	* RANA
+	  - DEBUGING LOG ADD
+	* RLEG
+	  - hbit 32 -> 100°³·Î º¯°æ
+	  - hbit 99°¡ »ç¿ëµÇ±â ¶§¹®
+	  - Åë°è´Â 32°³·Î ±¸¼º.
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/PANA/ana.c							1.12
+	/cvs/LGT_DSC/SMLEG/src/RANA/radius_main.c					1.13
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h							1.45
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.53
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sce_comm.c					1.36
+	/cvs/LGT_DSC/SMLEG/src/RLEG/mmc_proc.c						1.29
+====================================================================
+1. ³¯  Â¥ : 2010³â 10.04 (MON)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* µ¶»ê ¼öÁ¤ ÀÛ¾÷ ¹Ý¿µ
+	* RLEG / RANA
+	  - RADIUS DISCONNECT REQUEST Ãß°¡.
+	    LEG SESSION HASH KEY º¯°æ(mobIP --> IMSI)
+	  - LEG SESSION ALARM Ã³¸® °ü·Ã LOW DATA Àü¼Û ¹æ½Ä º¯°æ
+	    ACTIVE ¸¸ º¸³»´ø °ÍÀ» ACTIVE&STANDBY ¸ðµÎ Àü¼Û.
+	* RDRANA_CSV
+	  - SESSION HASH KEY°¡ MOIP-->IMSI·Î º¯°æµÇ¸é¼­ N/A °¡ÀÔÀÚ¿¡ ´ëÇØ
+	    IMSI·Î TRACE ÇÏÁö ¸øÇÔ
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/include/comm_msgtypes.h					1.14
+	/cvs/LGT_DSC/SMLEG/include/comm_session.h					1.3
+	/cvs/LGT_DSC/SMLEG/include/ipaf_svc.h						1.5
+	/cvs/LGT_DSC/SMLEG/src/RLEG/Makefile						1.27
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h							1.44
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_init.c						1.42
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_main.c						1.41
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_msgq.c						1.14
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.52
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sce_comm.c					1.35
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_session.c					1.13
+	/cvs/LGT_DSC/SMLEG/src/RLEG/mmc_proc.c						1.28
+	/cvs/LGT_DSC/SMLEG/src/RANA/Makefile						1.4
+	/cvs/LGT_DSC/SMLEG/src/RANA/radius_main.c					1.12
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/capd_init.c				1.6
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/capd_mml.c				1.3
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/main.c					1.5
+====================================================================
+1. ³¯  Â¥ : 2010³â 10.03 (SUN)
+2. ÀÛ¾÷ÀÚ : jjinri
+3. ³»  ¿ë :
+	* RDRANA_CSV:
+	  - rleg session key change : // find_imsi_rad_sess() 
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/capd_init.c 				1.5
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/capd_mml.c 				1.2
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/main.c 					1.4
+====================================================================
+1. ³¯  Â¥ : 2010³â 09.15 (WED)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* µ¶»ê ¼öÁ¤ ÀÛ¾÷ ¹Ý¿µ
+	* DATA:
+	  - data º¯°æ ³»¿ª Ãß°¡.	
+	* RLEG:
+	  - leg logonÅë°è Ãß°¡, logout Á¤Ã¥ º¯°æ.
+	  - -DHBIT debuging flag Á¦°Å.
+	* SAMD:
+	  - cm process »óÅÂÃ¼Å© ¼öÁ¤.
+	  - lan »óÅÂ Ã¼Å© ¹ö±¸ ¼öÁ¤.
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/DATA/PDSN.conf							1.5
+	/cvs/LGT_DSC/SMLEG/DATA/RULESET_LIST.conf					1.4
+	/cvs/LGT_DSC/SMLEG/DATA/RULESET_USED.conf					1.2
+	/cvs/LGT_DSC/SMLEG/DATA/sysconfig							1.14
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h							1.43
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_main.c						1.40
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.51
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sce_comm.c					1.34
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_session.c					1.12
+	/cvs/LGT_DSC/SMLEG/src/RLEG/Makefile						1.26
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_proc.c						1.45
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_init.c						1.22
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_ping.c						1.26
+====================================================================
+1. ³¯  Â¥ : 2010³â 09.06 (MON)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* µ¶»ê ¼öÁ¤ ÀÛ¾÷ ¹Ý¿µ
+	  - RLEG: version ¼öÁ¤: R1_0_3 -> R1_1_0
+	  - RDRANA_CSV: rdrana_init.c ¿¡ config read bug ¼öÁ¤.
+	  - SAMD : CM process °¨½Ã ¼öÁ¤ 1°³ -> 4°³ °¨½Ã.
+	  - cp ¸í·ÉÀÌ VRTS cp ¸í·É°ú Áßº¹µÇ¾î ÆÐ½º Ãß°¡.
+
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/capd_init.c				1.4
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_main.c						1.39
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_msgq.c						1.13
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_proc.c						1.44
+	/cvs/LGT_DSC/SMLEG/MkConfig.mk								1.5
+====================================================================
+1. ³¯  Â¥ : 2010³â 09.01 (TUE)
+2. ÀÛ¾÷ÀÚ : dcham
+3. ³»  ¿ë :
+	* µ¶»ê ¼öÁ¤ ÀÛ¾÷ ¹Ý¿µ (SAMD)
+
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_proc.c 					1.43
+====================================================================
+1. ³¯  Â¥ : 2010³â 09.01 (TUE)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* µ¶»ê ¼öÁ¤ ÀÛ¾÷ ¹Ý¿µ (RLEG)
+4. ÆÄ  ÀÏ :
+	INCLUDE
+	/cvs/LGT_DSC/SMLEG/include/comm_msgtypes.h 					1.13
+
+	/cvs/LGT_DSC/SMLEG/src/RLEG/Makefile						1.25
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h 							1.42
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_main.c 						1.38
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_msgq.c 						1.12
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sce_comm.c 					1.33
+====================================================================
+1. ³¯  Â¥ : 2010³â 08.24 (TUE)
+2. ÀÛ¾÷ÀÚ : june
+3. ³»  ¿ë :
+	* SAMD/IFB Process ¸Þ¸ð¸® Áõ°¡ ¹ö±× ¼öÁ¤
+	* LEG LOGON Åë°è HBIT ±¸Á¶Ã¼ º¯°æ
+	* LEG LOGOUT Policy º¯°æ
+	* session º¯¼ö Çü º¯°æ double->unsigned int
+	  -- LOGOUT ½Ã Rule Used Flag ¾Èº¸°í ¼¼¼Ç ÀÖÀ¸¸é
+	     LOGOUT Ã³¸® & Session Á¦°Å
+4. ÆÄ  ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/IFB/ifb_comm.c						1.12
+	/cvs/LGT_DSC/SMLEG/src/SAMD/samd_proc.c						1.42
+	/cvs/LGT_DSC/SMLEG/include/comm_msgtypes.h					1.11
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h							1.40
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_main.c						1.37
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_msgq.c						1.10
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.50
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_sce_comm.c					1.32
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_session.c					1.11
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h							1.41
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_msgq.c						1.11
+====================================================================
+1. ³¯  Â¥ : 2010³â 08.22 (SUN)
+2. ÀÛ¼ºÀÚ : june
+   ÀÛ¾÷ÀÚ : DISK(ÇÔµ¿Ã¶) LAN(Á¤ÇöÁÖ)
+3. ³»  ¿ë :
+   * »ó¾Ï ÆÐÅ°Áö ¹öÁ¯: v1.0.3¿¡ ±â´É Ãß°¡
+   * MP SERVER º¯°æ¿¡ µû¸¥ DISK/LAN Device Name º¯°æµÇ¾î Config
+	 ¿¡¼­ º¯°æ °¡´ÉÇÑ ±¸Á¶·Î º¯°æ.
+4. ÆÄ  ÀÏ :
+   /cvs/LGT_DSC/SMLEG/src/SAMD/samd_disk.c						1.26
+   /cvs/LGT_DSC/SMLEG/src/SAMD/samd_init.c						1.21
+   /cvs/LGT_DSC/SMLEG/src/SAMD/samd_ping.c						1.25
+   /cvs/LGT_DSC/SMLEG/DATA/sysconfig							1.13
+===================================================================
+1. ³¯  Â¥ : 2010³â 04.15 (THU)
+	2. ÀÛ¼ºÀÚ : june
+	3. ³»  ¿ë :
+	* »ó¾Ï ÆÐÅ°Áö ¹öÁ¯: v1.0.3
+	* Å×½ºÆ® ³¯Â¥: 2010-03-15 (with Insprit ±èÁ¤ÈÆS)
+	+ RDRANA_CSV
+	  1) RLEG¿Í ÇÔ²² »ç¿ëÇÏ´Â °øÀ¯¸Þ¸ð¸® ÃÊ±â Ãæµ¹ Çö»ó.
+	     °øÀ¯¸Þ¸ð¸® ÇÒ´ç ÈÄ Àç±¸¼ºÀü¿¡ RDRANA_CSV°¡ ÂüÁ¶ÇØ¼­ ¹®Á¦·Î
+	     ÃÊ±â sleepÇÏ°í Àç±¸¼ºµÈ ÈÄ attachÇÏµµ·Ï º¯°æ.
+	+ SAMD
+	  1) MP Server H/W(FAN, POWER) ¸ð´ÏÅÍ¸µ ¹æ½Ä º¯°æ.
+	     console ÁúÀÇ --> message log¿¡ Æ¯Á¤ string °¨½Ã  
+	+ RLEG
+	  1) Åë°è°ü·Ã ±¸Á¶Ã¼ ÁÖ¼® Ãß°¡
+	  2) PDSN º° Åë°èÁ¤º¸ °ü¸® ¹ö±× ¼öÁ¤
+	  3) Keepalive-init ºÎºÐ SHM Init ¾ÕºÎºÐÀ¸·Î ÀÌµ¿
+	  4) ¼¼¼Ç Ä«¿îÆ® º¸´Â MMC Ãß°¡.(dis-rleg-sess)
+	  5) LOGIN/LOGOUT Ã³¸® ¹æ¾È º¯°æ.
+	     ¤¡) RAD START - PDSN ±âÁØ¿¡ ¸Â´Â È£¸¸ ¼¼¼Ç »ý¼º
+		 ¤¤) RAD STOP - PDSN ±âÁØ¿¡ ¸Â´Â È£¸¸ ¼¼¼Ç Á¦°Å
+		 ¤§) ÀÌ¿ÜÀÇ ¿¹¿Ü »óÈ²½Ã ¹ß»ýÇÏ´Â È£¿¡ ´ëÇØ¼­´Â ¼¼¼Ç Å¸ÀÌ¸Ó·Î Á¦°Å 
+		 ¤©) ¼¼¼Ç Å¸ÀÌ¸Ó È£Ãâ½Ã ¹«Á¶°Ç ¼¼¼ÇÀº Á¦°Å.
+4. ÆÄ ÀÏ :
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/main.c					1.3
+	/cvs/LGT_DSC/SMLEG/src/RDRANA_CSV/capd_init.c				1.3
+	/cvs/LGT_DSC/SMLEG/src/SAMD/check_sys_msg.h					1.1
+	/cvs/LGT_DSC/SMLEG/src/SAMD/check_sys_msg.c					1.1
+	/cvs/LGT_DSC/SMLEG/src/SAMD/Makefile						1.12
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg.h							1.39
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_init.c						1.41
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_main.c						1.36
+	/cvs/LGT_DSC/SMLEG/src/RLEG/Makefile						1.24
+	/cvs/LGT_DSC/SMLEG/src/RLEG/mmc_hld.c						1.11
+	/cvs/LGT_DSC/SMLEG/src/RLEG/mmc_hld.h						1.12
+	/cvs/LGT_DSC/SMLEG/src/RLEG/mmc_proc.c						1.27
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_radius.c					1.49
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_session.c					1.10
+	/cvs/LGT_DSC/SMLEG/src/RLEG/leg_thread.c					1.26
+====================================================================
+1. ³¯  Â¥ : 2010.04.09 (FRI)
+2. ÀÛ¼ºÀÚ : june
+3. ³»  ¿ë :
+	+ »ó¾Ï ÆÐÅ°Áö ¹öÁ¯: v1.0.2
+	+ Å×½ºÆ® ³¯Â¥: 2010-03-15 (with Insprit ¾ç¼ºÁ¶C)
+	+ »ó¿ë Àû¿ë Àåºñ: ¹ÌÀû¿ë 
+	+ »ç¿ë Àû¿ë ÀÏÂ¥: ¹ÌÀû¿ë
+	  1. RLEG TIMEER Æ®·¯ºí
+	    : long typeÀ» double ·Î º¯°æ
+		: ¸Þ½ÃÁö ¹ÞÀÚ¸¶ÀÚ TRACE Ãß°¡.
+	  2. SAMD FAN/POWER °¨½Ã º¯°æ
+	    : SUN T2000 ¼­¹öÀÇ FAN/PWR °¨½Ã¸¦ ±âÁ¸ÀÇ cosole mode Á¢¼ÓÇÏ¿©
+		  ¸í·ÉÀÔ·Â ÈÄ °á°ú·Î Ã³¸®ÇÏ´ø ¹æ½Ä¿¡¼­ /var/log/message ÀÇ 
+		  Æ¯Á¤ StringÀ» °¨½ÃÇÏ´Â ¹æ¹ýÀ¸·Î º¯°æ.
+      3. RDRANA Core ¹ß»ý Æ®·¯ºí
+	    : RDRCAPD °¡ ºñÁ¤»óÀûÀÎ µ¥ÀÌÅÍ¸¦ Àü¼ÛÇÏ¿© core°¡ ¹ß»ýµÈ °ÍÀ¸·Î
+		  RDRANA¿¡ ÇØ´ç ¿¹¿ÜÃ³¸® Ãß°¡, RDRCAPD¿¡ ºñÁ¤»óÀûÀÎ CSVÆÄÀÏ
+		  ¿¡ ´ëÇÑ ¿¹¿Ü Ã³¸® ·çÆ¾ Ã³¸®
+4. ÆÄ ÀÏ :
+	/LGT_DSC/SMLEG/src/RLEG/leg.h								1.38
+	/LGT_DSC/SMLEG/src/RLEG/leg_main.c							1.35
+	/LGT_DSC/SMLEG/src/RLEG/leg_radius.c						1.48
+	/LGT_DSC/SMLEG/src/RLEG/mmc_proc.c							1.26
+	/LGT_DSC/SMLEG/src/IXPC/ixpc_route.c						1.6
+	/LGT_DSC/SMLEG/src/SAMD/samd.h								1.13
+	/LGT_DSC/SMLEG/src/SAMD/samd_init.c							1.20
+	/LGT_DSC/SMLEG/src/SAMD/samd_main.c							1.50
+	/LGT_DSC/SMLEG/src/SAMD/samd_proc.c							1.41
+	/LGT_DSC/SMLEG/src/SAMD/samd_rxtxmsg.c						1.13
+	/LGT_DSC/SMLEG/src/SAMD/Makefile							1.11
+====================================================================
+1. ³¯ Â¥  : 2009.12.29 (TUE)
+2. ÀÛ¼ºÀÚ : june
+3. ³» ¿ë :
+
+    + RLEG WATCHDOG ¹®Á¦ ÇØ°á (½ÃÇè¹öÁ¯)
+    + RLEG
+	  - tmo timer module bug ¼öÁ¤.
+	   : timer bug·Î ÀÎÇÏ¿© ºÎÁ¤È®ÇÑ timer µ¿ÀÛÀ¸·Î ÀÎÇØ watchdog 
+	     ¹ß»ý Çö»ó ¼öÁ¤.
+	   : ¼öÁ¤³»¿ë: ½Ã°£ ºñ±³ ·çÆ¾¿¡¼­ ¼öÀÇ ¹üÀ§¸¦ ¹þ¾î³­ Ã¼·Î °è»ê
+	     µÇ¾î double º¯¼ö¿¡ ÇÒ´çµÇ¾î ¹®Á¦ ¹ß»ý
+		 struct timeb {
+			 long  sec;
+			 short msec;'
+		 }
+		 double t1, t2;
+		 
+		 t1 = sec * 1000 + msec;          // ÀÌºÎºÐ¿¡¼­ ¹®Á¦ ¹ß»ý
+		 t1 = (double) sec * 1000 + msec; // ÀÌ·¸°Ô º¯°æÇÏ¿© ÇØ°á
+
+		 * ³» »ý°¢À¸·Î´Â sec¿¡ 1000À» °öÇÒ¶§ ÀÓ½Ã º¯¼ö°¡ ÇÒ´çµÇ´Âµ¥
+		   ÀÌ¶§ secÀÌ longÀÌ¹Ç·Î longÀ¸·Î ÀÓ½Ã º¯¼ö°¡ ÇÒ´çµÇ¾î 
+		   ÀÌ°÷¿¡ sec * 1000À» ÇÏ¸é sizeof(long)ÀÇ ¼öÀÇ ¹üÀ§¸¦ 
+		   ¹þ¾î³ª¼­ ¹ß»ýÇÑ °ÍÀ¸·Î ÆÇ´Ù.
+		   ÇÏ¿© double ·Î Ä³½ºÆÃÇÑ ÈÄ °è»êÀ» ÇÏ¸é ÀÓ¼öº¯¼ö°¡ ÇÒ´ç
+		   µÉ¶§ Ä³½ºÆÃÇÑ Å©±â(double)·Î ÇÒ´çµÈ °ÍÀ¸·Î ÆÇ´Ù.
+4. ÆÄÀÏ :
+	/SMLEG/src/RLEG/tmo.c										1.2
+===================================================================
+1. ³¯ Â¥  : 2009.12.29 (TUE)
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³» ¿ë :
+
+    + RCAPD
+	  - CSV ÆÄÀÏÀ» Áß°£¿¡¼­ºÎÅÍ ÀÐ¾îµéÀÌ´Â ¿À·ù ¼öÁ¤. 
+	   : RDRANA ÄÚ¾î ÇØ°áÀ» À§ÇØ RCAPDÀÇ CSV ÆÄÀÏ READ¿À·ù¸¦ ¼öÁ¤ÇÔ. 
+	   : RCAPD°¡ csv ÆÄÀÏ Áß°£ºÎÅÍ ÀÐ¾îµé¿©¼­ º¸³»¸é RDRANA¿¡¼­
+	   : ¹®Á¦°¡ ¹ß»ýÇÏ°Ô µÊ. 
+
+4. ÆÄÀÏ :
+    /SMLEG/src/RCAPD/rcapd_file.c                           1.2
+    /SMLEG/src/RCAPD/rcapd_proc.c                           1.2
+===================================================================
+1. ³¯ Â¥  : 2009.11.10 (TUE)
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³» ¿ë :
+
+    + SAMD ¿À·ù ¼öÁ¤.
+	  - »ó¾Ï DSC#2 »ó¿ëÀû¿ë ÀÌÈÄ ¹ß»ýÇÑ ¹®Á¦ ÇØ°á.
+      - SM/NTP/HA »óÅÂ Ã¼Å©. popen-> fopen ¹æ½ÄÀ¸·Î º¯°æ.
+	   : Broken Pipe ¹®Á¦ ÇØ°á.
+
+4. ÆÄÀÏ :
+    /SMLEG/src/SAMD/Makefile                                1.10
+    /SMLEG/src/SAMD/samd_main.c                             1.49
+    /SMLEG/src/SAMD/samd_ntp.c                              1.4
+    /SMLEG/src/SAMD/samd_proc.c                             1.40
+===================================================================
+1. ³¯ Â¥  : 2009.10.06 (TUE)
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³» ¿ë :
+
+    + ¹öÁ¯º¯°æ (R1.0.0 -> R1.0.1)
+      - RLEG, SAMD, IXPC
+
+    + RLEG
+      - RLEG Åë°è¿À·ù¹Ý¿µ (june)
+4. ÆÄÀÏ :
+    /SMLEG/src/RLEG/leg_main.c                              1.34
+    /SMLEG/src/SAMD/samd_init.c                             1.19
+    /SMLEG/src/IXPC/ixpc_init.c                             1.11
+    /SMLEG/src/RLEG/leg_radius.c                            1.47
+    /SMLEG/src/RLEG/leg_sce_comm.c                          1.31
+	
+===================================================================
+1. ³¯ Â¥  : 2009.09.23 (WED)
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³» ¿ë : 
+	+ SAMD
+	  - LINK »óÅÂ Ã¼Å© Ãß°¡ ¼öÁ¤.
+		: 0.0.0.0 (not equip), 1.1.1.1 -> dladm show-dev °ª Ã¼Å©
+		: ±âÅ¸ IP Link´Â dladm + ping test
+	  - power/fan °¨½Ã Broken pipe ¹ß»ýÀ¸·Î file openÀ¸·Î ¼öÁ¤.
+
+4. ÆÄÀÏ :
+	SMLEG/src/IXPC/ixpc_ping.c								1.24
+	SMLEG/src/IXPC/ixpc_main.c 								1.48
+===================================================================
+1. ³¯ Â¥  : 2009.09.22 (TUE)
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³» ¿ë : 
+	+ IXPC
+	  - SAMD Watch-dog ±â´É Á¦¿Ü -> crontab¿¡¼­ Ã³¸®
+		:DSCM#2 ÀÎ¼ö½ÃÇè NOK Ç×¸ñ. IXPC bind error Ã³¸®¹®Á¦ ÇØ°á.
+	  - SIGNAL Ã³¸® ºÎºÐ Ãß°¡
+
+	+ SAMD
+	  - mmc ¸í·É thread Ã³¸®¿¡¼­ main Ã³¸®·Î ÅëÇÕ.
+		:DSCM#2 ÀÎ¼ö½ÃÇè NOK Ç×¸ñ.kill-prc ¼öÇà ºÒ´É ±â´É Ã³¸®
+	  - SCM Link »óÅÂ °¨½Ã ¹®Á¦ ÇØ°á.
+		:DSCM#2 ÀÎ¼ö½ÃÇè NOK Ç×¸ñ. H/W(dladm) check ¿Í  ping test¸¦ ÅëÇØ
+		 Replication Link Ã³¸®.
+	  - DISK Usage core ¹ß»ý ¹®Á¦ ÇØ°á.
+	  	: DSCM#1 SCMA/B core Ã³¸® ¹æ¾î ÄÚµå Ã³¸®
+	  - ¾à°£ÀÇ ¼Ò½º Á¤¸®. 
+4. ÆÄÀÏ :
+	SMLEG/src/IXPC/ixpc_init.c								1.10
+	SMLEG/src/IXPC/ixpc_main.c 								1.9
+	SMLEG/src/IXPC/ixpc_proto.h								1.5
+	SMLEG/src/SAMD/showlocdb.c								1.5
+	SMLEG/src/SAMD/samd_main.c 								1.47
+	SMLEG/src/SAMD/samd_ping.c								1.22
+	SMLEG/src/SAMD/samd_proc.c 								1.39
+	SMLEG/src/SAMD/samd_rxtxmsg.c							1.12
+	SMLEG/src/SAMD/samd_disk.c   							1.24
+===================================================================
+1. ³¯ Â¥  : 2009.09.21 (MON)
+2. ÀÛ¼ºÀÚ : June.
+3. ³» ¿ë : 
+	+ RLEG
+	  - LOG LOG Á¤¸®
+	  - Tag + Value => Value ·Î¸¸ ³²±è
+	  - ACC_START, ACC_INTERIM, ACC_STOP ³»ÀÇ È£Ã³¸® ·Î±×¸¸ Àû¿ë
+	  - Rule Used Flag °¡ 1ÀÌ ¾Æ´Ñ°ÍÀº DEBUG Level·Î ³²±è.
+	  - Match Call ¿¡ ´ëÇÑ INFO Log  DEBUG Level·Î ³²±è.
+4. ÆÄÀÏ :
+	/src/RLEG/leg_radius.c										1.46
+===================================================================
+1. ³¯ Â¥  : 2009.08.26 (WED)
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³» ¿ë : 
+	+ SAMD
+	  - doKillPrc() ÇÁ·Î¼¼½º Á¾·á½Ã, Á¾·áÇÏ°íÀÚ ÇÏ´Â ÇÁ·Î¼¼½º pid 
+	    °ª ¼³Á¤ÀÌ -1·Î µÇ¾î ÀÖ¾î kill-prc ½ÇÇà½Ã getProcessStatus()
+		È£Ãâ ÇÏ¿© pid¸¦ ¼³Á¤ ÈÄ¿¡ ÇØ´ç pid¸¦ kill ½ÃÅ²´Ù. 
+4. ÆÄÀÏ :
+	/SMLEG/src/SAMD/samd_proc.c									1.38
+===================================================================
+1. ³¯ Â¥  : 2009.08.18 (WED)
+2. ÀÛ¼ºÀÚ : June.
+3. ³» ¿ë : 
+	+ RLEG
+	  - LOGOUT Policy Á¤¸®.
+4. ÆÄÀÏ :
+	/src/RLEG/leg_init.c										1.40
+	/src/RLEG/leg_radius.c										1.45
+	/src/RLEG/leg_session.c										1.9
+	/src/RLEG/leg_session.h										1.4
+===================================================================
+1. ³¯ Â¥  : 2009.08.04 (TUE)
+2. ÀÛ¼ºÀÚ : sjjeon (SANG-AM)
+3. ³» ¿ë : 
+	+ SAMD
+	  - fan/power getinfo retry½Ã sleep(100000) Ãß°¡.
+	  - fan/power getinfo fopen -> popen ¼öÁ¤ º¯°æ.(_FILE_OPEN_
+		define ÀÛ¾÷)
+	  - fan/power getinfo ½ÇÆÐ½Ã ·Î±× ³²±â´Â ±â´É ¼öÁ¤
+	    : fileopen¿¡¼­ fgets ½Ã ·Î±×¸¦ temp¿¡ ³ÖÀº ÈÄ, ¿¡·¯½Ã write
+	  - pingtest argument 2 (0->3) : »ó¾Ï ¹öÁ¯À¸·Î ¸ÂÃã.
+4. ÆÄÀÏ :
+	/SMLEG/src/SAMD/samd_main.c        						1.45
+	/SMLEG/src/SAMD/samd_ping.c         					1.22
+===================================================================
+1. ³¯ Â¥  : 2009.07.28 (TUE)
+2. ÀÛ¼ºÀÚ : June.
+3. ³» ¿ë : 
+	+ SCRIPT
+	  - SCRIPT Á¤¸®.
+	  - LGT_DSC/SMLEG/SCRIPT ¿¡ ¸ðµç shell Á¸Àç.
+	  - ±×Áß STATUS µð·ºÅä¸®´Â »óÅÂ°¨½Ã¿¡ »ç¿ëÇÏ´Â shell ¸¸ Á¸Àç.
+4. ÆÄÀÏ :
+	/SMLEG/SCRIPT/STATUS/dis-scm-fan.sh							1.1
+	/SMLEG/SCRIPT/STATUS/dis-sys-ver.sh							1.1
+	/SMLEG/SCRIPT/STATUS/sm-conn-sync-sts.sh					1.1
+	/SMLEG/SCRIPT/STATUS/smlivecheck.sh							1.1
+	/SMLEG/SCRIPT/STATUS/timesten.sh							1.1
+===================================================================
+1. ³¯ Â¥  : 2009.07.27 (¿ù)
+2. ÀÛ¼ºÀÚ : ½Å¿µÈ£
+3. ³» ¿ë : 
+	+ [SAMD]
+	  - system ÇÔ¼ö --> my_system (popen ÇÔ¼ö º¯°æ)
+	  - Makefile , -O2 -g3 --> -g ·Î º¯°æ
+4. ÆÄÀÏ :
+	/SMLEG/src/SAMD/samd.h										1.12
+	/SMLEG/src/SAMD/samd_disk.c									1.23
+	/SMLEG/src/SAMD/samd_main.c									1.43
+	/SMLEG/src/SAMD/samd_ping.c									1.21
+	/SMLEG/src/SAMD/samd_proc.c									1.37
+	/SMLEG/src/SAMD/samd_util.c									1.4
+	/SMLEG/src/SAMD/Makefile									1.9
+===================================================================
+1. ³¯ Â¥  : 2009.07.24 (FRI)
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³» ¿ë : 
+	+ libcomm.a 
+	  - micro sleep ¼öÁ¤.
+	  
+4. ÆÄÀÏ :
+	SMLEG/libsrc/COMM/comm_util.c								1.3
+===================================================================
+1. ³¯ Â¥  : 2009.07.23 (THR)
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³» ¿ë : 
+	+ MMCR
+	  - dis-sess mappings_ip ³Î ¿À·ù ¼öÁ¤ 
+	  
+4. ÆÄÀÏ :
+	src/MMCR/mmc_proc.c											1.47
+===================================================================
+1. ³¯ Â¥  : 2009.07.22 (WED)
+2. ÀÛ¼ºÀÚ : June
+3. ³» ¿ë : 
+	+ RDRCAPD
+	  - version Ãâ·Â ¼öÁ¤.
+	  
+4. ÆÄÀÏ :
+	/src/RCAPD/rcapd_main.c										1.2
+=====================================================================
+1. ³¯ Â¥  : 2009.07.22 (WED)
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³» ¿ë : 
+	+ SAMD
+	  - FAN/PWR  check retry½Ã micro sleep(5000) Ãß°¡ 
+4. ÆÄÀÏ :
+	SMLEG/src/SAMD/samd_main.c									1.42
+===================================================================
+1. ³¯ Â¥  : 2009.07.22 (WED)
+2. ÀÛ¼ºÀÚ : June
+3. ³» ¿ë : 
+	+ MP ./src, ./libsrc warning Ã³¸®.
+	  
+4. ÆÄÀÏ :
+	/libsrc/COMM/check_run_myproc.c								1.6
+	/libsrc/COMM/ping.c											1.2
+	/libsrc/COMM/socklib.c										1.3
+	/libsrc/COMM/strutil.c										1.2
+	/libsrc/HASH/hasho.c										1.2
+	/libsrc/HASH/memg.c											1.2
+	/libsrc/INITSHM_LIB/InitMMDBDESTIP.c						1.2
+	/libsrc/INITSHM_LIB/InitMMDBDESTPORT.c						1.2
+	/libsrc/INITSHM_LIB/InitSVCOPT.c							1.2
+	/libsrc/MIF/nifo.c											1.2
+	/libsrc/UTILLIB/lwrite.c									1.6
+	/src/IXPC/ixpc_main.c										1.7
+	/src/IXPC/ixpc_proto.h										1.4
+	/src/IXPC/ixpc_init.c										1.8
+	/src/IXPC/ixpc_main.c										1.6
+	/src/IXPC/ixpc_proc.c										1.3
+	/src/IXPC/ixpc_proto.h										1.3
+	/src/IXPC/socklib.c											1.3
+	/src/IXPC/socklib.h											1.2
+	/src/MDBDUMP/shmmb_print.c									1.2
+	/src/MMCR/mmcr.h											1.11
+	/src/MMCR/mmcr_init.c										1.18
+	/src/MMCR/mmcr_main.c										1.14
+	/src/MMCR/mmcr_msgformat.c									1.4
+	/src/RDRANA/main.c											1.50
+	/src/RDRANA/rdrheader.h										1.12
+	/src/REANA/re_main.c										1.11
+	/src/SAMD/samd_init.c										1.17
+====================================================================
+1. ³¯ Â¥ 	: 2009.07.22 (WED)
+2. ÀÛ ¼º ÀÚ : jjinri
+3. ³» ¿ë    :
+		+ DATA ÆÄÀÏ Á¤¸® 
+		+ [SAMD]
+			- samd.conf ÆÄÀÏ »èÁ¦ 
+			- init_db_info() ÇÔ¼ö ÁÖ¼® Ã³¸®
+		+ sysconfig Á¤¸® 
+		+ [MMCR, PCUBE_SUBS, RDRANA, RDRANA_CSV] 
+			warning Á¤¸® , 
+
+4. ÆÄ ÀÏ 	: 
+	DATA/AN_AAAIF.conf
+	DATA/BCAST.conf
+	DATA/BLOCK_INIT.sql                                         1.1
+	DATA/DUIA.conf
+	DATA/ICMP.conf
+	DATA/IP_POOL.conf
+	DATA/LOG_LEVEL_DEBUG.conf
+	DATA/PPS.conf
+	DATA/RPT_BLOCK.sql
+	DATA/SCE_INFO.conf
+	DATA/TIMER.conf
+	DATA/UAWAP_GW.conf
+	DATA/rdr_dev_info.conf
+	DATA/rpt_block.sql
+	DATA/rpt_http.sql
+	DATA/ruleset.c
+	DATA/samd.conf
+
+	src/SAMD/samd_init.c 										1.16
+
+	DATA/sysconfig												1.10
+
+	src/MDBDUMP/debug.c											1.4
+	src/MDBDUMP/mmcr_svcopt.c									1.2
+
+	src/MMCR/mmc_proc.c											1.46
+	src/MMCR/mmcr_init.c										1.17
+	src/MMCR/mmcr_main.c										1.13
+	src/MMCR/mmcr_util.c										1.6
+
+	src/PCUBE_SUBS/pcube_subs.c									1.7
+	src/PCUBE_SUBS/tt_basic.c									1.5
+
+	src/RDRANA/capd_init.c										1.8	
+	src/RDRANA_CSV/capd_init.c									1.2	
+====================================================================
+1. ³¯ Â¥  : 2009.07.21 (TUE)
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³» ¿ë : 
+	+ SAMD
+	  - FAN/PWR Alarm ¼öÁ¤(debuging Ãß°¡).
+4. ÆÄÀÏ :
+	SMLEG/src/SAMD/samd_main.c									1.41
+====================================================================
+1. ³¯ Â¥  : 2009.07.21 (TUE)
+2. ÀÛ¼ºÀÚ : June
+3. ³» ¿ë : 
+	+ RLEG
+	  - sess-log-out response handler ÀÇ ÀÀ´äÀ» ¹ÞÀº ÈÄ Ã³¸®.
+4. ÆÄÀÏ :
+	/src/RLEG/leg.h												1.37
+	/src/RLEG/leg_sce_comm.c									1.30
+	/src/RLEG/mmc_proc.c										1.25
+====================================================================
+1. ³¯ Â¥  : 2009.07.21 (TUE)
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³» ¿ë : 
+	+ SAMD
+	  - DUIA.conf ÆÄÀÏ »èÁ¦ , ¼Ò½º¿¡¼­´Â ÁÖ¼®À¸·Î Ã³¸® 
+4. ÆÄÀÏ :
+	src/SAMD/samd_init.c										1.15
+	src/SAMD/samd_main.c										1.40
+	src/SAMD/samd_proc.c										1.36
+====================================================================
+1. ³¯ Â¥  : 2009.07.20 (MON)
+2. ÀÛ¼ºÀÚ : June
+3. ³» ¿ë : 
+	+ RLEG
+	  - sess-log-out Ã³¸®.
+	+ DLPI_CAPD, PANA, RANA, RLEG
+	  - SIGNAL Ã³¸® warnning Ã³¸®.
+	+ RCAPD
+	  - Makefile TOPBIN dir ·Î binary copy Ãß°¡.
+4. ÆÄÀÏ :
+	/src/RLEG/leg.h												1.36
+	/src/RLEG/leg_init.c										1.38
+	/src/RLEG/leg_main.c										1.33
+	/src/RLEG/leg_radius.c										1.41
+	/src/RLEG/leg_sce_comm.c									1.29
+	/src/RLEG/leg_thread.c										1.25
+	/src/RLEG/mmc_proc.c										1.24
+	/src/DLPI_CAPD/capd_init.c									1.3
+	/src/RCAPD/Makefile											1.2
+	/src/PANA/ana.c												1.11
+	/src/PANA/ana_init.c										1.2
+	/src/RANA/radius_init.c										1.4
+	/src/RLEG/leg_init.c										1.37
+====================================================================
+1. ³¯ Â¥  : 2009.07.19 (SUM)
+2. ÀÛ¼ºÀÚ : JJINRI.
+3. ³» ¿ë : 
+	+ SAMD 
+	  - PWR re-try check ¼öÁ¤
+
+4. ÆÄÀÏ : 
+	/SMLEG/src/SAMD/samd_main.c									1.39
+====================================================================
+1. ³¯ Â¥  : 2009.07.19 (SUM)
+2. ÀÛ¼ºÀÚ : JJINRI.
+3. ³» ¿ë : 
+	+ RDRANA_CSV (»õ·Î Ãß°¡ ºí·°)
+	  - ±âÁ¸ RDRANA ÀÇ ¿ªÈ°À» ÇÏ´Â ºí·°
+	  - CSV fileÀ» Parsing 
+	+ SMPP 
+	  - mysql block ¹®Á¦ ¼öÁ¤ 
+	  - mysql_option()
+	+ PCUBE_SUBS 
+	  - bin directory ../../bin
+
+4. ÆÄÀÏ : 
+	/src/RDRANA_CSV/Makefile									1.1
+	/src/RDRANA_CSV/ana_smgq.c									1.1
+	/src/RDRANA_CSV/capd_global.h								1.1
+	/src/RDRANA_CSV/capd_init.c									1.1
+	/src/RDRANA_CSV/capd_mml.c									1.1
+	/src/RDRANA_CSV/capd_msgq.c									1.1
+	/src/RDRANA_CSV/capd_msgtypes.h								1.1
+	/src/RDRANA_CSV/conf.c										1.1
+	/src/RDRANA_CSV/conf.h										1.1
+	/src/RDRANA_CSV/dagfunc.c									1.1
+	/src/RDRANA_CSV/main.c										1.2
+	/src/RDRANA_CSV/rdr_session.c								1.1
+	/src/RDRANA_CSV/rdr_session.h								1.1
+	/src/RDRANA_CSV/rdr_thread.c								1.1
+	/src/RDRANA_CSV/rdrana_sql.c								1.1
+	/src/RDRANA_CSV/rdrheader.h									1.1
+	/src/RDRANA_CSV/capd_test.c									1.1
+
+	/src/SMPP/smpp_sql.c                                     	1.7	
+	/src/PCUBE_SUBS/Makefile                                   	1.4	
+====================================================================
+1. ³¯ Â¥  : 2009.07.19 (SUM)
+2. ÀÛ¼ºÀÚ : June.
+3. ³» ¿ë : 
+	+ RCAPD (»õ·Î Ãß°¡ ºí·°)
+	  - ±âÁ¸ RDR_CAPD ÀÇ ¿ªÈ°À» ÇÏ´Â ºí·°
+	  - CSV fileÀ» °¨½ÃÇÏ¿© CAPTURE ÈÄ ºÐ¼® ºí·°(RDRANA)·Î Àü´Þ.
+	  - TCP packet ºÐ¼® ¸ðµâÀ» ÆÄÀÏ Ã³¸®·Î ±¸Çö.
+4. ÆÄÀÏ : 
+	/src/RCAPD/Makefile											1.1
+	/src/RCAPD/conflib.c										1.1
+	/src/RCAPD/conflib.h										1.1
+	/src/RCAPD/mmc_hld.c                                        1.1
+	/src/RCAPD/mmc_hld.h                                        1.1
+	/src/RCAPD/mmc_proc.c                                       1.1
+	/src/RCAPD/rcapd.h                                        	1.1
+	/src/RCAPD/rcapd_file.c                                     1.1
+	/src/RCAPD/rcapd_file.h                                     1.1
+	/src/RCAPD/rcapd_init.c                                     1.1
+	/src/RCAPD/rcapd_main.c                                     1.1	
+	/src/RCAPD/rcapd_msgq.c                                     1.1	
+	/src/RCAPD/rcapd_proc.c                                     1.1	
+	/src/RCAPD/rcapd_util.c                                     1.1	
+====================================================================
+1. ³¯ Â¥  : 2009.07.17 (FRI)
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³» ¿ë : 
+	+ SAMD
+	  - H/W Link check Ãß°¡.(dladm show-dev Ã¼Å©)
+4. ÆÄÀÏ : 
+	SMLEG/src/SAMD/samd_main.c									1.38
+	SMLEG/src/SAMD/samd_ping.c									1.17
+	SMLEG/src/SAMD/samd_proc.c									1.35
+====================================================================
+1. ³¯ Â¥  : 2009.07.17 (THU)
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³» ¿ë : 
+	+ SAMD
+	  - disk load sum_block -> if( diskIdx >= 0) move
+	  - total disk : loc_sadb->total_disk_usage  = (sum_usage)/cnt/10;
+4. ÆÄÀÏ : 
+	/src/SAMD/samd_disk.c										1.24
+	/src/SAMD/samd_disk.c										1.25
+====================================================================
+1. ³¯ Â¥  : 2009.07.17 (THU)
+2. ÀÛ¼ºÀÚ : yhshin
+3. ³» ¿ë : 
+	+ IXPC
+	  - keepalive check
+4. ÆÄÀÏ : 
+	/src/IXPC/Makefile											1.4
+	/src/IXPC/ixpc_init.c										1.7
+	/src/IXPC/ixpc_main.c										1.3
+	/src/IXPC/ixpc_proto.h										1.2
+====================================================================
+1. ³¯ Â¥  : 2009.07.16 (THR)
+2. ÀÛ¼ºÀÚ : JJinri.
+3. ³» ¿ë : 
+	+ MMCR
+	  - dis_sess_list printf¹® Á¦°Å 
+4. ÆÄÀÏ : 
+	/src/MMCR/mmc_proc.c										1.45
+====================================================================
+1. ³¯ Â¥  : 2009.07.15 (WED)
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³» ¿ë : 
+	+ SAMD
+	  - disk, pwr, fan, link, mysql, cm, sm »óÅÂÁ¤º¸ ¼öÁ¤.
+4. ÆÄÀÏ : 
+	SMLEG/src/SAMD/samd_disk.c									1.19
+	SMLEG/src/SAMD/samd_main.c									1.36
+	SMLEG/src/SAMD/samd_ping.c									1.15
+====================================================================
+1. ³¯ Â¥  : 2009.07.15 (WED)
+2. ÀÛ¼ºÀÚ : JJinri.
+3. ³» ¿ë : 
+	+ SAMD
+	  - bkup-pkg ¸í·É¾î Ã³¸® mkdir ¿À·ù ¹æÁö stat() ÇÔ¼ö Ãß°¡ 
+4. ÆÄÀÏ : 
+	/src/SAMD/samd_proc.c										1.34
+====================================================================
+1. ³¯ Â¥  : 2009.07.15 (WED)
+2. ÀÛ¼ºÀÚ : June.
+3. ³» ¿ë : 
+	+ IFB
+	  - system operation mode È­¸é¿¡ Ãâ·Â.
+	+ RLEG
+	  - acc_req_stop, login, logout ¿¡ P/H bit trace¿¡ Ãâ·Â.
+4. ÆÄÀÏ : 
+	/src/IFB/disprc.c											1.4
+	/src/IFB/ifb_comm.c											1.10
+	/src/IFB/killprc.c											1.3
+	/src/IFB/startprc.c											1.4
+	/src/RLEG/mmc_proc.c										1.23
+====================================================================
+1. ³¯ Â¥  : 2009.07.14 (TUE)
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³» ¿ë : 
+	+ MMCR
+	  - Session Á¶È¸ parsing ¼öÁ¤ 
+	+ PCUBE_SUBS
+	  - fprintf format º¯°æ 
+	+ RDRANA
+	  - TCP BODY¿¡ ¿©·¯°³ RDR ½ºÆ®¸² ¿À´Â °æ¿ì Ã³¸®
+	  - RDR ÆÐÅ¶ merge Ã³¸® 
+4. ÆÄÀÏ : 
+	/src/MMCR/mmc_proc.c										1.44
+	/src/PCUBE_SUBS/pcube_subs.c								1.6
+	/src/RDRANA/main.c											1.48
+	/src/RDRANA/capd_init.c										1.27
+	/src/RDRANA/rdrheader.h										1.11
+====================================================================
+1. ³¯ Â¥  : 2009.07.12 (TUE)
+2. ÀÛ¼ºÀÚ : june
+3. ³» ¿ë : 
+	+ RLEG
+	  - Trace Format ¼öÁ¤
+	+ SMPP
+	  - Trace Format ¼öÁ¤
+4. ÆÄÀÏ : 
+	/src/RLEG/leg_init.c										1.36
+	/src/RLEG/mmc_proc.c										1.22
+	/src/SMPP/smpp.h											1.12
+	/src/SMPP/smpp_init.c										1.9
+	/src/SMPP/smpp_msgQ.c										1.13
+	/src/SMPP/smpp_trace.c										1.3
+====================================================================
+1. ³¯ Â¥  : 2009.07.12 (SUM)
+2. ÀÛ¼ºÀÚ : june
+3. ³» ¿ë : 
+	+ RLEG
+	  - trace list file read ÇÔ¼ö º¯°Ï.
+	+ SMPP
+	  - smpp  trace Ãß°¡ : ÀÏ´Ü deliver ¸Þ½ÃÁö Àü¼Û¿¡ ´ëÇÑ trace¸¸.
+	  - smpp_trace.c Ãß°¡
+	+ IFB
+	  - loc_sadb shm 644 -> 666º¯°æ
+4. ÆÄÀÏ : 
+	/src/SMPP/smpp.h											1.11
+	/src/SMPP/smpp_trace.c										1.2
+	/src/IFB/ifb_shm.c											1.3
+	/src/RLEG/leg_radius.c										1.40
+	/src/RLEG/leg.h												1.35
+	/src/RLEG/leg_init.c										1.35
+	/src/SMPP/Makefile											1.6
+	/src/SMPP/smpp_trace.c										1.1
+	/src/SMPP/smpp.h											1.10
+	/src/SMPP/smpp_init.c										1.8
+	/src/SMPP/smpp_msgQ.c										1.12
+	/src/SMPP/smpp_util.c										1.6
+	/src/RLEG/leg.h												1.34
+	/src/RLEG/leg_init.c										1.34
+	/src/RLEG/leg_main.c										1.32
+	/src/RLEG/leg_radius.c										1.39
+====================================================================
+1. ³¯ Â¥  : 2009.07.12 (SUM)
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³» ¿ë : 
+	+ RDRANA
+	  - smpp general msgq Àü¼Û 
+	  - trace list file read ÇÔ¼ö º¯°æ 
+	+ MMCR
+	  - trace ¿ä±Ô »çÇ× Á¤¸® 
+
+
+4. ÆÄÀÏ : 
+	SMLEG/src/RDRANA/main.c									1.46	
+	SMLEG/src/RDRANA/capd_init.c							1.24
+	SMLEG/src/RDRANA/capd_mml.c								1.26
+
+	SMLEG/src/MMCR/Makefile									1.9
+	SMLEG/src/MMCR/mmc_hld.c								1.7
+	SMLEG/src/MMCR/mmc_hld.h								1.5
+	SMLEG/src/MMCR/mmc_proc.c								1.43
+	SMLEG/src/MMCR/mmcr.h									1.10
+	SMLEG/src/MMCR/mmcr_init.c								1.16
+	SMLEG/src/MMCR/mmcr_main.c								1.12
+	SMLEG/src/MMCR/mmcr_mmc_addinfo.c						1.8
+	SMLEG/src/MMCR/mmcr_mmc_delinfo.c						1.8
+	SMLEG/src/MMCR/mmcr_rxtxmsg.c							1.16
+	SMLEG/src/MMCR/mmcr_util.c								1.5
+
+====================================================================
+1. ³¯ Â¥  : 2009.07.10 (FRI)
+2. ÀÛ¼ºÀÚ : june
+3. ³» ¿ë : 
+	+ IFB
+	  - defunct Ã³¸®, wait3 Ãß°¡
+	  - disprc¿¡ system operation mode Ãß°¡.
+	  - unused variable Á¤¸®
+	+ SCRIPT
+	  - log manager Ãß°¡.
+4. ÆÄÀÏ : 
+	/src/IFB/ifb_comm.c											1.8
+	/src/IFB/disprc.c											1.2
+	/src/IFB/ifb_comm.c											1.7
+	/src/IFB/ifb_proto.h										1.3
+	/src/IFB/ifb_shm.c											1.2
+	/src/IFB/ifb_proto.h										1.2
+	/SCRIPT/log-mgr.sh											1.1
+====================================================================
+1. ³¯ Â¥  : 2009.07.10 (FRI)
+2. ÀÛ¼ºÀÚ : ½Å¿µÈ£
+3. ³» ¿ë : 
+	+ SAMD
+		.smcheck fileÃ³¸® º¯°æ. 
+		.sm conn/sync Active/Standby¸ðµÎ Á¤»ó Ã³¸®. 
+		.sm down ½Ã ¾Ë¶÷ À¸·Î Ã³¸®.
+4. ÆÄÀÏ : 
+	/src/SAMD/samd_main.c										1.31
+====================================================================
+1. ³¯ Â¥  : 2009.07.10 (FRI)
+2. ÀÛ¼ºÀÚ : june
+3. ³» ¿ë : 
+	+ RLEG
+		log Á¤¸®
+
+4. ÆÄÀÏ : 
+	/src/RLEG/leg_main.c 										1.31
+	/src/RLEG/leg_radius.c										1.38
+	/src/RLEG/leg_sce_comm.c									1.28
+	/src/RLEG/leg_session.c										1.8
+	/src/RLEG/mmc_proc.c										1.21
+====================================================================
+1. ³¯ Â¥  : 2009.07.09 (TUE)
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³» ¿ë : 
+	- MMCR : system() ¸®ÅÏ Ã¼Å©, fclose ³Î Ã¼Å©,
+		ÆÄÀÏ ¸í ÀÎÀÚ·Î pcube_subs·Î ³Ñ±â±â   
+	- IFB : signal Ã³¸® 
+
+4. ÆÄÀÏ : 
+	SMLEG/src/MMCR/mmcr_main.c                          	1.11
+	SMLEG/src/MMCR/mmc_proc.c                            	1.41
+
+	SMLEG/src/IFB/startprc.c                            	1.1
+====================================================================
+1. ³¯ Â¥  : 2009.07.09 (TUE)
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³» ¿ë : 
+	- RDRANA : Trace Server IP, ServerIP, Ent Name ±¸Á¶Ã¼ ÀçÁ¤ÀÇ 
+
+4. ÆÄÀÏ : 
+	SMLEG/src/RDRANA/capd_global.h                          1.8
+	SMLEG/src/RDRANA/capd_init.c                            1.23
+	SMLEG/src/RDRANA/capd_mml.c                             1.25
+	SMLEG/src/RDRANA/capd_mml.h                             1.3
+	SMLEG/src/RDRANA/main.c                                 1.43
+====================================================================
+1. ³¯  Â¥ : 2009.07.08 (WED) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- REMOTE PING TEST ÁÖ±â 1 -> 2 ÃÊ º¯°æ.
+
+4. ÆÄ ÀÏ: 
+	/DATA/CVS/LGT_DSC/SMLEG/src/SAMD/samd_ping.c				1.13
+====================================================================
+1. ³¯  Â¥ : 2009.07.08 (WED) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ SCRIPT
+		- /DSC/OLD/*.sh À» ÇöÀç »ç¿ëÇÏÁö ¾ÊÁö¸¸ CVS¿¡ ¿Ã·Á µÒ
+
+4. ÆÄ ÀÏ: 
+	/DATA/CVS/LGT_DSC/SMLEG/SCRIPT/backup.sh					1.1
+	/DATA/CVS/LGT_DSC/SMLEG/SCRIPT/recover.sh					1.2
+====================================================================
+1. ³¯  Â¥ : 2009.07.07 (TUE) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ RLEG
+		- RLEG <-> SM connection 5°³·Î º¯°æ.
+
+4. ÆÄ ÀÏ: 
+	/src/RLEG/leg.h												1.32
+	/src/RLEG/leg_init.c										1.33
+====================================================================
+1. ³¯  Â¥ : 2009.07.06 (Mon) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ PCUBE_SUBS
+		- IP Fetch Error ¹ß»ýÀ¸·Î IP Binding º¯¼ö¸¦ INT¿¡¼­ CHAR·Î º¯°æ.
+
+4. ÆÄ ÀÏ: 
+	SMLEG/src/PCUBE_SUBS/pcube_subs.c							1.4
+===================================================================
+1. ³¯  Â¥ : 2009.07.06 (Mon) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- SFM_HW_MAX_LINK_NUM 12->16 º¯°æ.
+		- sm livecheck popen º¯°æ
+		- disk_usage/10 -> disk_usage º¯°æ.
+
+4. ÆÄ ÀÏ: 
+	/SMLEG/include/sfmconf.h									1.3
+	/SMLEG/src/SAMD/samd_main.c									1.30
+	/SMLEG/src/SAMD/showlocdb.c									1.3
+	/SMLEG/src/SAMD/samd_proc.c									1.32
+===================================================================
+1. ³¯  Â¥ : 2009.07.03 (Fri) 
+1. ³¯  Â¥ : 2009.07.03 (Fri) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- SM CONN/SYNC »óÅÂÃ¼Å©.
+4. ÆÄ ÀÏ: 
+	SMLEG/src/SAMD/samd_main.c									1.29
+===================================================================
+1. ³¯  Â¥ : 2009.07.03 (Fri) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ MMCR
+		- SESSION Á¶È¸ 	: TimesTenÀ¸·Î ¸ðµÎ ±³Ã¼ 
+				: LAST_UPDATE Ãß°¡ , PKGID »èÁ¦ 
+				: ÀÓ½Ã ÆÄÀÏ»ý¼ºµð·ºÅä¸® : /DSC/NEW/DATA -> /tmp/
+	+ PCUBE_SUBS
+		- MMCR select Á¶°Ç 
+
+4. ÆÄ ÀÏ: 
+	SMLEG/src/MMCR/mmc_proc.c									1.40
+	SMLEG/src/MMCR/mmcr.h										1.9
+
+	SMLEG/src/PCUBE_SUBS/Makefile								1.2
+	SMLEG/src/PCUBE_SUBS/pcube_subs.c							1.3
+	SMLEG/src/PCUBE_SUBS/result.c								1.2
+	SMLEG/src/PCUBE_SUBS/tt_basic.c								1.3
+===================================================================
+1. ³¯  Â¥ : 2009.07.03 (FRIñ) 
+2. ÀÛ¼ºÀÚ : June
+3. ³»  ¿ë :
+	+ DATA
+	  - configuration Ãß°¡ 
+	  	/DSC/NEW/DATA/¿¡ ÀÖ´Â configÁß cvs ¹Ý¿µ¾ÈµÈ°Í ¹Ý¿µ.
+	  - ÇöÀç ¼³Á¤µÈ config ³»¿ë ¾÷µ¥ÀÌÆ®.  
+	  - script directory »ý¼º
+4. ÆÄ ÀÏ: 
+	/DATA/CALL_OVER_CTRL.conf									1.1
+	/DATA/TIMEOUT.conf											1.1
+	/DATA/remove.sh												1.1
+	/DATA/LOG_LEVEL.conf										1.5
+	/DATA/PDSN.conf												1.4
+	/DATA/RULESET_LIST.conf										1.3
+	/DATA/SMS_MSG.conf											1.2
+	/DATA/TRACE_INFO.conf										1.3
+	/DATA/dev_info.conf											1.3
+	/DATA/smpp.conf												1.6
+	/DATA/sysconfig												1.9
+	/SCRIPT/ctags.sh											1.1
+	/SCRIPT/dis-scm-fan.sh										1.1
+	/SCRIPT/dis-sys-ver.sh										1.1
+	/SCRIPT/recover.sh											1.1
+	/SCRIPT/remove.sh											1.1
+	/SCRIPT/sm-conn-sync-sts.sh									1.1
+	/SCRIPT/smlivecheck.sh										1.1
+	/SCRIPT/timesten.sh											1.1
+	/SCRIPT/startcm.sh											1.1
+	/SCRIPT/startsm.sh											1.1
+	/SCRIPT/stopcm.sh											1.1
+	/SCRIPT/stopsm.sh											1.1
+	/SCRIPT/app_start.sh										1.1
+===================================================================
+1. ³¯  Â¥ : 2009.07.02 (¸ñ) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ RDRANA
+	  - Ãß°¡ ¿ä±¸»çÇ× Á¤¸® : Trace
+	  	sce ip/name Ãß°¡ , rule set entry name Ãß°¡ 
+4. ÆÄ ÀÏ: 
+	SMLEG/src/RDRANA/capd_global.h								1.7
+	SMLEG/src/RDRANA/capd_init.c								1.22
+	SMLEG/src/RDRANA/capd_mml.c									1.24
+	SMLEG/src/RDRANA/main.c										1.42
+===================================================================
+1. ³¯  Â¥ : 2009.07.01 (WED) 
+2. ÀÛ¼ºÀÚ : June
+3. ³»  ¿ë :
+	+ RLEG
+	  - finProc ¿¡¼­ SM resource release ºÎºÐ ÁÖ¼® Ã³¸®
+	    release ½Ã delay time ¹ß»ý, cisco¿¡ report. 
+	  - ·Î±× ÀçÁ¤¸®.
+4. ÆÄ ÀÏ: 
+	/src/RLEG/leg_init.c										1.32
+	/src/RLEG/Makefile											1.23
+	/src/RLEG/leg_init.c										1.31
+	/src/RLEG/leg_main.c										1.29
+	/src/RLEG/leg_radius.c										1.36
+	/src/RLEG/leg_sce_comm.c									1.27
+	/src/RLEG/leg_session.c										1.7
+===================================================================
+1. ³¯  Â¥ : 2009.07.01 (WED) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ MMCR
+	  - session Á¶È¸ property ·Î ÀÎÇÑ ¹ö±× ¼öÁ¤ 
+	+ TOOLS:PCUBE_SUBS
+4. ÆÄ ÀÏ: 
+	/src/MMCR/mmc_proc.c										1.38
+	/src/TOOLS/PCUBE_SUBS/pcube_subs.c							1.2
+===================================================================
+1. ³¯  Â¥ : 2009.06.30 (TUE) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ [SAMD]
+	  - SCMA/SCMB FAN/POWER/DISK »óÅÂ Á¤º¸ ¿À·ù ¼öÁ¤
+	+ [TOOL]
+	  - show_shmÀÇ loc_sadb Á¤º¸ fan/disk/cpu µî Ãß°¡.
+4. ÆÄ ÀÏ: 
+	src/SAMD/samd_disk.c										1.14
+	src/SAMD/samd_main.c										1.27
+	src/SAMD/samd_proc.c										1.30
+	src/SAMD/samd_rxtxmsg.c										1.11
+	src/TOOLS/SHOW_SHM_MP/show_shm.c							1.2
+====================================================================
+1. ³¯  Â¥ : 2009.06.29 (MON) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ MMCR
+		- TimesTen Select Error ÆøÅº Á¦°Å : ÁË¼ÛÇÕ´Ï´Ù.^^ !!
+4. ÆÄ ÀÏ: 
+	SMLEG/src/MMCR/mmc_proc.c									1.37
+===================================================================
+1. ³¯  Â¥ : 2009.06.28 (TUE) 
+2. ÀÛ¼ºÀÚ : June
+3. ³»  ¿ë :
+	+ RLEG
+	  - _SM_CONN_CHECK »©°í property 1°³ Àû¿ë
+4. ÆÄ ÀÏ: 
+	/src/RLEG/Makefile											1.22
+	/src/RLEG/leg_radius.c										1.35
+	/src/RLEG/leg_thread.c										1.23
+
+==================================================================
+1. ³¯  Â¥ : 2009.06.28 (MON) 
+2. ÀÛ¼ºÀÚ : June
+3. ³»  ¿ë :
+	+ /TOOLS/SCE_SIM
+	  - property º° Å×½ºÆ® ÄÚµå Ãß°¡
+	  - _MACRO_MAPPING_NULL_ ¿¡ ´ëÇÑ Å×½ºÆ® ÄÚµå Ãß°¡.
+	+ RLEG
+	  - Makefile ÀÇ DEFINES µû¶ó ½ÇÇàÄÚµå ºÐ±â Ã³¸®
+4. ÆÄ ÀÏ: 
+	/src/RLEG/Makefile											1.21
+	/src/RLEG/leg_msgq.c										1.9
+	/src/RLEG/leg_radius.c										1.34
+	/src/RLEG/leg_sce_comm.c									1.26
+	/src/TOOLS/SCE_SIM/leg_sce_thread.c							1.6.
+	/src/TOOLS/SCE_SIM/Makefile									1.3
+	/src/TOOLS/SCE_SIM/leg_sce_thread.c							1.5
+===================================================================
+1. ³¯  Â¥ : 2009.06.28 (SUN) 
+2. ÀÛ¼ºÀÚ : June
+3. ³»  ¿ë :
+	+ RLEG
+	  - Trace log Á¤¸®.
+	  - Trace Ã³¸® ¿Ï·á
+	  - INTERIM Ãß°¡.
+	  - IP Tracing Ãß°¡.
+	+ CGALIB/hashg
+	  - cgalib hashg_init¿¡ malloc ÀÌÈÄ ÃÊ±âÈ­ Ãß°¡
+4. ÆÄ ÀÏ: 
+	/include/flat_hashg.h										1.2
+	/include/flat_timerN.h										1.2
+	/include/hashg.h											1.3
+	/include/timerN.h											1.3
+	/lib/libSTGhashg.a											1.2
+	/lib/libSTGtimerN.a											1.2
+	/lib/libhashg.a												1.2
+	/lib/libtimerN.a											1.2
+	/src/RLEG/leg.h												1.31
+	/src/RLEG/mmc_proc.c										1.20
+	/src/RLEG/leg.h												1.30
+	/src/RLEG/leg_init.c										1.30
+	/src/RLEG/leg_radius.c										1.33
+	/src/RLEG/mmc_proc.c										1.19
+===================================================================
+1. ³¯  Â¥ : 2009.06.28 (SUN) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ RDRANA
+		- Trace Á¶°Ç¿¡ IP Ãß°¡·Î ÀÎÇÑ Ã³¸® ÀÛ¾÷ 
+		- RDRANA ActiveÀÎ ³ð¸¸ Trace message Àü¼Û 
+4. ÆÄ ÀÏ: 
+	SMLEG/src/RDRANA/capd_mml.c									1.23
+	SMLEG/src/RDRANA/capd_mml.h									1.2
+	SMLEG/src/RDRANA/main.c										1.40
+	SMLEG/src/RDRANA/rdrheader.h								1.10
+===================================================================
+1. ³¯  Â¥ : 2009.06.28 (SUN) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ MMCR
+		- Trace Á¶°Ç¿¡ IP Ãß°¡·Î ÀÎÇÑ mmc Ã³¸® ÀÛ¾÷ 
+	+ RDRANA
+		- Trace Á¶°Ç¿¡ IP Ãß°¡·Î ÀÎÇÑ Ã³¸® ÀÛ¾÷ 
+		- RDRANA ActiveÀÎ ³ð¸¸ Trace message Àü¼Û 
+	+ RDR_DLPI_CAPD
+		- interface Ãß°¡ : e1000g0 + e1000g4
+4. ÆÄ ÀÏ: 
+	SMLEG/include/comm_trace.h 									1.3
+
+	SMLEG/src/MMCR/mmcr_mmc_addinfo.c 							1.6
+	SMLEG/src/MMCR/mmcr_mmc_delinfo.c 							1.6
+	SMLEG/src/MMCR/mmcr_msgformat.c 							1.3
+
+	SMLEG/src/RDRANA/capd_init.c 								1.21
+	SMLEG/src/RDRANA/capd_mml.c 								1.22
+	SMLEG/src/RDRANA/main.c 									1.39
+	SMLEG/src/RDRANA/rdrheader.h 								1.9
+
+	SMLEG/src/RDR_DLPI_CAPD/pcapfunc.c 							1.2
+===================================================================
+1. ³¯  Â¥ : 2009.06.28 (SUN) 
+2. ÀÛ¼ºÀÚ : ½Å¿µÈ£
+3. ³»  ¿ë :
+	+ sAMD
+		- sm Ã³¸® È®ÀÎ (popen > fileÃ³¸®)
+4. ÆÄ ÀÏ: 
+	/SMLEG/src/SAMD/samd.h										1.9
+	/SMLEG/src/SAMD/samd_main.c									1.26
+	/SMLEG/src/SAMD/samd_proc.c									1.29
+	/SMLEG/src/SAMD/samd_rxtxmsg.c								1.10
+	/SMLEG/src/SAMD/showlocdb.c									1.2
+===================================================================
+1. ³¯  Â¥ : 2009.06.27 (SAT) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ RLEG
+		- SM Connect Ã³¸® º¯°æ.
+		- SM ConnectionÀÌ ²÷¾îÁ®µµ ÇÁ·Î¼¼½º Á¾·áÇÏÁö ¾Ê°í °è¼Ó looping
+		- ConnectionÀÌ ²÷¾îÁ®µµ msg queue°¡ ¹Ð¸®Áö ¾Êµµ·Ï ÀÐ¾î¼­ ¹ö¸°´Ù.
+		- reconnection ÀÌ µÇ¸é ´Ù½Ã ¼­ºñ½º ÇÏµµ·Ï ÇÑ´Ù.
+	+ LIB
+		- libSTGhashg.a libSTGtimerN.a libhashg.a libtimerN.a Ãß°¡.
+	+SCE_SIM
+		- login property Ãß°¡
+	+ QMON
+		- QMON Ãß°¡
+4. ÆÄ  ÀÏ :
+	/src/TOOLS/QMON/Makefile									1.1
+	/src/TOOLS/QMON/qmon.c										1.1
+	/TOOLS/SCE_SIM/leg.h										1.5
+	/TOOLS/SCE_SIM/leg_sce_thread.c								1.3
+	/src/RLEG/leg.h												1.29
+	/src/RLEG/leg_init.c										1.29
+	/src/RLEG/leg_main.c										1.28
+	/src/RLEG/leg_radius.c										1.32
+	/src/RLEG/leg_sce_comm.c									1.25
+	/src/RLEG/leg_session.c										1.4
+	/src/RLEG/leg_thread.c										1.22
+	/lib/libSTGhashg.a											1.1
+	/lib/libSTGtimerN.a											1.1
+	/lib/libhashg.a												1.1
+	/lib/libtimerN.a											1.1
+====================================================================
+1. ³¯  Â¥ : 2009.06.27 (SAT) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- SCM FAN,POWER »óÅÂ Ã¼Å© ±â´É.
+4. ÆÄ  ÀÏ :
+	SMLEG/src/SAMD/samd_main.c    								1.25
+===================================================================
+1. ³¯  Â¥ : 2009.06.27 (SAT) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ PCUBE_SUBS 
+		- ¼¼¼Ç Á¶È¸½Ã »ç¿ëµÇ´Â utility : /DSC/NEW/BIN¿¡ º¹»çµÇ¾î¾ß ÇÔ. 
+		- pcube_subs À¯Æ¿¸®Æ¼¿¡¼­ ¸¸µå´Â log µð·ºÅä¸® »ý¼º ¾ïÁ¦ 
+4. ÆÄ  ÀÏ :
+	SMLEG/src/PCUBE_SUBS/Makefile 								1.1
+	SMLEG/src/PCUBE_SUBS/README.txt								1.1
+	SMLEG/src/PCUBE_SUBS/pcube_subs.c							l.2
+	SMLEG/src/PCUBE_SUBS/result.c								1.1
+	SMLEG/src/PCUBE_SUBS/result.txt								1.1
+	SMLEG/src/PCUBE_SUBS/tt_basic.c								1.2
+	SMLEG/src/PCUBE_SUBS/tt_basic.h								1.1
+===================================================================
+1. ³¯  Â¥ : 2009.06.27 (SAT) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ RDRANA 
+		- rdr_session.h --> comm_session.h ¼Ò½º
+4. ÆÄ  ÀÏ :
+	SMLEG/src/RDRANA/Makefile 							1.8
+	SMLEG/src/RDRANA/capd_init.c 						1.20
+	SMLEG/src/RDRANA/main.c  							1.38
+	SMLEG/src/RDRANA/rdr_session.c 						1.3
+===================================================================
+1. ³¯  Â¥ : 2009.06.26 (FRI) 
+2. ÀÛ¼ºÀÚ : June
+3. ³»  ¿ë :
+	+ include
+		- session Ã³¸® °øÅë Çì´õ Ãß°¡.
+		- session Ã³¸® lib Çì´õ Ãß°¡.
+	+ RLEG
+		- cgalib timerN hashg Ãß°¡
+		- timer Ã³¸®, timer rebuild Ã³¸®
+4. ÆÄ  ÀÏ :
+	/include/hashg.h										1.1
+	/include/timerN.h										1.1
+	/include/comm_session.h									1.1
+	/src/RLEG/Makefile										1.17
+	/src/RLEG/leg.h											1.28
+	/src/RLEG/leg_init.c									1.27
+	/src/RLEG/leg_main.c									1.26
+	/src/RLEG/leg_radius.c									1.31
+	/src/RLEG/leg_sce_comm.c								1.24
+	/src/RLEG/leg_session.c									1.3
+	/src/RLEG/leg_session.h									1.3
+	/src/RLEG/leg_thread.c									1.21
+===================================================================
+1. ³¯  Â¥ : 2009.06.26 (FRI) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ RDRANA 
+		- Login ¾ÈµÈ °¡ÀÔÀÚ¿¡ ´ëÇÑ Block RDR Trace Ã³¸® 
+		- MAX_TRACE_NUM 5 -> 10
+	+ MMCR
+		- ¼Ò½º Á¤¸® : ¹Ì»ç¿ë ÄÚµå ÁÖ¼®, Makefile¿¡¼­ Á¦¿Ü 
+4. ÆÄ  ÀÏ :
+	SMLEG/include/comm_trace.h 								1.2
+	SMLEG/src/RDRANA/capd_mml.c 							1.21
+	SMLEG/src/RDRANA/main.c 								1.36
+	SMLEG/src/RDRANA/capd_init.c 							1.19
+	SMLEG/src/RDRANA/main.c									1.37
+	SMLEG/src/RDRANA/rdr_session.c 							1.2
+	SMLEG/src/MMCR/Makefile 								1.6
+	SMLEG/src/MMCR/mmc_proc.c 								1.36
+	SMLEG/src/MMCR/mmcr_init.c 								1.15
+	SMLEG/src/MMCR/mmcr_main.c 								1.10
+	SMLEG/src/MMCR/mmcr_mmc_addinfo.c 						1.5
+	SMLEG/src/MMCR/mmcr_mmc_chginfo.c 						1.4
+	SMLEG/src/MMCR/mmcr_mmc_delinfo.c 						1.5
+	SMLEG/src/MMCR/mmcr_mmc_setinfo.c 						1.2
+	SMLEG/src/MMCR/mmcr_rxtxmsg.c 							1.14
+	SMLEG/src/MMCR/mmcr_shmprc.c 							1.8
+	SMLEG/src/MMCR/mmcr_util.c 								1.4
+===================================================================
+1. ³¯  Â¥ : 2009.06.25 (THU) 
+2. ÀÛ¼ºÀÚ : June
+3. ³»  ¿ë :
+	+ RLEG
+		- call session Ã³¸® Ãß°¡.
+		- session °ü¸®½Ã timer Ã³¸® ºÎºÐ Æ®·¯ºí ¹ß»ýÀ¸·Î ÁÖ¼® Ã³¸®.
+		- signal Ã³¸®¿¡ ·Î±× Ãß°¡.
+		- sm reconnection Ã³¸® Ãß°¡. 30sec µ¿¾È reconnection Ã¼Å©ÈÄ
+		  ¿¬°á¾ÈµÇ¸é ÇÁ·Î¼¼½º Á¾·á
+4. ÆÄ  ÀÏ :
+	src/RLEG/Makefile										1.16
+	/src/RLEG/leg.h											1.27
+	/src/RLEG/leg_init.c									1.26
+	/src/RLEG/leg_main.c									1.25
+	/src/RLEG/leg_radius.c									1.30
+	/src/RLEG/leg_sce_comm.c								1.23
+	/src/RLEG/leg_session.c									1.2
+	/src/RLEG/leg_session.h									1.2
+	/src/RLEG/leg_thread.c									1.20
+	/src/RLEG/mmc_hld.c										1.10
+	/src/RLEG/mmc_hld.h										1.11
+	/src/RLEG/mmc_proc.c									1.18
+===================================================================
+1. ³¯  Â¥ : 2009.06.25 (THU) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ RDRANA 
+		- LOG LEVEL Á¤¸® 
+4. ÆÄ  ÀÏ :
+	SMLEG/src/RDRANA/capd_mml.c 							1.21
+	SMLEG/src/RDRANA/main.c 								1.36
+===================================================================
+1. ³¯  Â¥ : 2009.06.25 (THU) 
+2. ÀÛ¼ºÀÚ : June
+3. ³»  ¿ë :
+	+ MMCR
+		- dis-tmr-info, set-tmr-info Ãß°¡.
+	+ SMPP
+		- sms duration timeout Ãß°¡
+		- mmc Ãß°¡ (dis-tmr-info, set-tmr-info)
+		- update query ¹ö±× ¼öÁ¤
+4. ÆÄ  ÀÏ :
+	/src/MMCR/mmc_proc.c										1.35
+	/src/SMPP/smpp.h											1.9
+	/src/SMPP/smpp_init.c										1.7
+	/src/SMPP/smpp_main.c										1.11
+	/src/SMPP/smpp_mmc.c										1.3
+	/src/SMPP/smpp_msgQ.c										1.11
+	/src/SMPP/smpp_proto.c										1.11
+	/src/SMPP/smpp_sql.c										1.6
+====================================================================
+1. ³¯  Â¥ : 2009.06.24 (WED) 
+2. ÀÛ¼ºÀÚ : ½Å¿µÈ£
+3. ³»  ¿ë :
+	+ SAMD
+		- samd Àç±âµ¿½Ã ´Ù¸¥ ÇÁ·Î¼¼½º »ì¸®´Â ¹ö±× ¼öÁ¤.
+4. ÆÄ  ÀÏ :
+	/SMLEG/src/SAMD/samd_proc.c									1.28
+===================================================================
+1. ³¯  Â¥ : 2009.06.24 (WED) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ RDRANA 
+		- SMS GUI ÆíÁý ±â´É 
+		- Unknown Subscriber IMSI Ã£±â ±â´É RLEG Shared MemoryÀÌ¿ë 
+		- find_rad_sess_imsi() È£Ãâ Á¶°Ç º¯°æ:strcmp->!strcmp
+4. ÆÄ  ÀÏ :
+		SMLEG/src/RDRANA/main.c 							1.31
+===================================================================
+1. ³¯  Â¥ : 2009.06.23 (TUE) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- scm fan, power status shell ¼öÁ¤..
+4. ÆÄ  ÀÏ :
+	/SMLEG/src/SAMD/samd_main.c								1.23
+===================================================================
+1. ³¯  Â¥ : 2009.06.21 (SUN) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- scm fan, power status Ãß°¡.
+4. ÆÄ  ÀÏ :
+	/SMLEG/src/SAMD/samd_main.c									1.19
+	/SMLEG/src/SAMD/samd_proc.c									1.24
+===================================================================
+1. ³¯  Â¥ : 2009.06.20 (SAT) 
+2. ÀÛ¼ºÀÚ : ½Å¿µÈ£
+3. ³»  ¿ë :
+	+ SAMD
+		- ping, dup check thread·Î 
+4. ÆÄ  ÀÏ :
+	/SMLEG/src/SAMD/samd_disk.c									1.12
+	/SMLEG/src/SAMD/samd_ping.c									1.12
+	/SMLEG/src/SAMD/samd_main.c									1.18
+	/SMLEG/src/SAMD/samd_proc.c									1.23
+	/SMLEG/src/SAMD/samd_rxtxmsg.c								1.7
+	/SMLEG/libsrc/COMM/__time.h,								1.1
+	/SMLEG/libsrc/COMM/ping.c									1.1
+	/SMLEG/libsrc/COMM/sock.h									1.1
+	/SMLEG/libsrc/COMM/socklib.c								1.2
+	/SMLEG/libsrc/COMM/timer.h									1.1
+===================================================================
+1. ³¯  Â¥ : 2009.06.16 (THU) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ SAMD
+		- dis-sys-ver mmc ±â´É Ãß°¡.
+4. ÆÄ  ÀÏ :
+		libsrc/COMM/strutil.c									1.1
+		include/conf.h											1.1
+		src/SAMD/samd_proc.c									1.21
+		src/SAMD/samd_rxtxmsg.c									1.5
+
+===================================================================
+1. ³¯  Â¥ : 2009.06.16 (THU) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ RLEG
+		- login logout cps Ãß°¡
+		- active mode ¿¡¼­¸¸ cps Àü¼Û.
+	+ SMPP
+		- SMSC ¿¬µ¿ Debugging && LOG Ãß°¡
+	+ DLPI_CAPD
+	+ RANA
+		- LOG_LEVEL Á¤¸®.
+4. ÆÄ  ÀÏ :
+		src/RLEG/leg_main.c										1.22
+		src/RLEG/Makefile										1.13
+		src/RLEG/leg.h											1.22	
+		src/RLEG/leg_init.c										1.22
+		src/RLEG/leg_main.c										1.21
+		src/RLEG/leg_msgq.c										1.6
+		src/RLEG/leg_radius.c									1.26
+		src/RLEG/leg_sce_comm.c									1.19
+		src/RLEG/leg_thread.c									1.16
+		src/RLEG/mmc_hld.h										1.8
+		src/RLEG/mmc_proc.c										1.15
+		src/SMPP/Makefile										1.5
+		src/SMPP/cid_handle.c									1.3
+		src/SMPP/smpp.h											1.8
+		src/SMPP/smpp_init.c									1.6
+		src/SMPP/smpp_main.c									1.9
+		src/SMPP/smpp_mmc.c										1.2
+		src/SMPP/smpp_msgQ.c									1.9
+		src/SMPP/smpp_proto.c									1.9
+		src/SMPP/smpp_socket.c									1.9
+		src/SMPP/smpp_sql.c										1.5
+		src/DLPI_CAPD/capd.c									1.4
+		src/DLPI_CAPD/capd_msgq.c								1.2
+		src/RANA/radius_init.c									1.3
+		src/RANA/radius_main.c									1.10
+====================================================================
+1. ³¯  Â¥ : 2009.06.13 (FRI) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- ping core ¹ß»ý ¿À·ù ¼öÁ¤.
+4. ÆÄ  ÀÏ :
+			src/SAMD/samd_ping.c							1.10
+===================================================================
+1. ³¯  Â¥ : 2009.06.13 (FRI) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- H/W Link Ãß°¡½Ã ÀÎ½Ä ¸øÇß´ø Link »óÅÂ ¿À·ù ¼öÁ¤.
+		- findWord() ÇÔ¼ö Ãß°¡.
+4. ÆÄ  ÀÏ :
+			src/SAMD/Makefile  								1.7
+			src/SAMD/samd_disk.c							1.9
+			src/SAMD/samd_main.c							1.17
+			src/SAMD/samd_ping.c							1.9
+			src/SAMD/samd_proc.c							1.20
+===================================================================
+1. ³¯  Â¥ : 2009.06.12 (FRI) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ MMCR
+		- Defunct ¹ß»ý, SIGCHLD ÇÚµé·¯ ÇÔ¼ö µî·Ï 
+4. ÆÄ  ÀÏ :
+			src/MMCR/mmc_proc.c								1.32
+			src/MMCR/mmcr_init.c							1.13
+			src/MMCR/mmcr_main.c							1.8
+===================================================================
+1. ³¯  Â¥ : 2009.06.08 (MON) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- H/W DISK »óÅÂ°ü¸® ±â´É Ãß°¡
+4. ÆÄ  ÀÏ :
+		src/SAMD/samd_disk.c				 					1.4
+		src/SAMD/samd_main.c									1.15
+		src/SAMD/samd_proc.c									1.18
+===================================================================
+1. ³¯  Â¥ : 2009.06.06 (SAT) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ RLEG
+		- RULE USE Call Control ±â´É Ãß°¡.
+		- NAS IP Call Control ±â´É Ãß°¡.
+4. ÆÄ  ÀÏ :
+		src/RLEG/leg.h											1.19
+		src/RLEG/leg_init.c										1.19
+		src/RLEG/leg_radius.c									1.23
+		src/RLEG/leg_sce_comm.c									1.18
+		src/RLEG/mmc_hld.c										1.6
+		src/RLEG/mmc_hld.h										1.5
+		src/RLEG/mmc_proc.c										1.12
+===================================================================
+1. ³¯  Â¥ : 2009.06.06 (SAT) 
+2. ÀÛ¼ºÀÚ : jjinri.
+3. ³»  ¿ë :
+	+ MMCR
+		- RLEG·Î PDSN º¯°æ½Ã ¸Þ½ÃÁöÅ¥ Àü¼Û 
+	+ RDR_CAPD
+		- Makefile ¼öÁ¤ 
+	+ RDRANA
+		- main.c ¼öÁ¤ 
+		
+4. ÆÄ  ÀÏ :
+		SMLEG/src/MMCR/mmcr_init.c							1.12
+		SMLEG/src/MMCR/mmcr_rxtxmsg.c						1.11
+		SMLEG/src/MMCR/mmcr_shm_pdsninfo.c					1.3
+
+		SMLEG/src/RDR_CAPD/Makefile							1.3
+
+		SMLEG/src/RDRANA/main.c								1.16
+
+===================================================================
+1. ³¯  Â¥ : 2009.06.06 (SAT) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ include
+		- cvs up (source Á¤¸®)
+	+ libsrc/UTILLIB
+		- cvs up (source Á¤¸®)
+	+ src/IXPC
+		- client socket bind Ã³¸®.
+	+ src/SMPP
+		- LGT SMSC ¿¬µ¿ µð¹ö±ë.
+	+ src/RANA
+		- NAS IP, SVC OPT bit align ¼öÁ¤.
+	+ src/RLEG
+		- NAS IP, RULESET USED FLAG call control Ã³¸®
+		
+4. ÆÄ  ÀÏ :
+		include/comm_msgtypes.h									1.7
+		include/ipam_sys.h										1.2
+		include/sysconf.h										1.4
+		include/utillib.h										1.2
+		libsrc/UTILLIB/type_cvt.c								1.3
+		src/IXPC/ixpc_init.c									1.6
+		src/SMPP/smpp_init.c									1.5
+		src/SMPP/smpp_main.c									1.8
+		src/SMPP/smpp_proto.c									1.8
+		src/SMPP/smpp_socket.c									1.8
+		src/RANA/radius_main.c									1.9
+		src/RLEG/Makefile										1.12
+		src/RLEG/leg.h											1.18
+		src/RLEG/leg_init.c										1.18
+		src/RLEG/leg_main.c										1.18
+		src/RLEG/leg_msgq.c										1.4
+		src/RLEG/leg_radius.c									1.22
+		src/RLEG/leg_sce_comm.c									1.17
+		src/RLEG/leg_thread.c									1.14
+		src/RLEG/mmc_proc.c										1.12
+		src/Makefile											1.8
+===================================================================
+1. ³¯  Â¥ : 2009.06.06 (FRI) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- DIS-PRC-STS CM/SM »óÅÂ Á¤º¸ Ãß°¡.
+		- disprc ¿¡ CM/SM »óÅÂ Á¤º¸ Ãß°¡.
+4. ÆÄ  ÀÏ :
+		SMLEG/src/IFB/ifb_comm.c      							1.4
+		SMLEG/src/SAMD/samd_proc.c    							1.17
+===================================================================
+1. ³¯  Â¥ : 2009.06.05 (FRI) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- DIS-LAN-INFO ¿¡ µé¾î°¡´Â RMT LAN Á¤º¸ Ãß°¡
+		- DB Backup ºÎºÐ »èÁ¦ (¿µÁø)
+		- SCE_INFO.conf => RMT_LAN_INFO.conf º¯°æ.
+4. ÆÄ  ÀÏ :
+		SMLEG/src/SAMD/samd.h         							1.6
+		SMLEG/src/SAMD/samd_main.c  							1.14
+		SMLEG/src/SAMD/samd_ping.c  							1.8
+		SMLEG/src/SAMD/samd_proc.c  							1.16
+===================================================================
+1. ³¯  Â¥ : 2009.06.5 (±Ý)
+2. ÀÛ¼ºÀÚ : ½Å¿µÈ£
+3. ³»  ¿ë :
+	+ IXPC
+		- socklib_connect2 ÇÔ¼ö Ãß°¡·Î VIP (105) Ã³¸® ¿Ï·á
+		- route add
+  			ifconfig e1000g4 addif 192.168.1.103 netmask 255.255.255.0 up 
+    		ifconfig e1000g0 addif 192.168.1.104 netmask 255.255.255.0 up
+		- client socket : bind À» ÇÏ¿© ÀÚ½ÅÀÇ IPÀ» ¼³Á¤ÇÒ ¼ö ÀÖ°Ô ÇÏ³®. 
+			route add -host OAM myip#1
+			route add -host OAM myip#2
+4. ÆÄ  ÀÏ :
+	/SMLEG/src/IXPC/ixpc_init.c									1.5
+	/SMLEG/src/IXPC/ixpc_proc.c									1.2
+	/SMLEG/src/IXPC/socklib.c									1.2
+===================================================================
+1. ³¯  Â¥ : 2009.06.02 (WED) 
+2. ÀÛ¼ºÀÚ :  jjinri
+3. ³»  ¿ë :
+	+ RDRANA
+		- [ Trace Message Format º¯°æ 
+		- Pbit + Hbit
+4. ÆÄ  ÀÏ :
+		SMLEG/src/RDRANA/capd_global.h							1.4
+		SMLEG/src/RDRANA/capd_init.c							1.12
+		SMLEG/src/RDRANA/capd_mml.c								1.17
+		SMLEG/src/RDRANA/main.c									1.14
+===================================================================
+1. ³¯  Â¥ : 2009.05.31 (SUN) 
+2. ÀÛ¼ºÀÚ :  June
+3. ³»  ¿ë :
+	+ RLEG
+		- SM Connection check logic Ãß°¡
+		- log level ¿¡ ¸Â°Ô log Á¤¸®.
+	+ UTILLIB
+		- CVT_INT2STR_IP & CVT_INT2STR_NIP Ãß°¡
+		- dAppLog bug ¼öÁ¤
+	+ SMPP
+		- smpp ¿¬µ¿ Àåºñ ·Î±× Ãß°¡
+	+ sysconfig
+		- RLEG_CONFIG Section º¯°æ.
+
+4. ÆÄ  ÀÏ :
+	src/RLEG/leg.h												1.17
+	src/RLEG/leg_init.c											1.17
+	src/RLEG/leg_main.c											1.17
+	src/RLEG/leg_radius.c										1.21
+	src/RLEG/leg_sce_comm.c										1.16
+	src/RLEG/leg_thread.c										1.13
+	src/RLEG/mmc_hld.c											1.5
+	src/RLEG/mmc_hld.h											1.4
+	src/RLEG/mmc_proc.c											1.10
+	libsrc/UTILLIB/lwrite.c										1.5
+	libsrc/UTILLIB/type_cvt.c									1.2
+	src/SMPP/smpp.h												1.7
+	src/SMPP/smpp_msgQ.c										1.8
+	src/Makefile												1.7
+	DATA/sysconfig												1.6
+===================================================================
+1. ³¯  Â¥ : 2009.05.31 (SUN) 
+2. ÀÛ¼ºÀÚ :  sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- SM »óÅÂ Ã¼Å© fork => thread·Î º¯°æ..
+		- db backup (¿µÁø¾¾ ÀÛ¾÷)
+4. ÆÄ  ÀÏ :
+		SMLEG/src/SAMD/samd_init.c 								1.11
+		SMLEG/src/SAMD/samd_main.c        						1.13
+		SMLEG/src/SAMD/samd_proc.c           					1.15
+	
+===================================================================
+1. ³¯  Â¥ : 2009.05.31 (SUN) 
+2. ÀÛ¼ºÀÚ :  jjinri
+3. ³»  ¿ë :
+	+ MMCR
+		- [ add/dis/del/chg ]-pdsn-info  IP-POOL °ü¸® »èÁ¦ 						
+		- dis-sess-info PAGE¿¡¼­ TOTAL °³¼ö vytl 
+4. ÆÄ  ÀÏ :
+		SMLEG/src/MMCR/mmcr_file.c 								1.2
+		SMLEG/src/MMCR/mmcr_mmc_delinfo.c 						1.4
+		SMLEG/src/MMCR/mmcr_shm_ippoolinfo.c 					1.2
+		SMLEG/src/MMCR/mmcr_shm_pdsninfo.c 						1.2
+		SMLEG/src/MMCR/mmc_proc.c
+===================================================================
+1. ³¯  Â¥ : 2009.05.29 (FRI) 
+2. ÀÛ¼ºÀÚ :  jjinri
+3. ³»  ¿ë :
+	+ RDRANA
+		- insert_block code Áßº¹ Á¦°Å 
+4. ÆÄ  ÀÏ :
+		src/RDRANA/main.c										1.13
+		src/RDRANA/capd_test.c									1.3
+		src/MMCR/mmc_proc.c										1.10
+===================================================================
+1. ³¯  Â¥ : 2009.05.26 (TUE) 
+2. ÀÛ¼ºÀÚ :  June
+3. ³»  ¿ë :
+	+ RLEG
+		- radius req interim
+		- service option
+		- mmc log out
+4. ÆÄ  ÀÏ :
+		src/RLEG/Makefil										1.11
+		src/RLEG/leg.h											1.16
+		src/RLEG/leg_init.c										1.16
+		src/RLEG/leg_main.c										1.16
+		src/RLEG/leg_radius.c									1.20
+		src/RLEG/leg_sce_comm.c									1.15
+		src/RLEG/leg_thread.c									1.12
+		src/RLEG/mmc_proc.c										1.9
+===================================================================
+1. ³¯  Â¥ : 2009.05.27 (±Ýö)
+2. ÀÛ¼ºÀÚ : ¹Ú¿µÁø 
+3. ³»  ¿ë :
+	+ MMCR
+		- dis-sess-info Ã³¸® 
+		. p3db¸¦ ÀÌ¿ë ÀüÃ¼ ·Î±×ÀÎ °¡ÀÔÀÚ Ã³¸®.
+		. pbit hbit Ãß°¡ 
+4. ÆÄ  ÀÏ	
+	SMLEG/src/MMCR/Makefile.test_p3db						 	1.1
+	SMLEG/src/MMCR/mmc_proc.c									1.9
+	SMLEG/src/MMCR/mmcr.h										1.4
+	SMLEG/src/MMCR/mmcr_init.c									1.10
+	SMLEG/src/MMCR/mmcr_rxtxmsg.c								1.10
+
+===================================================================
+1. ³¯  Â¥ : 2009.05.27 (¼ö)
+2. ÀÛ¼ºÀÚ : ½Å¿µÈ£
+3. ³»  ¿ë :
+	+ DLPI_CAPD
+		- DLPI¸¦ ÀÌ¿ëÇÏ¿© /dev/e1000g3, /dev/e1000g5 capture
+		- select ¹æ½Ä.
+	+ ANZ_LIB 
+		- DLPI ¹æ½ÄÃß°¡·Î MAC check ºÎºÐ »èÁ¦.
+		- IP·Î ÆÇ´Ü.
+4. ÆÄ  ÀÏ	
+	src/DLPI_CAPD/Makefile										1.1
+	src/DLPI_CAPD/capd.c										1.1
+	src/DLPI_CAPD/capd_global.h									1.1
+	src/DLPI_CAPD/capd_init.c									1.1
+	src/DLPI_CAPD/capd_msgq.c									1.1
+	src/DLPI_CAPD/capd_test.c									1.1
+	src/DLPI_CAPD/conf.c										1.1
+	src/DLPI_CAPD/conf.h										1.1
+	src/DLPI_CAPD/log.c											1.1
+	src/DLPI_CAPD/pcapfunc.c									1.1
+
+	/libsrc/ANZ_LIB/Analyze_Inf.c,								1.2
+===================================================================
+1. ³¯  Â¥ : 2009.05.26 (TUE) 
+2. ÀÛ¼ºÀÚ :  June
+3. ³»  ¿ë :
+	+ RLEG
+		mmc log-in Ã³¸®.
+4. ÆÄ  ÀÏ :
+		src/RLEG/leg.h											1.15
+		src/RLEG/leg_radius.c									1.19
+		src/RLEG/leg_sce_comm.c									1.13
+		src/RLEG/mmc_hld.c										1.4
+		src/RLEG/mmc_hld.h										1.3
+		src/RLEG/mmc_proc.c										1.8
+===================================================================
+1. ³¯  Â¥ : 2009.05.26 (TUE) 
+2. ÀÛ¼ºÀÚ :  jjinri	
+3. ³»  ¿ë :
+	+ SAMD
+		- samd  ÇÁ·Î¼¼½º´Â 2°³·Î º¸ÀÌ´Âµ¥ º¹¼ö°³ÀÇ Ç¥½Ã´Â ¾ø¾Ø´Ù.
+
+4. ÆÄ  ÀÏ :
+		SMLEG/src/SAMD/samd_proc.c								1.14
+===================================================================
+1. ³¯  Â¥ : 2009.05.26 (TUE) 
+2. ÀÛ¼ºÀÚ :  jjinri	
+3. ³»  ¿ë :
+	+ MMCR, RDRANA, RLEG
+		- Trace level »èÁ¦ 
+	+ DATA ÆÄÀÏ : samd.conf, recover.sh Ãß°¡ 
+
+4. ÆÄ  ÀÏ :
+		src/RDRANA/capd_init.c									1.11
+		src/MMCR/mmcr_mmchdl.c									1.3
+		src/MMCR/mmcr_msgformat.c								1.2
+		src/MMCR/mmcr_rxtxmsg.c									1.8
+		src/RLEG/leg_init.c										1.14
+===================================================================
+1. ³¯  Â¥ : 2009.05.26 (TUE) 
+2. ÀÛ¼ºÀÚ :  jjinri	
+3. ³»  ¿ë :
+	+ RDRANA
+		- loc_sadb¸¦ ÀÌ¿ëÇÑ ACTIVE/STAND BY ÆÇ´Ü (½ÅÆÀÀå´Ô Ãß°¡ )
+	+ RDR_CAPD
+		- open_device(char *path) -> open_device(void)
+	+ MYSQL_TEST
+		- ¹é¾÷ »ùÇÃ ÄÚµå 
+
+4. ÆÄ  ÀÏ :
+		src/RDRANA/Makefile										1.5
+		src/RDRANA/capd_init.c									1.10
+		src/RDRANA/capd_mml.c									1.16
+		src/RDRANA/main.c										1.12
+		src/RDRANA/rdrheader.h									1.7
+		src/RDRANA/capd_mml.h									1.1
+
+		src/RDR_CAPD/Makefile									1.2
+		src/RDR_CAPD/pcapfunc.c									1.2
+
+		src/TOOLS/MYSQL_TEST/inittest.c							1.2
+
+===================================================================
+1. ³¯  Â¥ : 2009.05.26 (TUE) 
+2. ÀÛ¼ºÀÚ :  jjinri	
+3. ³»  ¿ë :
+	+ RDRANA
+		- loc_sadb¸¦ ÀÌ¿ëÇÑ ACTIVE/STAND BY ÆÇ´Ü (½ÅÆÀÀå´Ô Ãß°¡ )
+
+4. ÆÄ  ÀÏ :
+		src/RDRANA/Makefile										1.5
+		src/RDRANA/capd_init.c									1.10
+		src/RDRANA/capd_mml.c									1.16
+		src/RDRANA/main.c										1.12
+		src/RDRANA/rdrheader.h									1.7
+===================================================================
+1. ³¯  Â¥ : 2009.05.26 (TUE) 
+2. ÀÛ¼ºÀÚ :  June
+3. ³»  ¿ë :
+	+ RLEG
+		- sysconfig ¿¡ RLEG Config ¿¡ SVC OPTION Ãß°¡
+	+ CAPD
+		- capture ¼º´É °ü·Ã Å×½ºÆ® 
+	+ IXPC
+		- debugging log add
+	+ RANA
+		- C P H Bit LOG modify
+
+4. ÆÄ  ÀÏ :
+		DATA/sysconfig											1.5
+		src/RLEG/leg.h											1.13
+		src/RLEG/leg_init.c										1.13
+		src/RLEG/leg_main.c										1.15
+		src/RLEG/leg_radius.c									1.17
+		src/RLEG/leg_sce_comm.c									1.12
+		src/RLEG/mmc_proc.c										1.7
+		src/PCAP_CAPD/capd.c									1.11
+		src/PCAP_CAPD/pcapfunc.c								1.11
+		src/IXPC/Makefile										1.3
+		src/IXPC/ixpc_route.c									1.2
+		src/RANA/radius_main.c									1.8
+===================================================================
+1. ³¯  Â¥ : 2009.05.23 (SUN) 
+2. ÀÛ¼ºÀÚ :  jjinri
+3. ³»  ¿ë :
+	+ SAMD
+		- bkup bug ¼öÁ¤ 
+
+4. ÆÄ  ÀÏ :
+		SMLEG/src/SAMD/samd_init.c 							1.10
+		SMLEG/src/SAMD/samd_proc.c							1.12
+===================================================================
+1. ³¯  Â¥ : 2009.05.23 (SAT) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- SM/CM Process Live check Ãß°¡ 
+
+4. ÆÄ  ÀÏ :
+	/SMLEG/src/SAMD/samd_main.c									1.8
+===================================================================
+1. ³¯  Â¥ : 2009.05.23 (SAT) 
+2. ÀÛ¼ºÀÚ : jjinri.
+3. ³»  ¿ë :
+	+ SAMD
+		- DB BACKUP  bkup-pkg Ãß°¡ 
+
+4. ÆÄ  ÀÏ :
+	src/SMLEG/SAMD/Makefile										1.6
+	src/SMLEG/SAMD/samd.h										1.4
+	src/SMLEG/SAMD/samd_init.c									1.6
+	src/SMLEG/SAMD/samd_main.c									1.6
+	src/SMLEG/SAMD/samd_proc.c									1.7
+	src/SMLEG/SAMD/samd_rxtxmsg.c								1.4
+
+===================================================================
+1. ³¯  Â¥ : 2009.05.22 (FRI) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ RLEG
+		- redirection °³¹ß ¿Ï·á
+		- sm block api ·Î smdb¿¡¼­ ´Ü¸»ip·Î user subscriber info 
+		  °¡Á®¿Í "RULESET_LIST.conf" ¿¡¼­ redirection pkg id ·Î 
+		  »õ·Î login.
+		- RANA <-> RLEG, REANA <-> RLEG, MMCR <-> RLEG msg queue
+		  Àü´Þ ±¸Á¶ º¯°æ. GeneralQMsgType ±¸Á¶·Î º¯°æ.
+	+ PANA
+		- redirection °ü·Ã TCP && 8080 Á¶°ÇÀ¸·Î REANA·Î Àü´Þ.
+	+ IFB
+		- RMSYSQM Á¦°Å.
+	+ RNAN
+		- RANA->RLEG ·Î Àü¼ÛÇÏ´Â msg queue GeneralQMsgType·Î º¯°æ
+	+ SMPP
+		- com_smpp_if.h -> comm_smpp_if.h º¯°æ.
+	+ TOOLS/SCE_SIM
+		- hard coding -> defineÀ¸·Î º¯°æ.
+4. ÆÄ  ÀÏ :
+	src/RLEG/Makefile											1.10
+	src/RLEG/leg.h												1.12
+	src/RLEG/leg_init.c											1.12
+	src/RLEG/leg_main.c											1.13
+	src/RLEG/leg_radius.c,										1.15
+	src/RLEG/leg_sce_comm.c										1.11
+	src/RLEG/leg_thread.c										1.10
+	src/RLEG/mmc_hld.c											1.2
+	src/RLEG/mmc_hld.h											1.2
+	src/RLEG/mmc_proc.c											1.6
+	src/PANA/ana.c												1.8
+	src/REANA/lex.parsedata.c									1.2
+	src/REANA/re_define.h										1.2
+	src/REANA/re_lex.l											1.4
+	src/REANA/re_main.c											1.8
+	src/REANA/re_msgq.c											1.5
+	src/RLEG/leg_main.c											1.14
+	src/RLEG/leg_radius.c										1.16
+	src/IFB/Makefile											1.2
+	src/RANA/radius_main.c										1.7
+	src/SMPP/smpp.h												1.6
+	src/TOOLS/SCE_SIM/leg.h										1.3
+===================================================================
+1. ³¯  Â¥ : 2009.05.20 (wed)
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ include
+		- Trace  ±¸Á¶Ã¼ , ÇÔ¼ö  include ÆÄÀÏ  ÀÌ¸§ º¯°æ 
+		- ipam_sesssvc.h --> comm_trace.h
+4. ÆÄ  ÀÏ	
+		SMLEG/include/comm_trace.h								1.1
+===================================================================
+1. ³¯  Â¥ : 2009.05.18 (¿ù)
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ RDRANA
+		- RULE_SET_LIST.conf ÆÄ½Ì ¿À·ù ¼öÁ¤ fscanf -> sscanf
+		- IMSI ºñ±³ÈÄ for ¹® break Ãß°¡ 
+		- Rule set sync MMC ¸í·É¾î Ã³¸® ºÎºÐ Ãß°¡ : ±¸Á¶Ã¼ º¯°æ msgrcv
+4. ÆÄ  ÀÏ	
+		SMLEG/src/RDRANA/capd_init.c							1.5
+		SMLEG/src/RDRANA/capd_mml.c							 	1.8
+		SMLEG/src/RDRANA/main.c									1.10
+		SMLEG/src/RDRANA/rdrheader.h							1.6
+		SMLEG/src/RDRANA/capd_mml.c								1.10
+===================================================================
+1. ³¯  Â¥ : 2009.05.16 (ÀÏ)
+2. ÀÛ¼ºÀÚ : ½Å¿µÈ£
+3. ³»  ¿ë :
+	+ RLEG
+		- rsync Á¦°Å.
+		- samd ¿¡µµ ÀÖÁö¸¸ ¾È ¾²´Â °Í °°¾Æ¼­ ±×³É µÎ¾úÀ½.
+4. ÆÄ  ÀÏ	
+	/src/MMCR/mmcr_util.c										1.2
+===================================================================
+1. ³¯  Â¥ : 2009.05.16 (ÀÏ)
+2. ÀÛ¼ºÀÚ : ½Å¿µÈ£
+3. ³»  ¿ë :
+	+ RLEG
+		- trace (login/out Ãß°¡)
+4. ÆÄ  ÀÏ	
+	/src/RLEG/leg.h												1.10
+	/src/RLEG/leg_init.c										1.10
+	/src/RLEG/leg_main.c										1.11
+	/src/RLEG/leg_radius.c										1.9
+	/src/RLEG/mmc_proc.c										1.2
+===================================================================
+1. ³¯  Â¥ : 2009.05.16 (SAT) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ CAPD
+		- pcap lib read ¹æ½Ä nonblockÀ¸·Î º¯°æ
+		- pcap lib ÀÇ lib function ÀÌ socket buffer¿¡¼­ read event
+		  ¸¦ ¸ø¹Þ´Â °æ¿ì°¡ ÀÖ´Ù.
+	+ RLEG
+		- LOG LEVEL °ú Æ÷¸ä º¯°æ
+		- C/P/H BIT Ã³¸® º¯°æ
+	+ RANA
+		- Makefile ¿¡ __DEBUG »ç¿ë ¿¹ Ãß°¡
+	+ PANA
+		- DEBUGGING
+
+4. ÆÄ  ÀÏ :
+	src/PCAP_CAPD/capd_msgq.c									1.2
+	src/PCAP_CAPD/pcapfunc.c									1.9
+	src/RANA/Makefile											1.3
+	src/PANA/ana_msgq.c											1.3
+===================================================================
+1. ³¯  Â¥ : 2009.05.14 (¸ñ)
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ MMCR / SAMD  /IXPC
+		- set-log-level mmc ¸í·É ¼³Á¤½Ã samd/ixpc ·Î±× ¼³Á¤ Ãß°¡.
+4. ÆÄ  ÀÏ :
+		SMLEG/include/comm_loglevel.h							1.6
+		SMLEG/libsrc/UTILLIB/lwrite.c							1.4
+		SMLEG/src/MMCR/mmcr_init.c   							1.8
+		SMLEG/src/MMCR/mmcr_shmprc.c 							1.5
+===================================================================
+1. ³¯  Â¥ : 2009.05.14 (¸ñ ö)
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ RDRANA
+		- trace level ¾ø¾Ú. block rdr trclevel 2 Ã¼Å© ÇØÁ¦ 
+4. ÆÄ  ÀÏ :
+		SMLEG/src/RDRANA/capd_mml.c 							1.7
+		SMLEG/src/RDRANA/main.c 								1.7
+===================================================================
+1. ³¯  Â¥ : 2009.05.12 (¼ö)
+2. ÀÛ¼ºÀÚ : ½Å¿µÈ£
+3. ³»  ¿ë :
+	+ SAMD
+		- cpu/disk Á¤º¸ ¼öÁ¤.
+	+ mmc Ã³¸® ¿¡·¯ ¼öÁ¤
+		- bsearch À» ¾²±â À§ÇØ¼­´Â data°¡ sort°¡ µÇ¾î ÀÖ¾î¾ß ÇÔ. 
+		- qsort·Î sort ÈÄ bsearch¸¦ »ç¿ë.
+		- init ½Ã qsort·Î sort
+4. ÆÄ  ÀÏ :
+	/src/SAMD/samd_disk.c										1.2
+	/src/SAMD/samd_init.c										1.5
+	/src/SAMD/samd_ping.c										1.6
+	/src/SAMD/samd_sys.c										1.3
+
+	/src/MMCR/mmc_hld.c											1.4
+	/src/MMCR/mmc_proc.c										1.5
+	/src/MMCR/mmcr_init.c										1.7
+	/src/MMCR/mmcr_main.c										1.6
+===================================================================
+1. ³¯  Â¥ : 2009.05.13 (WED) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ SMSC_SVR
+		- smsc_make_REPORTÇÔ¼ö  report time º¯°æ
+4. ÆÄ  ÀÏ :
+	src/TOOLS/SMSC_SVR/Makefile									1.3
+	src/TOOLS/SMSC_SVR/smsc_proc.c								1.3
+===================================================================
+1. ³¯  Â¥ : 2009.05.13 (WED) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ RLEG
+		- DEBUGGING
+	+ SMPP
+		- check_my_run_status Ãß°¡
+	+ CAPD
+		- ACTIVE °¡ ¾Æ´Ñ ¼¼¼Ç¿¡ ´ëÇØ¼­ discard ±â´É Ãß°¡.
+	+ SMSC_SVR
+		- RETURN CODE AUTO VERSION À¸·Î º¯°æ.
+	+ MMCR
+	+ SAMD
+		- ÆÀÀå´Ô ÀÛ¾÷
+
+4. ÆÄ  ÀÏ :
+		src/RLEG/mmc_hld.c										1.1
+		src/RLEG/mmc_hld.h										1.1
+		src/RLEG/mmc_proc.c										1.1
+		src/RLEG/Makefile										1.7
+		src/RLEG/leg.h											1.8
+		src/RLEG/leg_init.c										1.7
+		src/RLEG/leg_main.c										1.10
+		src/RLEG/leg_radius.c									1.7
+		src/RLEG/leg_sce_comm.c									1.7
+		src/RLEG/leg_thread.c									1.5
+		src/SMPP/smpp_main.c									1.6
+		src/PCAP_CAPD/capd.c									1.9
+		src/PCAP_CAPD/capd_init.c								1.3
+		src/PCAP_CAPD/pcapfunc.c								1.8
+		src/TOOLS/SMSC_SVR/Makefile								1.2
+		src/TOOLS/SMSC_SVR/smsc_proc.c							1.2
+		src/MMCR/mmc_hld.c										1.2
+		src/MMCR/mmc_hld.h										1.2
+		src/MMCR/mmc_proc.c										1.3
+		src/SAMD/samd_main.c									1.5
+		src/SAMD/samd_ping.c									1.5
+		src/SAMD/samd_sys.c										1.2
+===================================================================
+1. ³¯  Â¥ : 2009.05.12 (TUE) 
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë :
+	+ STMD
+		- Realtime Subscriber Trace ¸Þ½ÃÁö 
+
+4. ÆÄ  ÀÏ :
+			SMLEG/src/RDRANA/capd_mml.c						1.6
+			SMLEG/src/RDRANA/main.c							1.6
+			SMLEG/src/RDRANA/rdrheader.h					1.5
+===================================================================
+1. ³¯  Â¥ : 2009.05.12 (TUE) 
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë :
+	+ SAMD
+		- link (e1000g0 ~ e1000g7) Á¤º¸ GUI Àü¼Û È®ÀÎ
+
+4. ÆÄ  ÀÏ :
+		SMLEG/src/SAMD/samd.h    								1.3
+		SMLEG/src/SAMD/samd_proc.c  							1.6
+		SMLEG/src/SAMD/samd_rxtxmsg.c 							1.3
+===================================================================
+1. ³¯  Â¥ : 2009.05.12 (TUE) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ RLEG
+		- SCE Login property "monitor" Ã³¸® Ãß°¡
+		- Property define
+		- signal Ã³¸®
+	+SMPP
+		- signal Ã³¸®
+
+4. ÆÄ  ÀÏ :
+	src/SMPP/smpp.h												1.5
+	src/SMPP/smpp_init.c										1.4
+	src/SMPP/smpp_main.c										1.5
+	src/SMPP/smpp_proto.c										1.7
+	src/SMPP/smpp_socket.c										1.6
+	src/SMPP/smpp_util.c										1.5
+	src/RLEG/leg_init.c											1.6
+	src/RLEG/leg_init.c											1.5
+	src/RLEG/leg_main.c											1.9
+	src/RLEG/leg_thread.c										1.4
+	src/RLEG/leg.h												1.7
+	src/RLEG/leg_sce_comm.c										1.6
+	src/RLEG/leg.h												1.6
+	src/RLEG/leg_main.c											1.8
+	src/RLEG/leg_radius.c										1.6
+	src/RLEG/leg_sce_comm.c										1.5
+===================================================================
+1. ³¯  Â¥ : 2009.05.12 (È­)
+2. ÀÛ¼ºÀÚ : ½Å¿µÈ£
+3. ³»  ¿ë :
+	+ MMCR
+		- reg-call-trc
+		- canc-call-trc
+		- chg-call-trc ¿Ï·á.
+		- RDRANA¿¡ RealTime Usage RDR ³²±âµµ·Ï.
+4. ÆÄ  ÀÏ :
+	src/MMCR/mmcr.h												1.4
+	src/mmcr_mmc_addinfo.c										1.3
+	src/MMCR/mmcr_mmc_chginfo.c									1.2
+	src/MMCR/mmcr_mmc_delinfo.c									1.2
+	src/MMCR/mmcr_mmchdl.c										1.2
+===================================================================
+1. ³¯  Â¥ : 2009.05.12 (MON) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ SMPP
+		- DEBUGGING LOG Á¤¸®
+		  . Makefile ¿¡ -DDEBUG Ãß°¡
+		- sms_hitory table¿¡¼­ send flag »èÁ¦
+		  . insert ¹® º¯°æ
+	+ SCE_SIM
+	+ RLEG
+	+ PCAP_CAPD
+		- DEBUGGING LOG Á¤¸®.
+4. ÆÄ  ÀÏ :
+	src/SMPP/Makefile											1.4
+	src/SMPP/smpp_msgQ.c										1.6
+	src/SMPP/smpp_proto.c										1.6
+	src/SMPP/smpp_socket.c										1.5
+	src/SMPP/smpp_sql.c											1.4
+	src/TOOLS/SCE_SIM/leg.h										1.2
+	src/RLEG/leg.h												1.5
+	src/RLEG/leg_main.c											1.7
+	src/RLEG/leg_sce_comm.c										1.4
+	src/RLEG/leg_thread.c										1.3
+	src/PCAP_CAPD/Makefile										1.4
+	src/PCAP_CAPD/capd.c										1.8
+	src/PCAP_CAPD/pcapfunc.c									1.7
+===================================================================
+1. ³¯  Â¥ : 2009.05.11 (¿ù) 
+2. ÀÛ¼ºÀÚ : ½Åjjinri
+3. ³»  ¿ë :
+	+ RDRANA
+		- sce_ip.s_addr = g_Struct.stIP.dwIP -> inet_ntoa(sce_ip)
+4. ÆÄ  ÀÏ :
+	src/RDRANA/main.c											1.5
+===================================================================
+1. ³¯  Â¥ : 2009.05.11 (¿ù) 
+2. ÀÛ¼ºÀÚ : ½Å¿µÈ£
+3. ³»  ¿ë :
+	+ MMCR
+		- dis-sess-info
+4. ÆÄ  ÀÏ :
+	src/MMCR/mmc_proc.c											1.2
+	src/MMCR/mmcr_init.c										1.6
+	src/MMCR/mmcr_main.c										1.5
+===================================================================
+1. ³¯  Â¥ : 2009.05.9 (SAT) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ DSC_SIM
+		- DSC RADIUS SIMULATOR °³¹ß.
+4. ÆÄ  ÀÏ :
+	SMLEG/src/RDRANA/capd_mml.c									1.5
+	SMLEG/src/RDRANA/main.c										1.4
+
+===================================================================
+1. ³¯  Â¥ : 2009.05.8 (FRI) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ SMSC_SVR
+		- smpp server simulator °³¹ß.
+	+ RLEG
+		- thread ÀÛ¾÷, Block test
+	+ SAMD
+	+ REANA
+	+ RANA
+	+ PCAP_CAPD
+	+ PANA 
+	+ MEMD
+	+ IXPC 
+	+ IFB 
+		- µ¶»êµ¿ Àåºñ ÀÔ°í·Î ÀÏ´Ü update
+
+
+	+ TODO
+	
+4. ÆÄ  ÀÏ :
+	src/TOOLS/SMSC_SVR/Makefile									1.1
+	src/TOOLS/SMSC_SVR/smsc_init.c								1.1
+	src/TOOLS/SMSC_SVR/smsc_main.c								1.1
+	src/TOOLS/SMSC_SVR/smsc_proc.c								1.1
+	src/TOOLS/SMSC_SVR/smsc_proto.h								1.1
+	src/TOOLS/SMSC_SVR/socklib.c								1.1
+	src/TOOLS/SMSC_SVR/socklib.h								1.1
+	src/RLEG/leg.h												1.4
+	src/RLEG/leg_init.c											1.4
+	src/RLEG/leg_main.c											1.6
+	src/RLEG/leg_radius.c										1.5
+	src/RLEG/leg_thread.c										1.2
+	src/SAMD/samd_ping.c										1.4
+	src/SAMD/samd_proc.c										1.5
+	src/REANA/lex.parsedata.c									1.1
+	src/REANA/Makefile											1.3
+	src/REANA/re_main.c											1.6
+	src/REANA/re_msgq.c											1.4
+	src/RANA/Makefile											1.2
+	src/RANA/radius_init.c										1.2
+	src/RANA/radius_main.c										1.5
+	src/PCAP_CAPD/Makefile										1.3
+	src/PCAP_CAPD/capd.c										1.7
+	src/PCAP_CAPD/pcapfunc.c									1.3
+	src/PANA/Makefile											1.3
+	src/PANA/ana.c												1.5
+	src/PANA/ana_msgq.c											1.2
+	src/MEMD/memd_view.c										1.2
+	src/IXPC/ixpc_main.c										1.2
+	src/IFB/ifb_comm.c											1.2
+	src/Makefile												1.5
+	src/TOOLS/MYSQL_TEST/sms_mysql.c							1.3
+	libsrc/COMM/Makefile										1.5
+	libsrc/COMM/check_run_myproc.c								1.5
+	libsrc/COMM/proc_version.c									1.3
+	libsrc/UTILLIB/lwrite.c										1.3
+	SMLEG/MkConfig.mk											1.3
+====================================================================
+1. ³¯  Â¥ : 2009.05.8 (Fri) 
+2. ÀÛ¼ºÀÚ : jjinri.
+3. ³»  ¿ë :
+	+ RDRANA
+		- mmcr msgrcv() ¹Þ´Â ¼Ò½º Áßº¹ Á¦°Å  
+	+ RDR_CAPD
+		- 
+	+ TODO
+		- RDRANA Trace Block ¸Þ½ÃÁö Ã³¸® Ãß°¡ ÇØ¾ßÇÔ.
+4. ÆÄ  ÀÏ :
+	SMLEG/src/RDRANA/capd_mml.c									1.4
+	SMLEG/src/RDRANA/main.c 									1.3
+	SMLEG/src/RDR_CAPD/capd_init.c								1.4
+===================================================================
+1. ³¯  Â¥ : 2009.05.6 (MON) 
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ RLEG
+		- thread ·Î ±¸Á¶ º¯°æ.
+		- scm connect ip/port config(sysconfig) ·Î Ã³¸®.
+	+ SMPP
+		- SMS Ã³¸®.
+	+ TODO
+		- RLEG ºí·° thread °ü¸® ·ÎÁ÷ Ãß°¡µÇ¾ß ÇÔ(watch-dog)
+4. ÆÄ  ÀÏ :
+	src/RLEG/leg_init.c											1.3
+	src/RLEG/leg_main.c											1.5
+	src/RLEG/leg_msgq.c											1.3
+	src/RLEG/leg_radius.c										1.4
+	src/RLEG/leg_sce_comm.c										1.3
+	src/RLEG/leg.h												1.3
+	src/RLEG/leg_thread.c										1.1
+	src/RLEG/Makefile											1.6
+	src/SMPP/smpp_init.c										1.3
+	src/SMPP/smpp_msgQ.c										1.5
+	src/SMPP/smpp_proto.c										1.5
+	src/SMPP/smpp_sql.c											1.3
+===================================================================
+1. ³¯  Â¥ : 2009.05.6 (¼ö) 
+2. ÀÛ¼ºÀÚ : jjinri.
+3. ³»  ¿ë :
+	+ RDRCAPD ÇÁ·Î¼¼½º Ãß°¡ (yhshin)
+	+ RDRANA
+	+ MMCR 
+	  - TRACE message °ü·Ã 
+4. ÆÄ  ÀÏ : 
+	DATA/TRACE_INFO.conf	
+
+	src/RDRANA/ana_msgq.c										1.1
+	src/RDRANA/capd_init.c										1.4
+	src/RDRANA/capd_mml.c										1.2
+	src/RDRANA/main.c											1.1
+	src/RDRANA/pcapfunc.c										1.5
+	src/RDRANA/rdr_thread.c										1.1
+	src/RDRANA/capd_msgtypes.h									1.2
+	src/RDRANA/rdrheader.h										1.4
+	src/RDRANA/Makefile											1.4
+
+	src/RDR_CAPD/Makefile 										1.1
+	src/RDR_CAPD/capd.c											1.1
+	src/RDR_CAPD/capd_global.h									1.1
+	src/RDR_CAPD/capd_init.c									1.1
+	src/RDR_CAPD/capd_msgq.c									1.1
+	src/RDR_CAPD/capd_test.c									1.1
+	src/RDR_CAPD/conf.c											1.1
+	src/RDR_CAPD/conf.h											1.1
+	src/RDR_CAPD/dagfunc.c										1.1
+	src/RDR_CAPD/log.c											1.1
+
+
+	/src/MMCR/Makefile											1.4
+	/src/MMCR/mmcr_init.c										1.5
+	/src/MMCR/mmcr_main.c										1.4
+	/src/MMCR/mmcr_mmc_addinfo.c								1.2
+	/src/MMCR/mmcr_rxtxmsg.c									1.4
+	/src/MMCR/mmcr_shmprc.c										1.4
+===================================================================
+1. ³¯  Â¥ : 2009.05.4 (¿ù)
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ SAMD
+	  - misalign.o link
+	  - version R1.0.0
+	  - broken pipe Á¦°Å (SetupSignal add)
+	+ MMCR 
+	  - mmc Ãß°¡ (dis_sess_info)
+4. ÆÄ  ÀÏ : 
+	/src/SAMD/Makefile											1.4
+	/src/SAMD/samd_init.c										1.3
+	/src/SAMD/samd_main.c										1.4
+	/src/SAMD/samd_ntp.c										1.2
+	/src/SAMD/samd_ping.c										1.3
+	/src/SAMD/samd_proc.c										1.4
+	/src/SAMD/samd_rxtxmsg.c									1.2
+
+
+	/src/MMCR/mmc_hld.c											1.1
+	/src/MMCR/mmc_hld.h											1.1
+	/src/MMCR/mmc_proc.c										1.1
+	/src/MMCR/mmcr.h											1.3
+	/src/MMCR/mmcr_init.c										1.4
+	/src/MMCR/mmcr_main.c										1.3
+	/src/MMCR/mmcr_rxtxmsg.c									1.3
+	/src/MMCR/mmcr_shmprc.c										1.3
+	/src/MMCR/Makefile											1.3
+===================================================================
+1. ³¯  Â¥ : 2009.05.2 (SAT)
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë :
+	+ SMPP °³¹ß ¹× Å×½ºÆ® 1Â÷ ¿Ï·á.
+	+ SMS_SVR / SMS_CLI Simulator ÀÛ¾÷.(CVS ¼Ò½º ¾È¿Ã¸²)
+	+ DATA File backup
+	+ 210 ¹ø /export/dsc/work/LGT_DSC Total Backup.
+		- CVS UP ¹öÁ¯.
+4. ÆÄ  ÀÏ : 
+	DATA/LOG_LEVEL_DEBUG.conf									1.1
+	DATA/RPT_BLOCK.sql											1.1
+	DATA/RULESET_LIST.conf										1.1
+	DATA/ruleset.c												1.1
+	DATA/smpp.conf												1.1
+	DATA/LOG_LEVEL.conf											1.2
+	DATA/sysconfig												1.2
+	src/SMPP/cid_handle.c										1.2
+	src/SMPP/smpp.h												1.4
+	src/SMPP/smpp_init.c										1.2
+	src/SMPP/smpp_log.c											1.3
+	src/SMPP/smpp_main.c										1.4
+	src/SMPP/smpp_msgQ.c										1.4
+	src/SMPP/smpp_proto.c										1.4
+	src/SMPP/smpp_msgQ.c                    					1.4
+	src/SMPP/smpp_socket.c										1.4
+	src/SMPP/smpp_sql.c											1.2
+	src/SMPP/smpp_util.c										1.4
+===================================================================
+1. ³¯  Â¥ : 2009.04.29 (WED)
+2. ÀÛ¼ºÀÚ : jjinri
+3. ³»  ¿ë : RDRANA
+		- mml ¼Ò½º , msgq Ãß°¡ 
+4. ÆÄ  ÀÏ : 
+	SMLEG/src/RDRANA/Makefile									1.3
+	SMLEG/src/RDRANA/capd.c										1.6
+	SMLEG/src/RDRANA/capd_global.h								1.3
+	SMLEG/src/RDRANA/capd_init.c								1.3
+	SMLEG/src/RDRANA/capd_mml.c									1.1
+	SMLEG/src/RDRANA/capd_msgtypes.h							1.1
+	SMLEG/src/RDRANA/capd_test.c								1.2
+	SMLEG/src/RDRANA/pcapfunc.c									1.4
+	SMLEG/src/RDRANA/rdrheader.h								1.3
+===================================================================
+1. ³¯  Â¥ : 2009.04.28 (TUE)
+2. ÀÛ¼ºÀÚ : sjjeon
+3. ³»  ¿ë : SAMD
+		- Extend Ping Test ºÎºÐ Ãß°¡ 
+4. ÆÄ  ÀÏ : 
+	SMLEG/DATA/SCE_INFO.conf           							1.1
+	SMLEG/src/SAMD/samd.h                  						1.2
+	MLEG/src/SAMD/samd_ping.c              						1.2
+===================================================================
+1. ³¯  Â¥ : 2009.04.28 (TUE)
+2. ÀÛ¼ºÀÚ : jjinri.
+3. ³»  ¿ë : MYSQL_TEST
+		- juneÀ» À§ÇÑ Mysql Sample ¼Ò½º ÀÛ¼º 
+4. ÆÄ  ÀÏ : 
+	SMLEG/src/TOOLS/MYSQL_TEST/Makefile							1.1
+	SMLEG/src/TOOLS/MYSQL_TEST/sms_mysql.c						1.2
+===================================================================
+1. ³¯  Â¥ : 2009.04.27 (MON)
+2. ÀÛ¼ºÀÚ : hjpark.
+3. ³»  ¿ë : SAMD
+		- SMSERVER ¿¡ ´ëÇÑ p3sm --sm-status ¸í·É¾î °á°ú Ã³¸®
+4. ÆÄ  ÀÏ : 
+	src/SAMD/samd_init.c 										1.2
+	src/SAMD/samd_main.c  										1.3
+	src/SAMD/samd_proc.c										1.3
+	src/SAMD/samd_util.c  										1.3
+===================================================================
+1. ³¯  Â¥ : 2009.04.26 (SUN)
+2. ÀÛ¼ºÀÚ : jjinri.
+3. ³»  ¿ë : RDRANA
+		- BLOCK RDR Protocol ºÐ¼®
+		- BLOCK RDR mysql Insert 
+4. ÆÄ  ÀÏ : 
+	src/RDRANA/Makefile.c										1.2
+	src/RDRANA/capd.c											1.5
+	src/RDRANA/capd_init.c										1.2
+	src/RDRANA/pcapfunc.c										1.3
+	src/RDRANA/rdrheader.h										1.2
+===================================================================
+1. ³¯  Â¥ : 2009.04.26 (SUN)
+2. ÀÛ¼ºÀÚ : June.
+3. ³»  ¿ë : SMPP
+		- SMPP process °³¹ß.
+        - SMPP Header Á¤ÀÇ.
+		- SMPP <--> RDRANA °£ info Structure
+4. ÆÄ  ÀÏ : 
+	include/comm_loglevel.h										1.3
+	include/ipaf_define.h										1.4
+	include/ipaf_names.h										1.3
+	include/comm_define.h										1.1
+	include/comm_msgtypes_smpp.h								1.1
+	include/stm_smp_msgtypes.h									1.1
+	include/stm_smp_msgtypes.h									1.1
+	include/sfmconf_smpp.h										1.1
+	src/SMPP/Makefile											1.1
+	src/SMPP/cid_handle.c										1.1
+	src/SMPP/cid_handle.c										1.1
+	src/SMPP/smpp.h												1.1
+	src/SMPP/smpp_db.c											1.1
+	src/SMPP/smpp_deletedb.c									1.1
+	src/SMPP/smpp_initdb.c										1.1
+	src/SMPP/smpp_log.c											1.1
+	src/SMPP/smpp_main.c										1.1
+	src/SMPP/smpp_msgQ.c										1.1
+	src/SMPP/smpp_proto.c										1.1
+	src/SMPP/smpp_selectdb.c									1.1
+	src/SMPP/smpp_socket.c										1.1
+	src/SMPP/smpp_updatedb.c									1.1
+	src/SMPP/smpp_util.c										1.1
+===================================================================
+1. ³¯  Â¥ : 2009.04.26 (ÀÏ)
+2. ÀÛ¼ºÀÚ : Àü¼ºÁø 
+3. ³»  ¿ë : SAMD
+        - DSCA/DSCB ÀÌÁßÈ­ »óÅÂ Ã¼Å© ±â´É Ãß°¡ 
+        - SAMDÀÇ NTP Ã¼Å© ÇÔ¼ö core ¹ß»ýÀ¸·Î ¸·¾Æ ³õÀ½
+4. ÆÄ  ÀÏ : 
+	src/SAMD/samd_main.c										1.2
+	src/SAMD/samd_proc.c										1.2
+	src/SAMD/samd_util.c										1.2
+===================================================================
+1. ³¯  Â¥ : 2009.04.23
+2. ÀÛ¼ºÀÚ : À±Áø¼®
+3. ³»  ¿ë : CAPD
+        - pcap_setnonblock(), pcap_next_ex() 
+        - TODO: ¼³Á¤ÆÄÀÏ¿¡ ÀÎÅÍÆäÀÌ½º, ÆÐÅ¶ÇÊÅÍ Á¤º¸°¡ ÀÖ¾î¾ß ÇÒ µí
+4. ÆÄ  ÀÏ : 
+	./src/PCAP_CAPD/capd.c										1.4
+	./src/PCAP_CAPD/pcapfunc.c									1.4
+===================================================================
+1. ³¯  Â¥ : 2009.04.21
+2. ÀÛ¼ºÀÚ : À±Áø¼®
+3. ³»  ¿ë : RANA
+        - HoleCheck ¸Þ¼¼Áö ºÐ¼® Ãß°¡
+        - TODO: 
+4. ÆÄ  ÀÏ : 
+	./src/RANA/radius_main.c									1.3
+	./include/ipaf_define.h										1.2
+	./include/ipaf_svc.h 										1.2
+===================================================================
+1. ³¯  Â¥ : 2009.04.21
+2. ÀÛ¼ºÀÚ : À±Áø¼®
+3. ³»  ¿ë : PANA
+        - ÄÚµå Á¤¸® 
+        - TODO: 
+4. ÆÄ  ÀÏ : 
+	./src/PANA/ana.c 											1.3
+===================================================================
+1. ³¯  Â¥ : 2009.04.21
+2. ÀÛ¼ºÀÚ : À±Áø¼®
+3. ³»  ¿ë : PCAP_CAPD 
+        - ¸ÖÆ¼ ÀÎÅÍÆäÀÌ½º Áö¿ø 
+        - TODO: ÀÎÅÍÆäÀÌ½º Á¤º¸¸¦ ¼³Á¤ÆÄÀÏ¿¡¼­ ÀÐÀ» ¼ö ÀÖ°Ô ¼öÁ¤ 
+4. ÆÄ  ÀÏ : 
+	./src/PCAP_CAPD/Makefile									1.2
+	./src/PCAP_CAPD/capd.c										1.3
+	./src/PCAP_CAPD/pcapfunc.c									1.2
+===================================================================
+1. ³¯Â¥ : 2009³â 4. ()
+2. ÀÛ¼ºÀÚ : 
+3. ³»¿ë : 
+    . [OMP-SAMD]
+        - 
+        - 
+4. ÆÄÀÏ : 
+    src/SAMD/samd_main.c                                        1.2
+    src/SAMD/samd_main.c                                        1.2
+====================================================================
+ 

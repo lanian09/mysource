@@ -1,0 +1,653 @@
+#1. TAG 붙이는 법
+> cvs tag TAG_NAME
+
+# 2. HISTORY.TXT 수정하는 법
+> cvs admin -l HISTORY.TXT
+...<수정>
+> cvs commit -m "log" HISTORY.TXT
+===============================================================================
+1. 날  짜 : 2011.09.07(수)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC
+	  - path.h : IPPOOL path added
+	  - sshmid.h : LAST_KEY에 대한 주석정리
+	* Makefile
+	  - make lib, make oam : 각 모듈별로 컴파일 가능하도록 수정
+	  - make cleanall : lib, oam 도 삭제 되도록 수정
+4. 파  일 :
+	/cvs/UPST_PROJECT/INC/path.h											1.7
+	/cvs/UPST_PROJECT/INC/sshmid.h											1.6
+	/cvs/UPST_PROJECT/Makefile												1.3
+===============================================================================
+1. 날  짜 : 2011.09.07(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TOOLS/GIFO_CONF
+	  - process list conf file 수정
+4. 파  일 :
+	/cvs/UPST_PROJECT/TOOLS/GIFO_CONF/process_list.conf.taf					1.2
+===============================================================================
+1. 날  짜 : 2011.09.06(화)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC
+	  - procid.h : SEQ_PROC_FIRST, SEQ_PROC_LAST 추가
+4. 파  일 :
+	/cvs/UPST_PROJECT/INC/procid.h											1.8
+===============================================================================
+1. 날  짜 : 2011.09.06(화)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC
+	  - db_struct.h watch_filter.h watch_mon.h 가 O&M/SRC/MMCD 에서도 사용되어서
+		옮겨짐
+4. 파  일 :
+	/cvs/UPST_PROJECT/INC/db_struct.h										1.1
+	/cvs/UPST_PROJECT/INC/watch_filter.h									1.1
+	/cvs/UPST_PROJECT/INC/watch_mon.h										1.1
+	/cvs/UPST_PROJECT/INC/mmcdef.h											1.6
+===============================================================================
+1. 날  짜 : 2011.09.06(화)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC
+	  - path.h : PIRP_MAPPING.DAT path 추가
+4. 파  일 :
+	/cvs/UPST_PROJECT/project_init.sh										1.2
+	/cvs/UPST_PROJECT/INC/path.h											1.6
+===============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC
+	  - path.h : 각종 DATA file path 추가
+	* GIFO_CONF
+	  - tam flow configuration 변경
+	  - make [taf|tam] 수행시, 각 TAF/DATA, TAM/DATA 로 복사되도록 수정
+4. 파  일 :
+	/cvs/UPST_PROJECT/INC/path.h											1.5
+	/cvs/UPST_PROJECT/TOOLS/GIFO_CONF/Makefile								1.2
+	/cvs/UPST_PROJECT/TOOLS/GIFO_CONF/flow_list.conf.tam					1.2
+===============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* Makefile
+	  - 'tam' added
+	* INC
+	  - procid.h A_RP, A_RPPI, A_IHTTP, A_GRE multi process sequence id added
+	* SRC/Makefile
+	  - RMI removed => moved into O&M( = OAM )
+	* TOOLS/GIFO_CONF
+	  - gifo configuration tool added
+	  - README file included ( 참고 요망 )
+	  - make taf, make tam 으로 작성되도록 수정 후 commit
+4. 파  일 :
+	/cvs/UPST_PROJECT/OAM/BIN/.empty										1.1
+	/cvs/UPST_PROJECT/Makefile												1.2
+	/cvs/UPST_PROJECT/INC/procid.h											1.6,1.7
+	/cvs/UPST_PROJECT/TAM/SRC/Makefile										1.4
+	/cvs/UPST_PROJECT/TOOLS/GIFO_CONF/Makefile								1.1
+	/cvs/UPST_PROJECT/TOOLS/GIFO_CONF/README								1.1
+	/cvs/UPST_PROJECT/TOOLS/GIFO_CONF/flow_list.conf.taf					1.1
+	/cvs/UPST_PROJECT/TOOLS/GIFO_CONF/flow_list.conf.tam					1.1
+	/cvs/UPST_PROJECT/TOOLS/GIFO_CONF/gifo.pl								1.1
+	/cvs/UPST_PROJECT/TOOLS/GIFO_CONF/process_list.conf.taf					1.1
+	/cvs/UPST_PROJECT/TOOLS/GIFO_CONF/process_list.conf.tam					1.1
+===============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC
+	  - db_define.h : TAM/SRC/S_MNG 에 있던 것이 TAF/SRC/S_MNG 에서도 사용되면서 옮겨짐
+	  - filter.h : PDIF_SYSTYPE 추가
+	  - path.h : FILE_TIMER 추가
+	  - procid.h : A_SIP = 0 에서 1로 변경. 차후 재 변경이 고려되어야 할 듯.
+				   SEQ_PROC_ID = 0 은 PRE_A 등에서 ETC 값으로 사용되기 때문에,
+				   분석 블럭에서 참조할 때는 0을 접근할 수 없도록 구성해야 함.
+4. 파  일 :
+	/cvs/UPST_PROJECT/INC/db_define.h										1.1
+	/cvs/UPST_PROJECT/INC/filter.h											1.3
+	/cvs/UPST_PROJECT/INC/path.h											1.4
+	/cvs/UPST_PROJECT/INC/procid.h											1.5
+===============================================================================
+1. 날  짜 : 2011.09.04(일)
+2. 작성자 : 백호현
+3. 내  용 :
+	* INC/timesec.h
+	  - SEC_OF_DAY 추가
+4. 파  일 :
+	/cvs/UPST_PROJECT/INC/timesec.h											1.2
+===============================================================================
+1. 날  짜 : 2011.09.01(목)
+2. 작성자 : 손형석
+3. 내  용 :
+	* filter.h, msgdef.h
+	  - S_MNG 에서 사용되는 filter 정보 구조체 정의
+4. 파  일 :
+	/cvs/UPST_PROJECT/INC/filter.h											1.2
+	/cvs/UPST_PROJECT/INC/msgdef.h											1.15
+===============================================================================
+1. 날  짜 : 2011.09.01(목)
+2. 작성자 : 백호현
+3. 내  용 :
+	* SI_LOG
+	  - 헤더 변경사항 적용 >> 컴파일 오류 수정
+4. 파  일 :
+	/cvs/UPST_PROJCT/TAM/SRC/SI_LOG/log.h									remove
+	/cvs/UPST_PROJCT/TAM/SRC/SI_LOG/silog_func.c							1.2
+	/cvs/UPST_PROJCT/TAM/SRC/SI_LOG/silog_init.c							1.2
+	/cvs/UPST_PROJCT/TAM/SRC/SI_LOG/silog_main.c							1.2
+	/cvs/UPST_PROJCT/TAM/SRC/SI_LOG/silog_sock.c							1.2
+===============================================================================
+1. 날  짜 : 2011.09.01(목)
+2. 작성자 : 백호현
+3. 내  용 :
+	* log.h 제거
+	  - A_ROAM, SI_DB, M_TRACE_PCAP
+4. 파  일 :
+	/cvs/UPST_PROJCT/TAM/SRC/A_ROAM/log.h									remove
+	/cvs/UPST_PROJCT/TAM/SRC/A_ROAM/roam_func.c								1.3
+	/cvs/UPST_PROJCT/TAM/SRC/A_ROAM/roam_init.c								1.3
+	/cvs/UPST_PROJCT/TAM/SRC/A_ROAM/roam_main.c								1.3
+	/cvs/UPST_PROJCT/TAM/SRC/A_ROAM/roam_msgq.c								1.3
+	/cvs/UPST_PROJCT/TAM/SRC/A_ROAM/roam_util.c								1.3
+	/cvs/UPST_PROJCT/TAM/SRC/M_TRACE_PCAP/trace_init.c						1.3
+	/cvs/UPST_PROJCT/TAM/SRC/SI_DB/log.h									remove
+===============================================================================
+1. 날  짜 : 2011.09.01(목)
+2. 작성자 : 백호현
+3. 내  용 :
+	* INC/sshmid.h
+	  - Syntax error 수정
+4. 파  일 :
+	/cvs/UPST_PROJECT/INC/sshmid.h											1.5
+===============================================================================
+1. 날  짜 : 2011.09.01(목)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC/msgdef.h
+	  - #include <time.h> 추가
+	* INC/sshmid.h
+	  - TIFB/KillMC.c 에서 사용하기 위해서 S_SSHM_START/LAST_KEY[_OAM] 를 추가
+4. 파  일 :
+	/cvs/UPST_PROJECT/INC/msgdef.h											1.14
+	/cvs/UPST_PROJECT/INC/sshmid.h											1.4
+===============================================================================
+1. 날  짜 : 2011.09.01(목)
+2. 작성자 : 백호현
+3. 내  용 :
+	* INC
+	  - sshmid.h : S_SSHM_A_ROAM 추가
+4. 파  일 :
+	/cvs/UPST_PROJECT/INC/sshmid.h											1.3
+===============================================================================
+1. 날  짜 : 2011.08.31(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* M_TRACE_PCAP
+	  - 신규 라이브러리 적용 & 헤더 정리
+	* INC
+	  - capdef.h : Capture_Header_Msg, st_beacon_hdr 추가
+	  - path.h : FILE_SVRTRACE_TBL 추가
+	  - sshmid.h :  S_SSHM_SERVTRACE_INFO, S_SSHM_TRACE_FILE, 
+					S_SSHM_SERVTRACE_FILE 추가
+	  - fidb_info.h : tam_svc.h 제거
+	* A_ROAM
+	  - 헤더정리
+	* SNMPIF
+	  - 누락 파일 업로드
+4. 파  일 :
+	/cvs/UPST_PROJECT/INC/capdef.h											1.2
+	/cvs/UPST_PROJECT/INC/path.h											1.3
+	/cvs/UPST_PROJECT/INC/sshmid.h											1.2
+	/cvs/UPST_PROJECT/TAM/INC/fidb_info.h									1.4
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_main.h							1.2
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/Makefile							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/log.h							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/trace_comm.h						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/trace_func.c						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/trace_func.h						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/trace_init.c						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/trace_init.h						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/trace_link.c						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/trace_link.h						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/trace_main.c						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/DQMS-MIB.txt							1.1
+===============================================================================
+1. 날  짜 : 2011.08.31(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* SNMPIF
+	  - 신규 라이브러리 적용 & 헤더 정리
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/Makefile								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/chnTable.c								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/chnTable.h								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/cpuTable.c								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/cpuTable.h								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/dskTable.c								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/dskTable.h								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/edTable.c								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/edTable.h								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/ethTable.c								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/ethTable.h								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/fanTable.c								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/fanTable.h								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/main.c									1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/memTable.c								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/memTable.h								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/nifoTable.c							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/nifoTable.h							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/ntpTable.c								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/ntpTable.h								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/prTable.c								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/prTable.h								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/pwrTable.c								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/pwrTable.h								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/queTable.c								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/queTable.h								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/snmpif.h								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/upresto.c								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/upresto.h								1.1
+===============================================================================
+1. 날  짜 : 2011.08.30(화)
+2. 작성자 : 백호현
+3. 내  용 :
+	* INC
+	  - SEQ_PROC_SNMPIF 추가
+4. 파  일 :
+	/cvs/UPST_PROJECT/INC/procid.h											1.2
+===============================================================================
+1. 날  짜 : 2011.08.30(화)
+2. 작성자 : 백호현
+3. 내  용 :
+	* INC
+	  - timesec.h 추가 (SEC_OF_XXXX)
+4. 파  일 :
+	/cvs/UPST_PROJECT/INC/timesec.h											1.1
+===============================================================================
+1. 날  짜 : 2011.08.29(월)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAM/SRC/SI_NMS
+	  - 신규 라이브러리 적용 & 헤더 정리
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/Makefile								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/log.h									1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_comm.h							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_func.c							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_func.h							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_init.c							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_init.h							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_main.c							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_sock.c							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_sock.h							1.1
+===============================================================================
+1. 날  짜 : 2011.08.24(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* FSTAT
+	  - 컴파일 오류 수정
+4. 파  일 :
+	/cvs/OAM/SRC/Makefile													1.7
+	/cvs/OAM/SRC/FSTAT/fstat_comm.h											1.2
+===============================================================================
+1. 날  짜 : 2011.08.24(수)
+2. 작성자 : 손형석
+3. 내  용 :
+	* KEY 정리
+4. 파  일 :
+	/cvs/DQMS2/INC/sshm_id.h												1.10
+===============================================================================
+1. 날  짜 : 2011.08.24(수)
+2. 작성자 : 손형석
+3. 내  용 :
+	* comm_def.h
+	  - LOGLVL.dat, TRACE_TBL.dat File Path 추가
+	* msg_def.h
+	  - MID_SVC_MONITOR_KPI/INF 추가
+	  - SID_FLT/GFLT/CHKRES/CHKREQ 제거 :: msgdef.h in OAM 쪽으로 옮겨짐
+	  - MID_FLT_MSC/MON_THRES 추가
+	  - SID_MML/PATCH 제거 :: msgdef.h in OAM 쪽으로 옮겨짐
+	* proc_id.h
+	  - SEQ_PROC_SI_DB 추가
+	* sshm_id.h
+	  - S_SSHM WATCH_FILTER, MON_TOTAL, MON_TOTAL_1MIN 추가
+	* mmc_def.h
+	  - 추가. 그러나 아직 쓰이는 곳은;;;
+	* mmc_id.h
+	  - 추가. OAM/INC/mmcid.h 의 확장판. dqms dependency를 가짐
+4. 파  일 :
+	/cvs/DQMS2/INC/mmc_def.h												1.1
+	/cvs/DQMS2/INC/mmc_id.h													1.1
+	/cvs/DQMS2/INC/comm_def.h												1.5
+	/cvs/DQMS2/INC/msg_def.h												1.5
+	/cvs/DQMS2/INC/proc_id.h												1.9
+	/cvs/DQMS2/INC/sshm_id.h												1.9
+===============================================================================
+1. 날  짜 : 2011.08.22(월)
+2. 작성자 : 백호현
+3. 내  용 :
+	* INC
+	  - msg_def.h 에 MID_FLT_EQUIP 추가
+4. 파  일 :
+	/cvs/DQMS2/INC/msg_def.h												1.4
+===============================================================================
+1. 날  짜 : 2011.08.22(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* TAM/SI_LOG 관련 key 추가
+4. 파  일 :
+	/cvs/DQMS2/CGALIB/Makefile												1.2
+	/cvs/DQMS2/INC/msg_def.h												1.3
+	/cvs/DQMS2/INC/sshm_id.h												1.8
+	/cvs/DQMS2/INC/proc_id.h												1.8
+===============================================================================
+1. 날  짜 : 2011.08.22(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* TAM/A_RPPI 관련 key 추가
+4. 파  일 :
+	/cvs/DQMS2/INC/proc_id.h												1.7
+===============================================================================
+1. 날  짜 : 2011.08.22(월)
+2. 작성자 : 함동철 
+3. 내  용 :
+	* DQMS/TAM_APP/INC 헤더 DQMS2/TAM/INC로 복사해서 cvs 추가  
+4. 파  일 :
+===============================================================================
+1. 날  짜 : 2011.08.21(일)
+2. 작성자 : 손형석
+3. 내  용 :
+	* PRE_A 관련 define 상수 정의
+4. 파  일 :
+	/cvs/DQMS2/INC/comm_def.h												1.4
+	/cvs/DQMS2/INC/sshm_id.h												1.7
+===============================================================================
+1. 날  짜 : 2011.08.21(일)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAF/SRC/*
+	  - taf_shm2.h 파일 include 하지 않도록 소스 수정
+4. 파  일 :
+	/cvs/DQMS2/TAF/SRC/CAPD_NEW/capd_func.h									1.1
+	/cvs/DQMS2/TAF/SRC/CAPD_NEW/capd_init.h									1.1
+	/cvs/DQMS2/TAF/SRC/CAPD_NEW/capd_main.h									1.1
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/capd_func.h									1.1
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/capd_init.h									1.2
+	/cvs/DQMS2/TAF/SRC/CAPD_SIM/capd_main.h									1.1
+===============================================================================
+1. 날  짜 : 2011.08.21(일)
+2. 작성자 : 손형석
+3. 내  용 :
+	* S_MNG(TAF)
+	  - 추가됨. 그에 따른 헤더및 등등 수정
+4. 파  일 :
+	/cvs/DQMS2/INC/comm_def.h												1.3
+	/cvs/DQMS2/INC/proc_id.h												1.6
+	/cvs/DQMS2/INC/sshm_id.h												1.6
+	/cvs/DQMS2/TAF/INC/define.h												1.2
+	/cvs/DQMS2/TAF/INC/filter.h												1.3
+	/cvs/DQMS2/TAF/INC/taf_svc.h											1.2
+	/cvs/DQMS2/TAF/LIBSRC/Makefile											1.4
+	/cvs/DQMS2/TAF/SRC/S_MNG/Makefile										1.1
+	/cvs/DQMS2/TAF/SRC/S_MNG/fltmng_api.h									1.1
+	/cvs/DQMS2/TAF/SRC/S_MNG/fltmng_file.c									1.1
+	/cvs/DQMS2/TAF/SRC/S_MNG/fltmng_func.c									1.1
+	/cvs/DQMS2/TAF/SRC/S_MNG/fltmng_init.c									1.1
+	/cvs/DQMS2/TAF/SRC/S_MNG/fltmng_log.c									1.1
+	/cvs/DQMS2/TAF/SRC/S_MNG/fltmng_main.c									1.1
+	/cvs/DQMS2/TAF/SRC/S_MNG/log.h											1.1
+===============================================================================
+1. 날  짜 : 2011.08.21(일)
+2. 작성자 : 백호현 
+3. 내  용 :
+	* DQMS2/CGALIB
+	  - LEX 관련 라이브러리 Makefile 수정 - 라이브러리 파일 복사 위치 변경
+	* DQMS2/INC
+	  - msg_def.h 에서 OAM쪽과 겹치는 MID_XXX_XXX 삭제
+	  - proc_id.h 에 SEQ_PROC_XXX 추가
+4. 파  일 :
+	/cvs/DQMS2/CGALIB/EMS/Makefile											1.2
+	/cvs/DQMS2/CGALIB/FB/Makefile											1.2
+	/cvs/DQMS2/CGALIB/FV/Makefile											1.2
+	/cvs/DQMS2/CGALIB/HTTP/Makefile											1.2
+	/cvs/DQMS2/CGALIB/MSRP/Makefile											1.2
+	/cvs/DQMS2/CGALIB/PAGE/Makefile											1.2
+	/cvs/DQMS2/CGALIB/RTSP/Makefile											1.2
+	/cvs/DQMS2/CGALIB/SIP/Makefile											1.2
+	/cvs/DQMS2/CGALIB/WIDGET/Makefile										1.2
+	/cvs/DQMS2/CGALIB/XCAP/Makefile											1.2
+	/cvs/DQMS2/INC/msg_def.h												1.2
+	/cvs/DQMS2/INC/proc_id.h												1.5
+	/cvs/DQMS2/TAF/INC/typedef.h											1.2
+===============================================================================
+1. 날  짜 : 2011.08.19(금)
+2. 작성자 : 손형석
+3. 내  용 :
+	* DQMS2 에서 모든 소스를 컴파일하기 위한 Makefile 생성
+	  - build 순서는 CGALIB -> TAF ( -> TAM -> GTAM )
+	  - LIB 와 OAM 은 별도로 컴파일 하여야함 
+4. 파  일 :
+	/cvs/DQMS2/Makefile														1.2
+	/cvs/DQMS2/project_init.sh												1.2
+===============================================================================
+1. 날  짜 : 2011.08.19(금)
+2. 작성자 : 손형석
+3. 내  용 :
+	* CGALIB
+	  - LEX 관련 library 를 포함하여, 소스를 DQMS 아래로 옮김
+	  - LEX 관련 library 와 CGA library 는 TAF/LIB 에 위치하게 됨
+	  - LEX 관련 header 와 CGA header ( common_stg.h )는 최상위 INC,
+		즉, DQMS/INC 에 위치하게 됨
+	  - < CAUTION > 반드시 'UPST_LIB' directory를 link 연결한 뒤에
+		compile을 수행하여야 함.
+		CGA 에서는 내부적으로 nifo 등의 library를 사용하기 때문임.
+
+4. 파  일 :
+	/cvs/DQMS2/INC/ems.h													1.1
+	/cvs/DQMS2/INC/fv.h														1.1
+	/cvs/DQMS2/INC/http.h													1.1
+	/cvs/DQMS2/INC/msrp.h													1.1
+	/cvs/DQMS2/INC/page.h													1.1
+	/cvs/DQMS2/INC/rtsp.h													1.1
+	/cvs/DQMS2/INC/sip.h													1.1
+	/cvs/DQMS2/INC/widget.h													1.1
+	/cvs/DQMS2/INC/xcap.h													1.1
+	/cvs/DQMS2/CGALIB/BODY.stc												1.1
+	/cvs/DQMS2/CGALIB/LOG_member_Get_func.stc								1.1
+	/cvs/DQMS2/CGALIB/Makefile												1.1
+	/cvs/DQMS2/CGALIB/clean_all.sh											1.1
+	/cvs/DQMS2/CGALIB/common_stg.pstg										1.1
+	/cvs/DQMS2/CGALIB/flow.stc												1.1
+	/cvs/DQMS2/CGALIB/flow_dot.stcI											1.1
+	/cvs/DQMS2/CGALIB/structg_conf.sh										1.1
+	/cvs/DQMS2/CGALIB/EMS/Makefile											1.1
+	/cvs/DQMS2/CGALIB/EMS/emsreqbody.l										1.1
+	/cvs/DQMS2/CGALIB/EMS/emsrespbody.l										1.1
+	/cvs/DQMS2/CGALIB/FB/Makefile											1.1
+	/cvs/DQMS2/CGALIB/FB/fb_min.l											1.1
+	/cvs/DQMS2/CGALIB/FV/Makefile											1.1
+	/cvs/DQMS2/CGALIB/FV/fv_type.l											1.1
+	/cvs/DQMS2/CGALIB/HTTP/Makefile											1.1
+	/cvs/DQMS2/CGALIB/HTTP/a2g_dn.l											1.1
+	/cvs/DQMS2/CGALIB/HTTP/httpctype.l										1.1
+	/cvs/DQMS2/CGALIB/HTTP/httpctypeinfo.l									1.1
+	/cvs/DQMS2/CGALIB/HTTP/httphdrinfo.l									1.1
+	/cvs/DQMS2/CGALIB/HTTP/httpheader.l										1.1
+	/cvs/DQMS2/CGALIB/HTTP/httpheader.y										1.1
+	/cvs/DQMS2/CGALIB/HTTP/httphost.l										1.1
+	/cvs/DQMS2/CGALIB/HTTP/mms_from.l										1.1
+	/cvs/DQMS2/CGALIB/HTTP/mms_from_dn.l									1.1
+	/cvs/DQMS2/CGALIB/HTTP/mms_to.l											1.1
+	/cvs/DQMS2/CGALIB/HTTP/mms_to_dn.l										1.1
+	/cvs/DQMS2/CGALIB/HTTP/ssl.l											1.1
+	/cvs/DQMS2/CGALIB/HTTP/vod_dn.l											1.1
+	/cvs/DQMS2/CGALIB/MSRP/Makefile											1.1
+	/cvs/DQMS2/CGALIB/MSRP/msrp.l											1.1
+	/cvs/DQMS2/CGALIB/MSRP/msrp_min.l										1.1
+	/cvs/DQMS2/CGALIB/MSRP/msrpheader.l										1.1
+	/cvs/DQMS2/CGALIB/PAGE/Makefile											1.1
+	/cvs/DQMS2/CGALIB/PAGE/page_js.l										1.1
+	/cvs/DQMS2/CGALIB/RTSP/Makefile											1.1
+	/cvs/DQMS2/CGALIB/RTSP/rtsp_reqhdr.l									1.1
+	/cvs/DQMS2/CGALIB/RTSP/rtsp_requrl.l									1.1
+	/cvs/DQMS2/CGALIB/RTSP/rtsp_resbody.l									1.1
+	/cvs/DQMS2/CGALIB/RTSP/rtsp_reshdr.l									1.1
+	/cvs/DQMS2/CGALIB/SIP/Makefile											1.1
+	/cvs/DQMS2/CGALIB/SIP/sip.l												1.1
+	/cvs/DQMS2/CGALIB/SIP/sip_clientip.l									1.1
+	/cvs/DQMS2/CGALIB/SIP/sip_contentlen.l									1.1
+	/cvs/DQMS2/CGALIB/SIP/sip_ctype.l										1.1
+	/cvs/DQMS2/CGALIB/SIP/sip_invite.l										1.1
+	/cvs/DQMS2/CGALIB/SIP/sip_min.l											1.1
+	/cvs/DQMS2/CGALIB/SIP/sip_model.l										1.1
+	/cvs/DQMS2/CGALIB/SIP/sip_service.l										1.1
+	/cvs/DQMS2/CGALIB/SIP/sip_trans_key.l									1.1
+	/cvs/DQMS2/CGALIB/SIP/sipheader.l										1.1
+	/cvs/DQMS2/CGALIB/WIDGET/Makefile										1.1
+	/cvs/DQMS2/CGALIB/WIDGET/widgetack.l									1.1
+	/cvs/DQMS2/CGALIB/WIDGET/widgetmsgtype.l								1.1
+	/cvs/DQMS2/CGALIB/XCAP/Makefile											1.1
+	/cvs/DQMS2/CGALIB/XCAP/xcap_min.l										1.1
+	/cvs/DQMS2/CGALIB/structg/ASSOCIATION.stcI								1.1
+	/cvs/DQMS2/CGALIB/structg/BODY.stc										1.1
+	/cvs/DQMS2/CGALIB/structg/Doxyfile										1.1
+	/cvs/DQMS2/CGALIB/structg/HISTORY.TXT									1.1
+	/cvs/DQMS2/CGALIB/structg/LOG_KUN.stc									1.1
+	/cvs/DQMS2/CGALIB/structg/LOG_KUN_REQ_HDR.stc							1.1
+	/cvs/DQMS2/CGALIB/structg/LOG_KUN_RESP_HDR.stc							1.1
+	/cvs/DQMS2/CGALIB/structg/LOG_ME.stc									1.1
+	/cvs/DQMS2/CGALIB/structg/LOG_member_Get_func.stc						1.1
+	/cvs/DQMS2/CGALIB/structg/LOG_member_Set_func.stc						1.1
+	/cvs/DQMS2/CGALIB/structg/Makefile										1.1
+	/cvs/DQMS2/CGALIB/structg/README.TXT									1.1
+	/cvs/DQMS2/CGALIB/structg/TXTPARSE.stcI									1.1
+	/cvs/DQMS2/CGALIB/structg/aqua.pstg										1.1
+	/cvs/DQMS2/CGALIB/structg/bit.stg										1.1
+	/cvs/DQMS2/CGALIB/structg/cilog.stc										1.1
+	/cvs/DQMS2/CGALIB/structg/cilog_table.stc								1.1
+	/cvs/DQMS2/CGALIB/structg/clex.stc										1.1
+	/cvs/DQMS2/CGALIB/structg/co_log_debug.stc								1.1
+	/cvs/DQMS2/CGALIB/structg/co_log_main.stc								1.1
+	/cvs/DQMS2/CGALIB/structg/conf.pstg										1.1
+	/cvs/DQMS2/CGALIB/structg/define.upr									1.1
+	/cvs/DQMS2/CGALIB/structg/flat.upr										1.1
+	/cvs/DQMS2/CGALIB/structg/flow.stc										1.1
+	/cvs/DQMS2/CGALIB/structg/flow.stg										1.1
+	/cvs/DQMS2/CGALIB/structg/flow_dot.stc									1.1
+	/cvs/DQMS2/CGALIB/structg/flow_dot.stcI									1.1
+	/cvs/DQMS2/CGALIB/structg/footer.upr									1.1
+	/cvs/DQMS2/CGALIB/structg/function.upr									1.1
+	/cvs/DQMS2/CGALIB/structg/getlog.pstg									1.1
+	/cvs/DQMS2/CGALIB/structg/hash.stg										1.1
+	/cvs/DQMS2/CGALIB/structg/hashg.stg										1.1
+	/cvs/DQMS2/CGALIB/structg/hasho.stg										1.1
+	/cvs/DQMS2/CGALIB/structg/header.upr									1.1
+	/cvs/DQMS2/CGALIB/structg/log_table.stc									1.1
+	/cvs/DQMS2/CGALIB/structg/m_log_call.stc								1.1
+	/cvs/DQMS2/CGALIB/structg/m_log_debug.stc								1.1
+	/cvs/DQMS2/CGALIB/structg/m_log_define.stc								1.1
+	/cvs/DQMS2/CGALIB/structg/m_log_extern.stc								1.1
+	/cvs/DQMS2/CGALIB/structg/m_log_global.stc								1.1
+	/cvs/DQMS2/CGALIB/structg/m_log_msg.stc									1.1
+	/cvs/DQMS2/CGALIB/structg/m_log_save.stc								1.1
+	/cvs/DQMS2/CGALIB/structg/makefile.stc									1.1
+	/cvs/DQMS2/CGALIB/structg/makefile.upr									1.1
+	/cvs/DQMS2/CGALIB/structg/makefile_nodebug.upr							1.1
+	/cvs/DQMS2/CGALIB/structg/memg.stg										1.1
+	/cvs/DQMS2/CGALIB/structg/online.pstg									1.1
+	/cvs/DQMS2/CGALIB/structg/onlinebusiness.css							1.1
+	/cvs/DQMS2/CGALIB/structg/oramake.upr									1.1
+	/cvs/DQMS2/CGALIB/structg/oramake_nodebug.upr							1.1
+	/cvs/DQMS2/CGALIB/structg/pc.upr										1.1
+	/cvs/DQMS2/CGALIB/structg/pre.pstg										1.1
+	/cvs/DQMS2/CGALIB/structg/pstg.pl										1.1
+	/cvs/DQMS2/CGALIB/structg/si_log_debug.stc								1.1
+	/cvs/DQMS2/CGALIB/structg/sip.stg										1.1
+	/cvs/DQMS2/CGALIB/structg/stc.sh										1.1
+	/cvs/DQMS2/CGALIB/structg/stc.upr										1.1
+	/cvs/DQMS2/CGALIB/structg/structg.cfg									1.1
+	/cvs/DQMS2/CGALIB/structg/structg.pl									1.1
+	/cvs/DQMS2/CGALIB/structg/structg_precompile1.pl						1.1
+	/cvs/DQMS2/CGALIB/structg/tag.TXT										1.1
+	/cvs/DQMS2/CGALIB/structg/test.pstg										1.1
+	/cvs/DQMS2/CGALIB/structg/test.sh										1.1
+	/cvs/DQMS2/CGALIB/structg/timerN.stg									1.1
+	/cvs/DQMS2/CGALIB/structg/tt.stg										1.1
+	/cvs/DQMS2/CGALIB/structg/typedef.upr									1.1
+	/cvs/DQMS2/CGALIB/structg/userfile.stg									1.1
+	/cvs/DQMS2/CGALIB/structg/userfile.stgL									1.1
+	/cvs/DQMS2/CGALIB/structg/DATA/BODY.DAT									1.1
+	/cvs/DQMS2/CGALIB/structg/DATA/BODY1.DAT								1.1
+	/cvs/DQMS2/CGALIB/structg/DATA/GET1.DAT									1.1
+	/cvs/DQMS2/CGALIB/structg/DATA/GET2.DAT									1.1
+	/cvs/DQMS2/CGALIB/structg/DATA/GET3.DAT									1.1
+	/cvs/DQMS2/CGALIB/structg/DATA/GET4.DAT									1.1
+	/cvs/DQMS2/CGALIB/structg/DATA/RESP1.DAT								1.1
+	/cvs/DQMS2/CGALIB/structg/DATA/RESP2.DAT								1.1
+	/cvs/DQMS2/CGALIB/structg/DATA/RESP3.DAT								1.1
+	/cvs/DQMS2/CGALIB/structg/DATA/RESP4.DAT								1.1
+	/cvs/DQMS2/CGALIB/structg/DATA/conf.DAT									1.1
+	/cvs/DQMS2/CGALIB/structg/TESTc/BODY.l									1.1
+	/cvs/DQMS2/CGALIB/structg/TESTc/Makefile								1.1
+	/cvs/DQMS2/CGALIB/structg/TESTc/bit.c									1.1
+	/cvs/DQMS2/CGALIB/structg/TESTc/body.c									1.1
+	/cvs/DQMS2/CGALIB/structg/TESTc/body1.c									1.1
+	/cvs/DQMS2/CGALIB/structg/TESTc/bodyURL.l								1.1
+	/cvs/DQMS2/CGALIB/structg/TESTc/conf.c									1.1
+	/cvs/DQMS2/CGALIB/structg/TESTc/ex_access.c								1.1
+	/cvs/DQMS2/CGALIB/structg/TESTc/get4.c									1.1
+	/cvs/DQMS2/CGALIB/structg/TESTc/httpURL.l								1.1
+	/cvs/DQMS2/CGALIB/structg/TESTc/lbody.c									1.1
+	/cvs/DQMS2/CGALIB/structg/TESTc/resp4.c									1.1
+===============================================================================
+1. 날  짜 : 2011.08.18(목)
+2. 작성자 : 백호현
+3. 내  용 :
+	* Makefile 추가
+4. 파  일 :
+	/cvs/DQMS2/Makefile														1.1
+===============================================================================
+1. 날  짜 : 2011.08.11(목)
+2. 작성자 : 손형석
+3. 내  용 :
+	* key 추가됨
+	* format 변경됨
+4. 파  일 :
+	/cvs/DQMS2/INC/proc_id.h												1.4
+	/cvs/DQMS2/INC/sshm_id.h												1.5
+===============================================================================
+1. 날  짜 : 2011.08.10(수)
+2. 작성자 : 손형석
+3. 내  용 :
+	* key 추가됨...
+4. 파  일 :
+	/cvs/DQMS2/INC/proc_id.h												1.3
+	/cvs/DQMS2/INC/sshm_id.h												1.4
+===============================================================================
+1. 날  짜 : 2011.08.09(화)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAF SRC 추가에 따른, header 정보 변경
+4. 파  일 :
+	/cvs/DQMS2/INC/sshm_id.h												1.3
+===============================================================================
+1. 날  짜 : 2011.08.09(화)
+2. 작성자 : 손형석
+3. 내  용 :
+	* TAF SRC 추가에 따른, header 정보 변경
+4. 파  일 :
+	/cvs/DQMS2/INC/comm_def.h												1.2
+	/cvs/DQMS2/INC/proc_id.h												1.2
+	/cvs/DQMS2/INC/sshm_id.h												1.2
+===============================================================================
+1. 날  짜 : 2011.08.05(금)
+2. 작성자 : 손형석
+3. 내  용 :
+    HISTORY.TXT 최초 작성 - COMMON INC 에 대한 이력을 위하여..
+4. 파  일 :
+    HISTORY.TXT
+===============================================================================

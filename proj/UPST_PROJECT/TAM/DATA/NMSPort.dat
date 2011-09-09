@@ -1,0 +1,20 @@
+##
+## NMS interlock port LIST
+##
+##  - '##' COMMENT etc. NOT READING LINE MARK
+##  - '#@' READING LINE
+##  - '#E' END OF FILE
+##
+## ------------------------------------------
+## PORT_NAME	PORT_NUMBER
+## ------------------------------------------
+##
+#@ NMS_ALM		5023
+#@ NMS_CONS		5021
+#@ NMS_CONF		5041
+#@ NMS_MMC		5061
+#@ NMS_STAT		6110
+##
+#@ NMS_NEID		99999
+##
+#E

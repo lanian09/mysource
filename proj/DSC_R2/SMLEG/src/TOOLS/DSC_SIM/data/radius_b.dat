@@ -1,0 +1,85 @@
+[ACCOUNT_START]
+#--------------------------------------------------------
+#  feild_name(type num)		value
+#--------------------------------------------------------
+Code					=	4
+Identifier				=	55
+Length					= 	0
+
+# Acct-Session-Id(44)
+Acct-Session-Id			=	01445BF4
+# Calling-Station-ID(31)
+Calling-Station-Id		=	450061022223333
+# User-Name(1)
+User-Name				=	01022223333@lgt.co.kr
+# Framed-IP-Address(8)
+Framed-IP-Address		=	192.168.233.130
+# Acct-Authentic(45), 1:RADIUS
+Acct-Authentic			=	1
+# Acct-Status-Type(40), 1:Start, 2:Stop
+Acct-Status-Type		=	1
+# NAS-Port-Type(61), 5:Virtual
+NAS-Port-Type			=	5
+# NAS-Port(5)
+NAS-Port				=	0
+# Service-Type(6), 2:Framed-User
+Service-Type			=	2
+# NAS-IP-Address(4)
+NAS-IP-Address			=	10.160.51.48
+# Event-Timestamp(55)
+Event-Timestamp			=	Aug	5, 2006 06:39:46.000000000
+# Acct-Delay-Time(41)
+Acct-Delay-Time			=	0
+# C/P/H Bit(26/1)
+CBit					= 	cbit=0
+PBit					= 	pbit=0
+HBit					= 	hbit=0
+
+#ucCode = 4 '\004',
+#ucID = 55 '7',
+#usLen = 0,
+#acctSessId = 805,
+#callingStationId = "450061091256743\000", 
+#userName = "01091256743@lgt.co.kr", '\0' <repeats 43 times>,
+
+#framedIPAddr = 10,
+
+#acctAuth = 1,
+#acctStatusType = 1,
+#nasPortType = 5, 
+#nasPort = 0,
+#svcType = 2,
+
+#nasIPAddr = 10,
+
+#eventTimestamp = 0,
+
+#acctDelayTime = 0
+
+[ACCOUNT_STOP]
+
+Code					=	4
+Identifier				=	250
+Length					=	0
+Authenticator			=	BFEEB17DF3CBE9A4A59095341FE79C47
+
+Acct-Session-Id			=	01445BF4
+Calling-Station-Id		=	450061091256743
+User-Name				=	01091256743@lgt.co.kr
+Framed-IP-Address		=	10.163.236.236
+Acct-Input-Octets		=	12221
+Acct-Output-Octets		=	47503
+Acct-Input-Packets		=	94
+Acct-Output-Packets		=	65
+Acct-Authentic			=	1
+Acct-Session-Time		=	55
+Acct-Terminate-Cause 	=	0
+Acct-Status-Type		=	2
+NAS-Port-Type			=	5
+NAS-Port				=	0
+Service-Type			=	2
+NAS-IP-Address			=	10.160.51.48
+Event-Timestamp			=	Aug	5, 2006 06:40:40.000000000
+Acct-Delay-Time			=	0
+
+

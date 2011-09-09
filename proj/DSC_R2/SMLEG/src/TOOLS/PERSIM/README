@@ -1,0 +1,12 @@
+cat /etc/ld.so.conf
+vi /etc/ld.so.conf.d/stilib
+ldconfig
+
+or
+
+export LD_LIBRARY_PATH=/usr/local/lib
+
+++++++
+
+VENDOR = htonl(VENDOR_ELUON/3GPP2)
+STOP == ++ID

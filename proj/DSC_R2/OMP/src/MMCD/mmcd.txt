@@ -1,0 +1,233 @@
+김진영입니다.
+
+MMC 입력 시 파라미터에 콤마와 스페이스 등을 입력할 수 있도록 소스 update했습니다.
+
+몇몇 프로젝트에서 입력 파라미터에 문장을 입력할 수 있어야 한다는 요구사항이 있는데,
+
+기존 MMCD에서는 파라미터를 구분하는 구분자로 ,(콤마)를 사용하고 있어서
+
+다양한 문장 패턴을 입력할 수 없었습니다.
+
+그래서 파라미터 입력할 때 “(쌍따옴표)로 묶어서 하나의 파라미터 인식할 수 있도록 수정했습니다.
+
+ex)  add-msg 123, “So, You can’t make a call.”
+
+ 
+
+당장 요구사항이 없는 프로젝트에도 담당자에서 전달하셔서 소스는 update 해 두세요.
+
+ 
+
+mmcd_req.c 파일의 mmcd_tokensizeInputString 함수를 아래와 같이 변경하면 됩니다.
+
+int mmcd_tokeniseInputString (
+
+        MMLInputCmdInfo *inputCmdInfo // 수신한 원본 string이 들어있고, 여기에 token들이 저장된다.
+
+        )
+
+{
+
+    char    *ptr, *next, *token, remain[256];
+
+    char    tmpBuf[256], tmpBuf2[256], *p1, *p2, *p3;
+
+    int     i, len, paraCnt;
+
+ 
+
+    inputCmdInfo->dst_usr = inputCmdInfo->inputString[0];
+
+ 
+
+    // 시작부분의 white-space를 지운다.
+
+    for (ptr=&inputCmdInfo->inputString[1]; isspace((int)*ptr); ptr++) ;
+
+ 
+
+    // 입력문자열이 공백문자인 경우 오류 처리
+
+    if (*ptr == NULL) return 1;
+
+ 
+
+    // 시작부분의 white-space를 지운 원본을 다시 저장한다.
+
+    strcpy (inputCmdInfo->inputString, ptr);
+
+ 
+
+    // command name을 잘라낸다.
+
+    // - name과 parameter는 하나이상의 space로 구분된다.
+
+    strcpy (remain, inputCmdInfo->inputString);
+
+    ptr = remain;
+
+    token = (char*)strtok_r(ptr," \t",&next);
+
+    if (token == NULL) {
+
+        sprintf(trcBuf,"[mmcd_tokeniseInputString] strtok_r fail\n");
+
+        trclib_writeLogErr (FL,trcBuf);
+
+        return -1;
+
+    }
+
+    if (next == NULL) {
+
+        // parameter가 없는 경우
+
+        strcpy (inputCmdInfo->cmdName, remain);
+
+        return 1;
+
+    }
+
+    strcpy (inputCmdInfo->cmdName, token);
+
+ 
+
+    //
+
+    // 파라미터를 하나씩 잘라낸다.
+
+    // - 파라미터들은 ","로 구분된다.
+
+    // - 단, 파라미터 중 " "로 묶인 경우 통짜로 한개의 파라미터로 인식한다.
+
+    //
+
+    paraCnt = 0;
+
+    while(1)
+
+    {
+
+// 파라미터들 사이의 white-space를 지운다.
+
+        for (ptr = next; isspace((int)*ptr); ptr++) ;
+
+ 
+
+        // optional parameter가 입력되지 않은 경우. ex) "aaa-bbb xxx,,,2"
+
+        if (*ptr == ',') {
+
+            paraCnt++;
+
+            next = ++ptr;
+
+            continue;
+
+        }
+
+ 
+
+        strcpy (tmpBuf, ptr);
+
+ 
+
+        if ((token = (char*)strtok_r(ptr,",",&next)) == NULL)
+
+            break;
+
+ 
+
+        // 파라미터 뒤쪽 white-space를 지운다.
+
+        for (i = strlen(token) - 1;
+
+            (i >= 0 && isspace((int)token[i]));
+
+            i--)
+
+            ;
+
+        token[i+1] = 0;
+
+ 
+
+        if (strstr(token, "\"") == NULL) { // token에 쌍따옴표가 없으면
+
+            strcpy (inputCmdInfo->paraInfo[paraCnt].paraVal, token);
+
+        } else { // token에 쌍따옴표가 있으면
+
+            p1 = strstr(token, "\"");
+
+            if (strstr(p1+1, "\"") != NULL) { // 따옴표만 2개면
+
+                strcpy (inputCmdInfo->paraInfo[paraCnt].paraVal, token); // 따옴표 두개만 저장된다.
+
+            } else {
+
+                p1 = strstr(tmpBuf, "\""); // 앞쪽 따옴표 위치
+
+                p2 = strstr(p1+1, "\""); // 뒤쪽 따옴표 위치
+
+                len = p2-tmpBuf+1; // 앞뒤 따옴표를 포함한 길이
+
+                strncpy (inputCmdInfo->paraInfo[paraCnt].paraVal, tmpBuf, len); // 앞뒤 따옴표가 포함된채로 저장한다.
+
+                inputCmdInfo->paraInfo[paraCnt].paraVal[len] = 0;
+
+                for (i=len; i < strlen(tmpBuf); i++) {
+
+                    if (tmpBuf[i] == ',') {   // 다음 token에 대한 작업을 게속 진행할 수 있도록
+
+                        next = &tmpBuf[i+1]; // next pointer를 조정한다.
+
+                        break;
+
+                    }
+
+                }
+
+                if (i >= strlen(tmpBuf));
+
+                    next = NULL;
+
+            }
+
+            // paraVal에 쌍따옴표가 들어가 있으므로 지워준다.
+
+            strcpy (tmpBuf2, inputCmdInfo->paraInfo[paraCnt].paraVal);
+
+            p3 = &tmpBuf2[1];
+
+            tmpBuf2[strlen(tmpBuf2)-1] = 0;
+
+            strcpy (inputCmdInfo->paraInfo[paraCnt].paraVal, p3);
+
+        }
+
+ 
+
+        paraCnt++;
+
+ 
+
+if (next == NULL) {
+
+            break; // 마지막 파라미터
+
+        }
+
+    }
+
+    inputCmdInfo->paraCnt = paraCnt;
+
+ 
+
+    return 1;
+
+ 
+
+} //----- End of mmcd_tokeniseInputString -----//
+
+ 

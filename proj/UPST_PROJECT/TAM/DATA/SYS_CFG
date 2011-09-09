@@ -1,0 +1,48 @@
+############################################
+##
+## NET INFO
+#@ NETTYPE eth0 1
+#@ NETTYPE eth1 1
+#@ NETTYPE eth2 1
+#@ NETTYPE eth3 1
+##
+## DISK INFO
+#@ DISK NUM 4
+#@ DISK PATH /
+#@ DISK PATH /DATA
+#@ DISK PATH /LOG
+#@ DISK PATH /BACKUP
+##
+## POWER and FAN CHECK  ##################
+#@ HPLOG DIR /sbin
+##
+## TAM-DB 연동 #################################################################################################################
+## - 각 국사별로 사용되는 국사코드 + DQM(S) + System 번호(순서대로)
+## - 상암(70), 대전(50), 상암1식의 System 번호(1), 2식의 System 번호(2), 대전인 경우 System 이 1기뿐이므로 System 번호는(1)이 됨.
+#@ LOC-CODE 10DQM01
+##
+## - 단말모델별 가입자별 카운팅 OnOff( 'ON' or 'OFF' )
+#@ MS-CTN ON
+##
+## SYS INFO
+#@ LOC-SYS TAM_APP
+#@ SYS NO 0
+#@ SYS TAMNO 0
+#@ SYS DB 0
+##
+#@ INFOACCESS   HOUR    4
+#@ INFOACCESS   MIN     30
+##
+#@ CTN_INFO     HOUR    4
+#@ CTN_INFO     MIN     30
+##
+## DEL SG-TAF No - MSC No ####################
+## - TAF No Start with '1', TAM No Start with '0'
+## - below value is sample and test-value
+#@ SG_TAF 27 304
+#@ SG_TAF 28 307
+##
+## - DSTA 연동 플래그 OnOff( 'ON' or 'OFF' )
+#@ WEBLOG ON
+#E
+#

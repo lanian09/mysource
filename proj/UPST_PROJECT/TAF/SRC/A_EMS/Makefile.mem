@@ -1,0 +1,77 @@
+
+SHELL	= /bin/sh
+CC		= gcc
+AR		= ar
+RM		= /bin/rm
+MV		= mv
+DEPEND	= makedepend
+LINT	= lint
+
+TOP_BIN	= ../../BIN
+TAF_BIN	= /AQUA/BIN
+TOP_LIB	= ../../LIB
+LIBRARY =   -L$(TOP_LIB)
+
+KERNEL_VER=$(shell uname -r)
+KERNEL_DIR=/lib/modules/$(KERNEL_VER)/source/include
+
+INCLUDES=-I$(KERNEL_DIR) -I../../INC -I.
+DEFINES = -DMEM_TEST
+ifeq ($(AQUA_DEBUG),)
+DEBUG   = -g3 -Wall
+else
+DEBUG   = $(AQUA_DEBUG)
+endif
+
+M_FLAG	= 
+CFLAGS	= $(OPTIMIZE) $(INCLUDES) $(DEFINES) $(DEBUG) $(M_FLAG)
+SRCS	= ems_init.c ems_main.c ems_msgq.c
+TARGET	= A_EMS
+
+OBJS	= $(SRCS:.c=.o)
+
+#LIBS    = $(LIBRARY) -lLogUtil -lnifo -lmems -lhasho -lmemg -lSTGhasho -lSTGnifo -lSTGmems -lSTGmemg -lSTGaqua
+LIBS    = $(LIBRARY) -lLogUtil -lnifo -lmems -lhasho -lmemg -ltimerN -lhashg -lSTGhasho -lSTGnifo -lSTGmems -lSTGmemg -lSTGtimerN -lSTGcommon_stg -lSTGhashg -lUtil
+
+MAKEFILE= Makefile
+
+#
+#-----------------------------------------------------------
+#
+
+#
+.SUFFIXES: .c .s .o .i .u
+.s.o:
+	$(CC) $(CFLAGS) -c $<
+.c.s:
+	$(CC) $(SFLAGS) -S $<
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+.c.u:
+	$(CC) $(CFLAGS) -j $<
+.c.i:
+	$(CC) $(CFLAGS) -P $<
+
+
+all: $(TARGET)
+
+#$(SRCS):
+#	$(GET) -s $@
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS) $(LDFLAGS)
+	cp $(TARGET) $(TOP_BIN)
+
+lint:
+	lint $(INCLUDES) $(CFLAGS) -h -v -a -u -x -m $(SRCS)
+
+depend: $(SRCS)
+	$(DEPEND) -o.o -f $(MAKEFILE) -- $(INCLUDES) -- $(SRCS)
+
+install:
+	cp $(TARGET) $(TAF_BIN)
+
+clean:
+	/bin/rm -f *.o $(TARGET) $(TARGET2) core* 
+
+# DO NOT DELETE THIS LINE -- make depend depends on it.

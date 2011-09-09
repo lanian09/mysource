@@ -1,0 +1,41 @@
+CC=gcc
+
+# Specify here the 
+KERNEL_VER=$(shell uname -r)
+KERNEL_DIR=/lib/modules/$(KERNEL_VER)/source/include
+
+INCLUDE=-I$(KERNEL_DIR) -I../../INC
+
+# SHOW_TRAFFIC	: show traffic
+#DEFINES= -DSHOW_TRAFFIC
+DEFINES= -DMEM_TEST
+ifeq ($(AQUA_DEBUG),)
+DEBUG   = -g3 -Wall
+else
+DEBUG   = $(AQUA_DEBUG)
+endif
+
+
+TARGET=CAPD
+OBJS 	= multi_capd.o conf.o capd_test.o capd_msgq.o
+
+LIBS	= -lLogUtil -lnifo -lmems -lSTGnifo -lSTGmems -lSTGwatas -lpfring -lUtil
+
+$(TARGET): $(OBJS)
+	$(CC) -L../../LIB $(OBJS) -o $(TARGET) $(LIBS)
+	cp $(TARGET) ../../BIN/
+
+multi_capd.o: multi_capd.c
+	$(CC) -c $(DEFINES) $(DEBUG) $(INCLUDE) $<
+
+conf.o: conf.c
+	$(CC) -c $(DEFINES) $(DEBUG) $(INCLUDE) $<
+
+capd_test.o: capd_test.c
+	$(CC) -c $(DEFINES) $(DEBUG) $(INCLUDE) $<
+
+capd_msgq.o: capd_msgq.c
+	$(CC) -c $(DEFINES) $(DEBUG) $(INCLUDE) $<
+
+clean:
+	/bin/rm -f $(TARGET) *.o core* 

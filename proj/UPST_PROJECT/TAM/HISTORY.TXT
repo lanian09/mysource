@@ -1,0 +1,617 @@
+#1. TAG 붙이는 법
+> cvs tag TAG_NAME
+
+# 2. HISTORY.TXT 수정하는 법
+> cvs admin -l HISTORY.TXT
+...<수정>
+> cvs commit -m "log" HISTORY.TXT
+=============================================================================
+1. 날  짜 : 2011.09.07(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAM/SRC/*
+	  - PrintTIME 을 UTILLIB - util_printtime 으로 바꿈
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_util.c						1.5
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_util.h						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/A_RPPI/rppi_func.c						1.5
+	/cvs/UPST_PROJECT/TAM/SRC/A_RPPI/rppi_util.c						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/A_RPPI/rppi_util.h						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/M_SVCMON/m_svcmon_func.c					1.5
+	/cvs/UPST_PROJECT/TAM/SRC/M_SVCMON/m_svcmon_msgq.h					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/M_SVCMON/m_svcmon_util.c					1.4
+	/cvs/UPST_PROJECT/TAM/SRC/M_SVCMON/m_svcmon_util.h					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/o_svcmon_print.c					1.4
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/o_svcmon_util.c					1.4
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/o_svcmon_util.h					1.4
+=============================================================================
+1. 날  짜 : 2011.09.07(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAM/SRC/*
+	  - CVT_IP 함수를 UTILLIB - util_cvtipaddr 로 바꿈
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_util.c						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/A_RPPI/rppi_func.c						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/A_RPPI/rppi_util.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/A_RPPI/rppi_util.h						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/M_SVCMON/m_svcmon_func.c					1.4
+	/cvs/UPST_PROJECT/TAM/SRC/M_SVCMON/m_svcmon_func.h					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/M_SVCMON/m_svcmon_util.c					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/BBB								remove
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/o_svcmon_conf.c					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/o_svcmon_get.c					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/o_svcmon_print.c					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/o_svcmon_util.c					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/o_svcmon_util.h					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_dft.c							1.2
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_mmc.c							1.4
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_mon.c							1.2
+=============================================================================
+1. 날  짜 : 2011.09.07(수)
+2. 작성자 : 손형석
+3. 내  용 :
+	* SNMPIF
+	  - main.c : fidb_info.h includ removed
+	* INC
+	  - fidb_info.h : removed
+	* S_MNG
+	  - s_mng_api.h : removed
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/main.c								1.4
+	/cvs/UPST_PROJECT/TAM/INC/fidb_info.h								removed
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_api.h							removed
+=============================================================================
+1. 날  짜 : 2011.09.06(화)
+2. 작성자 : 손형석
+3. 내  용 :
+	* INC
+	  - db_struct.h watch_filter.h watch_mon.h 가 O&M/SRC/MMCD 에서도 사용되어서
+		옮겨짐
+	* M_LOG
+	  - version setting 시에 M_LOG 로 수정, MOND 로 되어 있었음
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/INC/watch_filter.h							removed
+	/cvs/UPST_PROJECT/TAM/INC/watch_mon.h								removed
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/db_struct.h							removed
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_flt.h							1.2
+	/cvs/UPST_PROJECT/TAM/SRC/M_LOG/mlog_main.c							1.4
+=============================================================================
+1. 날  짜 : 2011.09.06(화)
+2. 작성자 : 손형석
+3. 내  용 :
+	* DATA
+	  - PIRP_MAPPING.DAT : 누락된 파일 추가
+	* SCRIPT
+	  - SNMP/dis-tap.ex : 누락된 파일 추가
+	* A_RPPI, S_MNG
+	  - 일부 변경. 실행 가능하도록 수정됨
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/DATA/PIRP_MAPPING.DAT							1.1
+	/cvs/UPST_PROJECT/TAM/SCRIPT/SNMP/dis-tap.ex						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/A_RPPI/rppi_init.c						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_func.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_init.c						1.5
+=============================================================================
+1. 날  짜 : 2011.09.06(화)
+2. 작성자 : 손형석
+3. 내  용 :
+	* A_ROAM
+	  - head file 정리, 변수 정리
+	  - 실행 가능하도록 수정
+	* MOND
+	  - fstat_mmc.[ch] -> mond_mmc.[ch] 로 변경
+	  - 실행 가능하도록 수정
+	* SNMP
+	  - 실행 가능하도록 수정 
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_func.c						1.5
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_func.h						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_init.c						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_init.h						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_main.c						1.5
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_util.h						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/MOND/Makefile								1.2
+	/cvs/UPST_PROJECT/TAM/SRC/MOND/fstat_mmc.c							removed
+	/cvs/UPST_PROJECT/TAM/SRC/MOND/fstat_mmc.h							removed
+	/cvs/UPST_PROJECT/TAM/SRC/MOND/mond_init.c							1.3
+	/cvs/UPST_PROJECT/TAM/SRC/MOND/mond_init.h							1.2
+	/cvs/UPST_PROJECT/TAM/SRC/MOND/mond_main.c							1.4
+	/cvs/UPST_PROJECT/TAM/SRC/MOND/mond_mem.c							1.2
+	/cvs/UPST_PROJECT/TAM/SRC/MOND/mond_mmc.c							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/MOND/mond_mmc.h							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SNMPIF/main.c								1.3
+=============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* Makefile
+	  - M_SVCMON 추가
+	* M_SVCMON, M_TRACE*, O_SVCMON, SI_DB, SI_NMS, SI_SVCMON
+	  - 실행 가능하도록 수정
+	* DATA
+	  - 최초 데이타 commit
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/Makefile									1.5
+	/cvs/UPST_PROJECT/TAM/SRC/M_SVCMON/m_svcmon_main.c					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/trace_func.c					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/trace_init.c					1.5
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/o_svcmon_init.c					1.4
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/o_svcmon_main.c					1.4
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_init.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_main.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_msgq.c						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_func.c						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_init.c						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_init.h						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_main.c						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_init.c				1.2
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_main.c				1.3
+	/cvs/UPST_PROJECT/TAM/DATA/*
+=============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAM/SRC/*
+	  - log_print warnning 수정
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_func.c						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_main.c						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_msgq.c						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/A_RPPI/rppi_func.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/A_RPPI/rppi_init.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/A_RPPI/rppi_msgq.c						1.4
+	/cvs/UPST_PROJECT/TAM/SRC/A_RPPI/rppi_util.c						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/CHGSVCM/chgsvc_if.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/CHGSVCM/chgsvc_init.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/CHGSVCM/chgsvc_main.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/CHGSVCM/chgsvc_mem.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/MOND/mond_func.c							1.2
+	/cvs/UPST_PROJECT/TAM/SRC/MOND/mond_init.c							1.2
+	/cvs/UPST_PROJECT/TAM/SRC/MOND/mond_main.c							1.3
+	/cvs/UPST_PROJECT/TAM/SRC/M_LOG/mlog_if.c							1.2
+	/cvs/UPST_PROJECT/TAM/SRC/M_LOG/mlog_main.c							1.3
+	/cvs/UPST_PROJECT/TAM/SRC/M_LOG/mlog_msgq.c							1.2
+	/cvs/UPST_PROJECT/TAM/SRC/M_SVCMON/m_svcmon_func.c					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/M_SVCMON/m_svcmon_if.c					1.2
+	/cvs/UPST_PROJECT/TAM/SRC/M_SVCMON/m_svcmon_msgq.c					1.4
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/trace_func.c					1.2
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/trace_init.c					1.4
+	/cvs/UPST_PROJECT/TAM/SRC/M_TRACE_PCAP/trace_link.c					1.2
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/o_svcmon_init.c					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/o_svcmon_main.c					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/O_SVCMON/o_svcmon_msgq.c					1.3
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_msgq.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_sock.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_func.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_init.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_sock.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_if.c					1.2
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_sock.c				1.2
+=============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* S_MNG
+	  - db_define.h 의 값이 TAF, TAM 에서 사용되면서, UPST_PROJECT/INC 로 옮겨짐
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/db_define.h							removed
+=============================================================================
+1. 날  짜 : 2011.09.05(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* S_MNG
+	  - *PERIOD enum constant는 모두 dblib.h로 이동됨
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/db_define.h							1.2
+=============================================================================
+1. 날  짜 : 2011.09.01(목)
+2. 작성자 : 손형석
+3. 내  용 :
+	* TAM/INC
+	  - db_xxx 파일 4개는 모두, S_MNG로 이동됨.
+	* Makefile
+	  - make lib, make src, make 재정의
+	* LIBSRC/Makefile
+	  - Makefile 생성
+	* S_MNG, S_MNG/SQLSET
+	  - 변경된 header file 로 수정 
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/Makefile										1.2
+	/cvs/UPST_PROJECT/TAM/INC/db_api.h									remove
+	/cvs/UPST_PROJECT/TAM/INC/db_define.h								remove
+	/cvs/UPST_PROJECT/TAM/INC/db_remote.h								remove
+	/cvs/UPST_PROJECT/TAM/INC/db_struct.h								remove
+	/cvs/UPST_PROJECT/TAM/INC/watch_filter.h							1.3
+	/cvs/UPST_PROJECT/TAM/LIBSRC/Makefile								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/db_define.h							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/db_struct.h							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_flt.c							1.2
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_func.c						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_func.h						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_global.h						remove
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_init.c						1.3
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_main.c						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_mmc.c							1.2
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_mmc2.c						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/s_mng_msg.c							1.2
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/SQLSET/db_api.c						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/S_MNG/SQLSET/db_api.h						1.2
+=============================================================================
+1. 날  짜 : 2011.09.01(목)
+2. 작성자 : 백호현
+3. 내  용 :
+	* A_ROAM
+	  - 컴파일 오류 수정, 소스/헤더 스타일 수정
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_func.c						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_func.h						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_init.c						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_init.h						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_main.c						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_main.h						remove
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_msgq.c						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_msgq.h						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_util.c						1.2
+	/cvs/UPST_PROJECT/TAM/SRC/A_ROAM/roam_util.h						1.2
+=============================================================================
+1. 날  짜 : 2011.09.01(목)
+2. 작성자 : 함동철
+3. 내  용 :
+	* M_LOG
+	- 컴파일/헤더정리
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/CHGSVCM/chgsvc_if.c                       1.1
+	/cvs/UPST_PROJECT/TAM/SRC/CHGSVCM/chgsvc_if.h                       1.1
+	/cvs/UPST_PROJECT/TAM/SRC/CHGSVCM/chgsvc_main.c                     1.1
+	/cvs/UPST_PROJECT/TAM/SRC/CHGSVCM/chgsvc_mem.c                      1.1
+	/cvs/UPST_PROJECT/TAM/SRC/CHGSVCM/chgsvc_mem.h                      1.1
+	/cvs/UPST_PROJECT/TAM/SRC/CHGSVCM/chgsvc_init.c                     1.1
+	/cvs/UPST_PROJECT/TAM/SRC/CHGSVCM/chgsvc_init.h                     1.1
+	/cvs/UPST_PROJECT/TAM/SRC/CHGSVCM/chgsvc_proc.c                     1.1
+	/cvs/UPST_PROJECT/TAM/SRC/CHGSVCM/chgsvc_proc.h                     1.1
+=============================================================================
+1. 날  짜 : 2011.08.31(수)
+2. 작성자 : 함동철
+3. 내  용 :
+	* M_LOG
+	- 컴파일/헤더정리
+	4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/M_LOG/mlog_func.c                         1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_LOG/mlog_func.h                         1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_LOG/mlog_main.c                         1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_LOG/mlog_init.c                         1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_LOG/mlog_init.h                         1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_LOG/mlog_msgq.c                         1.1
+	/cvs/UPST_PROJECT/TAM/SRC/M_LOG/mlog_msgq.h                         1.1
+=============================================================================
+1. 날  짜 : 2011.08.31(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* SI_DB
+	  - 신규 LIB 적용 & 헤더 정리
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/Makefile							1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/clist_memg.c						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/clist_memg.h						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/log.h								1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_func.c						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_func.h						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_init.c						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_init.h						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_main.c						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_msgq.c						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_msgq.h						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_sock.c						1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_DB/si_db_sock.h						1.1
+=============================================================================
+1. 날  짜 : 2011.08.31(수)
+2. 작성자 : 함동철
+3. 내  용 :
+	* SI_SVCMON
+	- 컴파일/헤더정리
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/clist_memg.c                    1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/clist_memg.h                    1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_func.c                1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_func.h                1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_init.c                1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_init.h                1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_msgq.c                1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_msgq.h                1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_sock.c                1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_sock.h                1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_if.c                  1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_if.h                  1.1
+	/cvs/UPST_PROJECT/TAM/SRC/SI_SVCMON/si_svcmon_main.c                1.1
+=============================================================================
+1. 날  짜 : 2011.08.31(수)
+2. 작성자 : 백호현
+3. 내  용 :
+	* SI_NMS
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/SI_NMS/si_nms_main.c						1.2
+=============================================================================
+1. 날  짜 : 2011.08.30(화)
+2. 작성자 : 함동철 
+3. 내  용 :
+	* MOND 
+	  - 컴파일/헤더정리 
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/SRC/fstat_mmc.c							    1.1
+	/cvs/UPST_PROJECT/TAM/SRC/fstat_mmc.h							    1.1
+	/cvs/UPST_PROJECT/TAM/SRC/mond_main.c							    1.1
+	/cvs/UPST_PROJECT/TAM/SRC/mond_init.c							    1.1
+	/cvs/UPST_PROJECT/TAM/SRC/mond_init.h							    1.1
+	/cvs/UPST_PROJECT/TAM/SRC/mond_mem.c							    1.1
+	/cvs/UPST_PROJECT/TAM/SRC/mond_mem.h							    1.1
+	/cvs/UPST_PROJECT/TAM/SRC/mond_sock.c							    1.1
+	/cvs/UPST_PROJECT/TAM/SRC/mond_sock.h							    1.1
+	/cvs/UPST_PROJECT/TAM/SRC/mond_func.c							    1.1
+	/cvs/UPST_PROJECT/TAM/SRC/mond_func.h							    1.1
+=============================================================================
+1. 날  짜 : 2011.08.29(월)
+2. 작성자 : 백호현
+3. 내  용 :
+	* INC
+	  - almstat.h 파일 삭제, OAM/INC/almstat.h 와 중복
+4. 파  일 :
+	/cvs/UPST_PROJECT/TAM/INC/almstat.h									remove
+=============================================================================
+1. 날  짜 : 2011.08.24(수)
+2. 작성자 : 손형석
+3. 내  용 :
+	* A_RPPI
+	  - header 정리
+4. 파  일 :
+	/cvs/DQMS2/TAM/INC/watch_mon.h										1.3
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_api.h								remove
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_func.c								1.2
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_func.h								1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_init.c								1.2
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_init.h								1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_main.c								1.2
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_main.h								1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_msgq.c								1.2
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_msgq.h								1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_switch.c								1.2
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_switch.h								1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_util.c								1.2
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_util.h								1.1
+=============================================================================
+1. 날  짜 : 2011.08.24(수)
+2. 작성자 : 백호현
+3. 내  용 :
+    * typedef.h
+      - TAM/INC, TAF/INC 에 있는 typedef.h 삭제, LIB/INC/typedef.h 로 통합
+4. 파  일 :
+    /cvs/DQMS2/TAF/INC/typedef.h                                        remove
+============================================================================
+1. 날  짜 : 2011.08.24(수)
+2. 작성자 : 손형석
+3. 내  용 :
+	* S_MNG
+	  - 기존 DB_LIB 큰 변경 없이 S_MNG 에 속하게 됨.
+	  - header 정리
+	* LIBSRC/TOOLS
+	  - Trace 관련 API를 포함하는 LIBRARY 추가됨. ( S_MNG, M_TRACE 에서 사용 )
+4. 파  일 :
+	/cvs/DQMS2/TAM/LIBSRC/TOOLS/Makefile								1.1
+	/cvs/DQMS2/TAM/LIBSRC/TOOLS/filefun.c								1.1
+	/cvs/DQMS2/TAM/INC/db_define.h										1.2
+	/cvs/DQMS2/TAM/INC/db_struct.h										1.2
+	/cvs/DQMS2/TAM/INC/dqms_sessinfo.h									1.2
+	/cvs/DQMS2/TAM/INC/fidb_info.h										1.2
+	/cvs/DQMS2/TAM/INC/filter.h											1.3
+	/cvs/DQMS2/TAM/INC/tam_mmc_define.h									1.2
+	/cvs/DQMS2/TAM/INC/tam_shm.h										1.4
+	/cvs/DQMS2/TAM/INC/tam_svc.h										1.4
+	/cvs/DQMS2/TAM/INC/tools.h											1.1
+	/cvs/DQMS2/TAM/INC/typedef.h										1.5
+	/cvs/DQMS2/TAM/SRC/S_MNG/Makefile									1.2
+	/cvs/DQMS2/TAM/SRC/S_MNG/log.h										1.1
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_def.h								1.2
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_dft.c								1.2
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_dft.h								1.1
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_flt.c								1.2
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_flt.h								1.1
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_func.c								1.2
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_func.h								1.1
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_init.c								1.2
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_init.h								1.1
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_main.c								1.2
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_main.h								1.1
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_mmc.c								1.2
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_mmc.h								1.1
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_mmc2.c								1.2
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_mon.c								1.2
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_mon.h								1.1
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_msg.c								1.2
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_msg.h								1.1
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_util.c								1.2
+	/cvs/DQMS2/TAM/SRC/S_MNG/s_mng_util.h								1.1
+	/cvs/DQMS2/TAM/SRC/S_MNG/SQLSET/Makefile							1.1
+	/cvs/DQMS2/TAM/SRC/S_MNG/SQLSET/db_api.c							1.1
+	/cvs/DQMS2/TAM/SRC/S_MNG/SQLSET/db_api.h							1.1
+============================================================================
+1. 날  짜 : 2011.08.23(화)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAM/SRC/RMI
+	  - 수정완료
+	* TAM/INC
+	  - OAM/INC/mmcdef.h, sockio.h 와 중복되는 defines 주석처리
+4. 파  일 :
+	/cvs/DQMS2/TAM/SRC/RMI/Makefile										1.1									
+	/cvs/DQMS2/TAM/SRC/RMI/gethostlib.c									1.1
+	/cvs/DQMS2/TAM/SRC/RMI/rmi_comm.h									1.1
+	/cvs/DQMS2/TAM/SRC/RMI/rmi_main.c									1.1
+	/cvs/DQMS2/TAM/SRC/RMI/rmi_main.h									1.1
+	/cvs/DQMS2/TAM/SRC/RMI/rmi_sock.c									1.1
+	/cvs/DQMS2/TAM/SRC/RMI/rmi_sock.h									1.1
+	/cvs/DQMS2/TAM/SRC/RMI/rmi_util.c									1.1
+	/cvs/DQMS2/TAM/SRC/RMI/rmi_util.h									1.1
+	/cvs/DQMS2/TAM/INC/dqms_defines.h									1.3
+	/cvs/DQMS2/TAM/INC/tam_define.h										1.3
+	/cvs/DQMS2/TAM/INC/tam_mmcd.h										1.3
+	/cvs/DQMS2/TAM/INC/tam_shm.h										1.3
+============================================================================
+1. 날  짜 : 2011.08.23(화)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAM/SRC/A_ROAM
+	  - 수정완료
+4. 파  일 :
+	/cvs/DQMS/TAM_APP/SRC/A_ROAM/Makefile								1.1
+	/cvs/DQMS/TAM_APP/SRC/A_ROAM/log.h									1.1
+	/cvs/DQMS/TAM_APP/SRC/A_ROAM/roam_func.c							1.1
+	/cvs/DQMS/TAM_APP/SRC/A_ROAM/roam_func.h							1.1
+	/cvs/DQMS/TAM_APP/SRC/A_ROAM/roam_init.c							1.1
+	/cvs/DQMS/TAM_APP/SRC/A_ROAM/roam_init.h							1.1
+	/cvs/DQMS/TAM_APP/SRC/A_ROAM/roam_main.c							1.1
+	/cvs/DQMS/TAM_APP/SRC/A_ROAM/roam_main.h							1.1
+	/cvs/DQMS/TAM_APP/SRC/A_ROAM/roam_msgq.c							1.1
+	/cvs/DQMS/TAM_APP/SRC/A_ROAM/roam_msgq.h							1.1
+	/cvs/DQMS/TAM_APP/SRC/A_ROAM/roam_util.c							1.1
+	/cvs/DQMS/TAM_APP/SRC/A_ROAM/roam_util.h							1.1
+============================================================================
+1. 날  짜 : 2011.08.23(화)
+2. 작성자 : 함동철
+3. 내  용 :
+	* TAM/SRC/M_SVCMON
+	- 공통 작업 진행 중...
+4. 파  일 :
+    /cvs/DQMS2/TAM/INC/tam_mmcd.h                                       1.1
+    /cvs/DQMS2/TAM/INC/tam_shm.h.                                       1.1
+    /cvs/DQMS2/TAM/INC/tam_sys.h.                                       1.1
+============================================================================
+1. 날  짜 : 2011.08.23(화)
+2. 작성자 : 함동철
+3. 내  용 :
+	* TAM/SRC/O_SVCMON
+	- 공통 작업 진행 중... 
+4. 파  일 :
+    /cvs/DQMS2/TAM/INC/tam_mmcd.h                                       1.1
+    /cvs/DQMS2/TAM/INC/tam_shm.h.                                       1.1
+    /cvs/DQMS2/TAM/INC/tam_sys.h.                                       1.1
+============================================================================
+1. 날  짜 : 2011.08.23(화)
+2. 작성자 : 함동철
+3. 내  용 :
+	* TAM/INC
+	- ALMD 작업 중 컴파일만을 위하여 변경한 파일 
+4. 파  일 :
+    /cvs/DQMS2/TAM/INC/tam_mmcd.h                                       1.1
+    /cvs/DQMS2/TAM/INC/tam_shm.h.                                       1.1
+    /cvs/DQMS2/TAM/INC/tam_sys.h.                                       1.1
+    /cvs/DQMS2/TAM/INC/watch_mon.h                                      1.1
+============================================================================
+1. 날  짜 : 2011.08.23(화)
+2. 작성자 : 함동철
+3. 내  용 :
+	* ALMD
+	- 기본 요소와 TAM종속 코드만 적용시키고,  컴파일만 일단 해 놓음. 진행중...
+4. 파  일 :
+	/cvs/DQMS2/TAM/SRC/ALMD/Makefile                                    1.1
+	/cvs/DQMS2/TAM/SRC/ALMD/almd_api.h                                  1.1
+	/cvs/DQMS2/TAM/SRC/ALMD/almd_init.c                                 1.1
+	/cvs/DQMS2/TAM/SRC/ALMD/almd_init.h                                 1.1
+	/cvs/DQMS2/TAM/SRC/ALMD/almd_main.c                                 1.1
+	/cvs/DQMS2/TAM/SRC/ALMD/almd_main.h                                 1.1
+	/cvs/DQMS2/TAM/SRC/ALMD/almd_mem.c                                  1.1
+	/cvs/DQMS2/TAM/SRC/ALMD/almd_mem.h                                  1.1
+	/cvs/DQMS2/TAM/SRC/ALMD/almd_sock.c                                 1.1
+	/cvs/DQMS2/TAM/SRC/ALMD/almd_sock.h                                 1.1
+	/cvs/DQMS2/TAM/SRC/ALMD/fstat_mmc.c                                 1.1
+	/cvs/DQMS2/TAM/SRC/ALMD/fstat_mmc.h                                 1.1
+============================================================================
+1. 날  짜 : 2011.08.22(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* SI_SVC
+	  - include si_log_api.h removed
+4. 파  일 :
+	/cvs/DQMS2/TAM/SRC/SI_LOG/silog_func.c								1.2
+	/cvs/DQMS2/TAM/SRC/SI_LOG/silog_init.c								1.2
+	/cvs/DQMS2/TAM/SRC/SI_LOG/silog_main.c								1.2
+	/cvs/DQMS2/TAM/SRC/SI_LOG/silog_sock.c								1.2
+============================================================================
+1. 날  짜 : 2011.08.22(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* SI_SVC
+	  - 추가됨, 관련 헤더 파일 수정 후 commit
+4. 파  일 :
+	/cvs/DQMS2/TAM/LIB/.empty											1.1
+	/cvs/DQMS2/TAM/SRC/Makefile											1.3
+	/cvs/DQMS2/TAM/SRC/SI_LOG/Makefile									1.1
+	/cvs/DQMS2/TAM/SRC/SI_LOG/log.h										1.1
+	/cvs/DQMS2/TAM/SRC/SI_LOG/silog_func.c								1.1
+	/cvs/DQMS2/TAM/SRC/SI_LOG/silog_func.h								1.1
+	/cvs/DQMS2/TAM/SRC/SI_LOG/silog_init.c								1.1
+	/cvs/DQMS2/TAM/SRC/SI_LOG/silog_init.h								1.1
+	/cvs/DQMS2/TAM/SRC/SI_LOG/silog_main.c								1.1
+	/cvs/DQMS2/TAM/SRC/SI_LOG/silog_sock.c								1.1
+	/cvs/DQMS2/TAM/SRC/SI_LOG/silog_sock.h								1.1
+============================================================================
+1. 날  짜 : 2011.08.22(월)
+2. 작성자 : 백호현
+3. 내  용 :
+	* TAM/INC
+	  - 사용하지 않는 헤더파일 삭제 ( '_' 앞에 붙여서 백업)
+4. 파  일 :
+	/cvs/DQMS2/TAM/INC/bsm.h											remove
+	/cvs/DQMS2/TAM/INC/com_rslt.h										remove
+	/cvs/DQMS2/TAM/INC/dscp_para.h										remove
+	/cvs/DQMS2/TAM/INC/dscpif.h											remove
+	/cvs/DQMS2/TAM/INC/st_mcorea_def.h									remove
+	/cvs/DQMS2/TAM/INC/tam_error.h										remove
+	/cvs/DQMS2/TAM/INC/tam_taf.h										remove
+	/cvs/DQMS2/TAM/INC/tam_taftif.h										remove
+	/cvs/DQMS2/TAM/INC/_bsm.h											1.1
+	/cvs/DQMS2/TAM/INC/_com_rslt.h										1.1
+	/cvs/DQMS2/TAM/INC/_dscp_para.h										1.1
+	/cvs/DQMS2/TAM/INC/_dscpif.h										1.1
+	/cvs/DQMS2/TAM/INC/_ipclib.h										1.1
+	/cvs/DQMS2/TAM/INC/_st_mcorea_def.h									1.1
+	/cvs/DQMS2/TAM/INC/_tam_error.h										1.1
+	/cvs/DQMS2/TAM/INC/_tam_taf.h										1.1
+	/cvs/DQMS2/TAM/INC/_tam_taftif.h									1.1
+============================================================================
+1. 날  짜 : 2011.08.22(월)
+2. 작성자 : 손형석
+3. 내  용 :
+	* A_RPPI
+	  - 신규 library 적용, gifo 적용
+	  - 별도의 header는 작업 없이, 단순히 compile 만 되도록 수정
+4. 파  일 :
+	/cvs/DQMS2/TAM/INC/define.h											1.2
+	/cvs/DQMS2/TAM/INC/filter.h											1.2
+	/cvs/DQMS2/TAM/INC/ipclib.h											remove
+	/cvs/DQMS2/TAM/INC/msgdef.h											remove
+	/cvs/DQMS2/TAM/INC/rppi_def.h										1.2
+	/cvs/DQMS2/TAM/INC/tam_define.h										1.2
+	/cvs/DQMS2/TAM/INC/typedef.h										1.2
+	/cvs/DQMS2/TAM/INC/utillib.h										remove
+	/cvs/DQMS2/TAM/SRC/Makefile											1.2
+	/cvs/DQMS2/TAM/SRC/A_RPPI/Makefile									1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/log.h										1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_api.h								1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_func.c								1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_global.h								1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_init.c								1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_main.c								1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_msgq.c								1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_switch.c								1.1
+	/cvs/DQMS2/TAM/SRC/A_RPPI/rppi_util.c								1.1
+============================================================================
+1. 날  짜 : 2011.08.21(일)
+2. 작성자 : 손형석
+3. 내  용 :
+	* HISTORY.TXT 최초 작성
+	* Makefile, SRC/Makefile, SRC/S_MNG 추가
+	* S_MNG
+	  - compile 안됨..
+4. 파  일 :
+    HISTORY.TXT
+============================================================================

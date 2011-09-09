@@ -1,0 +1,10 @@
+# 5MIN_DB					1HOUR_DB					SID_BASE	STAT_ID		S_COLUMN	E_COLUMN
+#--------------------------------------------------------------------------------------------------
+load_5minute_statistics		load_hour_statistics		78			4500		2			17
+tran_5minute_statistics		tran_hour_statistics		88			4501		3			42
+radius_5minute_statistics	radius_hour_statistics		118			4502		2			31
+svc_ttr_5minute_statistics	svc_ttr_hour_statistics		75			4504		3			22
+svc_tr_5minute_statistics	svc_tr_hour_statistics		75			4505		4			65
+uawap_5minute_statistics	uawap_hour_statistics		158			4508		3			24
+aaa_5minute_statistics		aaa_hour_statistics			171			4509		3			17
+udr_5minute_statistics		udr_hour_statistics			185			4510		3			29

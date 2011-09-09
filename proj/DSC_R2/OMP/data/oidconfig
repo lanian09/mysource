@@ -1,0 +1,18 @@
+# 5MIN_DB							1HOUR_DB						SID_1st_Idx		OBJECT_ID
+#--------------------------------------------------------------------------------------------------
+fault_5minute_statistics			fault_hour_statistics			1				1001
+fault_5minute_statistics			fault_hour_statistics			21				1002
+fault_5minute_statistics			fault_hour_statistics			42				1003
+fault_5minute_statistics			fault_hour_statistics			64				1004
+load_5minute_statistics				load_hour_statistics			73				1005
+load_5minute_statistics				load_hour_statistics			87				1006
+load_5minute_statistics				load_hour_statistics			101				1007
+load_5minute_statistics				load_hour_statistics			107				1008
+rdr_lur_5minute_statistics			rdr_lur_hour_statistics			113				1009
+leg_5minute_statistics				leg_hour_statistics				121				1010
+logon_5minute_statistics			logon_hour_statistics			129				1011
+rdr_ruleset_5minute_statistics		rdr_ruleset_hour_statistics		140				1012
+rdr_ruleent_5minute_statistics		rdr_ruleent_hour_statistics		144				1013
+sms_5minute_statistics				sms_hour_statistics				145				1014
+NULL								pkt_delay_hour_statistics		153				1015
+flow_5minute_statistics             flow_hour_statistics            187             1016

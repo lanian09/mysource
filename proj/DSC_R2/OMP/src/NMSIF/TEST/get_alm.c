@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <mysql.h>
+
+MYSQL	sql, *conn;
+
+main ()
+{
+	printf ("[1] init\n");
+	init ();
+
+	printf ("[2] get alarm\n");
+	get_current_alarm ();
+}
+
+
+init ()
+{
+	mysql_init (&sql);
+
+	if ((conn = mysql_real_connect (&sql, "localhost", "root", "",
+									//"BSDM", 0, 0, 0)) == NULL) {
+									"DSCM", 0, 0, 0)) == NULL) {
+		printf ("[*] fail mysql_connect \n\n");
+		exit (1);
+	}
+}
+
+get_current_alarm ()
+{
+	int			ret, i;
+	char		query[1024];
+	MYSQL_ROW	row;
+	MYSQL_RES	*result;
+
+	i = 0;
+	sprintf (query, "SELECT * FROM %s", "current_alarm");
+	if (mysql_query (conn, query) != 0) {
+		printf ("[*] mysql_query : %s\n", mysql_error (conn));
+		exit (1);
+	}
+
+	result = mysql_store_result (conn);
+
+printf ("[*] result=0x%x, conn=0x%x\n", result, conn);
+
+	while ((row = mysql_fetch_row (result)) != NULL) {
+
+		memset (query, 0, 1024);
+		sprintf (query, "SELECT * FROM %s", "current_alarm");
+
+		ret = test_mysql_select_query (query);
+
+		printf ("ret=%d\n", ret);
+		if (ret == 1) {
+			printf ("[%02d] %s %s %s %s %s %s %s %s\n", i++, row[0],
+				row[1], row[2], row[3], row[4], row[5], row[6], row[7]);
+		}
+	}
+	mysql_free_result (result);
+
+	return 1;
+}
+
+
+test_mysql_select_query (char *query)
+{
+	int			t_ret=0;
+	MYSQL_RES	*t_res;
+	MYSQL_ROW	t_row;
+
+	if (mysql_query (conn, query) != 0) {
+		printf ("[*] mysql_query fail :%s\n", mysql_error(conn));
+		return -1;
+	}
+
+	t_ret = 0;
+	t_res = mysql_store_result (conn);
+	while ((t_row = mysql_fetch_row (t_res)) != NULL) {
+		t_ret = 1;	break;
+	}
+	mysql_free_result (t_res);
+
+	return t_ret;
+}

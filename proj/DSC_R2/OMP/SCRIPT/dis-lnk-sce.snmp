@@ -1,0 +1,20 @@
+#!/usr/bin/sh
+if [ $1 = "0" ]; then 	host="192.168.100.3";
+else 					host="192.168.100.4";
+fi
+
+RESULT=`/usr/sbin/ping $host 1 | awk '{ print $3; }'`
+
+if [ $RESULT = "alive" ]; then
+/usr/sfw/bin/snmpget -v 1 -c public $host 	\
+IF-MIB::ifOperStatus.3  					\
+IF-MIB::ifOperStatus.4						\
+IF-MIB::ifOperStatus.5 						\
+IF-MIB::ifOperStatus.6 | /usr/bin/tr "[:lower:]" "[:upper:]" | /usr/bin/sed 's/(/ /g' | /usr/bin/awk '{ 
+	if($4=="UP") 	printf "%d ", 1;
+	else			printf "%d ", 0;
+}
+END { 
+    printf "\n"; 
+}'
+fi
