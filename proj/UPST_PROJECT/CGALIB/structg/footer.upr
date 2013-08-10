@@ -1,0 +1,36 @@
+
+#pragma pack()
+
+/** file : +FileName+
+ *     $Log: footer.upr,v $
+ *     Revision 1.1.1.1  2011/08/29 05:56:44  dcham
+ *     NEW OAM SYSTEM
+ *
+ *     Revision 1.1  2011/08/19 04:25:45  uamyd
+ *     CGALIB moved in DQMS
+ *
+ *     Revision 1.1  2011/08/03 06:02:41  uamyd
+ *     CGA, HASHO, TIMERN library added
+ *
+ *     Revision 1.2  2011/01/11 04:09:03  uamyd
+ *     modified
+ *
+ *     Revision 1.1.1.1  2010/08/23 01:13:06  uamyd
+ *     DQMS With TOTMON, 2nd-import
+ *
+ *     Revision 1.1  2009/06/10 16:45:50  dqms
+ *     *** empty log message ***
+ *
+ *     Revision 1.1.1.1  2009/05/26 02:13:28  dqms
+ *     Init TAF_RPPI
+ *
+ *     Revision 1.2  2008/11/17 09:00:04  dark264sh
+ *     64bits ÀÛ¾÷
+ *
+ *     Revision 1.1.1.1  2008/06/09 08:17:19  jsyoon
+ *     WATAS3 PROJECT START
+ *
+ *     Revision 1.1  2007/08/21 12:22:38  dark264sh
+ *     no message
+ *
+ *     */

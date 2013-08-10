@@ -1,0 +1,3765 @@
+=====================================================================
+1. 날  짜 : 2011년 06월15일(WED)
+2. 작업자 : uamyd 
+3. 내  용 :
+	* NMSIF 
+	 - LOGON 통계 산출시, 조회 필드의 순서 재정렬...(bugfix)
+4. 파 일 :
+	/cvs/DSC_R2/OMP/src/NMSIF/msgif.c						1.7
+=====================================================================
+1. 날  짜 : 2011년 06월13일(MON)
+2. 작업자 : dcham 
+3. 내  용 :
+	* STMD 
+	 - 
+	* STMD 
+	 - logon 통계 succ_rate소수점 처리 및 버그 수정 
+4. 파 일 :
+    /cvs/DSC_R2/OMP/src/STMD/stmd_cron_stat.c                1.4
+	/cvs/DSC_R2/OMP/src/STMD/stmd_ondemand_stat.c            1.4
+	/cvs/DSC_R2/OMP/src/STMD/stmd_periodic_logon.c           1.4
+	/cvs/DSC_R2/OMP/src/STMD/stmd_statisticrpt.c             1.11
+	/cvs/DSC_R2/OMP/src/STMD/stmd_update_logon.c             1.4
+	
+=====================================================================
+1. 날  짜 : 2011년 06월08일 (TUE)
+2. 작업자 : dcham 
+3. 내  용 :
+	* NMSIF
+	 - Rule Set Entry File 쓰기 오류 수정 
+	* STMD 
+	 - logon 통계 succ_rate 소수형태로 DB insert  안되는 부분 수정
+4. 파 일 :
+	/cvs/DSC_R2/OMP/src/NMSIF/msgif.c                        1.6
+	/cvs/DSC_R2/OMP/src/STMD/stmd_statisticrpt.c             1.10
+
+=====================================================================
+1. 날  짜 : 2011년 06월08일 (TUE)
+2. 작업자 : uamyd 
+3. 내  용 :
+	* NMSIF
+	 - SM_CH_ID, LOG_MOD, SUCC_RATE 에 대한 sid 추가
+4. 파 일 :
+	/cvs/DSC_R2/OMP/src/NMSIF/msgif.c                        1.5
+=====================================================================
+1. 날  짜 : 2011년 06월07일 (TUE)
+2. 작업자 : uamyd 
+3. 내  용 :
+	* DATA/mml_commands 
+	 - dis-cps-info 제거 
+	 - dis-tps-info 추가 
+	* DATA/mml_iptbl, mml_passwd 
+	 - 개발용으로 환경 저장 
+	* INC/sfmconf.h 
+	 - SFM_CALL_SIZE 에 TPS 구조 사이즈 추가 
+	* FIMD 
+	 - CFLAG option 추가 DEBUG, REENTRANT 
+	 - tps 관련 정보 초기화 정보 수정(filename change) 
+	 - tps info 단위 계산 수정, 상수처리 
+	 - session,tps 정보 조회시, duration time 보여지도록 수정 
+	 - rleg 관련 정보 조회시, format 변경 
+	 - 로그 추가 
+	 - active user 조회 명령어 수행시, duration time 보여지도록 수정 
+	 - CPS, SESSION 관련 로그 추가 
+4. 파  일 :
+	/cvs/DSC_R2/OMP/data/mml_commands								1.13
+	/cvs/DSC_R2/OMP/data/mml_iptbl									1.3
+	/cvs/DSC_R2/OMP/data/mml_passwd									1.2
+	/cvs/DSC_R2/OMP/include/sfmconf.h								1.17
+	/cvs/DSC_R2/OMP/src/FIMD/Makefile								1.6
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_hwalm.c							1.11
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_init.c							1.16
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_legalmlmt.c						1.7
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_main.c							1.13
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mmchdl.c							1.24
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_proc.c							1.11
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_proto.h							1.15
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_scealmlmt.c						1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_stsrpt.c							1.11
+	/cvs/DSC_R2/OMP/src/FIMD/showsfdb.c								1.10
+=====================================================================
+1. 날  짜 : 2011년 06월01일 (WED)
+2. 작업자 : dcham 
+3. 내  용 :
+	* FIMD
+	     -  SFM_LEG, SMF_TPS통합에 따라 관련 루틴 수정
+	* NMSIF 
+	     -  TPS Alarm Code/Type 명 변경에 따라 관련 루틴 수정 
+	* header 
+         -  SESSION구조체와 TPS구조체 통합 
+	* data
+	     - mml_commands 수정(dis-call-info 추가)
+	     - mcdm_distr_mmc 수정(dis-call-info 추가)
+	     - sysconfig 수정(SFM_CALL추가, SFM_LEG제거)
+	     - limit_tps_file 추가
+	* libsrc
+	     - network ordering function 수정
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_stsrpt.c          1.10
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mmchdl.c			1.23
+	/cvs/DSC_R2/OMP/src/FIMD/showsfdb.c			    1.9
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_almmsg.c  	    1.14
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_init.c  	        1.13
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_legalmlmt.c  	    1.5
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_hwalm.c    	    1.10
+	/cvs/DSC_R2/OMP/data/mml_commands               1.12
+	/cvs/DSC_R2/OMP/include/comm_almsts_msgcode.h   1.13
+	/cvs/DSC_R2/OMP/include/sfmconf.h               1.16
+=====================================================================
+1. 날  짜 : 2011년 05월30일 (TUE)
+2. 작업자 : dcham 
+3. 내  용 :
+	* FIMD
+	     - mask-alm/umask-alm SMLINK channel count(5=>1)
+         - showsfdb SMLINK channel count(5=>1) 
+	* header 
+         - CM chnnecl/RLEG count확장:SFM_MAX_SM_CH_CNT/MAX_RLEG_CNT(5=>1) 
+	* data
+	     - mml_commands 수정(set/del-smbuf-clr channel argument(5=>1))
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_almmsg.c          1.13
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mmchdl.c			1.22
+	/cvs/DSC_R2/OMP/src/FIMD/showsfdb.c			    1.8
+	/cvs/DSC_R2/OMP/data/mml_commands               1.11
+	/cvs/DSC_R2/OMP/include/comm_msgtypes.h         1.4
+	/cvs/DSC_R2/OMP/include/sfmconf.h               1.14
+=====================================================================
+1. 날  짜 : 2011년 05월27일 (FRI)
+2. 작업자 : dcham 
+3. 내  용 :
+	* FIMD
+	 - TPS CALL OMC명령추가(dis-call-lmt, set-call-lmt) 
+         - TPS루틴 optional compile tag 추가 
+	* STMD
+         - TPS루틴 optional compile tag 추가 
+	* NMSIF 
+         - TPS루틴 optional compile tag 추가 
+        * /OMP/include heeder file
+         - TPS CALL 공유메모리 구조 변경(SFM_CALL) 
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/FIMD/Makefile			1.5
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_main.c			1.10
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_stsrpt.c			1.9
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_hwalm.c			1.9
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_almlevel.c		1.9
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mmchdl.c			1.20
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_legalmlmt.c		1.4
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mysql.c			1.15
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_proc.c			1.8
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_init.c			1.12
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_proto.h			1.13
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_almmsg.c			1.14
+	/cvs/DSC_R2/OMP/src/FIMD/showsfdb.c			1.6
+	/cvs/DSC_R2/OMP/src/STMD/stmd_statisticrpt.c	        1.8
+	/cvs/DSC_R2/OMP/src/STMD/Makefile	                1.2
+	/cvs/DSC_R2/OMP/src/NMSIF/tool.c                        1.12
+	/cvs/DSC_R2/OMP/src/NMSIF/Makefile                      1.2
+	/cvs/DSC_R2/OMP/include/sfmconf.h                       1.2
+=====================================================================
+1. 날  짜 : 2011년 05월25일 (WED)
+2. 작업자 : dcham 
+3. 내  용 :
+	* FIMD
+	 - TPS(Transaction Per Second) CALL 상태관리 기능 추가 
+         - MMC명령에 TPS항목 추가(mask-alm, umask-alm, 
+           set-session-lmt, dis-session-lmt)
+	* STMD
+	 - TPS Alarm Fualt Count 추가 
+          (insert to fault_5minute_statistics)
+	* NMSIF 
+	 - Alarm Report항목에 TPS추가  
+        * /OMP/include heeder file
+         - TPS CALL Alarm Code/Alarm Type 추가
+         - TPS CALL 공유메모리 추가 
+        * /OMP/libsrc/COMM/
+         - TPS CALL network order변경 루틴 추가 
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/FIMD/Makefile			1.4
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_main.c			1.9
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_stsrpt.c			1.8
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_hwalm.c			1.8
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_almlevel.c		1.8
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mmchdl.c			1.19
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_legalmlmt.c		1.3
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mysql.c			1.14
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_proc.c			1.7
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_init.c			1.11
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_proto.h			1.12
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_almmsg.c			1.11
+	/cvs/DSC_R2/OMP/src/FIMD/showsfdb.c			1.5
+	/cvs/DSC_R2/OMP/src/STMD/stmd_statisticrpt.c	        1.7
+	/cvs/DSC_R2/OMP/src/STMD/Makefile	                1.1
+	/cvs/DSC_R2/OMP/src/NMSIF/tool.c                        1.11
+	/cvs/DSC_R2/OMP/src/NMSIF/Makefile                      1.1
+	/cvs/DSC_R2/OMP/include/sfmconf.h                       1.1
+	/cvs/DSC_R2/OMP/include/comm_almsts_msgcode.h           1.1
+	/cvs/DSC_R2/OMP/include/stm_msgtypes.h                  1.1 
+	/cvs/DSC_R2/OMP/libsrc/COMM/netOrderSceInfoChange.c     1.1 
+	/cvs/DSC_R2/OMP/libsrc/COMM/netOrderSceInfoChange.h     1.1 
+=====================================================================
+1. 날  짜 : 2011년 04월28일 (TUE)
+1. 날  짜 : 2011년 04월28일 (TUE)
+2. 작업자 : uamyd 
+3. 내  용 :
+	* FIMD
+	 - STMD 에서 받는 LogOn 통계 정보.에 대한 로그 추가
+	* STMD
+	 - query log added
+	* TOOLS/LEGSIM
+	 - RLEG 에서 STMD 로 보내는 simulator 추가.
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/FIMD/Makefile			1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_main.c			1.4
+	/cvs/DSC_R2/OMP/src/STMD/stmd_statisticrpt.c		1.3
+	/cvs/DSC_R2/OMP/src/TOOLS/LEGSIM/Makefile		1.1
+	/cvs/DSC_R2/OMP/src/TOOLS/LEGSIM/legsim.h		1.1
+	/cvs/DSC_R2/OMP/src/TOOLS/LEGSIM/legsim_init.c    	1.1
+	/cvs/DSC_R2/OMP/src/TOOLS/LEGSIM/legsim_main.c		1.1
+=====================================================================
+1. 날  짜 : 2011년 04월26일 (TUE)
+2. 작업자 : uamyd 
+3. 내  용 :
+	* socklib
+	 - SO_REUSEPOER -> SO_REUSEPORT change... 
+	* NMSIF
+	 - CHANGED TO RLEG0 ~ RLEG4 FROM RLEG
+	* FIMD
+	 - HW_INFO_SUN10 -> HW_INFO_SUN10.dat .... -> HW_INFO_SUN10
+	* HW_INFO_SUN10
+	 - init
+	* SAMD, IFB/killprc
+	 - kill after noti2samd, 변경 
+	* FIMD/showsfdb
+	 - SMChSts added
+4. 파  일 :
+	/cvs/DSC_R2/OMP/libsrc/COMM/socklib.c			1.2
+	/cvs/DSC_R2/OMP/libsrc/COMM64/socklib.c	        	1.2
+	/cvs/DSC_R2/OMP/data/HW_INFO_SUN10			1.1
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_init.c			1.5,6
+	/cvs/DSC_R2/OMP/src/NMSIF/tool.c			1.8
+	/cvs/DSC_R2/OMP/src/IFB/killprc.c			1.3
+	/cvs/DSC_R2/OMP/src/SAMD/samd_proc.c			1.5
+	/cvs/DSC_R2/OMP/src/FIMD/showsfdb.c			1.3
+=====================================================================
+1. 날  짜 : 2011년 04월26일 (TUE)
+2. 작업자 : uamyd 
+3. 내  용 :
+	* FIMD 
+	 - SM Channel ID MAX value change
+	 - fimd_saveProcAlmInfo2DB, before delete, then insert
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mmchdl.c			1.9
+	/cvs/DSC_R2/OMP/include/sfmconf.h			1.11
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mysql.c	        	1.9
+=====================================================================
+1. 날  짜 : 2011년 04월26일 (TUE)
+2. 작업자 : dcham 
+3. 내  용 :
+	* NMSIF 
+	 - RLEG0~4 Alarm Report 처리 추가  
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_almmsg.c                  1.7
+=====================================================================
+1. 날  짜 : 2011년 04월26일 (TUE)
+2. 작업자 : dcham 
+3. 내  용 :
+	* include
+	 - RLEG0~4 alarm code/type added 
+	* FIMD 
+	 - alarm code/type 추가에 따라 RLEG0~4에 대한 상태 판정 추가 
+4. 파  일 :
+	/cvs/DSC_R2/OMP/include/sfmconf.h                       1.10
+	/cvs/DSC_R2/OMP/include/comm_almsts_msgcode.h           1.9
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_almmsg.c                  1.6
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mysql.c                   1.8
+=====================================================================
+1. 날  짜 : 2011년 04월26일 (MON)
+2. 작업자 : uamyd
+3. 내  용 :
+	* FIMD
+	 - SM LINK mmc modified
+	 - LOGOUT SUCCESS RATE mmc modified
+	* mml_commands
+	 - not loading line modified
+4. 파  일 :
+	/cvs/DSC_R2/OMP/data/mml_commands			1.6
+	/cvs/DSC_R2/OMP/include/sfmconf.h			1.9
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_init.c	        	1.4
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_keepalive.c		1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_main.c			1.3
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mmchdl.c			1.8
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_proto.h			1.6
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_stsrpt.c			1.5
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_proc.c			1.4
+=====================================================================
+1. 날  짜 : 2011년 04월25일 (MON)
+2. 작업자 : uamyd
+3. 내  용 :
+	* FIMD
+	 - SM LINK mask, umask modified
+	* mml_commands
+	 - SM LINK parameter added
+4. 파  일 :
+	/cvs/DSC_R2/OMP/data/mml_commands			1.5
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mmchdl.c			1.7
+=====================================================================
+1. 날  짜 : 2011년 04월25일 (MON)
+2. 작업자 : uamyd
+3. 내  용 :
+	* FIMD
+	 - SM Connection Status Check module added
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_init.c			1.3
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mmchdl.c			1.6
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mysql.c			1.7
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_proto.h			1.5
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_stsrpt.c			1.4
+=====================================================================
+1. 날  짜 : 2011년 04월25일 (MON)
+2. 작업자 : jjinri
+3. 내  용 :
+	* DATA 
+	  - set/del/dis_sm_buf_clr, dis-cpr-info 명령어 
+4. 파  일 :
+	/cvs/DSC_R2/OMP/data/mcdm_distr_mmc			1.3
+	/cvs/DSC_R2/OMP/data/mml_commands			1.4
+=====================================================================
+1. 날  짜 : 2011년 04월24일 (SUN)
+2. 작업자 : 함동철
+3. 내  용 :
+	* FIMD 
+	  - Director Power상태감시에 대한 판단/전송 처리 추가 및   
+	    장애통계 구조체 항목 추가
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_almlevel.c                1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_almmsg.c		        1.4
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_hwalm.c		        1.3
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mmchdl.c		        1.5
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mysql.c		        1.5
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_proto.h		        1.3
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_stat.c		        1.3
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_stsrpt.c		        1.2
+	/cvs/DSC_R2/OMP/src/FIMD/showsfdb.c		        1.2
+	/cvs/DSC_R2/OMP/include/stm_msgtypes.h		        1.3
+=====================================================================
+1. 날  짜 : 2011년 04월24일 (SUN)
+2. 작업자 : 함동철
+3. 내  용 :
+	* NMSIF 
+	  - Director Power NMSIF 알람보고 연동
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/NMSIF/tool.c         		1.5
+=====================================================================
+1. 날  짜 : 2011년 04월24일 (SUN)
+2. 작업자 : 함동철
+3. 내  용 :
+	* DIRM 
+	  - Director Power 수집 부분 & 구조체 & 알람코드/타입  추가
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/DIRM/dirm_func.c			1.2
+	/cvs/DSC_R2/OMP/include/sfm_snmp.h                      1.2
+	/cvs/DSC_R2/OMP/include/comm_almsts_msgcode.h           1.6
+	/cvs/DSC_R2/OMP/include/sfmconf.h                       1.7
+=====================================================================
+1. 날  짜 : 2011년 04월24일 (SUN)
+2. 작업자 : 손형석
+3. 내  용 :
+	* FIMD
+	  - umask-alm LOGOUT SUCCESS RATE bugfix
+	  - invalid alarm info delete bug-fix, for logon, logout
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mmchdl.c			1.4
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mysql.c			1.4
+=====================================================================
+1. 날  짜 : 2011년 04월24일 (SUN)
+2. 작업자 : 손형석
+3. 내  용 :
+	* SAMD
+	  - 변수명 bug-fix
+	* FIMD
+	  - dis-alm-lmt format change
+	  - send2Client 에 LOGOUT SUCCESS RATE
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/SAMD/samd_proc.c			1.4
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mmchdl.c			1.3
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_proc.c			1.3
+=====================================================================
+1. 날  짜 : 2011년 04월24일 (SUN)
+2. 작업자 : 손형석
+3. 내  용 :
+	* NMSIF
+	  - LOG-OUT 통계 Alarm message, type , code 추가
+	* FIMD
+	  - LOG-OUT 통계 관련 감시 항목 추가
+	* STMD
+	  - LOGON 통계 구조체 변경( LEG_STAT, LOGON_STAT 합쳐짐 )
+	  - LOGON 통계 정보를 FIMD로 보낼 때, LOGON, LOGOUT 분리되도록 수정.
+	* include
+	  - LOGOUT 감시 항목 관련 구조체 수정
+	  - LOGON 통계 관련 구조체 변경
+	* data/mml_commands
+	  - 누락된 명령어 수정
+4. 파  일 :
+	/cvs/DSC_R2/OMP/data/mml_commands			1.3
+	/cvs/DSC_R2/OMP/include/comm_almsts_msgcode.h		1.5
+	/cvs/DSC_R2/OMP/include/comm_msgtypes.h			1.2
+	/cvs/DSC_R2/OMP/include/sfmconf.h			1.6
+	/cvs/DSC_R2/OMP/include/stm_msgtypes.h			1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_almmsg.c			1.3
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_hdlalm.c			1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_hwalm.c			1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_init.c			1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_main.c			1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mmchdl.c			1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mysql.c			1.3
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_proto.h			1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_stat.c			1.2
+	/cvs/DSC_R2/OMP/src/NMSIF/tool.c			1.3
+	/cvs/DSC_R2/OMP/src/STMD/stmd_main.c			1.2
+	/cvs/DSC_R2/OMP/src/STMD/stmd_statisticrpt.c		1.2
+	/cvs/DSC_R2/OMP/src/STMD/stmd_txmsg.c			1.2
+=====================================================================
+1. 날  짜 : 2011년 04월22일 (FRI)
+2. 작업자 : 손형석
+3. 내  용 :
+	* NMSIF
+	  - Logon 통계 에 추가되는 ...SID 작업...미완. SID 수급 후 재작업
+	* STMD
+	  - Logon 통계.. 분할, SM_CH_ID, LOG_MOD. 각 통계별 작업 완료
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/NMSIF/msgif.c			1.3
+	/cvs/DSC_R2/OMP/src/STMD/stmd_cron_stat.c		1.2
+	/cvs/DSC_R2/OMP/src/STMD/stmd_ondemand_stat.c		1.2
+	/cvs/DSC_R2/OMP/src/STMD/stmd_periodic_logon.c		1.2
+	/cvs/DSC_R2/OMP/src/STMD/stmd_update_logon.c		1.2
+=====================================================================
+1. 날  짜 : 2011년 04월22일 (FRI)
+2. 작업자 : 손형석
+3. 내  용 :
+	* IFB/killprc
+	  - PROCESS 종료시 SAMD를 먼저 종료하는 방향으로 수정
+	* sysconfig
+	  - PROCESS LIST 작성/수정시 순서 주의하도록 주석 추가
+	* data/*
+	  - 명령어 추가및 변경
+4. 파  일 :
+	/cvs/DSC_R2/OMP/data/mcdm_distr_mmc			1.2
+	/cvs/DSC_R2/OMP/data/mml_commands			1.2
+	/cvs/DSC_R2/OMP/data/sysconfig				1.2
+	/cvs/DSC_R2/OMP/src/IFB/killprc.c			1.2
+=====================================================================
+1. 날  짜 : 2011년 04월22일 (FRI)
+2. 작업자 : 손형석
+3. 내  용 :
+	* SAMD
+	  - PROCESS RESTART 가 1건 이상 발생했을 때, FIMD로 noti. logic added
+4. 파  일 :
+	/cvs/DSC_R2/OMP/src/SAMD/samd_proc.c			1.3
+=====================================================================
+1. 날  짜 : 2011년 04월22일 (FRI)
+2. 작업자 : 함동철
+3. 내  용 :
+	* FIMD/NMSIF 
+	- SAMD 프로세스 분리 관련하여, 알람판정/전송 을 위하여 
+	  알람코드, 알람타입 추가
+	4. 파  일 :
+	/cvs/DSC_R2/OMP/include/sfmconf.h                          1.2
+	/cvs/DSC_R2/OMP/include/comm_almsts_msgcode.h              1.2
+	/cvs/DSC_R2/OMP/src/NMSIF/tool.c                           1.2
+	/cvs/DSC_R2/OMP/src/NMSIF/nmsif_main.c                     1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_proc.c                       1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_mysql.c                      1.2
+	/cvs/DSC_R2/OMP/src/FIMD/fimd_almmsg.c                     1.2
+=====================================================================
+1. 날  짜 : 2011년 04월22일 (FRI)
+2. 작업자 : 함동철
+3. 내  용 :
+	* DIRM 
+	- SAMD memory누수 관련하여, thread방식의 DIRM정보 처리 thread를
+	하나의 프로세스로 분리
+	- sysconfig 파일의 [APPLICATION]섹션에 프로세스 정보 추가
+	4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/SCEM/dirm_main.c                      1.1
+	/cvs/LGT_DSC/OMP/src/SCEM/dirm_init.c                      1.1
+	/cvs/LGT_DSC/OMP/src/SCEM/dirm_func.c                      1.1
+	/cvs/LGT_DSC/OMP/src/SCEM/dirm_ping.c                      1.1
+	/cvs/LGT_DSC/OMP/src/SCEM/dirm.h                           1.1
+	/cvs/LGT_DSC/OMP/src/SCEM/Makefile                         1.1
+	/cvs/LGT_DSC/OMP/libsrc/COMM/proc_version.c                1.2
+	/cvs/LGT_DSC/OMP/libsrc/COMM/proc_version.h                1.2
+=====================================================================
+1. 날  짜 : 2011년 04월22일 (FRI)
+2. 작업자 : 함동철
+3. 내  용 :
+	* CSCM 
+	- SAMD memory누수 관련하여, thread방식의 CSCM정보 처리 thread를
+	하나의 프로세스로 분리
+	- sysconfig 파일의 [APPLICATION]섹션에 프로세스 정보 추가
+	4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/SCEM/cscm_main.c                      1.1
+	/cvs/LGT_DSC/OMP/src/SCEM/cscm_init.c                      1.1
+	/cvs/LGT_DSC/OMP/src/SCEM/cscm_func.c                      1.1
+	/cvs/LGT_DSC/OMP/src/SCEM/cscm.h                           1.1
+	/cvs/LGT_DSC/OMP/src/SCEM/Makefile                         1.1
+	/cvs/LGT_DSC/OMP/libsrc/COMM/proc_version.c                1.2
+	/cvs/LGT_DSC/OMP/libsrc/COMM/proc_version.h                1.2
+=====================================================================
+1. 날  짜 : 2011년 04월22일 (FRI)
+2. 작업자 : 함동철
+3. 내  용 :
+	* SAMD 
+	- SAMD memory누수 관련하여, SCE/L2SW/DIRECTOR 처리 루틴 제거
+	4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/SAMD/Makefile                         1.2  
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_main.c                      1.2
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_init.c                      1.2
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_rxtxmsg.c                   1.2
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_proc.c                      1.2
+=====================================================================
+1. 날  짜 : 2011년 04월20일 (WED)
+2. 작업자 : 함동철
+3. 내  용 :
+	* SCEM
+	- SAMD memory누수 관련하여, thread방식의 SCE정보 처리 thread를
+	하나의 프로세스로 분리
+	- sysconfig 파일의 [APPLICATION]섹션에 프로세스 정보 추가
+	4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/SCEM/scem_main.c                      1.1
+	/cvs/LGT_DSC/OMP/src/SCEM/scem_init.c                      1.1
+	/cvs/LGT_DSC/OMP/src/SCEM/scem_func.c                      1.1
+	/cvs/LGT_DSC/OMP/src/SCEM/scem.h                           1.1
+	/cvs/LGT_DSC/OMP/src/SCEM/Makefile                         1.1
+	/cvs/LGT_DSC/OMP/libsrc/COMM/proc_version.c                1.2
+	/cvs/LGT_DSC/OMP/libsrc/COMM/proc_version.h                1.2
+=====================================================================
+1. 날  짜 : 2011년 03월15일 (TUE)
+	2. 작업자 : 손형석 
+	3. 내  용 : 
+	* STMD
+      - STMD 정시에 종료되는 버그 수정
+      - 1. remote_DB connection 정보를 갖고 오는 부분 수정
+        2. rule_set 5분 통계 입력시, remote_DB로 접속을 시도하여 통계가
+           구해지지 않는 문제 해결
+        3. rule_set 1시간 통계 생성시, 5분 통계가 없는 경우에 대한 예외 처리중
+           buffer가 3000을 초과하는 경우에 대한 예외 처리가 잘못되어 있었음
+           ( 실제 종료되는 원인 )
+        4. periodic 통계 생성 파일이 저장되는 곳을 살펴봐서 파일 사이즈가 
+           3000 ( default buffer size )을 넘는 경우에대한 예외 처리를 조사하여
+           leg 통계 쪽 추가 수정.( 예외 처리 부분 수정됨 )
+4. 파  일 : 
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c						1.10
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_leg.c				1.13
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_ruleset.c			1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_stat.c				1.3
+=====================================================================
+1. 날  짜 : 2011년 03월14일 (MON)
+2. 작업자 : 함동철 
+3. 내  용 : 
+           * SAMD 
+		   SIGCLD/SIGCHLD handler function에서 signal printing 
+           구문 제거
+4. 파  일 : 
+            /cvs/LGT_DSC/OMP/src/SAMD/samd_main.c               1.4 
+=====================================================================
+1. 날  짜 : 2011년 03월14일 (MON)
+2. 작업자 : 손형석
+3. 내  용 : 
+	* STMD
+	  - OMP 서버에서 MP 서버의 INIValue Table 조회시, 
+        connection 정보를 remote_DB의 connection 정보를 조회하여야 하나,
+        local DB connection 정보를 조회하여 생긴 버그 수정.
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c						1.9
+=====================================================================
+1. 날  짜 : 2011년 03월10일 (THU)
+2. 작업자 : 손형석 
+3. 내  용 : 
+	= each blocks db connection fail process
+    * NMSIF
+      - 기동시 mysql connect fail이 발생하면, 로그추가
+      - 운용중 mysql connection fail이 발생하면, 로그 찍고, 종료
+=====================================================================
+1. 날  짜 : 2011년 03월11일 (FRI)
+2. 작업자 : 이상준.
+3. 내  용 : 
+	* FIMD
+	  - SCE_SMCONN, SCE_SMSYN 에 대한 Alarm Level 오류 수정.
+	  - strcasecmp 에서 compare size 가 zero 인 경우 오작동 발생.
+	  - LAN DEVICE 수만큼 비교하여 compare size 가 zero 인경우 배제
+	    하여 처리.
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_almmsg.c						1.4
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stsrpt.c						1.3
+=====================================================================
+1. 날  짜 : 2011년 03월10일 (THU)
+2. 작업자 : 손형석 
+3. 내  용 : 
+	= each blocks db connection fail process
+    * NMSIF
+      - 기동시 mysql connect fail이 발생하면, 로그추가
+      - 운용중 mysql connection fail이 발생하면, 로그 찍고, 종료
+
+    * CDELAY
+      - 기동시 mysql connection fail 이 발생하면, 로그 추가
+      - 운용중 msyql connection check logic 추가
+      - 운용중 mysql connection fail 이 발생하면 종료
+
+	* FIMD
+      - 운용중 msyql connection check logic 추가
+      - 운용중 mysql connection fail 이 발생하면 종료
+
+	* STMD
+	  - 기동시 mysql connection fail 발생시, 종료
+      - 운용중 mysql connection fail 발생시, 종료
+
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/CDELAY/main.c							1.2
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_init.c						1.5
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mmchdl.c						1.5
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mysql.c						1.5
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proc.c						1.4
+	/cvs/LGT_DSC/OMP/src/NMSIF/msgif.c							1.9
+	/cvs/LGT_DSC/OMP/src/NMSIF/nmsif_init.c						1.4
+	/cvs/LGT_DSC/OMP/src/NMSIF/nmsif_proto.h					1.3
+	/cvs/LGT_DSC/OMP/src/NMSIF/tool.c							1.4
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_cron_stat.c					1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_init.c						1.4
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c						1.8
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_make_msg.c					1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_mmchdl.c						1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_nms_stat.c					1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_ondemand_stat.c				1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_delay.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_flow.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_flt.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_leg.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_link.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_load.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_logon.c				1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_ruleent.c			1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_ruleset.c			1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_sms.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_proto.h						1.4
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_statisticrpt.c				1.4
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_tool.c						1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_block.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_delay.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_flow.c				1.21
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_flt.c					1.21
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_http.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_leg.c					1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_load.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_logon.c				1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_lur.c					1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_malur.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_pur.c					1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_rule.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_ruleent.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_ruleset.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_sms.c					1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_tur.c					1.2
+=====================================================================
+1. 날  짜 : 2011년 03월04일 (FRI)
+2. 작업자 : 손형석 
+3. 내  용 : 
+	* NMSIF
+	  - 변수 명 수정이 잘못되어 수정;;
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/NMSIF/msgif.c							1.8
+=====================================================================
+1. 날  짜 : 2011년 03월04일 (FRI)
+2. 작업자 : 손형석
+3. 내  용 : 
+	* NMSIF
+	  - 연동 파일 내용 중, 통계 항목의 끝인 10043:C:xx 항목에 저장되는
+        시간값 변경
+      - 이전까지는 해당 통계 데이터 조회할 때의 시간 정보를 입력
+      - 앞으로는 STMD에서 전달받은 실제 통계 조회 가능 시간 정보를 입력
+      - STMD로 부터 전달받는 시간의 포맷은 다음과 같다.
+        "2011-01-20 12:33:00" 
+      - 이에 변경되어 연동 파일에 저장되는 시간 포맷은 아래와 같다.
+        "201101201233"
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/NMSIF/msgif.c							1.7
+	/cvs/LGT_DSC/OMP/src/NMSIF/tool.c							1.3
+=====================================================================
+1. 날  짜 : 2011년 03월04일 (FRI)
+2. 작업자 : JUNE
+3. 내  용 : 
+	* SAMD
+	  - ntp 정보수집시 popen->system 방식으로 변경.
+	* Version R1.2.0 변경
+	  - SAMD, FIMD, NMSIF, STMD, 
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_init.c						1.2
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_ntp.c						1.2
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_snmp.c						1.3
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_init.c						1.4
+	/cvs/LGT_DSC/OMP/src/NMSIF/nmsif_init.c						1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_init.c						1.3
+=====================================================================
+1. 날  짜 : 2011년 02월28일 (FRI)
+2. 작업자 : 함동철 
+3. 내  용 : 
+	* samd_main.c                                              1.4
+      - SIGCHLD/SIGCLD를 handler처리에서 default처리로 변경 
+	* samd_snmp.c                                              1.2
+      - SCE/L2SW 감시부분에서 snmp요청을 popen방식에서 system
+	    방식으로 변경, 장비감시주기(sleep) 변경
+	* samd_l3pd.c                                              1.2 
+      - TAP(director) 감시에서 snmp요청을 popen방식에서 system
+	    방식으로 변경, 장비감시주기(sleep) 변경 
+		
+=====================================================================
+1. 날  짜 : 2011년 02월26일 (SAT)
+2. 작업자 : 손형석 
+3. 내  용 : 
+	* IFB
+      - fclose 추가
+	* NMSIF
+      - fclose 추가
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/IFB/ifb_comm.c							1.2
+	/cvs/LGT_DSC/OMP/src/NMSIF/nmsif_init.c						1.2
+=====================================================================
+1. 날  짜 : 2011년 02월24일 (THU)
+2. 작업자 : 손형석 
+3. 내  용 : 
+	* NMSIF
+	  - LOGON 통계에 API_REQ_ERR, API_TIMEOUT 필드 추가
+      - LOGON 통계에서 HBIT_4 ~ HBIT_31 까지 추가됨
+	  - Accounting 통계에서 DISCONNECT, DISC-LOGON-CNT 추가됨
+	  - 신규 SCE_FLOW 통계 파일 추가
+	* DATA
+	  - 신규 SCE_FLOW 통계 관련 oid 추가
+	* INC/nmsif.h
+	  - 신규 SCE_FLOW 를 위한 최대 통개 개수 확장(+1)
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/include/nmsif.h							1.2
+	/cvs/LGT_DSC/OMP/src/NMSIF/msgif.c							1.6
+	/cvs/LGT_DSC/OMP/src/NMSIF/nmsif_proto.h					1.2
+	/cvs/LGT_DSC/OMP/data/oidconfig								1.2
+=====================================================================
+1. 날  짜 : 2011년 02월23일 (WED)
+2. 작업자 : 손형석 
+3. 내  용 : 
+	* NMSIF
+	  - field 추가하다가. ETC_FAIL field name을 ETC_FILE 로 잘못
+        수정하였던 것 다시 ETC_FAIL 로 돌려놓음;;
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/NMSIF/msgif.c							1.4
+
+=====================================================================
+1. 날  짜 : 2011년 02월22일 (TUE)
+2. 작업자 : 손형석 
+3. 내  용 : 
+	* FIMD
+	  - LOGON 성공율 시도수를 STMD로 부터 받도록 수정
+      - 시도수가 0인 경우, Alarm 등급 설정시 NORMAL 로 결정
+    * STMD
+	  - LOGON 성공율 정보를 FIMD로 전송할 때, 시도수와 성공수도
+        보내도록 수정
+	* header - sfmconf.h
+	  - STMD -> FIMD 간에 LOGON 성공율 감시를 위해서 사용되는 
+        STAT_LOGON_RATE 구조체에 unsigned int success/request 
+        항목 추가됨
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/include/sfmconf.h							1.4
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hwalm.c						1.6
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_main.c						1.4
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proto.h						1.4
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_init.c						1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c						1.7
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_mmchdl.c						1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_proto.h						1.3
+=====================================================================
+1. 날  짜 : 2011년 02.22 (TUE)
+2. 작업자 : dcham 
+3. 내  용 : ISSUE, TEST방식 분류 원복 
+            - RDR_BLOCK, RDR_TR 데이터 삭제 부분 주석처리
+4. 파  일 : stmd_mian.c     
+=====================================================================
+1. 날  짜 : 2011년 02년 22일 (MON)
+2. 작업자 : 손형석
+3. 내  용 :
+	* data
+	  - mml_commands LOGON 성공율 감시 항목에 대한 System을 DSCM에서
+        SCMA,B로 변경, 이에 대한 명령어 파라메터 수정
+	* NMSIF
+	  - LOGON 통계 항목이 추가됨에 따른 NMS 연동 파일 저장 부분 추가
+      - Query 수정( API_REQ_ERR, API_TIMEOUT 추가됨)
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/data/mml_commands							1.3
+	/cvs/LGT_DSC/OMP/src/NMSIF/msgif.c							1.3
+=====================================================================
+1. 날  짜 : 2011년 02.22 (TUE)
+2. 작업자 : dcham 
+3. 내  용 : 세가지 컴파일 방법으로 분료
+            1. ISSUE : 기존 hang 발생 버젼
+			  - make DEFINES='-DISSUE'
+			2. TEST  : TEST 버젼, end_time조건만 변화
+			  - make DEFINES='-DTEST'
+			3. normal : 문제 코드 제거 버젼, 실제 운영될 버젼
+4. 파  일 :
+=====================================================================
+1. 날  짜 : 2011년 02년 22일 (MON)
+2. 작업자 : 손형석
+3. 내  용 :
+	* FIMD
+	  - LOGON 성공율 감시 항목에 대한 System은 DSCM 에서 SCM으로 변경됨
+	  - 각종 Warning 처리
+	* STMD
+	  - LOGON 성공율 감시 항목에 대한 Fault 통계에 대한 처리.
+	    (HW Fault에 포함)
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/include/sfmconf.h							1.3
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_almmsg.c						1.3
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hdlalm.c						1.3
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hwalm.c						1.3
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_init.c						1.3
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_main.c						1.3
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mmchdl.c						1.4
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mysql.c						1.4
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proc.c						1.3
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proto.h						1.3
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stsrpt.c						1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_statisticrpt.c				1.3
+=====================================================================
+1. 날  짜 : 2011년 02.18 (FRI)
+2. 작업자 : 손형석
+3. 내  용 :
+	* FIMD
+	  - set-alm-lmt 에서 임계치 설정시 메세지 수정
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mmchdl.c						1.3
+=====================================================================
+1. 날  짜 : 2011년 02.18 (FRI)
+2. 작업자 : 손형석
+3. 내  용 :
+	* FIMD
+	  - OMC 의 current_alarm 창에서 발생한 alarm 값이 금새 지워지는 
+		버그 수정. 주기적으로 메모리의 level과 current_alarm 테이블의
+		값을 비교하여 다른 경우, current_alarm 테이블의 값을 삭제함.
+		버그 내용은, 메모리의 level이 아닌, 메모리의 rate 값을 curre-
+		nt_alarm 테이블의 level과 비교해서, 계속 지워졌던 문제임
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mysql.c						1.3
+=====================================================================
+1. 날  짜 : 2011년 02.18 (FRI)
+2. 작업자 : 손형석
+3. 내  용 :
+	* SAMD
+	  - STP에서 compile 시 에러나는..
+        dAppLog 함수 삭제, trclib_writeLogErr 로 대체
+	* STMD
+	  - 주석 처리가 잘못되어 있는 부분 제거
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_main.c						1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c						1.4
+=====================================================================
+1. 날  짜 : 2011년 02.17 (THU)
+2. 작업자 : 손형석
+3. 내  용 :
+	* FIMD
+	  - LOGON 성공율 감시 항목이 추가됨. 감시 로직이 한세트 추가..
+	  - ACTIVE USER 증가 장애 조치 후 CRI에서 MAJ로 등급 하강시 MAJ
+        알람이 발생하지 않는 문제 해결(NMSIF로 전송하는 부분에 변수
+        를 pointer에서 일반 변수로 수정, ACTIVE USER 관련위치에서만)
+	* STMD
+	  - LOGON 통계 항목 추가(API_REQ_ERR, API_TIMEOUT), 그로 인한 
+        Query 수정
+      - LOGON 성공율 감시를 위해 FIMD로 성공율 데이터를 보내는 
+		함수및 그와 관련된 로직 추가 및 수정됨
+	* 명령어 관련(mml_commands)
+	  - LOGON 성공율 감시 관련 마스킹 기능, 조회, threshold 관련
+        명령어 처리를 위해서 파라메터 추가됨
+	* NMSIF
+	  - LOGON 성공율 감시를 위해서 필요한 메세지 추가및 수정
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/NMSIF/tool.c							1.2
+	/cvs/LGT_DSC/OMP/data/mml_commands							1.2
+	/cvs/LGT_DSC/OMP/include/comm_almsts_msgcode.h				1.2
+	/cvs/LGT_DSC/OMP/include/comm_msgtypes.h					1.2
+	/cvs/LGT_DSC/OMP/include/sfmconf.h							1.2
+	/cvs/LGT_DSC/OMP/include/stm_msgtypes.h						1.2
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_almmsg.c						1.2
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hdlalm.c						1.2
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hwalm.c						1.2
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_init.c						1.2
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_main.c						1.2
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mmchdl.c						1.2
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mysql.c						1.2
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proc.c						1.2
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proto.h						1.2
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stat.c						1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_cron_stat.c					1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c						1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_ondemand_stat.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_logon.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_proto.h						1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_statisticrpt.c				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_txmsg.c						1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_logon.c				1.2
+=====================================================================
+1. 날  짜 : 2011년 02.08 (THE)
+2. 작업자 : dcham
+3. 내  용 :
+	* STMD
+	- RDR data delete쿼리 주석처리 
+	  : OMP의 STMD가 StandBy SCM쪽의 data를 delete하지 못하므로,
+	    MP system의 RDRANA로 delete쿼리 이관
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c                      1.2
+======================================================================
+1. 날  짜 : 2011년 2.11 (FRI)
+2. 작업자 : june
+3. 내  용 :
+	* SAMD
+	  - 프로세스 재기동 문제 수정: kstat lib 사용시 kernel fail 로 인해
+	    exit 로 프로세스 종료-> 프로세스 종료하지 않고 상태감시
+		안되는 것으로 변경(요청사항,양성조)
+	  - signal 수정: signal handler에 log 추가, SIGCHLD HANDLER 추가
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_main.c						1.2
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_sys.c						1.2
+=====================================================================
+1. 날  짜 : 2011년 01.20 (FRI)
+2. 작업자 : june
+3. 내  용 :
+	* NMSIF
+	  - TOTAL_TRAFFIC, RULESET_TRAFFIC, RULESETENTRY_TRAFFIC Query 수정
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/NMSIF/msgif.c							1.2
+=====================================================================
+1. 날  짜 : 2011년 01.20 (THU)
+2. 작업자 : jjinri
+3. 내  용 :
+	* STMD
+	"NMS 통보하는 시간 통계 전달 함수 변경"
+	"get_start_time() -> get_end_time()"
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_stat.c 				1.2
+=====================================================================
+1. 날  짜 : 2011년 01.04 (TUE)
+2. 작업자 : jjinri
+3. 내  용 :
+	* STMD
+	stmd_tool 로그 삭제 원복
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_tool.c 						1.5
+=====================================================================
+1. 날  짜 : 2011년 01.04 (THU)
+2. 작업자 : june
+3. 작업일 : 2010-12-22
+3. 내  용 :
+	* DATA
+	  - lan interface 종류 설정 환경 파일 추가.
+	* FIMD
+	  - lan device 상태감시 configuration 작업.
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/data/sysconfig								1.7
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proto.h						1.18
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_almmsg.c						1.28
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_init.c						1.13
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stsrpt.c						1.26
+=====================================================================
+1. 날  짜 : 2010년 12.30 (THR)
+2. 작업자 : jjinri
+3. 내  용 :
+	* STMD
+	fclose() error 시 빠진부분 추가, stmd_tool 로그 추가, 쿼리 타임변수
+	변경 : get_ondemand_time2() -> get_current_time()
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c 						1.21
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_tool.c 						1.4
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_cron_stat.c					1.15
+=====================================================================
+1. 날  짜 : 2010년 12.23 (THR)
+2. 작업자 : jjinri
+3. 내  용 :
+	* STMD
+	STMD 프로세스의 절체시 다운 현상, RULESET COND OVERFLOW 
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_cron_stat.c 					1.14
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_init.c 						1.15
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c 						1.20
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_ondemand_stat.c 				1.8
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_txmsg.c 						1.2
+=====================================================================
+1. 날  짜 : 2010년 10.29 (FRI)
+2. 작업자 : june
+3. 내  용 :
+	* NMS
+	  R110 패키지에 추가된 감시 대상(LEG_SESSION, SCE_SUBS, SCM_STATUS)
+	  에 대하여 NMS 관련 작업 추가.
+4. 파  일 :
+    /cvs/LGT_DSC/OMP/src/NMSIF/tool.c							1.8
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mysql.c						1.23
+=====================================================================
+1. 날  짜 : 2010년 10.11 (MON)
+2. 작업자 : jjinri
+3. 내  용 :
+	* STMD
+	  - mysql down 시 죽는 문제 처리 
+	  - init 시에 mysql down 상태면 살아 있는 상태에서 reconnect
+		하도록 변경. 
+	  - stmd_mysql_query 실패시 다음 루틴으로 가지 않고 
+		return fail 시킴. 
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c 					1.17
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update.c 				1.5
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_block.c 			1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_delay.c 			1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_flow.c 			1.5
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_flt.c 			1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_leg.c 			1.4
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_load.c 			1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_logon.c 			1.6
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_lur.c 			1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_rule.c 			1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_ruleent.c 		1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_ruleset.c 		1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_sms.c 			1.3
+=====================================================================
+1. 날  짜 : 2010년 10.11 (MON)
+2. 작업자 : june
+3. 내  용 :
+	* INCLUDE:
+	  system fault statistic 관련 legsession 구조체 변경.
+	* FIMD
+	  - systemp fault statistic 빠진 수집 항목 추가.
+	* STMD
+	  - systemp fault statistic field 빠진 항목 추가.
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/include/stm_msgtypes.h						1.5
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_statisticrpt.c				1.12
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stat.c						1.6
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hwalm.c						1.15
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mysql.c						1.22
+=====================================================================
+1. 날  짜 : 2010년 10.04 (MON)
+2. 작업자 : june
+3. 내  용 :
+	* FIMD
+	  - SAMD 상태감시 rsh 방법 버그 수정.
+	  - SCE REMOTE LAN CHECK시 버그 수정.
+	  -	SCE_USER, LEG_SESS CLEAR MESSAGE처리 버그 수정.
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_almmsg.c						1.27
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hwalm.c						1.14
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_keepalive.c					1.8
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mmchdl.c						1.16
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mysql.c						1.21
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proc.c						1.13
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stat.c						1.5
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stsrpt.c						1.25
+	/cvs/LGT_DSC/OMP/include/sfmconf.h							1.13
+	/cvs/LGT_DSC/OMP/include/stm_msgtypes.h						1.4
+=====================================================================
+1. 날  짜 : 2010년 10.05 (TUE)
+2. 작업자 : jjinri
+3. 내  용 :
+	* STMD
+	  - mysql 데몬 start 명령, check system 명령, system() 함수 제거 
+	  - connectLoDB() : RETRY 5회 추가 
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c						1.15
+=====================================================================
+1. 날  짜 : 2010년 10.04 (MON)
+2. 작업자 : june
+3. 내  용 :
+	* SAMD
+	  - dis-sys-ver mml 명령 mysql, tap 버젼 미출력 현상 수정.
+	* FIMD
+	  - SCM 상태 감시 기능 추가.
+	    . Fault 상태 추가
+		. SCM alarm 처리
+		. SCM Fault 상태 Clear 명령 추가
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_proc.c						1.13
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_almmsg.c						1.26
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hdlalm.c						1.11
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mysql.c						1.20
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proto.h						1.17
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stsrpt.c						1.24
+	/cvs/LGT_DSC/OMP/include/comm_almsts_msgcode.h				1.6
+=====================================================================
+1. 날  짜 : 2010년 09.30 (THU)
+2. 작업자 : june
+3. 내  용 :
+	* FIMD
+		. LEG Session 상태감시에 대한 결과를 Current_Alarm, Alarm_History에
+		  devIndex 값을 할당하지 않은 상태에서 insert하여 GUI에 garbage 발생.
+		. LEG CPS & SESSION DATA 를 MP에서 ACTIVE 인 경우에만 전송하던
+		  방법에서 ACTIVE or STANDBY 모두 전송하도록 변경.
+		  CPS는 ACTIVE 인 경우에만 저장하여 OMC로 전송하고 SESSION은
+		  각각 OMC로 전송한다.
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hwalm.c						1.13
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_main.c						1.11
+=====================================================================
+1. 날  짜 : 2010년 09.29 (WED)
+2. 작업자 : jjinri
+3. 내  용 :
+	* STMD : ACCOUNT 통계 DISCONNECT REQUEST FIELD 추가 처리
+4. 파  일 :
+	* SRC
+		/cvs/LGT_DSC/OMP/src/STMD/stmd_cron_stat.c 			1.13
+		/cvs/LGT_DSC/OMP/src/STMD/stmd_ondemand_stat.c 		1.7
+		/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_leg.c 		1.4
+		/cvs/LGT_DSC/OMP/src/STMD/stmd_statisticrpt.c 		1.11
+		/cvs/LGT_DSC/OMP/src/STMD/stmd_update_leg.c 		1.3
+	* INC
+		/cvs/LGT_DSC/OMP/include/comm_msgtypes.h 			1.8
+	* DATA
+		/cvs/LGT_DSC/OMP/data/DSCM_DB_INIT.sql 				1.5
+===================================================================
+1. 날  짜 : 2010년 10.02 (SAT)
+2. 작업자 : dcham
+3. 내 용  : 
+    * FIMD, include(omp) :
+	  - scm fault 알람 상태 추가에 따른 수정작업
+
+	* SAMD, mml_command(omp):
+	  - scm faulted상태 clear명령어(mmc)추가에 따른 수정작업
+4. 파 일 :
+    /cvs/LGT_DSC/OMP/include/sfmconf.h
+	/cvs/LGT_DSC/OMP/include/stm_msgtypes.h
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_almlevel.c
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_almmsg.c
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hdlalm.c
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mysql.c
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proc.c
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proto.h
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stat.c
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stsrpt.c
+	/cvs/LGT_DSC/OMP/data/mml_commands
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_proc.c
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_rxtxmsg.c
+===================================================================
+1. 날  짜 : 2010년 09.15 (WED)
+2. 작업자 : june
+3. 내  용 :
+	* FMD :
+	  - sce alarm clear bug 수정, sce가입자, leg sess alarm
+		 처리 추가
+	  -	leg sess alarm 처리 초기화 작업 추가
+	  - mp samd로 부터 전달받은 leg data 처리 추가
+	  - db query debuging
+	  - leg cps 트러블 슈팅
+	  - showsfdb sys 파라메터 화면 출력 내용 추가.
+	* SAMD: scm 상태감시에 fault 상태 추가.
+	* STMD: sce flow 통계 생성안되는 버그 수정
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_almmsg.c			1.24
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hwalm.c			1.12
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stsrpt.c			1.22
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mmchdl.c			1.15
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_init.c			1.12
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_main.c			1.10
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mysql.c			1.84
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proc.c			1.11
+	/cvs/LGT_DSC/OMP/src/FIMD/showsfdb.c			1.11
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_proc.c			1.11
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c			1.13
+===================================================================
+1. 날  짜 : 2010년 09.10 (THR)
+2. 작업자 : jjinri
+3. 내  용 :
+	* STMD : LOGON TABLE DUP INSERT BUG 수정 
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_statisticrpt.c 				1.10
+===================================================================
+1. 날  짜 : 2010년 09.07 (TUE)
+2. 작업자 : june
+3. 내  용 :
+	* FMD : SCE CPU,MEM,DISK,SUBSCRIBER,LEG_SESS Alarm Clear 메시지
+			버그 수정.
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hwalm.c						1.11
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mysql.c						1.17
+===================================================================
+1. 날  짜 : 2010년 09.06 (MON)
+2. 작업자 : june
+3. 내  용 :
+	* 독산 작업 내용 반영
+	  - DATA: set-session-lmt, dis-session-lmt, mask-alm, umask-alm
+	          명령어에 대해 RLEG session, SCE subscriber 추가.
+	  - include: SCE_SYS_NUM_INFO 구조체 limit 데이타형 char->int로
+	          변경.
+	  - libsrc/COMM/: ordering bug 수정, ntohl -> ntohs
+	  - src/hamon: version 변경, R1_0_3->R1_1_0
+	  - src/STMD: version 변경, R1_0_1->R1_1_0
+	  - src/FIMD: rleg/sce session alarm 처리
+	  - src/SAMD: version 변경, R1_0_1->R1_1_0
+
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/data/mml_commands							1.7
+	/cvs/LGT_DSC/OMP/include/sfm_snmp.h							1.3
+	/cvs/LGT_DSC/OMP/include/sfmconf.h							1.11
+	/cvs/LGT_DSC/OMP/libsrc/COMM/netOrderSceInfoChange.c		1.5
+	/cvs/LGT_DSC/OMP/src/hamon/Hamon.c							1.15
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_init.c						1.13
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_almmsg.c						1.23
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hdlalm.c						1.9
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hwalm.c						1.10
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_init.c						1.11
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_legalmlmt.c					1.2
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_main.c						1.9
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mmchdl.c						1.14
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mysql.c						1.16
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proto.h						1.15
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_scealmlmt.c					1.3
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stsrpt.c						1.21
+	/cvs/LGT_DSC/OMP/src/FIMD/showsfdb.c						1.10
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_init.c						1.6
+
+===================================================================
+1. 날  짜 : 2010년 09.01 (TUE)
+2. 작업자 : jjinri
+3. 내  용 :
+	* 독산 작업 내용 반영 (STMD)
+	* HBIT 32 제거 
+4. 파  일 :
+	STMD
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_cron_stat.c 					1.12
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c 						1.12
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_ondemand_stat.c 				1.6
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_flow.c 				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_logon.c 			1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_statisticrpt.c 				1.9
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_logon.c 				1.5
+
+	INCLUDE
+	/cvs/LGT_DSC/OMP/include/comm_msgtypes.h 					1.7
+
+	DATA
+	/cvs/LGT_DSC/OMP/data/DSCM_DB_INIT.sql 						1.3
+	/cvs/LGT_DSC/OMP/data/mml_commands 							1.6
+===================================================================
+1. 날  짜 : 2010년 09.01 (TUE)
+2. 작업자 : hjjung, dcham
+3. 내  용 :
+	* 독산 작업 내용 반영(FIMD, SAMD)
+4. 파  일 :
+	FIMD
+	/cvs/LGT_DSC/OMP/src/FIMD/Makefile 							1.8
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_almlevel.c 					1.5
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_almmsg.c 					1.22
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hdlalm.c 					1.8
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_hwalm.c 						1.9
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_init.c 						1.10
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_legalmlmt.c 					1.1
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_main.c 						1.8
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mmchdl.c 					1.13
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_mysql.c 						1.15
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proc.c 						1.10
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_proto.h 						1.14
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_scealmlmt.c 					1.2
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stat.c 						1.3
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stsrpt.c 					1.20
+	/cvs/LGT_DSC/OMP/src/FIMD/showsfdb.c 						1.9
+
+	SAMD
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_proc.c 						1.10
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_snmp.c 						1.12
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_sys.c 						1.2
+
+	LIBSRC
+	/cvs/LGT_DSC/OMP/libsrc/COMM/netOrderSceInfoChange.c 		1.4
+	/cvs/LGT_DSC/OMP/libsrc/COMM/netOrderSceInfoChange.h 		1.3
+
+	INCLUDE
+	/cvs/LGT_DSC/OMP/include/comm_almsts_msgcode.h 				1.5
+	/cvs/LGT_DSC/OMP/include/sfm_snmp.h 						1.2
+	/cvs/LGT_DSC/OMP/include/sfmconf.h 							1.10
+	/cvs/LGT_DSC/OMP/include/stm_msgtypes.h 					1.2
+
+	DATA
+	/cvs/LGT_DSC/OMP/data/limit_leg_file 						1.1
+	/cvs/LGT_DSC/OMP/data/limit_sce_file 						1.2
+	/cvs/LGT_DSC/OMP/data/sysconfig 							1.6
+===================================================================
+1. 날  짜 : 2010년 08.25 (WED)
+2. 작업자 : june
+3. 내  용 :
+	* SCE FLOW STATISTIC 작업
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/SAMD/samd.h							1.6
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_rxtxmsg.c					1.5
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_snmp.h						1.3
+	/cvs/LGT_DSC/OMP/src/SAMD/samd_snmp.c						1.11
+	/cvs/LGT_DSC/OMP/libsrc/COMM/netOrderSceInfoChange.h		1.2
+	/cvs/LGT_DSC/OMP/libsrc/COMM/netOrderSceInfoChange.c		1.3
+===================================================================
+1. 날  짜 : 2010년 08.24 (TUE)
+2. 작업자 : jjiinri
+3. 내  용 : hamon 
+	* Dual Down 후 한쪽 Side 복구 시 반대 편 Side SCE Cutoff 기능 추가
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/hamon/Hamon.c 					1.13
+===================================================================
+1. 날  짜 : 2010년 08.23 (MON)
+2. 작업자 : jjiinri
+3. 내  용 : STMD 
+	* SCE FLOW STATISTIC 작업
+	* LOGON HBIT32 칼럼 작업 
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/include/sfmconf.h 					1.9
+	/cvs/LGT_DSC/OMP/src/STMD/Makefile 					1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_cron_stat.c 			1.11
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_init.c 				1.12
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c 				1.11
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_proto.h 				1.8
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_statisticrpt.c 		1.8
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_logon.c 		1.4
+	/cvs/LGT_DSC/OMP/include/comm_almsts_msgcode.h 		1.4 
+	/cvs/LGT_DSC/OMP/include/comm_msgtypes.h 			1.5
+	/cvs/LGT_DSC/OMP/include/mysql_db_tables.h 			1.2 
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_cron_stat.c 			1.6
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_main.c 				1.10
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_tool.c 				1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_mmchdl.c 			1.3
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_ondemand_stat.c 		1.5
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_stat.c		1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_flow.c 		1.1
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_periodic_logon.c 	1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_proto.h 				1.7
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_statisticrpt.c 		1.7
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update.c 			1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_flow.c 		1.1
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_update_logon.c 		1.3
+
+	설정 파일 변경 : FLOW 설정 추가, stat-flow 명령어 추가
+	/cvs/LGT_DSC/OMP/data/stmd_cronjob 					1.2
+	/cvs/LGT_DSC/OMP/data/stmd_print_mask				1.2
+	/cvs/LGT_DSC/OMP/data/mml_commands					1.5
+
+	테이블 초기화 스크립트 변경 : LOGON, FLOW
+	/cvs/LGT_DSC/OMP/data/DSCM_DB_INIT.sql				1.2
+
+	OMC MMC 명령어 HELP 추가 : stat-flow
+	/cvs/LGT_DSC/OMC/GuiConfig/mmcHelp
+
+===================================================================
+1. 날  짜 : 2010년 08.23 (MON)
+2. 작업자 : june
+3. 내  용 :
+	* SCE FLOW STATISTIC 작업
+	* SAMD와 STMD 간 인터페이스 정의.
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/include/comm_msgtypes.h					1.4
+===================================================================
+1. 날  짜 : 2010년 08.22 (SUN)
+2. 작성자 : june
+   작업자 : DISK(함동철) LAN(정현주)
+3. 내  용 :
+	* 상암 패키지 버젼: v1.0.3에 기능 추가
+	* MP SERVER 변경에 따른 DISK/LAN Device Name 변경되어 Config
+	  에서 변경 가능한 구조로 변경.
+	* leg session structure 재구성
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_stsrpt.c						1.19
+	/cvs/LGT_DSC/OMP/src/FIMD/fimd_almmsg.c						1.21
+	/cvs/LGT_DSC/OMP/include/sfmconf.h							1.8
+===================================================================
+1. 날  짜 : 2010년 04.15 (THU)
+2. 작성자 : june
+3. 내  용 :
+	* 상암 패키지 버젼: v1.0.3 
+	* 테스트 날짜: 2010-03-15 (with Insprit 김정훈S)
+	+ STMD
+	  1) PDSN 정보 RLEG로 전달 못하는 현상.
+4. 파  일 :
+	/cvs/LGT_DSC/OMP/src/STMD/Makefile							1.2
+	/cvs/LGT_DSC/OMP/src/STMD/stmd_mmchdl.c						1.2
+	/cvs/LGT_DSC/OMP/include/comm_msgtypes.h					1.3
+===================================================================
+    1. 날  짜 : 2010년 04.09 (FRI)
+    2. 작성자 : june
+	3. 내  용 :
+		+ 상암 패키지 버젼: v1.0.2 
+		+ 테스트 날짜: 2010-03-15 (with Insprit 양성조C)
+		+ 상용 적용 장비: 미적용
+		+ 사용 적용 일짜: 미적용
+        + MMCD
+			- ADD-IPADDR 수행 오류 처리.
+			- IP POOL 오류 처리.
+		+ SAMD
+			- FAN/POWER 알람 처리 Clear 명령 처리
+	4. 파  일 :
+		/LGT_DSC/OMP/src/MMCD/mmcd_builtin.c					1.7
+		/LGT_DSC/OMP/src/MMCD/mmcd_init.c						1.3
+		/LGT_DSC/OMP/src/MMCD/mmcd_proto.h						1.4
+		/LGT_DSC/OMP/src/SAMD/samd.h							1.5
+		/LGT_DSC/OMP/src/SAMD/samd_proc.c						1.9
+		/LGT_DSC/OMP/src/SAMD/samd_rxtxmsg.c					1.4
+===================================================================
+    1. 날  짜 : 2009년 10.16 (WED)
+    2. 작성자 : sjjeon
+	3. 내  용 :
+        . FIMD
+        . SAMD
+			- TAP 상태 체크 점검.
+        . STMD
+			- TAP 통계 정보 (CPU/MEM) 삭제
+	4. 파  일 :
+		/OMP/src/STMD/stmd_cron_stat.c							1.5
+		/OMP/src/STMD/stmd_ondemand_stat.c						1.4
+		/OMP/src/STMD/stmd_periodic_load.c						1.2
+		/OMP/src/FIMD/fimd_mmchdl.c								1.12
+		/OMP/src/HAMON/hamon_proc.c								1.4
+		/OMP/src/SAMD/samd_proc.c								1.8
+		/OMP/src/STMD/stmd_statisticrpt.c						1.6
+===================================================================
+    1. 날  짜 : 2009년 10.08 (THR)
+    2. 작성자 : jjinri
+	3. 내  용 :
+        . STMD
+			- STMD Memory Leak 패치 
+			- 1시간당 1M 씩 증가. 
+	4. 파  일 :
+	OMP/src/STMD/stmd_cron_stat.c 							1.4
+	OMP/src/STMD/stmd_init.c 								1.7
+	OMP/src/STMD/stmd_main.c 								1.9
+	OMP/src/STMD/stmd_ondemand_stat.c 						1.3
+	OMP/src/STMD/stmd_periodic_leg.c 						1.3
+	OMP/src/STMD/stmd_update_delay.c 						1.2
+	OMP/src/STMD/stmd_update_leg.c 							1.2
+	OMP/src/STMD/stmd_update_load.c 						1.2
+	OMP/src/STMD/stmd_update_logon.c 						1.2
+	OMP/src/STMD/stmd_update_ruleent.c 						1.2
+	OMP/src/STMD/stmd_update_ruleset.c  					1.2
+	OMP/src/STMD/stmd_update_sms.c 							1.2
+===================================================================
+    1. 날  짜 : 2009년 10.06 (TUE)
+    2. 작성자 : sjjeon
+	3. 내  용 :
+        . SAMD
+			- TAP CLI -> SNMP Check로 변경.
+		. FIMD
+			- DSCM Mysql 상태 체크 누락 부분 추가
+			- Mysql stop후 재구동시 재접속 부분 추가.
+	4. 파  일 :
+		/OMP/src/FIMD/fimd_stsrpt.c 						1.18
+		/OMP/src/SAMD/samd_l3pd.c  							1.15
+		/OMP/src/SAMD/samd_main.c  							1.7
+===================================================================
+    1. 날  짜 : 2009년 10.01 (FRI)
+    2. 작성자 : sjjeon
+	3. 내  용 :
+        . 버젼변경
+			- R1.0.0 -> R1.0.1
+			 : FIMD, NMSIF, SAMD, STMD
+			- 
+		. NMSIF
+			- NMSIF Process Alarm Code 오류 수정. (잘못된 코드 반영)
+		. SAMD
+			- SNMP 반영 (컴파일 Makefile)
+	4. 파  일 :
+		/OMP/src/FIMD/fimd_init.c   						1.9
+		/OMP/src/NMSIF/nmsif_init.c							1.5
+		/OMP/src/NMSIF/tool.c      							1.7
+		/OMP/src/SAMD/Makefile      						1.4
+		/OMP/src/SAMD/samd_init.c   						1.5
+		/OMP/src/STMD/nmsif_init.c  						1.2
+		/OMP/src/STMD/stmd_init.c   						1.6
+===================================================================
+    1. 날  짜 : 2009년 9.25 (FRI)
+    2. 작성자 : sjjeon
+	3. 내  용 :
+        . FIMD
+			- RMT LINK 오류시 Console Alarm code의 A-001 값 수정.
+			- RDR Connect 오류 레벨 MINOR -> MAJOR로 변경. 
+		. etc
+			- 알람코드 Help DB에 추가하는 dump 추가 (ALARM_CODE_HELP.sql)
+	4. 파  일 :
+		/OMP/src/FIMD/fimd_almmsg.c							1.6
+		/OMP/data/ALARM_CODE_HELP.sql						1.1
+===================================================================
+    1. 날  짜 : 2009년 9.22 (TUE)
+    1. 날  짜 : 2009년 9.23 (WED)
+    2. 작성자 : sjjeon
+	3. 내  용 :
+        . NMSIF
+			- 오타수정 : SFM_ALM_TYPE_PROCESS_MCMD->SFM_ALM_TYPE_PROCESS_MCDM
+	4. 파  일 :
+		/OMP/src/NMSIF/tool.c								1.6
+===================================================================
+    1. 날  짜 : 2009년 9.22 (TUE)
+    2. 작성자 : sjjeon
+	3. 내  용 :
+        . SAMD
+			- TAP SNMP TRAP 기능 주석 처리
+		. etc
+			mml_command : REANA 삭제.
+			sysconfig : 주석 설명 추가.
+	4. 파  일 :
+		/OMP/data/mml_command								1.4
+		/OMP/src/IXPC/ixpc_main.c							1.3
+		/OMP/src/SAMD/samd_l3pd.c							1.14
+		/OMP/src/SAMD/samd_main.c							1.6
+		/OMP/data/sysconfig      							1.5
+===================================================================
+    1. 날  짜 : 2009년 9.22 (TUE)
+    2. 작성자 : June
+	3. 내  용 :
+        . SCRIPT
+			- SAMD 감시 쉘 추가. : samd_mon_omp.sh
+	4. 파  일 :
+		/OMP/SCRIPT/samd_mon_omp.sh								1.1
+===================================================================
+    1. 날  짜 : 2009년 8.28 (FRI)
+    2. 작성자 : 전성진
+	3. 내  용 :
+
+        . [SAMD]
+			- TAP SNMPTRAP 처리 
+			 : TRAP notification 발생시 tap의 CLI 체크 기능
+			 : 주기적인 CLI Check 기능(300 마다 체크)
+				(추후 체크 시간은 변동 될수 있음)
+			- linkCheck2() 추가 
+			   : 기존 linkCheck()와 같은 기능 (추후 대체 예정)
+			 
+	4. 파 일 :
+			/OMP/data/snmptrapd.conf         				1.1
+			/OMP/src/FIMD/showsfdb.c        				1.7
+			/OMP/src/SAMD/Makefile           				1.3
+			/OMP/src/SAMD/samd_l3pd.c        				1.13
+==================================================================
+    1. 날  짜 : 2009년 8.27 (THU)
+    2. 작성자 : 전성진
+	3. 내  용 :
+
+        . [FIMD]
+			- fimd 초기화시 limit_dsc_file 파일 로드 실패 수정.
+        . [SAMD]
+			- TAP_TEST 추가 
+			 : TAP-B link 포트 체크변경. 
+				(추후 Makefile에서 -DTAP_TEST 제거)
+			
+
+	4. 파 일 :
+			/OMP/src/FIMD/fimd_init.c        				1.8	
+			/OMP/src/FIMD/fimd_proto.h       				1.13
+			/OMP/src/SAMD/Makefile           				1.2
+			/OMP/src/SAMD/samd_l3pd.c        				1.12
+==================================================================
+    1. 날  짜 : 2009년 8.26 (WED)
+    2. 작성자 : 전성진
+	3. 내  용 :
+
+        . [STMD]
+			- query 수정 (영진씨작업)
+			- SCE MAX 수정 (maxSceMem[0] 추가)
+		. [FIMD]
+			- SFM_ALM_TYPE_PROCESS_MCMD -> SFM_ALM_TYPE_PROCESS_MCDM
+
+	4. 파 일 :
+			/OMP/src/STMD/stmd_statisticrpt.c				1.5	
+			/OMP/src/STMD/stmd_main.c        				1.8
+			/OMP/src/STMD/stmd_proto.h       				1.6
+			/OMP/include/sfmconf.h							1.7
+			/OMP/src/FIMD/fimd_almmsg.c						1.19
+			/OMP/src/FIMD/fimd_hwalm.c						1.8
+			/OMP/src/FIMD/fimd_mysql.c						1.14
+==================================================================
+			
+    1. 날  짜 : 2009년 8.14 (FRI)
+    2. 작성자 : 전성진
+	3. 내  용 :
+
+        . [FIMD]
+			- Level별 Process Alarm Code 추가 및 기능구현.
+			- Define에 PD -> TAP으로 수정.
+		. [NMSIF]
+			- NMSIF signal 발생시 core 발생 현상 수정
+			- NMSIF disconnect 알람 발생시 1078 -> 3500 수정
+			
+	4. 파 일 :
+			/OMP/src/NMSIF/tool.c       					1.5
+			/OMP/src/NMSIF/nmsif_main.c 					1.3
+			/OMP/src/NMSIF/msgif.c      					1.4
+			/OMP/src/FIMD/fimd_stsrpt.c 					1.17
+			/OMP/src/FIMD/fimd_stat.c   					1.2
+			/OMP/src/FIMD/fimd_proto.h  					1.12
+			/OMP/src/FIMD/fimd_proc.c   					1.9
+			/OMP/src/FIMD/fimd_mysql.c  					1.13
+			/OMP/src/FIMD/fimd_mmchdl.c 					1.11
+			/OMP/src/FIMD/fimd_hdlalm.c 					1.6
+			/OMP/include/sfmconf.h      					1.6
+			/OMP/include/comm_almsts_msgcode.h				1.3
+			/OMP/src/FIMD/fimd_almmsg.c       				1.18
+==================================================================
+    1. 날  짜 : 2009년 8.13 (THU)
+    2. 작성자 : 전성진
+	3. 내  용 :
+
+        . [FIMD]
+			- H/W PWR2 STATUS FAIL 상태 발생시 H/W 로그를 남기는 기능.
+			
+	4. 파 일 :
+			/OMP/src/FIMD/fimd_stsrpt.c 					1.16
+			/OMP/src/FIMD/fimd_mysql.c  					1.12
+==================================================================
+    1. 날  짜 : 2009년 8.7 (THU)
+    2. 작성자 : 소준섭
+	3. 내  용 :
+
+        . [MMCD]
+			- dis-usr-info 실행시 죽는 문제
+			- resBuf 넘치는 문제로 4096 에서 8192로 증가시킴
+			
+	4. 파 일 :
+			/OMP/src/MMCD/mmcd_builtin.c					1.6
+==================================================================
+    1. 날  짜 : 2009년 8.6 (THU)
+    2. 작성자 : jjinri(상암)
+	3. 내  용 :
+
+        . [SAMD]
+            - dis-flow-cnt 명령어 추가 및 기능
+			 : sce active flow수 조회 명령어.
+			- snmp-sce.sh 결과 file close() 빠진 부분 추가 
+		. [STMD]
+			- leg periodic 통계.
+			 : buffer over flow 처리.
+			
+	4. 파 일 :
+			/OMP/src/STMD/stmd_periodic_leg.c				1.2
+			/OMP/src/SAMD/samd.h        	 				1.4
+			/OMP/src/SAMD/samd_proc.c   	 				1.6
+			/OMP/src/SAMD/samd_rxtxmsg.c 	 				1.3
+			/OMP/src/SAMD/samd_snmp.c						1.10
+==================================================================
+    1. 날  짜 : 2009년 8.5 (WED)
+    2. 작성자 : sjjeon(상암)
+	3. 내  용 :
+
+        . [FIMD]
+            - Alarm Info Disk 사용량 767% 처리. (SCMA/SCMB)
+			- FAN/POWER 상태 체크 허위알람 처리를 위한 Re-try (2 count)	
+			
+	4. 파 일 :
+			/OMP/src/FIMD/fimd_almmsg.c 	 				1.17
+			/OMP/src/FIMD/fimd_stsrpt.c  	 				1.15
+==================================================================
+    1. 날  짜 : 2009년 8.4 (TUE)
+    2. 작성자 : sjjeon(상암)
+	3. 내  용 :
+
+        . [FIMD]
+            - 수정
+			SFM_SysCommMsgType_N2H ((SFM_SysCommMsgType*)&rxIxpcMsg->body)
+				-> SFM_SysCommMsgType_N2H ((SFM_SysCommMsgType*)rxIxpcMsg->body)
+			pHWSts = &rxSysCommMsg->sysHW; 
+				-> pHWSts = rxSysCommMsg->sysHW; 
+	4. 파 일 :
+			/OMP/src/FIMD/fimd_stsrpt.c 	 				1.13
+==================================================================
+    1. 날  짜 : 2009년 8.3 (MON)
+    2. 작성자 : sjjeon(상암)
+	3. 내  용 :
+    
+        . [FIMD]
+            - nmsif alarm message 전송시 e1000g33 -> e1000g3 오타수정.
+        . [NMSIF]
+			- ALMCODE_SFM_SCE_UNKNOWN -> ALMCODE_SFM_SCE_TEMP 수정.
+        . [SAMD]
+			- TAP Info 임시로 shell 사용.
+
+	4. 파 일 :
+			OMP/src/FIMD/fimd_mysql.c 							1.11
+			OMP/src/NMSIF/msgif.c     							1.3
+			LGT_DSC/OMP/src/NMSIF/tool.c						1.4
+			OMP/src/SAMD/samd_l3pd.c    						1.10
+==================================================================
+    1. 날  짜 : 2009년 7.30 (THU)
+    2. 작성자 : sjjeon
+	3. 내  용 :
+    
+        . [FIMD]
+            - #define _NOT_USED_PROCESS_ALARM_TYPE_ 추가.
+			  : 프로세스별 알람 코드/타입 컴파일시 추가 
+			- NMSIF 상태체크
+			  : NMS port 상태 점검 수정.
+		. [NMSIF]
+			- oid config 수정. 
+			  : cdelay는 5분통계 정보가 없어 NULL 처리함.
+			- Alarm Type NMS 전송시 알수 없는 프로세스 메시지 수정
+			  : alarm code를 추가하여 정상수행.
+	4. 파 일 :
+			OMP/src/FIMD/fimd_almmsg.c							1.15
+			OMP/src/FIMD/fimd_main.c  							1.5
+			OMP/src/FIMD/fimd_mmchdl.c   						1.9
+			OMP/src/FIMD/fimd_mysql.c    						1.10
+			OMP/src/FIMD/fimd_stsrpt.c   						1.13
+			OMP/data/oidconfig           						1.2
+			OMP/src/FIMD/Makefile								1.5
+			OMP/src/NMSIF/tool.c								1.2
+			src/NMSIF/socket.c  								1.2
+
+==================================================================
+    1. 날  짜 : 2009년 7.29 (WED)
+    2. 작성자 : sjjeon
+	3. 내  용 :
+    
+        . [SAMD]
+            - TAP getsnmp 결과시 file descript가 NULL일때..
+			  예외 처리 부분 추가.
+		. [STMD]
+			- NMS 5분통계 기능 주석 해제.
+	4. 파 일 :
+			OMP/src/SAMD/samd_l3pd.c							1.9
+			OMP/src/STMD/stmd_cron_stat.c						1.3
+
+==================================================================
+    1. 날  짜 : 2009년 7.27 (MON)
+    2. 작성자 : sjjeon
+	3. 내  용 :
+    
+        . [SAMD]
+            - Ping Test sleep 및 대기 시간 증가
+             : ping 테스트시 대기시간 2.5->1.5 sec
+			- micro sleep -> sleep(1)
+			- L2 snmp info + pingtest 
+			 : ping만 체크하던 쓰레드에서 L2SW와 pingtest()를 
+			   하는 작업으로 수행.
+			- SCE SNMP Thread
+			 : 기존 SCE + L2 하나의 쓰레드에서 SCE만 상태관리..
+			- NTP
+			 : popen시 에러로그 남기는 부분 추가.
+
+		. [hamon]
+			- yhshin 작업..  20090725 상암 소스 적용 
+
+	4. 파 일 :
+			OMP/src/SAMD/samd.h									1.3
+			OMP/src/SAMD/samd_l3pd.c							1.8
+			OMP/src/SAMD/samd_main.c							1.4
+			OMP/src/SAMD/samd_ntp.c								1.2
+			OMP/src/SAMD/samd_ping.c							1.5
+			OMP/src/SAMD/samd.h									1.3
+			OMP/src/SAMD/samd_snmp.c							1.8
+			OMP/src/hamon/Hamon.c								
+		
+====================================================================
+	1. 날  짜 : 2009년 7.27 (MON)
+	2. 작성자 : June
+	3. 내  용 :
+		+ COND	
+		  - dis-cmd-his 처리, buf+14 -> buf+16으로 변경
+		  - 테스트 완료.
+	4. 파 일 :
+		/src/COND/cond_mmchdl.c									1.2
+====================================================================
+	1. 날  짜 : 2009년 7.24 (FRI)
+	2. 작성자 : sjjeon
+	3. 내  용 :
+		. [COMM LIB]
+			- micro sleep 버그 수정
+			  : 1000000 micro sec 입력시 no sleep 상태 처리
+		. [SAMD]
+			- Ping Test sleep 및 대기 시간 증가
+			 : ping 테스트시 대기시간 1.5->2.5 sec
+			 : re-try시 sleep 1 sec
+		. [Etc]
+		    - /DSC/STATUS 환경 파일 /DSC/SCRIPT로 옮김.
+			  : 소스 경로도 수정.
+
+	4. 파 일 :
+		OMP/libsrc/COMM/comm_util.c							1.2
+		OMP/src/FIMD/fimd_keepalive.c						1.6
+		OMP/src/SAMD/samd_dup.c 							1.2
+		OMP/src/SAMD/samd_l3pd.c 							1.7
+		OMP/src/SAMD/samd_ping.c							1.4
+		OMP/src/SAMD/samd_proc.c 							1.5
+		OMP/src/SAMD/samd_snmp.c 							1.7
+==================================================================
+	1. 날  짜 : 2009년 7.23 (THR)
+	2. 작성자 : sjjeon
+	3. 내  용 :
+		. [SAMD]
+			- TAP, L2 switch 상태 정보 수정 및 retry 추가 
+			 : L2 Switch re-try 추가.
+
+	4. 파 일 :
+		OMP/src/SAMD/samd_l3pd.c							1.6
+		OMP/src/SAMD/samd_snmp.c							1.6
+==================================================================
+	1. 날  짜 : 2009년 7.23 (THR)
+	2. 작성자 : jjinri
+	3. 내  용 :
+		. [FIMD]
+			- DIS-MASK-STS
+			 : core 수정 ( char rcBuf[30] -> char    rcBuf[2048]; )
+
+	4. 파 일 :
+		OMP/src/FIMD/fimd_mmchdl.c							1.7
+==================================================================
+	1. 날  짜 : 2009년 7.22 (WED)
+	2. 작성자 : sjjeon
+	3. 내  용 :
+		. [SAMD]
+			- SCE retry 수정 
+			  : mgmt 1,2 번 만 retry fail check, 나머지 포트는 
+			    retry fail check 안함.
+			- TAP tetry 수정 
+		. [FIMD]
+			- Mirror port Alarm Type/Code 추가 
+			  : ALMCODE_SFM_MIRROR_PORT, SFM_ALM_TYPE_HW_MIRROR 추가
+
+	4. 파 일 :
+		OMP/include/comm_almsts_msgcode.h					1.2
+		OMP/include/sfmconf.h     							1.5
+		OMP/src/FIMD/fimd_almmsg.c 							1.12
+		OMP/src/FIMD/fimd_hdlalm.c   						1.5
+		OMP/src/FIMD/fimd_init.c 							1.6
+		OMP/src/FIMD/fimd_main.c							1.3
+		OMP/src/FIMD/fimd_mmchdl.c 							1.6
+		OMP/src/FIMD/fimd_mysql.c 							1.8
+		OMP/src/FIMD/fimd_proto.h							1.11
+		OMP/src/FIMD/fimd_stsrpt.c							1.12
+		OMP/src/SAMD/samd_l3pd.c  							1.5
+		OMP/src/SAMD/samd_snmp.c  							1.5
+================================================================
+	1. 날  짜 : 2009년 7.22 (WED)
+	2. 작성자 : jjinri
+	3. 내  용 :
+		. Warning 제거 
+
+	4. 파 일 :
+	OMP/include/udrgen_define.h								1.2
+
+	OMP/libsrc/COMM/socklib.c								1.2
+	OMP/libsrc/COMM/netOrderSceInfoChange.c					1.2
+
+	OMP/libsrc/HASH/hasho.c									1.2
+	OMP/libsrc/HASH/memg.c									1.2
+
+	OMP/libsrc/SRCHUDR/srchmsg_lib.c						1.2
+	OMP/libsrc/SRCHUDR/srchmsg_proc.c						1.2
+	OMP/libsrc/SRCHUDR/srchmsg_prt.c						1.2
+
+	OMP/src/Makefile										1.2
+
+	OMP/src/CDELAY/main.c									1.2
+	OMP/src/CDELAY/mmc_hld.h								1.2
+
+	OMP/src/FIMD/showsfdb.c									1.5
+
+	OMP/src/IFB/Makefile									1.2
+	OMP/src/IFB/ifb_comm.c									1.2
+	OMP/src/IFB/sysrmqm.c									1.2
+
+	OMP/src/SAMD/samd_main.c								1.2
+	OMP/src/SAMD/samd_proc.c								1.4
+	OMP/src/SAMD/samd_qclear.c								1.2
+	OMP/src/SAMD/samd_util.c								1.2
+
+	OMP/src/TOOLS/AAA_SIM/Makefile							1.2
+	OMP/src/TOOLS/AAA_SIM/MD5LIB/Makefile					1.2
+	
+	OMP/src/TOOLS/CDRLOG_VIEW/cdrlog_config.c				1.2
+
+=================================================================
+	1. 날  짜 : 2009년 7.22 (WED)
+	2. 작성자 : jjinri
+	3. 내  용 :
+		. [DATA 파일 ]
+			- 불필요한 데이터 파일 정리 
+			- sysconfig 정리 
+		. [STMD]
+			- mysql_option(sql) -> mysql_option(sql_Rm) 버그 수정
+		. [SAMD]
+			- samd.conf 데이터 파일 init 함수 주석 처리 
+		. [hamon]
+			- hamon Makefile : cp hamon ../../bin 추가 
+
+	4. 파 일 :
+	OMP/data/BSDM_R300.sql
+	OMP/data/Check_time
+	OMP/data/DEL_DATA.conf
+	OMP/data/DEL_DATA.sh
+	OMP/data/rate_file
+	OMP/data/recover.sh
+	OMP/data/samd.conf
+	OMP/data/telnet_result
+	OMP/data/traffic_file
+
+	OMP/data/sysconfig										1.3
+
+	OMP/src/STMD/stmd_main.c								1.7
+	OMP/src/SAMD/samd_init.c								1.3
+
+	OMP/src/hamon/Makefile									1.2
+
+=================================================================
+	1. 날  짜 : 2009년 7.21 (TUE)
+	2. 작성자 : sjjeon
+	3. 내  용 :
+		. [SAMD]
+			- SCE SNMP 정보 retry check 기능 추가.
+		. [FIMD]
+			- process name으로 alram type 찾는 함수 추가
+			  : getAlarmTypeFromProcName()
+			- process 별 alarm type 적용 
+
+	4. 파 일 :
+		OMP/src/SAMD/samd_snmp.c							1.4
+		OMP/src/FIMD/fimd_mmchdl.c							1.5
+		OMP/src/FIMD/fimd_mysql.c							1.7
+		OMP/src/FIMD/fimd_proto.h							1.9
+		OMP/include/sfmconf.h								1.4
+=================================================================
+	1. 날  짜 : 2009년 7.21 (MON)
+	2. 작성자 :  jjinri
+	3. 내  용 :
+		. [STMD]
+			- log 정리, stmd_INI_init_Local 추가 (entry 초기화 )
+			- DSCM 디비 초기화 스크립트 (alarm_code까지 반영)
+
+	4. 파 일 :
+	src/STMD/stmd_init.c									1.5
+	src/STMD/stmd_main.c									1.6
+	src/STMD/stmd_proto.h									1.5
+	src/STMD/stmd_statisticrpt.c							1.4
+
+	data/DSCM_DB_INIT.sql									1.1
+	data/IP_CODE_TBL.sql									1.1
+	data/stmd_del_time										1.1
+
+=================================================================
+	1. 날  짜 : 2009년 7.20 (MON)
+	2. 작성자 :  jjinri
+	3. 내  용 :
+		. [STMD]
+			- ondemand 통계 호출 시점 변경. 중간에 
+			ondemand 사라지는 현상 때문에
+
+	4. 파 일 :
+		src/STMD/stmd_init.c                                    1.4
+		src/STMD/stmd_main.c                                    1.5
+		src/STMD/stmd_proto.h                                   1.3
+
+=================================================================
+	1. 날  짜 : 2009년 7.20 (MON)
+	2. 작성자 : sjjeon
+	3. 내  용 : 
+		. [FIMD]
+			- AlarmCode Mysql current_alarm, alarm_history 추가.
+			- 컴파일시 warnning 해결.
+
+	4. 파 일 :
+	OMP/src/FIMD/fimd_almmsg.c								1.10
+	OMP/src/FIMD/fimd_hdlalm.c,								1.4
+	OMP/src/FIMD/fimd_hwalm.c								
+	OMP/src/FIMD/fimd_init.c								1.5
+	OMP/src/FIMD/fimd_keepalive.c							1.5
+	OMP/src/FIMD/fimd_l2swalmlmt.c							1.2
+	OMP/src/FIMD/fimd_mmchdl.c								1.4
+	OMP/src/FIMD/fimd_mysql.c								1.6
+	OMP/src/FIMD/fimd_proc.c								1.4
+	OMP/src/FIMD/fimd_proto.h								1.8
+	OMP/src/FIMD/fimd_stsrpt.c								1.11
+	OMP/src/FIMD/fimd_tools.c								1.2
+	OMP/src/FIMD/showsfdb.c									1.4
+=================================================================
+	1. 날  짜 : 2009년 7.20 (MON)
+	2. 작성자 : night1700
+	3. 내  용 : 
+		. [MMCD]
+			- 로그아웃을 하지않고 종료시 ON/OFF 제대로 표시하지 않
+			았던 문제 해결
+			- warning 해결
+
+	4. 파 일 :
+	src/MMCD/mmcd_builtin.c									1.4
+	src/MMCD/mmcd_proc.c									1.4
+=================================================================
+	1. 날  짜 : 2009년 7.19 (SUN)
+	2. 작성자 : 신영호
+	3. 내  용 : 
+		. [FIMD]
+			- mp check 시 상태 변화가 있을때만 alarm 보내게 수정.
+	4. 파 일 :
+	/src/FIMD/fimd_keepalive.c								1.4
+=================================================================
+	1. 날  짜 : 2009년 7.19 (SUN)
+	2. 작성자 : night1700
+	3. 내  용 : 
+		. [MMCD]
+			- 클라이언트와 HeartBeat 체크 추가
+			- IP TBL 추가
+			- 명령어 추가 add-ipaddr, dis-ipaddr-info, del-ipaddr
+			- DATA파일 추가 mml_iptbl
+	4. 파 일 :
+	src/MMCD/mmcd_builtin.c									1.2
+	src/MMCD/mmcd_init.c									1.2
+	src/MMCD/mmcd_main.c									1.3
+	src/MMCD/mmcd_proc.c									1.2
+	src/MMCD/mmcd_proto.h									1.2
+	src/MMCD/mmcd_req.c										1.2
+	src/MMCD/mmcd_tools.c									1.2
+=================================================================
+	1. 날  짜 : 2009년 7.19 (SUN)
+	2. 작성자 : jjinri
+	3. 내  용 :
+	    . [STMD]
+			- cronjob fault 버그 수정
+			- INI Init 버그 수정
+	4. 파 일:
+	src/stmd/stmd_main.c									1.4
+	src/stmd/stmd_cron_stat.c								1.2
+
+=================================================================
+	1. 날  짜 : 2009년 7.18 (SAT)
+	2. 작성자 : sjjeon
+	3. 내  용 :
+	    . [FIMD]
+			- Alarm Code 추가 
+			- getAlarmCodeFromType() 추가. 
+
+	4. 파 일:
+		OMP/include/sfmconf.h								1.3
+		OMP/src/FIMD/fimd_almmsg.c							1.8
+		OMP/src/FIMD/fimd_mmchdl.c							1.3
+		OMP/src/FIMD/fimd_proto.h							1.6
+=================================================================
+	1. 날  짜 : 2009년 7.17 (FRI)
+	2. 작성자 : jjinri
+	3. 내  용 :
+	    . [hamon]
+			- CheckMaster함수 추가 
+			: Active / Stand by 가 명확할 때에는 SetMaster(SCM_A)
+				를 하지 않도록 
+	4. 파 일:
+	src/hamon/Hamon.c										1.2
+
+=================================================================
+	1. 날  짜 : 2009년 7.17 (FRI)
+	2. 작성자 : jjinri
+	3. 내  용 :
+	    . [IXPC]
+			- samd watchdog 기능 복제 적용. (MP IXPC) 
+			- warning 정리 
+	4. 파 일:
+	src/IXPC/Makefile										1.2
+	src/IXPC/ixpc_init.c									1.2
+	src/IXPC/ixpc_main.c									1.2
+	src/IXPC/ixpc_proc.c									1.2
+	src/IXPC/ixpc_proto.h									1.2
+	src/IXPC/socklib.c										1.2
+	src/IXPC/socklib.h										1.2
+
+=================================================================
+	1. 날  짜 : 2009년 7.17 (FRI)
+	2. 작성자 : sjjeon
+	3. 내  용 :
+	    . [FIMD]
+			- SNMP popen() -> fopen() 상태관리 수정.
+			- 소스정리
+			- RDR-CONN 상태관리 오류 수정.
+	4. 파 일:
+		OMP/src/FIMD/fimd_mysql.c   					1.3
+		OMP/src/FIMD/fimd_stsrpt.c						1.9
+		OMP/src/SAMD/samd_snmp.c						1.3
+
+=================================================================
+	1. 날  짜 : 2009년 7.17 (FRI)
+	2. 작성자 : jjinri
+	3. 내  용 :
+	    . [STMD]
+			- Retry Connection 정리 
+			- Periodic Link SysIp -> SysName 오류 수정
+			- Dual Standby 시에도 Remote와 관계없는 통계 생성 가능
+			- Dual Standby 시 Remote 통계는 default 값으로 통계 생성. 
+	4. 파 일:
+	 src/STMD/stmd_init.c								1.3
+	 src/STMD/stmd_main.c								1.3
+	 src/STMD/stmd_periodic_link.c						1.2
+	 src/STMD/stmd_proto.h								1.2
+	 src/STMD/stmd_statisticrpt.c						1.3
+=================================================================
+	1. 날  짜 : 2009년 7.16 (THR)
+	2. 작성자 : sjjeon
+	3. 내  용 :
+	    . [FIMD]
+			- SCE STATUS 상태 backup
+	4. 파 일:
+		OMP/src/FIMD/fimd_almlevel.c					1.2
+		OMP/src/FIMD/fimd_stsrpt.c						1.7
+=================================================================
+	1. 날  짜 : 2009년 7.16 (THR)
+	2. 작성자 : jjinri
+	3. 내  용 :
+	    . [STMD]
+			- mysql reconnection 정리
+	4. 파 일:
+		OMP/src/STMD/stmd_main.c						1.2
+		OMP/src/STMD/stmd_statistcs.c					1.2
+=================================================================
+	1. 날  짜 : 2009년 7.15 (WED)
+	2. 작성자 : sjjeon
+	3. 내  용 :
+	    . [SAMD]
+			- TAP SNMP	정보 획득..
+			- H/W 상태 정보 체크 ..
+	4. 파 일:
+		OMP/src/SAMD/samd_l3pd.c						
+		OMP/src/FIMD/fimd_almmsg.c						1.3
+		OMP/src/FIMD/fimd_proto.h						1.2
+		OMP/src/FIMD/fimd_stsrpt.c						1.6
+		OMP/src/FIMD/showsfdb.c							1.3
+=================================================================
+	1. 날  짜 : 2009년 7.13 (MON)
+	2. 작성자 : sjjeon
+	3. 내  용 :
+	    . [SAMD]
+			- TAP IP 정보 main -> Thread 초기화
+			- BKUP-PKG 디렉토리 상태 체크 후 디렉토리 생성 여부 추가.
+		. [FIMD]
+			- FIMD 상태 정보 수정 (L2, TAP , DISk등)
+	4. 파 일:
+		OMP/src/FIMD/fimd_hwalm.c						
+		OMP/src/FIMD/fimd_mmchdl.c						
+		OMP/src/FIMD/fimd_mysql.c						
+		OMP/src/FIMD/fimd_stsrpt.c						
+		OMP/src/MMCD/mmcd_main.c					
+		OMP/src/NMSIF/tool.c					
+		OMP/src/SAMD/samd.h					
+		OMP/src/NMSIF/tool.c			
+		OMP/src/SAMD/samd.h			
+		OMP/src/SAMD/samd_init.c
+		OMP/src/SAMD/samd_l3pd.c	
+		OMP/src/SAMD/samd_proc.c	
+		OMP/src/SAMD/samd_snmp.c	
+=================================================================
+1. 날  짜 : 2009년 7.12 (SUM)
+	2. 작성자 : jjinri
+	3. 내  용 :
+	    . [STMD]
+			- DELETE 보관주기 설정 파일로 변경 
+		. [COND]
+			- Trace 저장 디렉토리 변경 TRC_MSG_STS
+	4. 파 일:
+		OMP/src/STMD/stmd_init.c						1.29
+		OMP/src/STMD/stmd_main.c						1.57
+		OMP/src/STMD/stmd_mmchdl.c						1.21
+		OMP/src/STMD/stmd_periodic_flt.c				1.8
+		OMP/src/STMD/stmd_proto.h						1.40
+		OMP/src/STMD/stmd_statisticrpt.c				1.24
+		OMP/src/STMD/stmd_update_block.c				1.14
+		OMP/src/STMD/stmd_update_delay.c				1.6
+		OMP/src/STMD/stmd_update_flt.c					1.10
+		OMP/src/STMD/stmd_update_leg.c					1.4
+		OMP/src/STMD/stmd_update_load.c					1.10
+		OMP/src/STMD/stmd_update_logon.c				1.5
+		OMP/src/STMD/stmd_update_lur.c					1.15
+		OMP/src/STMD/stmd_update_ruleent.c				1.5
+		OMP/src/STMD/stmd_update_ruleset.c				1.5
+		OMP/src/STMD/stmd_update_sms.c					1.3
+
+		OMP/src/COND/cond_init.c						1.7
+		OMP/src/COND/cond_main.c						1.8
+		OMP/src/COND/cond_proc.c						1.7
+
+=================================================================
+1. 날  짜 : 2009년 7.11 (SAT)
+	2. 작성자 : sjjeon
+	3. 내  용 :
+		. [INCLUDE]
+			- 프로세스별 / TAP 알람 코드 추가
+	    . [FIMD]
+			- H/W 상태 체크 수정 . (한개의 for 문으로 처리)
+		. [SAMD]
+			- SCE SNMP MODE 추가.
+	4. 파 일:
+		OMP/src/FIMD/fimd_almmsg.c							1.30
+		OMP/src/FIMD/fimd_stsrpt.c							1.42
+		OMP/src/SAMD/samd_snmp.c							1.25
+		OMP/src/SAMD/samd_snmp.h							1.10
+		OMP/include/comm_almsts_msgcode.h					1.13
+=================================================================
+1. 날  짜 : 2009년 7.11 (토)
+2. 작성자 : 신영호
+3. 내  용 :
+    . [SAMD]
+		- 소스 정리. 
+		- tap 상태 조회 timeout 값 변경 (10sec --> 3sec)
+4. 파 일:
+	OMP/src/SAMD/samd_init.c							1.15
+	OMP/src/SAMD/samd_l3pd.c							1.17
+	OMP/src/SAMD/samd_ping.c							1.9
+=================================================================
+1. 날  짜 : 2009년 7.8 (WED)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+		- ping 1->2초 
+    . [FIMD]
+		- Queue 상태 테스트 및 수정.
+	    - L2 Switch 상태 오류 수정 (L2 CPU 상태 오류) 
+		- 기타 오류.
+			
+4. 파 일:
+	OMP/src/FIMD/fimd_almmsg.c							1.28
+	OMP/src/FIMD/fimd_hwalm.c							1.24
+	OMP/src/FIMD/fimd_mmchdl.c							1.35
+	OMP/src/FIMD/fimd_proto.h							1.22
+	OMP/src/FIMD/fimd_stsrpt.c							1.41
+	OMP/src/SAMD/samd_ping.c  							1.8
+
+=================================================================
+1. 날  짜 : 2009년 7.7 (TUE)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+		- L2SW 초기화 값 설정. 오류 수정.
+			(SNMP 값 get 실패시 cpu usage 297% -> 0 % 수정)
+4. 파 일:
+	OMP/src/SAMD/samd_snmp.c							1.24
+
+=================================================================
+1. 날  짜 : 2009년 7.6 (MON)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+		- init에서 Remote 재접속시 keepalive 추가 
+    . [SAMD]
+		- Switch-scm 결과버그 수정,결과 체크하지않고 바로 
+			결과를 만들어 주는걸로 변경 . 
+4. 파 일:
+	OMP/src/STMD/stmd_init.c							1.28
+	OMP/src/SAMD/samd_proc.c							1.33
+=================================================================
+1. 날  짜 : 2009년 7.6 (MON)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+        - sm status (conn/sync) 상태 오류 처리
+          - Mask-alm 처리
+          - 오류 발생시 current alarm 처리
+		- SFM_HW_MAX_LINK_NUM 12 -> 16 size 증가
+4. 파 일:
+    OMP/src/FIMD/fimd_mmchdl.c                          1.34
+    OMP/src/FIMD/fimd_mysql.c                           1.23
+    OMP/src/FIMD/fimd_tools.c                           1.4
+	OMP/include/sfmconf.h								1.17
+=================================================================
+1. 날  짜 : 2009년 7.5 (Sum)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [SAMD]
+		- Switch-scm 명령어 결과 메시지 출력 이상한 버그 수정
+		: ret2 -> ret1 변수로 수정함. 
+	. [STMD]
+		- RLEG Active쪽에서만 통계 처리하는 부분을 A,B양쪽에서 
+		받아서 처리 하도록 수정함. 
+4. 파 일: 
+	OMP/src/SAMD/samd_proc.c							1.32
+
+	OMP/src/STMD/stmd_main.c							1.56
+	OMP/src/STMD/stmd_proto.h							1.39
+	OMP/src/STMD/stmd_statisticrpt.c					1.23
+=================================================================
+1. 날  짜 : 2009년 7.3 (Fri)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+		- mysql_options(MYSQL *mysql, MYSQL_OPT_CONNECT_TIMEOUT,..)
+		mysql_real_connect() 행걸리는 현상 체크 위해 
+4. 파 일: 
+	OMP/src/STMD/stmd_init.c							1.27
+	OMP/src/STMD/stmd_main.c							1.55
+	OMP/src/STMD/stmd_proto.h							1.38
+	OMP/src/STMD/stmd_update.c							1.24
+=================================================================
+1. 날  짜 : 2009년 7.2 (목)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [CDELAY]
+		- 한시간에 한번만 insert 되도록 mysql_insert 후 sleep(1) 추가 
+4. 파 일: 
+	OMP/src/CDELAY/main.c								1.15
+=================================================================
+1. 날  짜 : 2009년 7.2 (목)
+2. 작성자 : 신영호
+3. 내  용 :
+    . [FIMD]
+		- OMP에서 MP 조회 방법 수정.
+4. 파 일: 
+	/OMP/src/FIMD/fimd_keepalive.c						1.11
+	/OMP/src/FIMD/fimd_proto.h							1.21
+=================================================================
+1. 날  짜 : 2009년 7.2 (목)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+		- link ondemand 1024/1024 --> 1024
+		- delay 통계 일 통계 이후 5분단위 업데이트로 처리 
+
+4. 파 일: 
+	OMP/src/STMD/stmd_ondemand_stat.c					1.19
+	OMP/src/STMD/stmd_update.c							1.23
+=================================================================
+1. 날  짜 : 2009년 7.1 (WED)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+        - ping_test_with_ip() 추가
+		- TAP mem/fan값 획득 실패시 초기화
+		- dis-tap-info ALL 요청시 한쪽으로만 보내는 오류 수정.
+4. 파 일:
+    OMP/src/SAMD/samd.h                                 1.5
+    OMP/src/SAMD/samd_l3pd.c                            1.14
+    OMP/src/SAMD/samd_ping.c                            1.7
+    OMP/src/SAMD/samd_l3pd.c                            1.15
+    OMP/src/SAMD/samd_proc.c                            1.31
+	OMP/src/SAMD/samd.h									1.6
+=================================================================
+1. 날  짜 : 2009년 6.30 (MON)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+        - L2SW 상태체크 처리 
+		- TAP Normal 상태 clear 처리
+4. 파 일:
+    OMP/src/FIMD/fimd_almlevel.c                        1.11
+    OMP/src/FIMD/fimd_almmsg.c                          1.26
+    OMP/src/FIMD/fimd_hwalm.c                           1.23
+    OMP/src/FIMD/fimd_init.c                            1.18
+    OMP/src/FIMD/fimd_keepalive.c                       1.10
+    OMP/src/FIMD/fimd_mmchdl.c                          1.33
+    OMP/src/FIMD/fimd_mysql.c                           1.22
+    OMP/src/FIMD/fimd_proto.h                           1.20
+    OMP/src/FIMD/fimd_stsrpt.c                          1.37
+    OMP/src/SAMD/samd_init.c                            1.14
+    OMP/src/SAMD/samd_l3pd.c                            1.13
+=================================================================
+1. 날  짜 : 2009년 6.29 (MON)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+        - SCE 상태 관리 오류부분 수정.
+          (SCE 상태 전반적으로 검증완료)
+        - H/W PWR Mask 오류 정보 확인..
+    . [SAMD]
+        - dis-sys-ver SCE버젼 오류 수정.
+    . [ETC]
+        mmcd_builtin.c 신팀장님..
+        Hamon.c   ???
+
+4. 파 일:
+    OMP/src/FIMD/fimd_almmsg.c                          1.25
+    OMP/src/FIMD/fimd_hdlalm.c                          1.9
+    OMP/src/FIMD/fimd_hwalm.c                           1.22
+    OMP/src/FIMD/fimd_mmchdl.c                          1.32
+    OMP/src/FIMD/fimd_mysql.c                           1.21
+    OMP/src/FIMD/fimd_proc.c                            1.25
+    OMP/src/FIMD/fimd_stsrpt.c                          1.36
+    OMP/src/FIMD/showsfdb.c                             1.12
+    OMP/src/SAMD/samd_proc.c                            1.26
+    OMP/src/SAMD/fimd_tools.c                           1.3
+    OMP/src/MMCD/mmcd_builtin.c                         1.6
+    OMP/src/hamon/Hamon.c                               1.2
+=================================================================
+1. 날  짜 : 2009년 6.30 (TUE)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+		- Rule Entry 전체 카운트 초기화 추가
+		- link ondemand 링크 이름 오류 수정. 
+		- delay 통계 5분 통계 삭제 후 작업 처리 
+
+4. 파 일: 
+	OMP/src/STMD/stmd_main.c							1.54
+	OMP/src/STMD/stmd_ondemand_stat.c					1.18
+	OMP/src/STMD/stmd_proto.h							1.37
+	OMP/src/STMD/stmd_update.c							1.22
+=================================================================
+1. 날  짜 : 2009년 6.28 (SUN)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+		- SCE MEM/CPU/DISK 상태감시 기능추가.
+
+4. 파 일: 
+	OMP/src/FIMD/fimd_almmsg.c    						1.24
+	OMP/src/FIMD/fimd_hwalm.c							1.21
+	OMP/src/FIMD/fimd_mmchdl.c    						1.30
+	OMP/src/FIMD/fimd_mysql.c     						1.20
+	OMP/src/FIMD/fimd_proc.c 	 						1.24
+	OMP/src/FIMD/fimd_stsrpt.c    						1.35
+	OMP/src/FIMD/showsfdb.c       						1.11
+=================================================================
+1. 날  짜 : 2009년 6.29 (MON)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+		-  DELAY 통계 5분 단위에서 시간 단위로 변경 처리 작업 . 
+
+4. 파 일: 
+	OMP/src/STMD/Makefile											1.16
+	OMP/src/STMD/stmd_cron_stat.c									1.21
+	OMP/src/STMD/stmd_main.c										1.53
+	OMP/src/STMD/stmd_mmchdl.c										1.20
+	OMP/src/STMD/stmd_ondemand_stat.c								1.17
+	OMP/src/STMD/stmd_periodic_stat.c								1.13
+	OMP/src/STMD/stmd_proto.h										1.36
+	OMP/src/STMD/stmd_tool.c										1.12
+	OMP/src/STMD/stmd_update.c										1.21
+	OMP/src/STMD/stmd_update_delay.c								1.5
+=================================================================
+1. 날  짜 : 2009년 6.28 (SUN)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+		- SCE PORT, DISK, POWER, FAN 상태 감시 기능.
+		- mask-alm, umask-alm, dis-mask-sts 등 수정..
+
+4. 파 일: 
+	OMP/src/FIMD/fimd_almlevel.c  						1.10
+	OMP/src/FIMD/fimd_almmsg.c							1.23
+	OMP/src/FIMD/fimd_hdlalm.c         					1.8
+	OMP/src/FIMD/fimd_hwalm.c       					1.20
+	OMP/src/FIMD/fimd_stsrpt.c      					1.34
+	OMP/src/FIMD/fimd_keepalive.c   					1.9
+	OMP/src/FIMD/fimd_mysql.c       					1.19
+	OMP/src/FIMD/fimd_proc.c        					1.23
+	OMP/src/FIMD/fimd_proto.h       					1.19
+	OMP/src/FIMD/showsfdb.c         					1.10
+	OMP/src/FIMD/fimd_mmchdl.c      					1.29
+	OMP/include/sfmconf.h           					1.17
+
+=================================================================
+1. 날  짜 : 2009년 6.28 (SUN)
+2. 작성자 : jjini
+3. 내  용 :
+    . [STMD]
+		- delay HOUR/DAY/WEEk/MONTH update 시 stat_date 값 이상 수정.
+		- logon HOUR/DAY/WEEk/MONTH update 실패 버그 수정, sysname중복.
+		- MIN_MSEC -> MIN_msec
+
+4. 파 일: 
+	OMP/src/STMD/stmd_cron_stat.c 						1.20
+	OMP/src/STMD/stmd_main.c 							1.52
+	OMP/src/STMD/stmd_periodic_delay.c 					1.4
+	OMP/src/STMD/stmd_periodic_sms.c 					1.6
+	OMP/src/STMD/stmd_update_delay.c					1.4
+	OMP/src/STMD/stmd_update_logon.c					1.4
+
+=================================================================
+1. 날  짜 : 2009년 6.27 (토)
+2. 작성자 : jjini
+3. 내  용 :
+    . [STMD]
+		- 듀얼 스탠바이시 keepalive_Rm 호출 안되게 수정. 
+
+4. 파 일: 
+	OMP/src/STMD/stmd_main.c							1.51
+=================================================================
+1. 날  짜 : 2009년 6.27 (토)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+	- SCE RDR CONNECT 상태관리 SCMA/B 확장.
+	- SCE STATUS : FAN,PWR,RDR 상태관리 수정.
+    . [SAMD]
+	- SCE SNMP SCMA/B 정보 수집.
+
+4. 파 일: 
+	/OMP/include/comm_almsts_msgcode.h					1.11
+	/OMP/include/sfm_snmp.h 							1.13
+	/OMP/include/sfmconf.h								1.16
+	/OMP/src/Makefile      								1.3
+	/OMP/src/FIMD/fimd_almlevel.c						1.9
+	/OMP/src/FIMD/fimd_almmsg.c							1.22
+	/OMP/src/FIMD/fimd_hdlalm.c							1.7
+	/OMP/src/FIMD/fimd_hwalm.c							1.1
+	/OMP/src/hamon/Timer.c								1.18
+	/OMP/src/FIMD/fimd_l2swalmlmt.c						1.2
+	/OMP/src/FIMD/fimd_mmchdl.c							1.1
+	/OMP/src/hamon/Makefile 							1.28
+	/OMP/src/FIMD/fimd_mysql.c							1.18
+	/OMP/src/FIMD/fimd_pdalmlmt.c						1.6
+	/OMP/src/FIMD/fimd_proto.h							1.18
+	/OMP/src/FIMD/fimd_scealmlmt.c						1.9
+	/OMP/src/FIMD/fimd_stat.c							1.7
+	/OMP/src/FIMD/fimd_stsrpt.c							1.32
+	/OMP/src/FIMD/showsfdb.c  							1.9
+	/OMP/src/SAMD/samd_snmp.c 							1.22
+	/OMP/src/SAMD/samd_snmp.h 							1.9
+=================================================================
+1. 날  짜 : 2009년 6.27 (토)
+2. 작성자 : 신영호
+3. 내  용 :
+    . [HAMON]
+	- 황부장님 코드.
+4. 파 일: 
+	/OMP/src/hamon/Hamon.c 								1.1
+	/OMP/src/hamon/Makefile 							1.1
+	/OMP/src/hamon/Timer.c								1.1
+=================================================================
+1. 날  짜 : 2009년 6.26 (FRI)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+	- mask 기능 cvs update
+	- keepalive_Rm : mysql_send_query 세그멘테이션 폴트 발생. 
+4. 파 일: 
+	OMP/src/STMD/stmd_init.c 							1.26
+	OMP/src/STMD/stmd_main.c 							1.50
+	OMP/src/STMD/stmd_statisticrpt.c 					1.21
+=================================================================
+1. 날  짜 : 2009년 6.25 (THU)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+	- mmc 부가기능 파악. 
+	- mask/umask/dis, add/del/dis-stat-schd, chg/dis-stat-ptime
+4. 파 일: 
+	OMP/src/STMD/stmd_main.c							1.48
+	OMP/src/STMD/stmd_mmchdl.c 							1.19
+	OMP/src/STMD/stmd_periodic_stat.c 					1.12
+	OMP/src/STMD/stmd_update.c 							1.20
+=================================================================
+1. 날  짜 : 2009년 6.25 (THU)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+	- loc_sadb -> sfdb로 블락 문제 수정. 
+	- 로그 정리 
+4. 파 일: 
+	OMP/src/STMD/stmd_init.c 							1.22
+	OMP/src/STMD/stmd_main.c 							1.46
+	OMP/src/STMD/stmd_periodic_leg.c 					1.5
+	OMP/src/STMD/stmd_periodic_sms.c 					1.4
+	OMP/src/STMD/stmd_periodic_ruleent.c 				1.8
+	OMP/src/STMD/stmd_statisticrpt.c 					1.19
+	OMP/src/STMD/stmd_update_ruleent.c 					1.4
+	OMP/src/STMD/stmd_update_ruleset.c 					1.4
+	OMP/src/STMD/stmd_statisticrpt.c 					1.20
+==================================================================
+1. 날  짜 : 2009년 6.24 (WED)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+	- SCE STATUS ALARM 공통 처리부 구현(테스트 미확인). 추후 확장기능
+	- 오류 및 버그 수정. (core 처리)
+	- dis-sys-sts L2 부분 추가
+4. 파 일: 
+	/OMP/src/Makefile        							1.2
+	/OMP/src/FIMD/fimd_almlevel.c 				 		1.8
+	/OMP/src/FIMD/fimd_almmsg.c   				 		1.21
+	/OMP/src/FIMD/fimd_hwalm.c    				 		1.17
+	/OMP/src/FIMD/fimd_mmchdl.c   				 		1.27
+	/OMP/src/FIMD/fimd_mysql.c					 		1.17
+	/OMP/src/FIMD/fimd_pdalmlmt.c 				 		1.5
+	/OMP/src/FIMD/fimd_proc.c   				 		1.21
+	/OMP/src/FIMD/fimd_proto.h     				 		1.17
+	/OMP/src/FIMD/fimd_stsrpt.c    				 		1.31
+	/OMP/src/FIMD/fimd_keepalive.c 				 		1.17
+	/OMP/src/FIMD/fimd_proto.h     				 		1.8
+	/OMP/src/MMCD/Makefile         				 		1.3
+==================================================================
+1. 날  짜 : 2009년 6.24 (WED)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+	- loc_sadb 로 mysql_real_connect 블락문제 수정 . 
+4. 파 일: 
+	OMP/src/STMD/stmd_init.c 							1.22
+	OMP/src/STMD/stmd_main.c 							1.40
+==================================================================
+1. 날  짜 : 2009년 6.24 (WED)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+	- [ dis/add/del-pdsn-info ] 명령어 처리  구현 
+	- [ dis/set-svc-alm ] 명령어 처리 구현 
+	- warning 수정 
+	- ruleent cond 전송시 CONTINUE 추가 
+	- DELAY_HOUR MIN_USEC 오류 수정 . 
+4. 파 일: 
+	OMP/src/STMD/stmd_main.c 							1.39
+	OMP/src/STMD/stmd_periodic_ruleent.c 				1.7
+	OMP/src/STMD/stmd_periodic_ruleset.c 				1.5
+	OMP/src/STMD/stmd_update_delay.c 					1.3
+	OMP/include/comm_almsts_msgcode.h					1.9
+	OMP/include/comm_msgtypes.h							1.7
+==================================================================
+1. 날  짜 : 2009년 6.21 (MON)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+	- sce snmp getInfo 기능 변경 
+4. 파 일: 
+	OMP/src/STMD/stmd_init.c 							1.25
+	OMP/src/STMD/stmd_main.c 							1.45
+	OMP/src/STMD/stmd_proto.h 							1.34
+==================================================================
+1. 날  짜 : 2009년 6.20 (SUN)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+	- set-alm-sts 수정.
+	- L2SW 상태정보 수정.
+4. 파 일: 
+	/OMP/src/FIMD/fimd_almmsg.c							1.20
+	/OMP/src/FIMD/fimd_mmchdl.c							1.26
+	/OMP/src/FIMD/fimd_mysql.c							1.16
+	/OMP/src/FIMD/showsfdb.c    						1.7
+==================================================================
+1. 날  짜 : 2009년 6.20 (SAT)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+	- L2 Switch 상태체크 
+	- L2 Mask/UnMask 작업..
+	- SCE SNMP 정보 shell로 획득 (70%)
+4. 파 일: 
+	/OMP/src/FIMD/fimd_hdlalm.c							1.6
+	/OMP/src/FIMD/Makefile   							1.5
+	/OMP/src/FIMD/fimd_l2swalmlmt.c						1.1
+	/OMP/src/FIMD/fimd_almlevel.c						1.7
+	/OMP/src/FIMD/fimd_almmsg.c							1.19
+	/OMP/src/FIMD/fimd_hwalm.c							1.16
+	/OMP/src/FIMD/fimd_init.c							1.15
+	/OMP/src/FIMD/fimd_mmchdl.c							1.25
+	/OMP/src/FIMD/fimd_mysql.c							1.15
+	/OMP/src/FIMD/fimd_proto.h							1.16
+	/OMP/src/FIMD/fimd_stsrpt.c							1.30
+	/OMP/src/SAMD/samd_snmp.c							1.19
+==================================================================
+1. 날  짜 : 2009년 6.20 (SAT)
+2. 작성자 : yhshin
+3. 내  용 :
+    . [SAMD]
+	- 기타 warning 수정.
+	- pingtest 변경. icmp 사용.
+4. 파 일: 
+	/OMP/src/SAMD/samd.h								1.4
+	/OMP/src/SAMD/samd_disk.c							1.3
+	/OMP/src/SAMD/samd_init.c							1.12
+	/OMP/src/SAMD/samd_l3pd.c							1.12
+	/OMP/src/SAMD/samd_main.c							1.21
+	/OMP/src/SAMD/samd_ntp.c							1.9
+	/OMP/src/SAMD/samd_ping.c							1.5
+	/OMP/src/SAMD/samd_proc.c							1.20
+	/OMP/src/SAMD/samd_rxtxmsg.c						1.20
+	/OMP/src/SAMD/samd_snmp.c							1.18
+	/OMP/src/SAMD/samd_stat.c							1.4
+	/OMP/src/SAMD/samd_sys.c							1.6
+==================================================================
+1. 날  짜 : 2009년 6.19 (FRI)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+	- L2 SWITCH 상태 체크 
+	- CSP STATUS 상태 체크
+	- 기타 warning 수정.
+
+4. 파 일: 
+	src/FIMD/fimd_almlevel.c								1.6
+	src/FIMD/fimd_almmsg.c     								1.18
+	src/FIMD/fimd_hdlalm.c     								1.5
+	src/FIMD/fimd_init.c       								1.14
+	src/FIMD/fimd_keepalive.c								1.7
+	src/FIMD/fimd_main.c 									1.19
+	src/FIMD/fimd_mmchdl.c  								1.24
+	src/FIMD/fimd_mysql.c 									1.14
+	src/FIMD/fimd_pdalmlmt.c								1.4
+	src/FIMD/fimd_proc.c									1.19
+	src/FIMD/fimd_proto.h									1.15
+	src/FIMD/fimd_rxtxmsg.c 								1.4
+	src/FIMD/fimd_stat.c 	   								1.5
+	src/FIMD/fimd_stsrpt.c									1.29
+	src/FIMD/showsfdb.c										1.6
+	src/IXPC/ixpc_proc.c									1.7
+	src/SAMD/samd_rxtxmsg.c 								1.19
+	src/SAMD/samd_snmp.c									1.17
+	src/SAMD/samd_snmp.h									1.6
+	include/sfm_msgtypes.h									1.6
+	include/sfmconf.h     									1.14
+	include/stm_msgtypes.h									1.4
+	libsrc/COMM/netOrderL3pdChange.h  						1.2
+
+==================================================================
+1. 날  짜 : 2009년 6.19 (FRI)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+	- Wall : all Warning cleared...
+
+4. 파 일: 
+	src/STMD/Makefile 										1.15
+	src/STMD/stmd_cron_stat.c 								1.16
+	src/STMD/stmd_init.c									1.18
+	src/STMD/stmd_main.c 									1.35
+	src/STMD/stmd_make_msg.c 								1.3
+	src/STMD/stmd_mmchdl.c 									1.14
+	src/STMD/stmd_ondemand_stat.c 							1.15
+	src/STMD/stmd_periodic_delay.c 							1.2
+	src/STMD/stmd_periodic_leg.c 							1.3
+	src/STMD/stmd_periodic_link.c 							1.2
+	src/STMD/stmd_periodic_logon.c 							1.2
+	src/STMD/stmd_periodic_ruleent.c 						1.3
+	src/STMD/stmd_periodic_ruleset.c 						1.2
+	src/STMD/stmd_periodic_sms.c 							1.2
+	src/STMD/stmd_periodic_stat.c 							1.10
+	src/STMD/stmd_proto.h 									1.30
+	src/STMD/stmd_statisticrpt.c 							1.15
+	src/STMD/stmd_tool.c 									1.10
+	src/STMD/stmd_txmsg.c 									1.3
+	src/STMD/stmd_update.c 									1.18
+	src/STMD/stmd_update_block.c 							1.13
+	src/STMD/stmd_update_delay.c 							1.2
+	src/STMD/stmd_update_flt.c 								1.9
+	src/STMD/stmd_update_leg.c				 				1.3
+	src/STMD/stmd_update_load.c 							1.9
+	src/STMD/stmd_update_logon.c 							1.3
+	src/STMD/stmd_update_lur.c 								1.14
+	src/STMD/stmd_update_ruleent.c 							1.2
+	src/STMD/stmd_update_ruleset.c 							1.3
+	src/STMD/stmd_update_sms.c 								1.2
+	src/STMD/stmd_update_tur.c 								1.12
+==================================================================
+1. 날  짜 : 2009년 6.18 (TUE)
+2. 작성자 : 전성진
+3. 내  용 :
+    . [SAMD]
+	- dis-sys-ver
+	- L2 Switch 정보 수집 (snmp shell)
+4. 파 일: 
+	src/SAMD/samd_snmp.c     								1.16
+==================================================================
+1. 날  짜 : 2009년 6.18 (TUE)
+2. 작성자 : 신영호
+3. 내  용 :
+    . [COMM]
+	- strutl 추가.
+	- ping 추가.
+4. 파 일: 
+	/OMP/libsrc/COMM/__time.h								1.1
+	/OMP/libsrc/COMM/ping.c									1.1
+	/OMP/libsrc/COMM/sock.h									1.1
+	/OMP/libsrc/COMM/strutil.c								1.1
+	/OMP/libsrc/COMM/timer.h								1.1
+	/OMP/include/conf.h										1.1
+==================================================================
+1. 날  짜 : 2009년 6.16 (TUE)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+	- nmsif에게 장애관련 DB 통계 메시지 alarm
+	- LEG CPS Client로 전송
+	- PD 주석처리
+	- L2 Switch 감시
+	- status change 오류수정
+	- L3PD => TAP 변경.
+	  
+	. [HAMON]
+	- Active & Standby 상태 처리
+
+	. [SAMD]
+	- set-rule-sce 백업 수정.
+
+4. 파  일 : 
+	OMP/src/FIMD/fimd_hdlalm.c								1.4
+	OMP/src/FIMD/fimd_main.c  								1.18
+	OMP/src/FIMD/fimd_mysql.c 								1.13
+	OMP/src/FIMD/fimd_mmchdl.c								1.23
+	OMP/src/FIMD/fimd_proc.c  								1.19
+	OMP/src/FIMD/fimd_proto.h 								1.14
+	OMP/src/FIMD/fimd_stsrpt.c								1.28
+	OMP/src/FIMD/showsfdb.c   								1.5
+	OMP/src/HAMON/hamon_dup.c 								1.2
+	OMP/src/HAMON/hamon_main.c								1.2
+	OMP/src/HAMON/hamon_proc.c								1.2
+	OMP/src/HAMON/hamon_rxtxmsg.c							1.2
+	OMP/src/SAMD/samd_proc.c     							1.18
+	OMP/src/SAMD/samd_rxtxmsg.c  							1.17
+	OMP/src/SAMD/samd_snmp.c     							1.15
+==================================================================
+1. 날  짜 : 2009년 6.15 (MON)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [COND]
+	- cond의 search 부분 무한 roop 오류 처리 
+
+	  [NMSIF]
+	- BSD->DSC Migration 작업 (hjpark)
+	- network ordering function 추가 
+
+4. 파  일 : 
+	OMP/src/COND/cond_proc.c								1.6
+	OMP/src/NMSIF/Makefile    								1.3
+	OMP/src/NMSIF/msgif.c     								1.2
+	OMP/src/NMSIF/nmsif_init.c								1.5
+	OMP/src/NMSIF/nmsif_main.c								1.3
+	OMP/src/NMSIF/nmsif_proto.h								1.2
+	OMP/src/NMSIF/tool.c       								1.2
+	OMP/src/NMSIF/netOrderNmsChange.c						1.1
+
+==================================================================
+1. 날  짜 : 2009년 6.12 (금)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+	- set-sce-mode 기능 수정 및 추가 
+	- 기타 오류수정
+	  [HAMON]
+	- 추가 
+	- 기능 : SCE 이중화 상태 감시 및 블럭 MMC 처리 등등...
+
+4. 파  일 : 
+	OMP/src/CDELAY/main.c									1.10
+	OMP/src/FIMD/fimd_mmchdl.c								1.22
+	OMP/src/HAMON/Makefile    								1.1
+	OMP/src/HAMON/hamon.h     								1.1
+	OMP/src/HAMON/hamon_init.c 								1.1
+	OMP/src/HAMON/hamon_main.c								1.1
+	OMP/src/HAMON/hamon_proc.c								1.1
+	OMP/src/HAMON/hamon_proc.c 								1.1
+	OMP/src/HAMON/hamon_rxtxmsg.c							1.1
+	OMP/src/MCDM/mcdm_rxdistrreq.c							1.9
+	OMP/src/MCDM/mcdm_rxdistrreq.c							1.9
+
+
+==================================================================
+1. 날  짜 : 2009년 6.11 (목)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+	-  SCE Thread 작업
+	- PD->TAP 수정
+	- L2 Switch snmp 작업
+
+4. 파  일 : 
+	OMP/src/SAMD/Makefile									1.12
+	OMP/src/SAMD/samd_init.c								1.11
+	OMP/src/SAMD/samd_l3pd.c  								1.11
+	OMP/src/SAMD/samd_ping.c  								1.4
+	OMP/src/SAMD/samd_ntp.c   								1.7
+	OMP/src/SAMD/samd_main.c  								1.19
+	OMP/src/SAMD/samd_proc.c  								1.16
+	OMP/src/SAMD/samd_rxtxmsg.c								1.15
+	OMP/src/SAMD/samd_snmp.c  								1.14
+	OMP/src/SAMD/samd_snmp.h  								1.5
+	OMP/src/SAMD/samd_stat.c  								1.3
+==================================================================
+1. 날  짜 : 2009년 6.11 (목)
+2. 작성자 : 신영호
+3. 내  용 :
+    . [FIMD]
+	- 이중화 관련 처리.
+4. 파  일 : 
+	OMP/src/FIMD/fimd_almmsg.c								1.17
+	OMP/src/FIMD/fimd_init.c								1.13
+	OMP/src/FIMD/fimd_stsrpt.c								1.27
+	OMP/src/FIMD/showsfdb.c									1.4
+==================================================================
+1. 날  짜 : 2009년 6.10 (WED)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+	- PD->TAP
+	- L2 SW 관리 추가
+	- Alarm 정리
+	  [MMCD]
+	- set-rule-sce 사용자 MMC 에서 제외(기능은 살려둠)
+
+4. 파  일 : 
+		OMP/src/FIMD/fimd_almmsg.c							1.16
+		OMP/src/FIMD/fimd_stsrpt.c 							1.26
+		OMP/src/FIMD/showsfdb.c    							1.3
+		OMP/src/FIMD/fimd_hwalm.c  							1.14
+		OMP/src/FIMD/fimd_init.c   							1.12
+		OMP/src/FIMD/fimd_keepalive.c 						1.6
+		OMP/src/FIMD/fimd_main.c   							1.17
+		OMP/src/FIMD/fimd_mmchdl.c 							1.21
+		OMP/src/FIMD/fimd_mysql.c 							1.11
+		OMP/src/FIMD/fimd_pdalmlmt.c						1.3
+		OMP/src/FIMD/fimd_proto.h   						1.13
+		OMP/src/FIMD/showsfdb.c     						1.3
+		OMP/src/IXPC/ixpc_proc.c    						1.6
+		OMP/src/MCDM/mcdm_rxdistrreq.c						1.8
+		OMP/src/MMCD/mmcd_builtin.c   						1.5
+		OMP/src/MMCD/mmcd_loadcmdtbl.c 						1.3
+		
+==================================================================
+1. 날  짜 : 2009년 6.6 (SAT)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+	- SCE RDR 상태정보 오류수정
+	- unmask 기능 오류 수정
+	- 알람시 로그 남기는 부분 추가
+
+4. 파  일 : 
+		OMP/src/FIMD/Makefile								1.4
+		OMP/src/FIMD/fimd_almmsg.c							1.15
+		OMP/src/FIMD/fimd_hwalm.c							1.13
+		OMP/src/FIMD/fimd_mmchdl.c							1.20
+		OMP/src/FIMD/fimd_stsrpt.c							1.25
+		OMP/src/FIMD/showsfdb.c   							1.2
+		OMP/src/SAMD/samd_snmp.c  							1.13
+
+==================================================================
+1. 날  짜 : 2009년 6.6 (SAT)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+	- LEG 통계 update 추가 
+	- RULESET 통합 통계 update 구현중 .  
+	. [SAMD]
+	- DUPLICATION 절체 소스 스레드 추가 
+
+4. 파  일 : 
+		OMP/src/STMD/Makefile								1.11
+		OMP/src/STMD/stmd_cron_stat.c						1.11
+		OMP/src/STMD/stmd_init.c							1.14
+		OMP/src/STMD/stmd_main.c							1.30
+		OMP/src/STMD/stmd_mmchdl.c							1.11
+		OMP/src/STMD/stmd_ondemand_stat.c					1.12
+		OMP/src/STMD/stmd_periodic_flt.c					1.6
+		OMP/src/STMD/stmd_periodic_leg.c					1.1
+		OMP/src/STMD/stmd_periodic_load.c					1.4
+		OMP/src/STMD/stmd_periodic_rule_cnt.c				1.5
+		OMP/src/STMD/stmd_periodic_stat.c					1.7
+		OMP/src/STMD/stmd_proto.h							1.26
+		OMP/src/STMD/stmd_statisticrpt.c					1.12
+		OMP/src/STMD/stmd_update.c							1.16
+		OMP/src/STMD/stmd_update_http.c						1.7
+		OMP/src/STMD/stmd_update_ruleset.c					1.1
+		OMP/src/STMD/stmd_update_leg.c						1.1
+		OMP/include/comm_almsts_msgcode.h					1.7
+		OMP/include/comm_msgtypes.h							1.4
+		OMP/include/mysql_db_tables.h						1.9
+		--------------------------------------------------------
+		OMP/src/SAMD/samd_dup.c 							1.1
+
+==================================================================
+1. 날  짜 : 2009년 6.5 (FRI)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+	- set-sce-mode, reload-sce, dis-sce-mode 추가
+	- findCaseIndex() 함수 추가
+
+4. 파  일 : 
+		OMP/src/SAMD/samd_init.c                       		1.10
+		OMP/src/SAMD/samd_l3pd.c                       		1.9
+		OMP/src/SAMD/samd_proc.c                       		1.14
+		OMP/src/SAMD/samd_rxtxmsg.c                 		1.14
+
+==================================================================
+1. 날  짜 : 2009년 5.31 (SUN)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+	- Alarm 정보에서 CEB => SCEB 정상 출력 ..(오류수정)
+	. [SAMD]
+	- NTP Title 변경.
+	- 기타 로그..
+
+4. 파  일 : 
+		OMP/src/FIMD/fimd_almmsg.c                     		1.14
+		OMP/src/SAMD/samd_ntp.c                        		1.6
+		OMP/src/SAMD/samd_rxtxmsg.c                    		1.13
+		OMP/src/SAMD/samd_snmp.c  	                 		1.11
+==================================================================
+1. 날  짜 : 2009년 5.29 (FRI)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+	- set-rul-sce 완료..
+
+4. 파  일 : 
+		OMP/include/comm_almsts_msgcode.h              		1.5
+		OMP/include/comm_almsts_msgcode.h					1.3
+		OMP/src/SAMD/samd_proc.c         					1.11
+==================================================================
+1. 날  짜 : 2009년 5.29 (FRI)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+	- DSC_IP
+
+4. 파  일 : 
+		OMP/src/STMD/stmd_init.c 						1.12
+		OMP/src/STMD/stmd_main.c 						1.28
+		OMP/src/STMD/stmd_proto.h 						1.24
+		OMP/src/STMD/stmd_update_block.c 				1.10
+
+==================================================================
+1. 날  짜 : 2009년 5.27 (WED)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+	- sce alarm update 수정
+	. [SAMD]
+	- set-rule-sce 기능추가.
+
+4. 파  일 : 
+	OMP/src/FIMD/fimd_mmchdl.c								1.19
+	OMP/src/SAMD/samd_proc.c  								1.10
+	OMP/src/SAMD/samd_rxtxmsg.c								1.12
+
+==================================================================
+1. 날  짜 : 2009년 5.26 (TUE)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [RMI]
+	-  rmi network byteordering 수정
+
+4. 파  일 : 
+	OMP/src/RMI/rmi_main.c									1.3
+
+==================================================================
+4. 파  일 : 
+1. 날  짜 : 2009년 5.26 (TUE)
+2. 작성자 :  jjinri
+3. 내  용 :
+    . [OMP/data] 
+	- dscm.sql
+	- samd.conf 추가 
+	- recover.sh [DB Recover Shell]
+
+4. 파  일 : 
+	OMP/data/samd.conf										1.1
+	OMP/data/recover.sh       								1.1
+	OMP/data/dscm.sql      									1.8
+==================================================================
+1. 날  짜 : 2009년 5.25 (Mon)
+2. 작성자 :  sjjeon
+3. 내  용 :
+    . [samd] 
+	- set-rule-sce 추가기능
+	- alarm db update 오류수정.
+	- sce 상태 정보 수정(mem -> disk info)
+	- mml_commands update
+
+4. 파  일 : 
+	OMP/data/mml_commands   								1.12
+	OMP/include/sfmconf.h      								1.11
+	OMP/src/FIMD/fimd_mmchdl.c 								1.18
+	OMP/src/FIMD/fimd_scealmlmt.c							1.7
+	OMP/src/MMCD/mmcd_loadcmdtbl.c							1.2
+	OMP/src/MMCD/mmcd_proc.c      							1.4
+	OMP/src/MMCD/mmcd_req.c       							1.6
+	OMP/src/SAMD/samd_proc.c      							1.9
+==================================================================
+1. 날  짜 : 2009년 5.22 (Fri)
+2. 작성자 :  sjjeon
+3. 내  용 :
+    . [samd] 
+	- set-rule-sce, sync-rule-file, sync-rule-file2  기능 적용
+4. 파  일 : 
+	OMP/src/FIMD/fimd_main.c								1.14
+	OMP/src/FIMD/fimd_mmchdl.c								1.16	
+	OMP/src/MCDM/mcdm_main.c  								1.3
+	
+==================================================================
+
+1. 날  짜 : 2009년 5.22 (Fri)
+2. 작성자 :  jjinri
+3. 내  용 :
+    . [mml_command] 
+	- update /DSC/DATA 에 있는 걸로. 
+	. [STMD]
+	- Rule set 관련 처리 알고리즘 변경, 버그 수정 
+
+4. 파  일 : 
+	OMP/data/mml_commands									1.11
+	OMP/src/STMD/stmd_cron_stat.c							1.9
+	OMP/src/STMD/stmd_init.c								1.10
+	OMP/src/STMD/stmd_main.c								1.25
+	OMP/src/STMD/stmd_mmchdl.c								1.8
+	OMP/src/STMD/stmd_ondemand_stat.c						1.10
+	OMP/src/STMD/stmd_periodic_rule_cnt.c					1.2
+	OMP/src/STMD/stmd_periodic_stat.c						1.6
+	OMP/src/STMD/stmd_proto.h								1.23
+	OMP/src/STMD/stmd_tool.c								1.7
+	OMP/src/STMD/stmd_update.c								1.15
+	OMP/src/STMD/stmd_update_block.c						1.9
+	OMP/src/STMD/stmd_update_flt.c							1.7
+	OMP/src/STMD/stmd_update_load.c							1.7
+	OMP/src/STMD/stmd_update_malur.c						1.8
+	OMP/src/STMD/stmd_update_pur.c							1.8
+	OMP/src/STMD/stmd_update_rule.c							1.7
+	OMP/src/STMD/stmd_update_tur.c							1.10
+
+==================================================================
+1. 날  짜 : 2009년 5.20 (Wed)
+2. 작성자 :  sjjeon
+3. 내  용 :
+    . [FIMD/SAMD]
+	- timesten, mysql live check 기능 추가.
+	- set-rule-sce 추가
+
+4. 파  일 : 
+	OMP/src/FIMD/fimd_init.c    							1.5
+	OMP/src/SAMD/samd_main.c     							1.23
+	OMP/src/SAMD/samd_proc.c     							1.6
+	OMP/src/SAMD/samd_rxtxmsg.c  							1.9
+
+==================================================================
+1. 날  짜 : 2009년 5.18 (Mon)
+2. 작성자 :  sjjeon
+3. 내  용 :
+    . [FIMD]
+	- mmc mask-alm, umask-alm, dis-mask-sts 기능 추가 
+
+4. 파  일 : 
+	OMP/src/FIMD/fimd_almlevel.c							1.5
+	OMP/src/FIMD/fimd_init.c     							1.9
+	OMP/src/FIMD/fimd_proto.h    							1.12
+	OMP/src/FIMD/fimd_stat.c     							1.4
+==================================================================
+1. 날  짜 : 2009년 5.18 (Mon)
+2. 작성자 :  jjinri
+3. 내  용 :
+    . [STMD]
+	- Rule Count Ae°e ondemand / cronjob / periodic / srch-stat-rule-count, stat-rule-count 추가 
+	- RULE_SET_LIST.conf 파일 정보 읽기 추가 
+
+4. 파  일 : 
+	OMP/src/STMD/Makefile									1.10
+	OMP/src/STMD/stmd_cron_stat.c							1.8
+	OMP/src/STMD/stmd_init.c								1.9
+	OMP/src/STMD/stmd_main.c								1.24
+	OMP/src/STMD/stmd_mmchdl.c								1.7
+	OMP/src/STMD/stmd_ondemand_stat.c						1.9
+	OMP/src/STMD/stmd_periodic_rule_cnt.c					1.1
+	OMP/src/STMD/stmd_periodic_stat.c						1.5
+	OMP/src/STMD/stmd_proto.h								1.22
+	OMP/src/STMD/stmd_tool.c								1.6
+
+==================================================================
+1. 날  짜 : 2009년 5.16 (토)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+	- DSC -> SCM 변경 및 정리
+4. 파  일 : 
+	/OMP/data/sysconfig										1.7
+	/OMP/include/sfm_snmp.h									1.7
+	/OMP/src/FIMD/fimd_init.c								1.8
+	/OMP/src/FIMD/fimd_rxtxmsg.c							1.3
+==================================================================
+1. 날  짜 : 2009년 5.16 (토)
+2. 작성자 :  신영호
+3. 내  용 :
+    . [CDELAY_PART]
+	- 추가.
+4. 파  일 : 
+	/OMP/data/sysconfig										1.6
+==================================================================
+1. 날  짜 : 2009년 5.15 (FRI)
+2. 작성자 :  sjjeon
+3. 내  용 :
+    . [DSCM]
+	- 환경파일 항목 수정
+	- DSCA/B -> SCMA/B 로 변경.
+
+4. 파  일 : 
+		OMP/data/mcdm_distr_mmc  							1.4
+		OMP/data/mml_commands   							1.10
+		OMP/src/COND/cond_init.c							1.5
+		OMP/src/FIMD/fimd_almmsg.c							1.12
+		OMP/src/FIMD/fimd_mmchdl.c							1.13
+		OMP/src/FIMD/fimd_stsrpt.c							1.20
+		OMP/src/SAMD/samd_proc.c							1.4
+		OMP/src/STMD/stmd_init.c							1.8
+		OMP/src/STMD/stmd_mmchdl.c							1.6
+		OMP/src/STMD/stmd_periodic_flt.c					1.5
+==================================================================
+1. 날  짜 : 2009년 5.14 (THU)
+2. 작성자 :  sjjeon
+3. 내  용 :
+    . [SAMD/FIMD]
+	- CPU 상태 변경 오류 수정.
+
+4. 파  일 : 
+		OMP/src/FIMD/fimd_hwalm.c							1.12
+		OMP/src/SAMD/samd_sys.c 							1.5
+
+==================================================================
+1. 날  짜 : 2009년 5.14 (THU)
+2. 작성자 :  jjinri
+3. 내  용 :
+    . [STMD]
+	- SELECT_RDR_PUR 쿼리 수정 SUM -> MAX-MIN+1
+	- SELECT_RDR_MALUR sum(ATTACKS)
+	- logPrint 제거 
+
+		OMP/src/STMD/stmd_proto.h 							1.21
+		OMP/src/STMD/stmd_main.c							1.23
+		OMP/src/STMD/stmd_update_block.c					1.8
+		OMP/src/STMD/stmd_update_http.c						1.5
+		OMP/src/STMD/stmd_update_lur.c						1.11
+		OMP/src/STMD/stmd_update_malur.c					1.7
+		OMP/src/STMD/stmd_update_pur.c						1.7
+		OMP/src/STMD/stmd_update_rule.c						1.6
+		OMP/src/STMD/stmd_update_tur.c						1.9
+
+==================================================================
+1. 날  짜 : 2009년 5.13 (WED)
+2. 작성자 :  sjjeon
+3. 내  용 :
+    . [FIMD]
+	- NMS 정보확인
+	- SCE ALM LMT 수정 
+
+		OMP/src/FIMD/fimd_hwalm.c							1.11
+		OMP/src/FIMD/fimd_proc.c 							1.18
+==================================================================
+1. 날  짜 : 2009년 5.13 (WED)
+2. 작성자 :  jjinri
+3. 내  용 :
+    . [STMD]
+	- 시간,일,주,월 통계 검증 오류 수정 완료 
+	. [pkt_delay table 추가 ]
+
+		OMP/src/STMD/stmd_main.c							1.22
+		OMP/src/STMD/stmd_proto.h							1.19
+		OMP/src/STMD/stmd_update.c							1.14
+		OMP/src/STMD/stmd_update_block.c					1.7
+		OMP/src/STMD/stmd_update_http.c						1.4
+		OMP/src/STMD/stmd_update_lur.c						1.10
+		OMP/src/STMD/stmd_update_malur.c					1.6
+		OMP/src/STMD/stmd_update_pur.c						1.6
+		OMP/src/STMD/stmd_update_rule.c						1.5
+		OMP/src/STMD/stmd_update_tur.c						1.8
+
+==================================================================
+1. 날  짜 : 2009년 5.12 (TUE)
+2. 작성자 :  jjinri
+3. 내  용 :
+    . [STMD]
+	- command not sync 문제 해결.
+
+		OMP/src/STMD/stmd_cron_stat.c						1.7
+		OMP/src/STMD/stmd_init.c							1.7
+		OMP/src/STMD/stmd_main.c							1.21
+		OMP/src/STMD/stmd_proto.h							1.18
+		OMP/src/STMD/stmd_update.c							1.13
+		OMP/src/STMD/stmd_update_block.c					1.6
+		OMP/src/STMD/stmd_update_flt.c						1.6
+		OMP/src/STMD/stmd_update_http.c						1.3
+		OMP/src/STMD/stmd_update_load.c						1.6
+		OMP/src/STMD/stmd_update_lur.c						1.9
+		OMP/src/STMD/stmd_update_malur.c					1.5
+		OMP/src/STMD/stmd_update_pur.c						1.5
+		OMP/src/STMD/stmd_update_rule.c						1.4
+		OMP/src/STMD/stmd_update_tur.c						1.7
+
+==================================================================
+1. 날  짜 : 2009년 5.12 (TUE)
+2. 작성자 :  sjjeon
+3. 내  용 :
+    . [FIMD]
+    - dsca/dscb 장비의 link (e1000g0 ~ e1000g7) 정보 GUI 전송 확인
+	- fimd sce 정보 load하는 limit_sce_file 환경파일을 정상으로 읽어
+	  dis-alm-lmt all 명령 정상 확인
+
+			OMP/include/sfm_msgtypes.h    						1.5
+			OMP/include/sfm_msgtypes.h							1.9
+			OMP/src/FIMD/fimd_almmsg.c							1.11
+			OMP/src/FIMD/fimd_init.c  							1.7
+			OMP/src/FIMD/fimd_main.c  							1.10
+			OMP/src/FIMD/fimd_mmchdl.c							1.12
+			OMP/src/FIMD/fimd_proto.h 							1.11
+			OMP/src/FIMD/fimd_scealmlmt.c						1.6
+			OMP/src/FIMD/fimd_stsrpt.c							1.19
+			OMP/src/SAMD/samd_sys.c   							1.4
+
+==================================================================
+1. 날  짜 : 2009년 5.11 (Mon)
+2. 작성자 :  jjinri
+3. 내  용 :
+    . [STMD]
+    - sce mem / cpu load 통계 수정 , 구조체 사용
+	- Commands not synce 문제로 delete 문 일단 주석, 
+	- STAT_DATE Protocol 빈자리 추가 
+	- block 5minute 칼럼 미스매치 수정 
+
+			OMP/src/STMD/mysql_db_tables.h						1.8
+			OMP/src/STMD/stmd_init.c							1.6
+			OMP/src/STMD/stmd_main.c							1.20
+			OMP/src/STMD/stmd_proto.h							1.17
+			OMP/src/STMD/stmd_statisticrpt.c					1.11
+			OMP/src/STMD/stmd_tool.c							1.5
+			OMP/src/STMD/stmd_update.c							1.12
+			OMP/src/STMD/stmd_update_block.c					1.5
+			OMP/src/STMD/stmd_update_flt.c						1.15
+			OMP/src/STMD/stmd_update_http.c						1.2
+			OMP/src/STMD/stmd_update_load.c						1.5
+			OMP/src/STMD/stmd_update_lur.c						1.8
+			OMP/src/STMD/stmd_update_malur.c					1.4
+			OMP/src/STMD/stmd_update_pur.c						1.4
+			OMP/src/STMD/stmd_update_rule.c						1.3
+			OMP/src/STMD/stmd_update_tur.c						1.6
+
+==================================================================
+1. 날  짜 : 2009년 5.10 (일)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [FIMD]
+    - L3PD Network Order 처리 추가 
+	- 기타 기능 추가 (정리하기 힘듬..TT)
+
+			OMP/libsrc/COMM/netOrderL3pdChange.c  				1.1
+			OMP/libsrc/COMM/netOrderL3pdChange.h  				1.1
+			OMP/src/FIMD/fimd_proc.c							1.17
+			OMP/src/FIMD/fimd_scealmlmt.c						1.5
+			OMP/src/FIMD/fimd_stsrpt.c							1.18
+			OMP/src/MCDM/mcdm_rxdistrreq.c						1.6
+			OMP/libsrc/COMM/proc_version.c						1.3
+			OMP/libsrc/COMM/proc_version.h						1.3
+			OMP/src/CDELAY/main.c   							1.4
+			OMP/src/FIMD/fimd_dupl.c							1.2
+			OMP/src/MCDM/mcdm_rxdistrreq.c						1.6
+			OMP/src/RMI/rmi_builtin.c							1.2
+			OMP/src/SAMD/samd_l3pd.c							1.7
+			OMP/src/SAMD/samd_main.c							1.14
+			OMP/src/SAMD/samd_proc.c							1.3
+			OMP/src/SAMD/samd_rxtxmsg.c							1.8
+
+==================================================================
+1. 날  짜 : 2009년 5.9 (토)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+    - mysql_free_result() 누락 추가 
+	- malur attack_name 
+	- configured_duration 필드 삭제 
+	- DSC_IP config file read 후 셋팅
+	- INI_VALUES value_type=7 and value = -1 value_key='Other'
+
+4. 파일:
+			OMP/src/STMD/Makefile								1.9
+			OMP/src/STMD/stmd_init.c							1.5
+			OMP/src/STMD/stmd_main.c							1.17
+			OMP/src/STMD/stmd_proto.h							1.14
+			OMP/src/STMD/stmd_update.c							1.10
+			OMP/src/STMD/stmd_update_block.c					1.3
+			OMP/src/STMD/stmd_update_load.c						1.4
+			OMP/src/STMD/stmd_update_lur.c						1.7
+			OMP/src/STMD/stmd_update_malur.c					1.3
+			OMP/src/STMD/stmd_update_pur.c						1.3
+			OMP/src/STMD/stmd_update_rule.c						1.1
+			OMP/src/STMD/stmd_update_tur.c						1.5
+			OMP/include/mysql_db_tables.h						1.7
+==================================================================
+1. 날  짜 : 2009년 5.7 (목)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+    - test code
+	- 사용하지 않는 L3PD snmp 기능을 막는다.
+
+4. 파일:
+			OMP/src/SAMD/samd_main.c     						1.12
+			OMP/src/SAMD/samd_ntp.c   							1.4
+			OMP/src/SAMD/samd_ping.c  							1.3
+			OMP/src/SAMD/samd_snmp.c  							1.10
+==================================================================
+1. 날  짜 : 2009년 5.7 (목)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+    - "PDA" 두번 중복 수정 
+	- srch-stat-load SCEA, SCEB 추가 
+
+	- mml_commands call trace command parameter 수정 			1.8
+	- ini_values table schema 파일 							
+
+4. 파일:
+			OMP/src/STMD/stmd_cron_stat.c						1.6
+			OMP/src/STMD/stmd_mmchdl.c							1.5
+			OMP/src/STMD/stmd_periodic_flt.c					1.4
+==================================================================
+1. 날  짜 : 2009년 5.5 (TUE)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+    - Director 정보 획득시 메모리 Write부분 Mutex 처리.
+    . [FIMD]
+	- 알람 정보 UPDATE 수정
+	- 
+
+4. 파일:
+			OMP/src/SAMD/samd_l3pd.c 							1.5
+			OMP/srcSAMD/samd_main.c								1.12
+			OMP/src/SAMD/samd_ntp.c								1.3
+			OMP/src/FIMD/fimd_almlevel.c						1.4
+			OMP/src/FIMD/fimd_mysql.c							1.8
+			OMP/src/FIMD/fimd_stsrpt.c							1.17
+==================================================================
+1. 날  짜 : 2009년 5.4 (MON)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [ALL]
+    - Version R3.1.1 -> R1.0.0 변경 
+    . [FIMD]
+	- SCE_A, SCE_B를 SCEA, SCEB로 변경
+	- 오류 부분 주석처리 
+
+4. 파일:
+			OMP/src/COND/cond_init.c							1.4
+			OMP/src/IXPC/ixpc_init.c							1.2
+			OMP/src/MCDM/mcdm_init.c							1.3
+			OMP/src/MMCD/mmcd_init.c							1.2
+			OMP/src/NMSIF/nmsif_init.c							1.3
+			OMP/src/FIMD/fimd_almmsg.c							1.10
+			OMP/src/FIMD/fimd_mysql.c							1.7
+			OMP/src/FIMD/fimd_stsrpt.c							1.16
+==================================================================
+1. 날  짜 : 2009년 5.4 (MON)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+    - HTTP Transacetion 통계 추가 
+	- ondemand / periodic 정리 
+
+4. 파일:
+			OMP/src/STMD/Makefile 								1.8
+			OMP/src/STMD/stmd_main.c 							1.13
+			OMP/src/STMD/stmd_ondemand_stat.c					1.7
+			OMP/src/STMD/stmd_periodic_flt.c 					1.3
+			OMP/src/STMD/stmd_periodic_load.c 					1.3
+			OMP/src/STMD/stmd_periodic_stat.c 					1.4
+			OMP/src/STMD/stmd_proto.h 							1.12
+			OMP/src/STMD/stmd_statisticrpt.c					1.10
+			OMP/src/STMD/stmd_update.c 							1.9
+			OMP/src/STMD/stmd_update_block.c 					1.2
+			OMP/src/STMD/stmd_update_http.						1.1
+==================================================================
+1. 날  짜 : 2009년 5.1 (FRI)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+    - Manage port status 추가 
+
+4. 파일:
+			OMP/src/SAMD/samd_l3pd.c       						1.4
+			OMP/src/SAMD/samd_main.c 							1.11
+==================================================================
+1. 날  짜 : 2009년 4.30 (THU)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+    - periodic / cron 함수 수정 
+
+4. 파일:
+			OMP/src/STMD/stmd_cron_stat.c						1.5
+			OMP/src/STMD/stmd_main.c 							1.12 			
+			OMP/src/STMD/stmd_ondemand_stat.c 					1.6
+			OMP/src/STMD/stmd_periodic_flt.c 					1.2
+			OMP/src/STMD/stmd_periodic_load.c 					1.2
+			OMP/src/STMD/stmd_periodic_stat.c 					1.3
+			OMP/src/STMD/stmd_proto.h 							1.11
+
+==================================================================
+1. 날  짜 : 2009년 4.30 (THU)
+2. 작성자 : sjjeon
+3. 내  용 :
+    . [SAMD]
+    - Director 상태 정보 및 알람 상태 체크 기능 추가
+
+4. 파일:
+    src/SAMD/samd_l3pd.c                                        1.3
+    src/SAMD/samd_main.c                                        1.10
+
+===================================================================
+1. 날  짜 : 2009년 4.29 (WED)
+2. 작성자 : jjinri
+3. 내  용 :
+    . [STMD]
+    - mysql_init 원격 접속 아이디 패스워드 변경
+    - BLOCK RDR 5MIN/HOUR/DAY/WEEK/MONTH 함수 작성
+    - TUR sample_size 필드 제거
+    - bsd_flt_통계 제거
+4. 파일:
+    src/STMD/Makefile                                           1.7
+    src/STMD/stmd_main.c                                        1.11
+    src/STMD/mysql_init.c                                       1.3
+    src/STMD/stmd_proto.h.c                                     1.10
+    src/STMD/stmd_update.c                                      1.8
+    src/STMD/stmd_update_block.c                                1.1
+    src/STMD/stmd_update_tur.c                                  1.4
+    src/STMD/stmd_statisticrpt.c                                1.9
+    src/STMD/stmd_update_flt.c                                  1.4
+
+===================================================================
+===================================================================
+1. 날  짜 : 2009년 4.29 (WED)
+2. 작성자 : jjinri
+3. 내  용 : 
+	. [STMD]
+	- mysql_init 원격 접속 아이디 패스워드 변경 	
+4. 파일:
+	src/STMD/mysql_init.c										1.3
+	src/STMD/stmd_proto.h.c										1.9
+	
+===================================================================
+===================================================================
+1. 날  짜 : 2009년 4.28 (TUE)
+2. 작성자 : sjjeon
+3. 내  용 : 
+	. [FIMD]
+	  + 네트워크 오더 수정
+	    - MP SAMD의 주소값 네트워크  오더 맞춤 
+	
+4. 파일:
+	src/FIMD/fimd_stsrpt.c										1.15
+	
+===================================================================
+1. 날  짜 : 2009년 4.27 (MON)
+2. 작성자 : 신영호
+3. 내  용 : 
+	. [OMP] CDELAY 
+	  + packet delay check
+	    - mmc module 추가. 
+		- start-delay-check
+	
+4. 파일:
+	src/CDELAY/Makefile											1.1
+	src/CDELAY/eth_capd.h										1.1
+	src/CDELAY/main.c											1.1
+	src/CDELAY/mmc_hld.c										1.1
+	src/CDELAY/mmc_hld.h										1.1
+	src/CDELAY/mmc_proc.c										1.1
+===================================================================
+1. 날  짜 : 2009년 4.27 (MON)
+2. 작성자 : sjjeon
+3. 내  용 : 
+	. [OMP] FIMD/MCDM
+	  + core 처리 
+	    - mmc 명령어 수행시 All에 관한 에러 메시지 회신시 MCDM에서
+		  core 발생 현상을 처리.
+		- 기타 열맞춤
+	
+4. 파  일 :
+	src/FIMD/fimd_mmchdl.c   	 								1.11
+	src/FIMD/fimd_scealmlmt.c	 								1.4
+	src/IXPC/ixpc_route.c    	 								1.4
+	src/MCDM/mcdm_init.c     	 								1.2
+	src/MCDM/mcdm_main.c     	 								1.2
+	src/MCDM/mcdm_proto.h    	 								1.2
+	src/MCDM/mcdm_rxdistrreq.c 									1.4
+	src/SAMD/samd_main.c       									1.8
+	src/SAMD/samd_ntp.c        									1.2
+	src/SAMD/samd_snmp.c       									1.8
+===================================================================
+1. 날  짜 : 2009년 4.25 (SAT)
+2. 작성자 : june
+3. 내  용 : 
+	. FIMD
+	  + rsh 작업
+	    - OMP에서 MP로 rsh을 사용하여 disprc/killprc 실행할 때 
+		  root 권한이 필요하여 수정.
+		  ex) rsh -l root SCMA/SCMB /DSC/NEW/BIN/disprc
+4. 파  일 :
+	src/FIMD/fimd_keepalive.c									1.4
+	src/FIMD/fimd_proc.c										1.14
+===================================================================
+1. 날  짜 : 2009년 4.25 (SAT)
+2. 작성자 : jjinri
+3. 내  용 : 
+	. STMD
+	  - RDR 통계 추가 
+	  - 기존 통계 수정 
+4. 파  일 :
+	OMP/src/STMD/stmd_update_malur.c							1.1
+	OMP/src/STMD/stmd_update_pur.c								1.1
+	OMP/include/mysql_db_tables.h								1.3
+===================================================================
+1. 날  짜 : 2009년 4.23 (목)
+2. 작성자 : sjjeon
+3. 내  용 : 
+	. FIMD/SAMD
+	  - 네트워크 오더 형식으로 송/수신 추가 
+	  - 라인정렬
+4. 파  일 :
+	OMP/libsrc/COMM/netOrderChange.c							1.1
+	OMP/libsrc/COMM/netOrderChange.h							1.1
+	OMP/libsrc/COMM/netOrderSceInfoChange.c						1.1
+	OMP/libsrc/COMM/netOrderSceInfoChange.h						1.1
+	OMP/libsrc/COMM/netOrderSysInfoChange.c						1.1
+	OMP/libsrc/COMM/netOrderSysInfoChange.h						1.1
+	OMP/include/nmsif.h                                         1.2
+	OMP/include/sfm_msgtypes.h                                  1.4
+	OMP/include/sfmconf.h                                       1.7
+	OMP/src/FIMD/fimd_proc.c                                    1.13
+	OMP/src/FIMD/fimd_stsrpt.c                                  1.14
+	OMP/src/SAMD/samd_rxtxmsg.c                                 1.6
+===================================================================
+1. 날  짜 : 2009년 4.22 (WED)
+2. 작성자 : sjjeon
+3. 내  용 : 
+	. FIMD
+	  - 라인 간격 조정
+	  - MMC (dis-alm-lmt) cpu, mem, disk 정보 뷰 조정.
+4. 파  일 :
+	src/FIMD/fimd_mmchdl.c										1.10
+	src/FIMD/fimd_scealmlmt.c									1.3
+===================================================================
+1. 날  짜 : 2009년 4.22 (WED)
+2. 작성자 : june
+3. 내  용 : 
+	. SAMD  
+	  - sce fault statistic modify
+	  - sce load statistic modify
+4. 파  일 :
+	src/FIMD/fimd_hwalm.c										1.9
+	src/FIMD/fimd_stsrpt.c										1.13
+	src/SAMD/samd_sys.c											1.3
+	src/MMCD/mmcd_req.c											1.3
+===================================================================
+1. 날  짜 : 2009년 4.22 (WED)
+2. 작성자 : june
+3. 내  용 : 
+	. SAMD  
+	  - sce load statistic 처리.
+4. 파  일 :
+	include/stm_msgtypes.h										1.3
+	src/SAMD/Makefile											1.5
+	src/SAMD/samd_init.c										1.5
+	src/SAMD/samd_main.c										1.7
+	src/SAMD/samd_stat.c										1.2
+	src/SAMD/samd_sys.c											1.2
+===================================================================
+1. 날  짜 : 2009년 4.21 (TUE)
+2. 작성자 : june
+3. 내  용 : 
+    . samd snmp 처리 bug 수정.
+	. fimd sce alarm 처리 수정.
+	. fimd sce alarm function prototype 추가.
+	.
+4. 파  일 :
+	src/SAMD/samd_snmp.c										1.7
+	src/FIMD/fimd_hwalm.c										1.8
+	src/FIMD/fimd_proc.c										1.11
+	src/FIMD/fimd_proto.h										1.10
+	src/FIMD/fimd_stsrpt.c										1.11
+===================================================================
+1. 날  짜 : 2009년 4.21 (MON)
+2. 작성자 : sjjeon
+3. 내  용 : 
+    . set/dis alarm mmc 명령어 추가 
+4. 파  일 :
+	src/FIMD/fimd_almlevel.c									1.3
+	src/FIMD/fimd_mmchdl.c										1.9
+	src/FIMD/fimd_pdalmlmt.c									1.2
+	src/FIMD/fimd_proto.hc										1.9
+	src/FIMD/fimd_scealmlmt.c									1.2
+===================================================================
+1. 날  짜 : 2009년 4.21 (MON)
+2. 작성자 : june
+3. 내  용 : 
+    . sce alarm check 추가.
+4. 파  일 : 
+	src/SAMD/samd_init.c										1.4
+	src/FIMD/fimd_almmsg.c										1.8
+	src/FIMD/fimd_hwalm.c										1.7
+	src/FIMD/fimd_mmchdl.c										1.8
+	src/FIMD/fimd_proc.c										1.10
+	src/FIMD/fimd_proto.h										1.8
+	src/FIMD/fimd_stat.c										1.3
+	src/FIMD/fimd_stsrpt.c										1.10
+	include/sfm_snmp.h											1.9
+	include/sfmconf.h											1.5
+	include/stm_msgtypes.h										1.2
+===================================================================
+1. 날  짜 : 2009년 4.19 (SUN)
+2. 작성자 : yhshin 
+3. 내  용 : 
+    . socket byte ordering 
+4. 파  일 : 
+	libsrc/COMM/socklib.h										1.2
+	libsrc/COMM/socklib.c										1.2
+	src/FIMD/fimd_main.c										1.6
+	src/FIMD/fimd_proc.c										1.8
+	src/MMCD/mmcd_builtin.c										1.2
+	src/MMCD/mmcd_main.c										1.3
+	src/MMCD/mmcd_proc.c										1.3
+	src/MMCD/mmcd_req.c											1.2
+	src/RMI/rmi_main.c											1.2
+===================================================================
+1. 날  짜 : 2009년 4.18 (SAT)
+2. 작성자 : june
+3. 내  용 : 
+    . SCE 정보 alarm 처리
+	  - COND -> GUI 전송
+	  - cpu, memory, disk 완료.
+	  - mysql alarm history table 에 저장.
+	  - SCE 추가 항목 처리: memory, temperature,
+	. SCE 추가 항목 데이터 전송
+	  - fimd -> GUI 전송.
+	  - memory, temperature, voltage, rdr
+4. 파  일 : 
+	src/FIMD/fimd_almmsg.c										1.7
+	src/FIMD/fimd_hwalm.c										1.5
+	src/FIMD/fimd_init.c										1.4
+	src/FIMD/fimd_mmchdl.c										1.5
+	src/FIMD/fimd_proc.c										1.7
+	src/FIMD/fimd_stsrpt.c										1.8
+	src/SAMD/samd_init.c										1.3
+	src/SAMD/samd_snmp.c										1.4
+	src/SAMD/samd_snmp.h										1.3
+	include/comm_almsts_msgcode.h								1.3
+	include/sfm_snmp.h											1.4
+	include/sfmconf.h											1.4
+===================================================================
+1. 날  짜 : 2009년 4.18 (SAT)
+2. 작성자 : june
+3. 내  용 : 
+    . SCE 정보 alarm 처리
+	  - COND를 거처 GUI에 전송
+	  - mysql alarm history table 에 저장.
+	. sysconfig backup.
+	  - 이전 sysconfig -> sysconfig_ori 변경/보관.
+	. test code remove  
+4. 파  일 : 
+	src/FIMD/fimd_hwalm.c										1.4
+	src/FIMD/fimd_main.c										1.5
+	src/FIMD/fimd_proc.c										1.6
+	src/FIMD/fimd_almmsg.c										1.6
+	src/FIMD/fimd_hdlalm.c										1.2
+	src/FIMD/fimd_hwalm.c										1.3
+    src/FIMD/fimd_main.c                                       	1.4
+	src/FIMD/fimd_mysql.c										1.5
+    src/FIMD/fimd_proc.c										1.5
+	src/FIMD/fimd_stsrpt.c										1.7
+	src/FIMD/fimd_proto.h										1.6
+	include/sfm_snmp.h											1.3
+	include/sfmconf.h											1.3
+	include/comm_almsts_msgcode.h								1.2
+	data/sysconfig												1.2
+	data/sysconfig_ori											1.1
+ ===================================================================
+1. 날  짜 : 2009년 4.16 (수)
+2. 작성자 : june
+3. 내  용 : 
+    . snmp 로 sce system/usage 정보 얻어와 GUI로 전송하는 부분 추가.
+4. 파  일 : 
+    src/FIMD/fimd_init.c                                       	1.3
+    src/FIMD/fimd_main.c                                       	1.3
+    src/FIMD/fimd_mmchdl.c                                     	1.4
+    src/FIMD/fimd_proc.c										1.4
+    src/FIMD/fimd_proto.h                                       1.5
+    src/FIMD/fimd_stsrpt.c                                      1.5
+	src/SAMD/samd_init.c										1.2
+	src/SAMD/samd_main.c										1.5
+	src/SAMD/samd_rxtxmsg.c										1.4
+	src/SAMD/samd_snmp.c										1.3
+	src/SAMD/samd_snmp.h										1.2
+	include/comm_msgtypes.h										1.2
+	include/sfm_snmp.h											1.2
+	include/sfmconf.h											1.2
+===================================================================
+ 

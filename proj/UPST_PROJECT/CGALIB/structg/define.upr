@@ -1,0 +1,6 @@
+/* « ø‰«— header file include */
+
+#define STG_INTEGER     1
+#define STG_STRING      2
+#define STG_IP          3
+#define STG_DEF         4

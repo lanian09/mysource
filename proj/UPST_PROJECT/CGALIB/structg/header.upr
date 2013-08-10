@@ -1,0 +1,24 @@
+/**		file  +FileName+
+ *      - +Intro+
+ *
+ *     Copyright (c) 2006~ by Upresto Inc, Korea
+ *     All rights reserved
+ *
+ *		$Id: header.upr,v 1.1.1.1 2011/08/29 05:56:44 dcham Exp $
+ * 
+ *     @Author      $Author: dcham $
+ *     @version     $Revision: 1.1.1.1 $
+ *     @date        $Date: 2011/08/29 05:56:44 $
+ *     @warning     +Warning+
+ *     @ref         +FileName+
+ *     @todo        +ToDo+
+ *
+ *     @section     Intro(¼Ò°³)
+ *      - +Intro+
+ *
+ *     @section     Requirement
+ *      @li +Requirement+
+ *
+ **/
+
+

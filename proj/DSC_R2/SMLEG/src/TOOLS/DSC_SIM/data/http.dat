@@ -1,0 +1,76 @@
+#
+#RESP_CODE Ω√¿€¿ª 
+#
+#
+#
+## cache miss (Case 1)
+RESP_CODE		= 1
+RESP_LINE 		= GET http://192.168.233.209:10000/cache_miss.swf HTTP/1.1
+HOST			= Host: 192.168.233.209:10000
+ACCEPT			= Accept: */*
+CONNECTION 		= Proxy-Connection: close
+#
+#
+## cache hit + flesh (Case 2)
+#
+RESP_CODE		= 2
+RESP_LINE 		= GET http://192.168.233.205/flash_sample/ActionScript3.0/DefineBitsJpeg2_50.swf HTTP/1.1
+HOST			= Host: 192.168.233.205
+ACCEPT			= Accept: */*
+CONNECTION 		= Proxy-Connection: close
+#
+#
+## cache hit + stale (Case 3)
+#
+RESP_CODE		= 3
+RESP_LINE 		= GET http://192.168.233.205/flash_sample/DefineBitsJPEG2/DefineBitsJpeg2.swf HTTP/1.1
+HOST			= Host: 192.168.233.205
+USER_AGENT		= User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.;01057402028
+ACCEPT			= Accept: */*
+CONNECTION 		= Proxy-Connection: keep-alive
+#
+#
+RESP_CODE		= 32
+RESP_LINE 		= GET http://192.168.233.205/flash_sample/DefineBitsJPEG2/DefineBitsJpeg2.swf HTTP/1.1
+HOST			= Host: 192.168.233.205
+#USER_AGENT		= User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.;0197402001
+USER_AGENT		= User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.;01057402028
+ACCEPT			= Accept: */*
+CONNECTION 		= Proxy-Connection: close
+#
+RESP_CODE		= 31
+RESP_LINE 		= GET http://192.168.233.209:10000/cache_hit32.swf HTTP/1.1
+HOST			= Host: 192.168.233.209:10000
+IMS_CODE		= If-Modified-Since: Tue, 16 Dec 2008 07:43:01 GMT
+ACCEPT			= Accept: */*
+CONNECTION 		= Proxy-Connection: close
+#
+#
+## cache hit + stale (Case 5)
+#
+RESP_CODE		= 5
+RESP_LINE 		= GET http://192.168.233.209:10000/cache_hit41.swf HTTP/1.1
+HOST			= Host: 192.168.233.209:10000
+IMS_CODE		= If-Modified-Since: Tue, 16 Dec 2008 07:43:01 GMT
+ACCEPT			= Accept: */*
+CONNECTION 		= Proxy-Connection: close
+#
+#
+#
+#
+RESP_CODE		= 10
+RESP_LINE 		= HTTP/1.1 200 OK
+DATE 			= Date: Tue, 27 Nov 2008 21:00:01 GMT
+LAST_MODIFIED	= Last-Modified: Thu, 1 Nov 2007 21:10:01 GMT
+CONTENT_TYPE	= Content-Type: application/x-shockwave-flash
+CONTENT_LENGTH	= Content-Length: %d
+CONNECTION 		= Proxy-Connection: close
+#
+##
+## cache miss (Case 1)
+RESP_CODE		= 30
+RESP_LINE 		= GET http://211.115.75.178/jpeg2_sample_04.swf
+HOST			= Host: 192.168.233.209
+ACCEPT			= Accept: */*
+CONNECTION 		= Proxy-Connection: close
+#

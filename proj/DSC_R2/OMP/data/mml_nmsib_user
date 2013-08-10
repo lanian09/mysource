@@ -1,0 +1,5 @@
+# NMSIB가 MMCD로 login하는 account이다.
+# NMSIB는 반드시 여기에 등록된 account로 login해야한다.
+# 물론, mml_passwd 파일에도 등록된 account 이어야 한다.
+# 한줄에 하나씩 등록한다.
+INS_MNG

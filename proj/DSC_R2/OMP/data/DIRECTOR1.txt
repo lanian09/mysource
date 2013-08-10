@@ -1,0 +1,113 @@
+spawn ssh -T -oStrictHostKeyChecking=no customer@211.254.95.88
+sh: /usr/local/bin/stty: not found
+customer@211.254.95.88's password: 
+
+
+***********************************************************
+*       Net Optics Command Line Interface (CLI)           *
+*                    for Director                         *
+*                                                         *
+*       Copyright (c) 2008-2009 by Net Optics, Inc.       *
+*                                                         *
+*             Restricted Rights Legend                    *
+*                                                         *
+* Use,  duplication,  or disclosure by the Government is  *
+* subject  to  restrictions as set forth in subparagraph  *
+* (c)  of  the Commercial Computer Software - Restricted  *
+* Rights  clause at FAR  sec. 52.227-19 and subparagraph  *
+* (c)(1)(ii) of the Rights in Technical Data and Computer *
+* Software clause at DFARS sec. 252.227-7013.             *
+*                                                         *
+*        Net Optics, Inc.                                 *
+*        5303 Betsy Ross Drive                            *
+*        Santa Clara, California 95054                    *
+*        (408) 737-7777                                   *
+*        e-mail: cs-support@netoptics.com                 *
+*                                                         *
+***********************************************************
+login user: admin
+[?25lpassword: netoptics
+[?25h
+Net Optics> help
+
+  Director Main Help Menu
+  Command          Description
+  -------------    ---------------------------------------------------------
+  ![#]             - !number or up/down key for previous command
+  commit           - activate pending configuration changes
+  date             - show and set system date
+  del              - delete configuration file <filename>
+  filter           - configure filters
+  help             - view CLI usage
+  history          - display command history list
+  image            - show and switch boot image
+  list             - list configuration files
+  load             - load configuration from <filename>
+  logout           - exit current CLI session
+  module           - show installed system modules 
+  passwd           - change password for SSH user account
+  ping             - ping <ipaddr>
+  port             - configure ports
+  save             - save configuration to <filename>
+  show             - show configuration: 'running', 'factory', or <filename>
+  stats            - show or clear port statistics
+  sysip            - show and set system IP address
+  system           - show and set system parameters or restart system
+  time             - show and set system time
+  upgrade          - upgrade alternate boot image file
+  user             - manage user accounts
+  quit or exit     - exit current CLI session
+
+Net Optics> port show
+exit
+port show
+exit
+
+                         Status                          Setting
+   port  |    link  autoneg  speed  duplex  |  admin autoneg  speed  duplex
+  -------+----------------------------------+------------------------------
+  n1.01  |     dwn      off    unk     unk  |     en     off   1000    full
+  n1.02  |     dwn      off    unk     unk  |     en     off   1000    full
+  n1.03  |     dwn      off    unk     unk  |     en     off   1000    full
+  n1.04  |     dwn      off    unk     unk  |     en     off   1000    full
+  n1.05  |     dwn      off    unk     unk  |     en     off   1000    full
+  n1.06  |     dwn      off    unk     unk  |     en     off   1000    full
+  n1.07  |     dwn      off    unk     unk  |     en     off   1000    full
+  n1.08  |     dwn      off    unk     unk  |     en     off   1000    full
+  n1.09  |     dwn      off    unk     unk  |     en     off   1000    full
+  n1.10  |     dwn      off    unk     unk  |     en     off   1000    full
+  n1.11  |     dwn      off    unk     unk  |     en     off   1000    full
+  n1.12  |     dwn      off    unk     unk  |     en     off   1000    full
+  -------+----------------------------------+------------------------------
+  n2.01  |      up      off   1000    full  |     en     off   1000    full
+  n2.02  |      up      off   1000    full  |     en     off   1000    full
+  n2.03  |     dwn      off    unk     unk  |     en     off   1000    full
+  n2.04  |     dwn      off    unk     unk  |     en     off   1000    full
+  n2.05  |     dwn      off    unk     unk  |     en     off   1000    full
+  n2.06  |     dwn      off    unk     unk  |     en     off   1000    full
+  n2.07  |     dwn      off    unk     unk  |     en     off   1000    full
+  n2.08  |     dwn      off    unk     unk  |     en     off   1000    full
+  n2.09  |     dwn      off    unk     unk  |     en     off   1000    full
+  n2.10  |     dwn      off    unk     unk  |     en     off   1000    full
+  n2.11  |     dwn      off    unk     unk  |     en     off   1000    full
+  n2.12  |     dwn      off    unk     unk  |     en     off   1000    full
+  -------+----------------------------------+------------------------------
+  t1.01  |     dwn      off    unk     unk  |     en     off  10000    full
+  t1.02  |     dwn      off    unk     unk  |     en     off  10000    full
+  -------+----------------------------------+------------------------------
+  t2.01  |     dwn      off    unk     unk  |     en     off  10000    full
+  t2.02  |     dwn      off    unk     unk  |     en     off  10000    full
+  -------+----------------------------------+------------------------------
+   m.01  |      up       on   1000    full  |     en     off   1000    full
+   m.02  |      up       on   1000    full  |     en     off   1000    full
+   m.03  |     dwn       on    unk     unk  |     en     off   1000    full
+   m.04  |     dwn       on    unk     unk  |     en     off   1000    full
+   m.05  |     dwn       on    unk     unk  |     en     off   1000    full
+   m.06  |     dwn       on    unk     unk  |     en     off   1000    full
+   m.07  |     dwn       on    unk     unk  |     en     off   1000    full
+   m.08  |     dwn       on    unk     unk  |     en     off   1000    half
+   m.09  |     dwn       on    unk     unk  |     en     off   1000    full
+   m.10  |     dwn       on    unk     unk  |     en     off   1000    full
+  -------+----------------------------------+------------------------------
+Net Optics> do you want to exit? (yes/no) - Net Optics> do you want to exit? (yes/no) - yes
+yes

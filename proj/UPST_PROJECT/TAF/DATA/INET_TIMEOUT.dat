@@ -1,0 +1,4 @@
+## TYPE TIMEOUT
+#@ CALL 3600
+#@ INET 60
+#E

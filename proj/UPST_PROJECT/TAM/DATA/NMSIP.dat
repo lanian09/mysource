@@ -1,0 +1,14 @@
+##
+## NMS interlock IP LIST
+##
+##  - '##' COMMENT etc. NOT READING LINE MARK
+##  - '#@' READING LINE
+##  - '#E' END OF FILE
+##
+## ------------------------------------------
+## IP_NAME		IP_LIST
+## ------------------------------------------
+##
+#@ 5MIN			172.30.13.54
+#@ 1HOUR		172.30.13.226
+#E

@@ -1,0 +1,75 @@
+
+
+날자 : 2006.04.06 (목)
+    TAG : tagnanme : REL_CodeGenerator_0_0_0_1_0_0_ENC_DEC
+    - Decode/Encode/Print까지 처리
+    - Flat 처리
+
+날자 : 2006.04.07 (금)
+    TAG : tagnanme : REL_CodeGenerator_0_0_0_2_0_0_ENC_DEC
+    - Decode/Encode/Print까지 처리
+    - Flat 처리
+    - structg.pl 한개로 통합
+
+    TAG tagnanme : REL_CodeGenerator_0_0_0_2_0_1_ENC_DEC_PRT_ProC
+    변화 : ProC 처리 / 전체적 모양 변경
+    - Decode/Encode/Print/ProC 까지 처리
+    - Flat 처리
+    - structg.pl 한개로 통합
+    - Makefile 자동 생성
+
+날자 : 2006.04.11
+    TAG tagnanme : REL_CodeGenerator_0_0_0_2_0_2_co_hashg
+    변화 : ProC 처리 / 전체적 모양 변경
+    - Decode/Encode/Print/ProC 까지 처리
+    - Flat 처리
+    - structg.pl 한개로 통합
+    - Makefile 자동 생성  (library까지 만들수 있는 makefile 탄생)
+    - hashg 가 되게 했음.
+
+날자 : 2006.04.12
+    TAG tagnanme : REL_CodeGenerator_0_0_0_2_0_2_co_hashg_TEST
+    변화 : ProC 처리 / 전체적 모양 변경
+    - Decode/Encode/Print/ProC 까지 처리
+    - Flat 처리
+    - structg.pl 한개로 통합
+    - Makefile 자동 생성  (library까지 만들수 있는 makefile 탄생)
+    - hashg 가 되게 했음.
+    - hashg와 structg의 연동 성공까지 (hashg에서 달아준 tag임)
+
+날자 : 2006.05.19 (금)
+    TAG tagnanme : REL_CodeGenerator_0_0_0_3_0_0_For_base_STG_HASH
+    - STG_HASH 라는 것을 정의하기 위한 사전 작업 (기본적인 내용들은 마쳐진 상태)
+    - use strict "vars" 를 사용한 버젼
+
+날자 : 2006.05.24 (수)
+    TAG tagnanme : REL_CodeGenerator_0_0_0_3_1_0_NTAM_Auto_2_Gen
+	-NTAM 2단계 기능 추가
+		STG_HASH_KEY - 한개만 존재해야하며 , 맨 마지막에 들어가야 한다.
+			2개씩 분리하여 key, data를 만들고 , 최과장님의 요구에 따라 DATA는 퉁으로
+		STG_COMBINATION_TABLE  - 여러개가 가능하며 , p를 앞에 붙여서 pointer로 선언하여야 한다.
+			DIFF , EQUAL 구현 (Set_Combination_Once)
+			ACCUMULATION 구현 - 각 TIM_... 메시지가 들어올때마다 축적하게 설정
+	
+날자 : 2006.05.24 (수)
+    TAG tagnanme : REL_CodeGenerator_0_0_0_3_1_1_NTAM_Auto_2_Gen_CompileOK
+	-NTAM 2단계 기능 추가 (ora , make compile OK)
+		STG_HASH_KEY - 한개만 존재해야하며 , 맨 마지막에 들어가야 한다.
+			2개씩 분리하여 key, data를 만들고 , 최과장님의 요구에 따라 DATA는 퉁으로
+		STG_COMBINATION_TABLE  - 여러개가 가능하며 , p를 앞에 붙여서 pointer로 선언하여야 한다.
+			DIFF , EQUAL 구현 (Set_Combination_Once)
+			ACCUMULATION 구현 - 각 TIM_... 메시지가 들어올때마다 축적하게 설정
+
+날자 : 2006.05.29 (월)
+    TAG tagnanme : REL_CodeGenerator_0_0_0_4_0_1_NTAM_Auto_3_Gen_TestOK
+    -NTAM 3단계 기능 추가 (ora , make compile OK)
+		userfile.stg : 
+			TABLE_LOG , TABLE_CF ,  STG_COMBINATION_TABLE keyword 사용
+				TABLE_LOG : DB에 들어갈 테이블이며 계산이 되어짐
+				TABLE_CF : DB에 들어갈 테이블이지만, call flow관련된 것으로 계산되어지지 않음.
+				STG_COMBINATION_TABLE : DB에 들어갈 테이블이며 , 내부적으로 생성되는 것
+			STG_HASH_KEY keyword뒤에 위에서 선언한 typedef 이름을 넣으면 그 structure를 KEY Structure로 이용하게 됨. 
+		structg.pl :
+			GLOBAL.TXT로 stg의 분석 결과를 저장한 값들을 모아둔 화일을 따로 떼어둠.
+			STC처리 추가  - ITERATE +<<+ ... +>>+ 과 +<+$...+.+  추가 
+			undefined_typedef 추가 (our로 정의 되지 않은 모양들에 대한 처리를 위한 부분임)

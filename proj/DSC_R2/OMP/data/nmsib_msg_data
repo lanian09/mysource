@@ -1,0 +1,26 @@
+#
+# MSG_CODE		header_line수
+#
+# S3925 MTP DPC SCHEDULE STATISTICS MESSAGE
+# PERIOD  = 2004-02-24 19:55 -- 2004-02-24 20:00
+# MPRD    = 5
+#
+# TYPE     DPC  DURDPCUNAV  NUMDPCUNAV  TX_MSU  RX_TFA
+#                   RX_TFP      TX_SIO  TX_SIF
+# ----------------------------------------------------
+# HLR     0000           0           0       0       0
+#
+# S3925메시지는 header가 6줄이다. 
+
+# WISE DOWNLOAD HOULRY DAILY WEEKLY MONTHLY
+S4011		7
+
+# TELCO HOULRY DAILY WEEKLY MONTHLY
+S5011		7
+
+# WISE UPLOAD HOULRY DAILY WEEKLY MONTHLY
+S6011		7
+
+# DB HOULRY DAILY WEEKLY MONTHLY
+S7011		7
+

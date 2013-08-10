@@ -1,0 +1,21 @@
+#!/usr/bin/sh
+if [ $1 = "0" ]; then 	host="192.168.100.3";
+else 					host="192.168.100.4";
+fi
+
+RESULT=`/usr/sbin/ping $host 1 | awk '{ print $3; }'`
+
+if [ $RESULT = "alive" ]; then
+#/usr/sfw/bin/snmpget -v 1 -c public $host
+/usr/local/bin/snmpget -v 1 -c public $host 		\
+PCUBE-SE-MIB::sysFailureRecovery.0  		\
+PCUBE-SE-MIB::linkOperMode.1.1 				\
+PCUBE-SE-MIB::linkAdminModeOnFailure.1.1	\
+PCUBE-SE-MIB::linkOperMode.1.2 				\
+PCUBE-SE-MIB::linkAdminModeOnFailure.1.2 | /usr/bin/tr "[:lower:]" "[:upper:]" | /usr/bin/sed 's/(/ /g' | /usr/bin/awk '{ 
+	printf "%s ", $4 
+}
+END { 
+    printf "\n"; 
+}'
+fi

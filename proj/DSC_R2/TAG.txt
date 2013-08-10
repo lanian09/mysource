@@ -1,0 +1,102 @@
+######################################################################
+# TAG 붙이는 법
+######################################################################
+> cvs tag TAG_NAME module
+> cvs rtag TAG_NAME module  (cvs server에 있는 것을 tag)
+
+LGT_DSC_20090406_R1_0
+: init
+
+######################################################################
+# TAG 받는 법
+######################################################################
+cvs co -r TAG_NAME -d 변경할_dir LGT_DSC
+
+######################################################################
+# HISTORY
+######################################################################
+cvs rtag LGT_DSC_20090406_R1_0 LGT_DSC
+: 2009-04-06, init
+
+cvs rtag LGT_DSC_20090406_R2_0 LGT_DSC
+: 2009-04-29, 231 server change, 
+
+cvs rtag LGT_DSC_20090606_R2_0 LGT_DSC
+: 2009-06-06, 106 server change, before
+
+cvs rtag LGT_DSC_20090606_R3_0 LGT_DSC
+: 2009-06-06, 106 server change, after
+
+cvs rtag LGT_DSC_20090626_R4_0 LGT_DSC
+: 2009-06-26
+: + MP : RLEG외 금일 상용시험 버젼(RLEG Timer 처리 제외)
+: + OMP: 06월25일 HISTORY 버젼(SCE Status 처리 이전 버젼)
+
+cvs rtag LGT_DSC_R1_0_1 LGT_DSC
+: 2009-07-06
+: + 성진이 작업 전.
+: + MP : ACTIVE + STANBY 구조 변경된 버젼.
+: + OMP : SM connection 체크 기능 추가 버젼.
+
+cvs rtag LGT_DSC_R1_0_1 LGT_DSC
+: 2009-07-06
+: + 성진이 작업 후
+
+cvs rtag LGT_DSC_R2_0_0 LGT_DSC
+: 2009-07-12, SUM
+: + 상암 최초 패키지 버젼.
+
+cvs rtag LGT_DSC_R3_0_0 LGT_DSC
+: 2009-08-11
+: + 상암 상용 패키지 버젼.(상용서비스중 DSC#1)
+
+cvs rtag LGT_DSC_R3_0_1 LGT_DSC
+: 2009-08-11
+: + 상암 상용 패키지 버젼.(상용수정적용 최종적용버젼.)
+
+cvs rtag LGT_DSC_R3_0_2 LGT_DSC
+: 2009-11-04
+: + 상암 상용 패키지 버젼.(VER. R1.0.1)
+	- 컴파일 계정 :dsc
+	- 컴파일 경로 
+	  - /export/dsc/work/LGT_DSC/SMLEG (SCM)
+	  - /export/dsc/WORK/LGT_DSC/OMP/src (DSCM)
+	- 적용 장비 : DSC 2번장비 적용.
+
+
+cvs rtag LGT_DSC_R3_0_3 LGT_DSC
+: 2009-11-10
+: + 상암 상용 DSC#2 적용 후 오류 수정 버젼.
+	- 컴파일 계정 :dsc
+	- 컴파일 경로 
+	  - /export/dsc/work/LGT_DSC_R1.0.1/SMLEG (SCM)
+	- 적용 장비 : DSC#2 SCM(SAMD)
+	- 수정 내역 : SCM SAMD (Break pipe) 오류 수정 (사용 1,2,3 식 적용)
+
+cvs rtag LGT_DSC_R3_0_4 LGT_DSC
+: 2010-04-09
+: + 상암 상용 패키지 버젼.(VER. R1.0.1)
+    - 상암 패키지 vR1.0.1 로 예상되나 vR1.0.2 패키지 패치 버젼
+	  CVS 올리기 전에 현재 CVS 에 대한 빽업 Tagging 작업
+	- 작업자 : 이상준
+
+cvs rtag LGT_DSC_R3_0_5 LGT_DSC
+	+ 날짜			: 2010-04-09
+ 	+ 패키지 버젼 	: VER R1.0.2
+	+ 작업자 		: 이상준
+	+ R1.0.1 번전에서 추가된 내용
+	  1. RLEG Timer 수정, Trace 추가.
+	  2. MMCD ADD-IPADDR 버그 수정
+	  3. FAN/POWER 감시 방법 수정.
+	  4. RDRANA core 발생.
+    
+cvs rtag LGT_DSC_R3_0_6 LGT_DSC
+	+ 날짜			: 2010-08-22
+ 	+ 패키지 버젼 	: VER R1.0.3 Last
+	+ 작업자 		: 이상준
+	+ R1.0.3 상용 Last Version
+	  1. H/W(SCM Server T2000->Netra T2000) 으로 변경됨에 따른
+	     S/W 변경(DISK, LAN) 작업 전 최종 빽업 소스
+
+
+	

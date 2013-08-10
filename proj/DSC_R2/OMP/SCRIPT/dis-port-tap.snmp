@@ -1,0 +1,28 @@
+#!/usr/bin/bash
+
+host=$1
+RESULT=`/usr/sbin/ping $host 1 | awk '{ print $3; }'`
+
+if [ $RESULT = "alive" ]; then
+snmpget -v 1 -c public $host  \
+ETOPTICS-MIB-DIRECTOR::link.0.32 \
+ETOPTICS-MIB-DIRECTOR::link.0.33 \
+ETOPTICS-MIB-DIRECTOR::link.0.34 \
+ETOPTICS-MIB-DIRECTOR::link.0.35 \
+ETOPTICS-MIB-DIRECTOR::link.0.12 \
+ETOPTICS-MIB-DIRECTOR::link.0.13 \
+ETOPTICS-MIB-DIRECTOR::link.0.14 \
+ETOPTICS-MIB-DIRECTOR::link.0.15 \
+ETOPTICS-MIB-DIRECTOR::link.0.16 \
+ETOPTICS-MIB-DIRECTOR::link.0.17 \
+ETOPTICS-MIB-DIRECTOR::link.0.18 \
+ETOPTICS-MIB-DIRECTOR::link.0.19 \
+ETOPTICS-MIB-DIRECTOR::link.0.20 \
+ETOPTICS-MIB-DIRECTOR::link.0.21 2>&1 | /usr/bin/tr "[:lower:]" "[:upper:]" | sed 's/(/ /g' | awk '{
+	if($4=="UP") 	printf "%d ",1;
+	else			printf "%d ",0;
+}
+END {
+	printf "\n";
+}'
+fi

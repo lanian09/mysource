@@ -1,0 +1,93 @@
+[GENERAL]
+SYSTEM_LABEL = BSDM
+OP_ACCOUNT	= bsdm 
+
+[ASSOCIATE_SYSTEMS]
+#name	     =	type		group   	ipAddr(primary)		ipAddr(secondary)
+#-------------------------------------------------------------------------------
+# Upresto
+BSDM        =   OMP     	OMP     	192.203.140.163     192.203.140.163
+BSDA        =   MP      	BSD     	192.203.140.161     192.203.140.161
+BSDB        =   MP      	BSD     	192.203.140.162     192.203.140.162
+# Infravalley
+#BSDM         =   OMP     	BSDM     	192.168.100.26     192.168.100.26
+#BSDA         =   MP      	BSD     	192.168.100.72	   192.168.100.72
+#BSDB        =   MP      	BSD     	192.168.101.181	   192.168.101.181
+
+[APPLICATIONS]
+#name	=	msgQkey		where		alarm_level(1:minor, 2:major, 3:critical)
+#-------------------------------------------------------------------------------
+IXPC    =   0x12011     BIN/ixpc        2
+FIMD    =   0x12012     BIN/fimd        2
+COND    =   0x12013     BIN/cond        2
+STMD    =   0x12014     BIN/stmd        2
+MMCD    =   0x12015     BIN/mmcd        2
+MCDM    =   0x12016     BIN/mcdm        2
+SAMD    =   0x12017     BIN/samd        2
+NMSIF   =   0x12018     BIN/nmsif        2
+#UDRCOL	=	0x12019     BIN/udrcol      2
+
+[SOCKET_PORT]
+# 0x9550 (38224)
+IXPC		=	0x1440
+MMCD		=	0x1441
+FIMD_DATA	=	0x1442
+FIMD_EVENT	=	0x1443
+COND		=	0x1444
+NMS_ALM		=	0x139F
+NMS_CONS	=	0x139D
+NMS_CONF	=	0x13B1
+NMS_MMC		=	0x13C5
+
+
+[SHARED_MEMORY_KEY]
+SHM_KEEPALIVE   = 0x11110
+SHM_SFDB	= 0x11111
+SHM_LOC_SADB	= 0x11112
+SHM_IXPC_CON	= 0x11113
+SHM_NMS_RESEND  = 0x11114
+SHM_SOUND	= 0x11115
+SHM_L3PD	= 0x11116
+
+
+[SAMD_CONFIG]
+DISK        =   /   /data
+
+
+# MMIB는 항상 맨 끝이여야한다
+# total subs 통계 요구를 MMIB 에게 보내는데 24시 정시에 맨 끝의 프로세스에게
+# 던지기 때문에 
+
+[STMD_CONFIG]
+OMP			=	SAMD  FIMD
+MP 			=	SAMD  STMM
+
+#[DB_CONFIG]
+#1hour <= WorkTime <= 24 hour
+#WORK_TIME	=	24
+
+[FIMD_CONFIG]   
+
+[L3PD_IP_ADDRESS]
+192.168.128.1
+
+[ALTIBASE_CONFIG]
+# Valid Value : 0 ~ 23
+#WORK_TIME   =   21 23 5 7 11 18 14
+WORK_TIME  =   23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0
+
+[UDR_FTP_INFO]
+######### FTP IP Address   PORT User	Passwd	Directory
+#FTPSERVER1	= BSDA	192.203.140.161	21	bsdftp	bsdftp	/tmp
+#FTPSERVER2	= BSDB	192.203.140.162	21	bsdftp	bsdftp	/tmp
+FTPSERVER1	= BSDA	192.168.100.72	21	ipaf	123456	/home/ipaf/UDRDIR_TEMP
+
+[UDR_COLLECT]
+UDR_STORE_DIR	=	/home2/bsdm/UDRDIR_TEMP
+
+
+[TRANFORM_INFO]
+NE_ID		=	30000
+STATID_BASE	=	3100
+OID_BASE	=	31000
+HB_TERM		=	60

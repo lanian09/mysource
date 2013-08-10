@@ -1,0 +1,700 @@
+FileName : L7.h
+STC_FileName : co_log_main.stc , co_log_debug.stc, m_log_call.stc, m_log_save.stc, m_log_global.stc , LOG_KUN.stc , LOG_ME.stc
+
+SET_DEF_START_NUM : 20
+
+
+/** @file L7.h
+ *
+ *	Structure 정의
+ *  
+ *	$Id: userfile.stg,v 1.1.1.1 2011/08/29 05:56:44 dcham Exp $
+ *      
+ *  Copyright (c) 2006~ by Upresto Inc, Korea
+ *  All rights reserved.
+ *          
+ *  @Author      $Author: dcham $
+ *  @version     $Revision: 1.1.1.1 $
+ *  @date        $Date: 2011/08/29 05:56:44 $
+ *  @ref         
+ *  @warning     
+ *  @todo        
+ *  
+ *  @section     Intro(소개)
+ *      - IuPS에서 NTAM으로 전송되는 body structure
+ *
+ **/
+
+/**
+ * ----------------------------------------------------------------------
+ * --필독!!--------------------------------------------------------------
+ * ------- 작성에 유의 하세요!!!!! --------------------------------------
+ * ----------------------------------------------------------------------
+ * TYPEDEF STRUCT _ST_TIM_IUPS_ {
+ *		S16		sShort;
+ *		U16	    usUShort;
+ *		S32		iInt;
+ *		U32		uiUint;
+ *		U8		ucChar[DEF_SIZE_IMSI];
+ *	} TIM_IUPS;			-- 이름에 주의 하세요, structure tag가 Table명이 됩니다. 
+ *						-- tag을 여러가 사용할 수 없음.
+ *
+ *  ex) TIM_IUPS
+ *	T 	 - Table
+ *	IM 	 - Project Name (IM - KTF_IMS)
+ *	IUPS - Protocol or Range Name
+ *
+ */
+
+#ifndef __IMS_STRUCTG_H__
+#define __IMS_STRUCTG_H__
+#define  DEF_SIZE_IMSI			16
+#define  DEF_SIZE_TMSI			16
+#define  DEF_SIZE_SESSIONID		8
+
+#pragma pack (1)
+
+/** 시간을 나타내는 struct timeval과 같은 것 자체 정의
+*/
+typedef struct _st_timeval {
+	STIME		time;   %Time%		/**< 초까지 나타내는 시간 */
+	MTIME		utime;  %MTime%	 	/**< micro 초 나타내는 시간 */
+} TIME64;
+
+typedef struct _stg_hashkey {
+	TIME64		llTime;					%Create%				/**< 호 생성시간: U32 Time , U32 uTime */
+	U8			ucTMSI[DEF_SIZE_TMSI];	%TMSI%					/**< TMSI */
+	U8			ucIMSI[DEF_SIZE_IMSI];	%IMSI%					/**< IMSI */
+	IP4 		uiIP;					%IPAddr%				/**< IP address */
+} STG_HASHKEY;
+
+#define  MAX_SAR_SIZE        1024 * 10
+
+/**
+ * 	@brief TIM_IUPS : IUPS 구간 Log Structure.
+ *
+ *	A_RANAP에서 NTAM으로 전송되는 데이터
+ *	
+ *	@see	iups.h
+ *	@node	+Note+
+ */
+typedef struct _st_IUPS_Sess_Cnt {
+	S32			Calltrycnt;					/**< 호 try count, SM service request 수신시 */
+	S32			Callfailcnt;				/**< 호 fail count, 타임아웃경우  */
+	S32			Callendcnt;					/**< 호 release count, RANAP release message 수신시 */
+} stIUPSCnt;
+
+TABLE_LOG typedef struct _st_Iups_Sess_Log {
+	STG_HASHKEY	stgCoInfo;	%TTTTT__%			/**< 호 기본 Corelation 정보 */
+
+	U8			SessionID [DEF_SIZE_SESSIONID];	/**< SCCP Session ID */
+	TIME64		Release;					/**< 호 종료 시간 */
+											/**< 호 종료 시간 (Micro) */
+	U16			RANAPCause;				/**< 상태 코드 */
+	U16			SMCause;					/**< 상태 코드 */
+	U16			PDPType;					/**< IP or PPP */
+	S32			DurSetupTime;				/**< IP을 얻을 때까지 걸린 시간 */
+	S32			DurReleaseTime;			/**< 호 종료시 발생된 시간 */
+	S32			DurActPDPTime;				/**< Activation PDP 걸린 시간 */
+	S32			DurDeActPDPTime;			/**< DeActivation PDP 걸린 시간 */
+	S32			Direction;					/**< UP/DOWN */
+
+    stIUPSCnt	stIupsCnt;	%TTTTT__%				/**< IUPS 호 분석정보 */
+
+} LOG_IUPS;
+
+
+/**
+ * 	@brief TIM_CFLOW : IUPS 구간 CallFlow Structure
+ *
+ *	A_RANAP에서 NTAM으로 전송되는 데이터
+ *	
+ *	@see	ims_structg.h
+ *	@node	+Note+
+ */
+TABLE_LOG typedef struct _st_Iups_CallFlow {
+	STG_HASHKEY	stgCoInfo;	%TTTTT__%			/**< 호 기본 Corelation 정보 */
+
+	U8			SessionID [DEF_SIZE_SESSIONID];	/**< SCCP Session ID */
+	U16   		Prototype;				/**< ProtocolType */
+    U16  		MsgType;				/**< Msg Type */
+	U16         Range;					/**< Range */
+	U16         Reserved1;				/**< Reserved */
+	TIME64		SessStart;				/**< Session Start Time */
+
+	S32			Direction;				/**< UP/DOWN direction */
+	TIME64		Update;					/**< UpdateTime 생성 시간 */
+										/**< UpdateTime 생성 시간 (Micro) */
+} LOG_CFLOW;
+
+
+/**
+ * 	@brief TIM_CFLOW_RANAP : IUPS 구간 RANAP CallFlow Structure
+ *
+ *	A_RANAP에서 NTAM으로 전송되는 데이터
+ *	
+ *	@see	ims_structg.h
+ *	@node	+Note+
+ */
+typedef struct _st_Iups_RANAP_Data {
+    U32			rAB_ID;												/**< 9.2.1.2 */
+    U32			rAB_P_trafficClass;									/**< 9.2.1.3 */
+    U32			rAB_P_rAB_AsymmetryInd;
+    U32			rAB_P_maxBitrateD;			 /* downlink maximum number of bits	*/
+    U32			rAB_P_maxBitrateU; 			 /* uplink maxiimum number of bits */
+    U32			rAB_P_guaranteedBitRateD;	 /* downlink guaranteed number of bits; */
+    U32			rAB_P_guaranteedBitRateU;	 /* uplink guaranteed number of bits; */
+    U32			rAB_P_deliveryOrder;
+    U16			rAB_P_maxSDU_Size;
+    U16			rAB_P_transferDelay;
+    U32			rAB_P_trafficHandlingPrior;
+    U32			rAB_P_aOrRP_priorityLevel;
+    U32			rAB_P_aOrRP_pre_eCapability;
+    U32			rAB_P_aOrRP_pre_eVulnerable;
+    U32			rAB_P_aOrRP_queuingAllowed;
+    U32			rAB_P_srcStatisticsDescrip;
+    U32			rAB_P_relocationRequirement;
+    U32			cause;												/**< 9.2.1.4 */
+    U32			cn_domainIndicator;									/**< 9.2.1.5 */
+    U8			intyProtect_Algorithms[16];							/**< 9.2.1.11 */
+    U8			intyProtect_key[16];
+    U8			encrytion_Algorithms[16];							/**< 9.2.1.12 */
+    U8			encrytion_key[16];				
+    U32			chIntyProtectAlgorithm;								/**< 9.2.1.13 */
+    U32			chEncrytionAlgorithm;								/**< 9.2.1.14 */
+    U32			dataVolumeReportingInd;								/**< 9.2.1.17 */
+    U32			userPlaneMode;										/**< 9.2.1.18 */
+    U16			uP_ModeVersions;			/* x[2]	*/				/**< 9.2.1.19 */
+    U16			dl_N_PDU_SequenceNumber;							/**< 9.2.1.33 */
+    U16			ul_N_PDU_SequenceNumber;							/**< 9.2.1.34 */
+    U16			criDiagno_procedureCode;							/**< 9.2.1.35 */
+    U32			criDiagno_triggeringMsg;
+    U32			criDiagno_procedureCri;
+    U32			keyStatus;											/**< 9.2.1.36 */				
+    U32			IuSigConId;					/*x[3]*/				/**< 9.2.1.38 */
+    U32			gRNCID_pLMNidentity;		/*x[3]*/				/**< 9.2.1.39 */
+    U32			gRNCID_rNCID;
+    U8			UESBI_IuA[16];										/**< 9.2.1.59 */
+    U8			UESBI_IuB[16];	
+    U32			pDP_TypeInformationD;								/**< 9.2.1.40 */
+    U32			pDP_TypeInformationU;
+    U32			service_Handover;									/**< 9.2.1.41 */
+
+    U32			transportLayerAddress;		/*x[4]*/				/**< 9.2.2.1 */
+    U32			iuTransportAssociation;  	/*x[4]*/				/**< 9.2.2.2 */
+    U16			dl_GTP_PDU_SequenceNumber;							/**< 9.2.2.3 */
+    U16			ul_GTP_PDU_SequenceNumber;							/**< 9.2.2.4 */
+
+    U32			lai_pLMNidentity;			/*x[3]*/				/**< 9.2.3.6 */
+    U16			lai_lac;					/*x[2]*/			
+    U16			rac;												/**< 9.2.3.7 */				
+    U32			sapi;												/**< 9.2.3.8 */				
+    U32			sai_pLMNidentity;			/*x[3]*/				/**< 9.2.3.9 */
+    U16			sai_lac;					/*x[2]*/
+    U16			sai_sac;					/*x[2]*/
+    U16			nAS_SynchronisationInd;								/**< 9.2.3.18 */
+    U16			NasSequenceNumber;									/**< 9.2.3.34 */
+    U32			RedirectionCompleted;								/**< 9.2.3.35 */
+} stRANAP_Data;
+
+TABLE_LOG typedef struct _st_Iups_CallFlow_RANAP {
+	STG_HASHKEY	stgCoInfo;	%TTTTT__%		/**< 호 기본 Corelation 정보 */
+
+    TIME64		SessStart;					/**< Session Start Time */
+											/**< Ssssion Start Time */
+    U16 		MsgType;					/**< Msg Type */
+
+    stRANAP_Data	stRanapData;	%TTTTT__%
+} LOG_RANAP;
+
+
+/**
+ * 	@brief TIM_CFLOW_RANAP : IUPS 구간 RANAP CallFlow Structure
+ *
+ *	A_RANAP에서 NTAM으로 전송되는 데이터
+ *	
+ *	@see	ims_structg.h
+ *	@node	+Note+
+ */
+typedef struct _st_GMMSM_Data {											/**< 3Gpp 24008 */
+    U16			Cell_Identity;											/**< 10.5.1.1 */
+    U16			Cipher_Key_Seq;											/**< 10.5.1.2 
+																			 0 ~ 6 : Possible values for the ciphering key
+																			 7: No key is available (MS to network) */
+    U16			Attach_type;											/**< 10.5.5.2 
+																			 1: GPRS attach
+																			 2: GPRS attach while IMSI attach
+																			 3: Combined GPRS/IMSI attach */
+    U16			TMSI_Status;											/**< 10.5.5.4 */
+    U16			Detach_Type;											/**< 10.5.5.5 */
+    U16			DRX;													/**< 10.5.5.6 */
+    U16			Force_2_Standby;										/**< 10.5.5.7 */
+    X8			MS_nw_Capability[11]; 									/**< 10.5.5.12 */
+    U16			GMM_Cause;												/**< 10.5.5.14 */
+    X8			Route_Area_Id[7];	  									/**< 10.5.5.15 */
+    U16			Service_Type;											/**< 10.5.5.20 
+																			0: Signalling 
+    U32			PS_LCS_Cap;												/**< 10.5.5.22 */
+    X8			AccesPointName[104];  									/**< 10.5.6.1 */
+    U16			Conf_Protocol;											/**< 10.5.6.3 
+																		 	 0: PPP for use with IP PDP type
+																			 All other values are interpreted as PPP in this version of the protocol 
+																			 */
+	U16			PPP_ID_Cnt;												/**< PPP protocol identifier Count */
+	X8			PPP_ID1[5];											/**< PPP protocol identifier 
+																			C021H (LCP)
+																			C023H (PAP)
+																			C223H (CHAP)
+																			8021H (IPCP) */
+	X8			PPP_ID2[5];											/**< PPP protocol identifier  */
+	X8			PPP_ID3[5];											/**< PPP protocol identifier  */
+	X8			PPP_ID4[5];											/**< PPP protocol identifier  */
+
+	U16			PDPTypeOrga;											/**< 10.5.6.4
+																			 PDP Type Oragnisation 
+																			 0: ETSI allocated address
+																			 1: IETF allocated address
+																			 16: Empty PDP Type */
+	U16			PDPTypeNum;												/**< PDP Type Number 
+																			 if PDPTypeOrag = 0
+																				0: Reserved
+																				1: PPP
+																			 if PDPTypeOrag = 1
+																				33 = IPv4 address
+																				87 = IPv6 address */
+	U8			PDPAddress[16];	%PDPAddress%						/** PDP Address */
+
+    U16			SMCause;												/**< 10.5.6.6 */
+    U16			LLC_Svc_access_point_Id;								/**< 10.5.6.9 
+																			0 : Not assign
+																			3, 5, 9, 11 : SAPI[x] */
+    U16			TearDwonIndicator;										/**< 10.5.6.10 
+																			0: tear down not requestd
+																			1: tear down requested*/
+    U32			PacketFlowId;											/**< 10.5.6.11 
+																			0: Best Effort
+																			1: Signaling
+																			2: SMS
+																			3: TOM8 
+																			나머지: not define */
+
+    U16			PDP_Context_Status;										/**< 10.5.7.1 
+																			SM State
+																			0: PDP-INACTIVE
+																			1: not PDP-INACTIVE */
+    U16			RadioPriority;											/**< 10.5.7.2 
+																			1(high) ~ 4 (low)*/
+    U16			GPRSTimer;												/**< 10.5.7.3 */
+    U16			RadioPriority2;											/**< 10.5.7.5 */
+} stGMMSM_Data;
+
+
+/**
+ * 	@brief TIM_CFLOW_GMMSM : IUPS 구간 RANAP CallFlow Structure
+ *
+ *	A_RANAP에서 NTAM으로 전송되는 데이터
+ *	
+ *	@see	ims_structg.h
+ *	@node	+Note+
+ */
+TABLE_LOG typedef struct _st_Iups_CallFlow_GMMSM {
+	STG_HASHKEY	stgCoInfo;	%TTTTT__%		/**< 호 기본 Corelation 정보 */
+
+    TIME64  	SessStart;					/**< Session Start Time */
+											/**< Ssssion Start Time */
+    U16  		MsgType;					/**< Msg Type */
+
+	stGMMSM_Data	stGMMSMData; %TTTTT__%
+} LOG_GMMSM;
+
+#define MAX_VIA_CNT     4
+#define MAX_TO_SIZE     32  
+#define MAX_FROM_SIZE   32
+#define MAX_CALLID_SIZE 64
+#define MAX_CSEQ_SIZE   32
+#define MAX_MEDTYPE_SIZE  16
+#define MAX_MEDPROTO_SIZE 16
+#define MAX_VERSION_SIZE    4
+#define MAX_VIA_SIZE    32
+#define MAX_RURI_SIZE   64
+#define MAX_REASON_SIZE 64
+#define MAX_METHOD_SIZE 16
+#define MAX_SIPPKT_SIZE 2000
+
+TABLE_CF typedef struct _st_Ptt_CallFlow {
+	STG_HASHKEY     stgCoInfo;           %TTTTT__%   
+	U32				ServerIP;
+	U16				ServerPort;
+    U32				ClientIP;
+	U16				ClientPort;
+    U16				Range;
+    U16				ProtoType;
+
+    U16				Method;
+    U16				Direction;
+
+    U32				SessStartTime;
+    S32				SessStartMTime;
+
+    U32				SessEndTime;
+    S32				SessEndMTime;
+
+    U32				SessDuration;
+
+    U32				InviteReqTime;
+    S32				InviteReqMTime;
+
+    S8				CallFrom[MAX_FROM_SIZE];
+    S8				CallTo[MAX_TO_SIZE];
+    S8				CallID[MAX_CALLID_SIZE];
+    U32				CSeq;
+
+    U32				TotRTPSize;
+    U16				TotRTPCnt;
+
+    U32				TotPayloadSize;
+    U32				MaxPayloadSize;
+    U32				MinPayloadSize;
+    U32				AvgPayloadSize;
+    U16				RTPLossCnt;
+    U32				TotRTPDelay;
+    U32				AvgRTPDelay;
+    U32				Thruput;
+    S8				SIPPkt[MAX_SIPPKT_SIZE];
+} CF_PTT;
+
+TABLE_LOG typedef struct _st_Log_Ptt {
+	STG_HASHKEY     stgCoInfo;           %TTTTT__%
+
+	U32				InviteReqTime;
+	S32				InviteReqMTime;
+	S8				CallFrom[MAX_FROM_SIZE];
+	S8				CallTo[MAX_TO_SIZE];
+
+	U32				ServerIP;
+	U16				ServerPort;
+	U32				ClientIP;
+	U16				ClientPort;
+
+	U16				Range;
+
+	U32				InviteResTime;
+	S32				InviteResMTime;
+	U32				InviteDuration;
+	U32				AckTime;
+	S32				AckMTime;
+
+	U16				InviteStatusCode;
+	U32				SetupDuration;
+
+	U32				ByeReqTime;
+	S32				ByeReqMTime;
+	U32				ByeResTime;
+	S32				ByeResMTime;
+	U32				ByeDuration;
+	U16				ByeStatusCode;
+
+	U32				CancelTime;
+	S32				CancelMTime;
+
+	U16				InviteReqCnt;
+	U16				InviteSuccCnt;
+	U16				ByeReqCnt;
+	U16				ByeSuccCnt;
+	U16				CancelCnt;
+
+	S8				MDN[DEF_SIZE_IMSI];
+	S8				CallID[MAX_CALLID_SIZE];
+	S8				RequestURI[MAX_RURI_SIZE];
+
+	S8				FromMediaType[MAX_MEDTYPE_SIZE];
+	U16				FromMediaFormat;
+	S8				FromMediaProto[MAX_MEDPROTO_SIZE];
+	U32				FromMediaIP;
+	U16				FromMediaPort;
+
+	S8				ToMediaType[MAX_MEDTYPE_SIZE];
+	U16				ToMediaFormat;
+	S8				ToMediaProto[MAX_MEDPROTO_SIZE];
+	U32				ToMediaIP;
+	U16				ToMediaPort;
+
+	U16				FromUpRTPCnt;
+	U16				FromDownRTPCnt;
+	U16				FromUpPayloadCnt;
+	U16				FromDownPayloadCnt;
+	U16				FromUpRTPInfoCnt;
+	U16				FromDownRTPInfoCnt;
+	U16				FromUpRTPLossCnt;
+	U16				FromDownRTPLossCnt;
+	U32				FromUpRTPBytes;
+	U32				FromDownRTPBytes;
+	U32				FromUpPayloadBytes;
+	U32				FromDownPayloadBytes;
+	U32				FromUpAvgPayloadBytes;
+	U32				FromDownAvgPayloadBytes;
+	U32				FromUpAvgRTPInfoBytes;
+	U32				FromDownAvgRTPInfoBytes;
+
+	U16				ToUpRTPCnt;
+	U16				ToDownRTPCnt;
+	U16				ToUpPayloadCnt;
+	U16				ToDownPayloadCnt;
+	U16				ToUpRTPInfoCnt;
+	U16				ToDownRTPInfoCnt;
+	U16				ToUpRTPLossCnt;
+	U16				ToDownRTPLossCnt;
+	U32				ToUpRTPBytes;
+	U32				ToDownRTPBytes;
+	U32				ToUpPayloadBytes;
+	U32				ToDownPayloadBytes;
+	U32				ToUpAvgPayloadBytes;
+	U32				ToDownAvgPayloadBytes;
+	U32				ToUpAvgRTPInfoBytes;
+	U32				ToDownAvgRTPInfoBytes;
+
+	U32				LastUpdateTime;
+	S32				LastUpdateMTime;
+
+	U32				HoldingDuration;
+	
+	U16				Step;
+	U32	 			FailCode;
+} LOG_PTT;
+
+TABLE_LOG	typedef struct _st_Log_PttSip {
+	STG_HASHKEY     stgCoInfo;           %TTTTT__%
+
+	U32				SessStartTime;
+	S32				SessStartMTime;
+	S16				Method;
+	S8				CallFrom[MAX_FROM_SIZE];
+	U32				ServerIP;
+	U16				ServerPort;
+	U32				ClientIP;
+	U16				ClientPort;
+	U32				SessEndTime;
+	S32				SessEndMTime;
+	U32				SessDuration;
+	U16				StatusCode;
+	U16				ReqCnt;
+	U16				SuccCnt;
+	S8				CallID[MAX_CALLID_SIZE];
+	U32				CSeq;
+	S8				CallTo[MAX_TO_SIZE];
+	U16				MsgFlag;
+} LOG_PTTSIP;
+
+/**
+	Hash Key and Data 정의 
+**/
+
+typedef struct _st_HashKey_ATM {
+    S32     vpi;
+    S32     vci;
+} stHashKey_ATM;
+
+typedef struct _st_HashData_ATM {
+    STIME          	curtime;
+    STIME       	ucurtime;
+    S32             vpi;
+    S32             vci;
+    S32             aal_type;
+    S32             cell_cnt;
+    S32             pdu_cnt;
+    S32             total_length;
+    S32             length;
+    S8              pt;
+    S8              direction;
+    U8              sar_payload[MAX_SAR_SIZE];
+} stHashData_ATM;
+
+/*----------------------
+ * STG COMBINATION TABLE
+ * typedef .. } COMBI_???;
+ *---------------------- */
+
+/**
+ * @brief 새로운 Table을 정의하는 것으로 위에서 사용되어진 LOG들에서 값을 뽑아내어 새로운 Table을 만들어주는 것이다.
+ *
+ * TIME64 DURATION64 	FieldName ( 1st Parm : TIME64 , 2nd Parm : TIME64);	--> 1st , 2nd사이의 차이 (1st - 2nd)
+ * STIME  DURATION32 	FieldName ( 1st Parm : STIME , 2nd Parm : STIME );	--> 1st , 2nd사이의 차이 (1st - 2nd)
+ * TIME64 ABSDURATION64 	FieldName ( 1st Parm , 2nd Parm);	--> 1st , 2nd사이의 차이 abs(1st - 2nd)
+ * STIME  ABSDURATION32 	FieldName ( 1st Parm , 2nd Parm);	--> 1st , 2nd사이의 차이 abs(1st - 2nd)
+ * (x)    EQUAL 		FieldName ( 1st Parm);				--> 1st Parm을 그대로 사용
+ * FLOAT  AVERAGE 	FieldName ( 1st Parm : U32 , 2nd Parm : U32);	--> 1st / 2nd
+ * U32	  PERCENT3	FieldName ( 1st Parm : U32 , 2nd Parm : U32);	--> int(1st / 2nd * 1000)
+ */
+STG_COMBINATION_TABLE typedef struct _stCombine {
+	STG_HASHKEY	stgCoInfo : if(pthis) STG_Equal(pthis->stgCoInfo);		%TTTTT__%		/**< 호 기본 Corelation 정보 */
+	S32 DurTime: if(pLOG_GMMSM && pLOG_IUPS) STG_Diff32(pLOG_GMMSM->stgCoInfo.llTime.time, pLOG_IUPS->stgCoInfo.llTime.time); %PPP%  ///< duiBBB ->  DURATION32의 예제 
+	S32 DurMTime: if(pLOG_GMMSM && pLOG_IUPS) STG_Diff32(pLOG_GMMSM->stgCoInfo.llTime.utime, pLOG_IUPS->stgCoInfo.llTime.utime); ///< duiBBB ->  DURATION32의 예제 
+	IP4	uiIP :  if(pLOG_GMMSM) STG_Equal(pLOG_GMMSM->stgCoInfo.uiIP); 	///< EQUAL을 처리한다.
+	U32 PercentTry : if(pLOG_IUPS) STG_Percent3(pLOG_IUPS->stIupsCnt.Calltrycnt,pLOG_IUPS->stIupsCnt.Callendcnt); ///<  ABCD 
+} COMBI_NewTable;
+
+STG_COMBINATION_TABLE typedef struct _stCombiTest {
+	STG_HASHKEY	stgCoInfo : if(pthis) STG_Equal(pthis->stgCoInfo);		%TTTTT__%		/**< 호 기본 Corelation 정보 */
+	S32 DurTime: if(pLOG_GMMSM && pLOG_IUPS) STG_Diff32(pLOG_GMMSM->stgCoInfo.llTime.time, pLOG_IUPS->stgCoInfo.llTime.time); ///< duiBBB ->  DURATION32의 예제 
+	IP4	uiIP :  if(pLOG_GMMSM) STG_Equal(pLOG_GMMSM->stgCoInfo.uiIP); 	///< EQUAL을 처리한다.
+	U32	uiIUPSfailCnt_MsgCnt: STG_INC(pLOG_IUPS);		%COUNT%
+	U32	uiIUPSfailCnt: STG_ACCUMULATE(pLOG_IUPS->stIupsCnt.Callfailcnt);		%FAILCNT%
+	U32	uiRacCnt_Cnt: STG_INC(pLOG_RANAP);		///< For Test
+	U32	uiRacCnt: STG_ACCUMULATE(pLOG_RANAP->stRanapData.rac);		///< For Test
+} COMBI_NewTest;
+
+STG_COMBINATION_TABLE typedef struct _stCombiAccum {
+	STG_HASHKEY	stgCoInfo : STG_Equal(pthis->stgCoInfo);		%TTTTT__%		/**< 호 기본 Corelation 정보 */
+	TIME64	DurTime : if(pLOG_GMMSM && pLOG_IUPS) STG_DiffTIME64(pLOG_GMMSM->stgCoInfo.llTime, pLOG_IUPS->stgCoInfo.llTime); %TTTTT__% ///< duiBBB ->  DURATION32의 예제 
+	IP4	uiIP :  if(pLOG_GMMSM) STG_Equal(pLOG_GMMSM->stgCoInfo.uiIP); 	///< EQUAL을 처리한다.
+	U32	uiIUPStryCnt_MsgCnt: STG_INC(pLOG_IUPS);
+	U32	uiIUPStryCnt: STG_ACCUMULATE(pLOG_IUPS->stIupsCnt.Calltrycnt);
+} COMBI_Accum;
+
+
+/*----------------------
+ * STG STAT TABLE
+ * typedef .. } STAT_???;
+ *---------------------- */
+
+STG_STAT_TABLE typedef struct _stStatAccum {
+	STG_HASHKEY	stgCoInfo;
+	U32	uiIUPStryCnt_MsgCnt: STG_INC(pLOG_IUPS);
+	U32	uiIUPStryCnt: STG_ACCUMULATE(pLOG_IUPS->stIupsCnt.Calltrycnt);
+	U32 uiRate : STG_Equal(pthis->uiIUPStryCnt);
+} STAT_Accum;
+
+STG_STAT_TABLE typedef struct _stStatTest {
+	STG_HASHKEY	stgCoInfo;	
+	U32	uiIUPSfailCnt_MsgCnt: STG_INC(pLOG_IUPS);		%COUNT%
+	U32	uiIUPSfailCnt: STG_ACCUMULATE(pLOG_IUPS->stIupsCnt.Callfailcnt);		%FAILCNT%
+	U32	uiRacCnt_Cnt: STG_INC(pLOG_RANAP);		///< For Test
+	U32	uiRacCnt: STG_ACCUMULATE(pLOG_RANAP->stRanapData.rac);		///< For Test
+} STAT_NewTest;
+
+/*----------------------
+ * STG HASH KEY 
+ *---------------------- */
+
+/** STG_HASH는 file안에 1개만 있어야 한다. */
+STG_HASH_TIMER	timern TimerId;
+STG_HASH_SESS_TIMEOUT	100;		/**< hash마다의 session이 idle일때 timeout을 위한 시간 (초) */
+STG_HASH_DEL_TIMEOUT	10;		/**< hash마다의 delete가 들어온후에 timeout을 위한 시간 (초) */
+STG_HASH_SIZE		1000;		/**< hash의 size를 각 key마다의 hash에 ??? 개를 잡으라는 선언 */ 
+/**
+ * 	@brief stCoRelation은 NTAM의 Corelation을 위해서 정의한 구조체
+ *
+ *	NTAM에서 HASH를 자동으로 만들어 자동 처리 할수 있는 모양으로 만들기 위한 Structure와 정의법 
+ *  위에서부터 2개씩 짝을 지어서 hash를 만들어주는 일을 한다. 
+ *  만들어야 하는 것으로는 : 
+ *		@li 각 2개씩의 hash 정의  (hash init을 자동수행) - hash_init에서  +HASH_INIT+
+ *		@li 각 2개씩의 sturucture자동 정의 
+ *		@li strucuture마다 GRP 값과 TYPE값 정의
+ *			2깨씩 짜게진 structure (호)  (1 + ?)
+ *			LOG structure 			(2 + ?) - Nested로 처음에는 key structure를 포함해야 한다.  
+ *		@li size 자동 정의
+ *		@li type에 따른 처리 (key , data를 구분해서 저장)  - switch처리 부분  (호 처리   및 LOG저장  해당될때는 NewTable을 위한 processing을)
+ *			hash_add , timer 처리 
+ *	
+ *	@see	ims_structg.h
+ *	@node	+Note+
+ *	@Warning	STG_HASH_?? 은 한개만 선언되어져야 하며, 맨 마지막에 추가되어져야 한다. \n즉, 일반적인 typedef st..가 먼저 나오고 , 후에 STG_...
+ *	typedef 가 나와야 한다.\n STG_HASH_KEY라는 것이 앞에 선언되고 뒤에 적어두는 이유는 : 앞에 선언되는 이유는 각기 structure들이 STG_HASH_KEY 를
+ *	사용하고 있어서 앞에 있어야하는 것이며,   실제로 관리해야 하는  것으로는 다음과 같은 것들을 포함하기 때문이다.  (기본 선언은 앞에 , 부가 정보들을 합친 정보는 뒤에)
+@code
+	U16 		usCntLOG_PTT;
+	U16 		usIsDoneLOG_PTT;
+	LOG_PTT 	*pLOG_PTT;
+	COMBI_NewTable 	aCOMBI_NewTable;
+	COMBI_Accum 	aCOMBI_Accum;
+	COMBI_NewTest 	aCOMBI_NewTest;
+	STAT_Accum 	aSTAT_Accum;
+	STAT_NewTest 	aSTAT_NewTest;
+} STG_DATA_ucTMSI_llTime 
+@endcode
+ *  	
+*/
+STG_HASH_KEY STG_HASHKEY;
+
+
+
+
+
+
+#define EX_MAX_NID 40
+<TAG_DEFINE_START:ReqCode>
+#define	ReqCode_A_Type  1 		/**< 주석 */
+#define	ReqCode_B_Type  2
+#define	ReqCode_C_Type  3
+<TAG_DEFINE_END:ReqCode>
+/**
+ * 	@brief LOG_KUN : 시험 단계의 structure로써 아래의 LOG_MEKUN이 진짜
+ *
+ *	LOG_KUN에서 사용할 REQ/RESP HDR관련 1개씩(Host: , Content-Type:)에 대해서만 다른 부분
+ *  이런식으로 작성한다는 예제
+ *	
+ *	@see	L7.h
+ *	@note	%..% syntax for CREATE_SQL \n   #...# syntax for text parsing or command
+ */
+STG_LOG_TEXT_PARSING typedef struct _st_LOG_KUN {
+	LINEFEED			[ \t]*(\r\n)
+	FORMFEED			[ \t]*(\r\n\r\n)
+	STATE	REQ_HDR:^^:GET				^[ \t]*GET[ \t]+
+	STATE	REQ_HDR:^^:HOST				Host[ \t]*:[ \t]*
+	STATE	REQ_HDR:^^:HTTP_PHONE_2G_PHONE_SYSTEM_PARAMETER		HTTP_PHONE_2G_PHONE_SYSTEM_PARAMETER[ \t]*:[ \t]*
+	STATE	RESP_HDR:^^:HTTP			^[ \t]*HTTP[ \t]+
+	STATE	RESP_HDR:^^:CONTENT_LENGTH			Content-Length:[ \t]*
+	STATE	RESP_HDR:^^:CONTENT_TYPE			Content-Type:[ \t]*
+	TOKEN	ID 					[^<> \t\r\n]+
+	TOKEN	VALUE 				[^=&: \t\r\n]+
+	TOKEN	DIGIT 				[ \t]*[0-9]+
+	U8		host[20];			/**< Host */  %HOSTNAME% 	#PARSING_RULE:^^:REQ_HDR:^^:<HOST>{VALUE}#
+	U32		uiBase; 			%BASE%  /**< BASEID */ 	#PARSING_RULE:^^:REQ_HDR:^^:<HTTP_PHONE_2G_PHONE_SYSTEM_PARAMETER>BASE_ID:{DIGIT}#
+	U8		uiNID[EX_MAX_NID]; 	 /**< NID */  %NID%		#PARSING_RULE:^^:REQ_HDR:^^:<HTTP_PHONE_2G_PHONE_SYSTEM_PARAMETER>NID:{VALUE}#  
+	U32		uiSID; 				/**< SID */  #PARSING_RULE:^^:REQ_HDR:^^:<HTTP_PHONE_2G_PHONE_SYSTEM_PARAMETER>SID:{DIGIT}#
+
+    U32 	uiSrvIP;			#COMMAND:^^:STG_EQUAL(pHTTP->uiSrvIP)#
+<TAG_DEFINE_START:RespCode>
+#define	RespCode_A_Type  1 		/**< 주석 */
+#define	RespCode_B_Type  2
+#define	RespCode_C_Type  3
+<TAG_DEFINE_END:RespCode>
+    U32		<TAG_DEFINE:RespCode>RespCode;			/**< 잘못된 예제 */ 		#PARSING_RULE:^^:RESP_HDR:^^:<HTTP>{DIGIT}#
+    	 ALTERNATIVE_RULE		/**< 다시 */ #PARSING_RULE:^^:RESP_HDR:^^:<HTTP>KIT:{ID}#
+    	 ALTERNATIVE_RULE		/**< 다시 */ #PARSING_RULE:^^:RESP_HDR:^^:<HTTP>{ID}#
+    U32		ContentLength;		/**< Contents Length */  	#PARSING_RULE:^^:RESP_HDR:^^:<CONTENT_LENGTH>{DIGIT}#
+    U8		ContentType[100]; 	%CType%  /**< Contents Type */		#PARSING_RULE:^^:RESP_HDR:^^:<CONTENT_TYPE>{ID}#
+    U32 	<TAG_DEFINE:ReqCode>ReqCode;			#COMMAND:^^:STG_EQUAL(pHTTP->uiSrvIP)#
+} LOG_KUN;
+
+
+STG_LOG_TEXT_PARSING typedef struct _st_LOG_ME {
+	LINEFEED			[ \t]*(\r\n)
+	FORMFEED			[ \t]*(\r\n\r\n)
+	STATE	REQ_HDR:^^:GET				^[ \t]*GET[ \t]+
+	STATE	REQ_HDR:^^:HOST				Host[ \t]*:[ \t]*
+	STATE	REQ_HDR:^^:HTTP_PHONE_2G_PHONE_SYSTEM_PARAMETER		HTTP_PHONE_2G_PHONE_SYSTEM_PARAMETER[ \t]*:[ \t]*
+	STATE	RESP_HDR:^^:HTTP			^[ \t]*HTTP[ \t]+
+	STATE	RESP_HDR:^^:CONTENT_LENGTH			Content-Length:[ \t]*
+	STATE	RESP_HDR:^^:CONTENT_TYPE			Content-Type:[ \t]*
+	TOKEN	ID 					[^<> \t\r\n]+
+	TOKEN	VALUE 				[^=&: \t\r\n]+
+	TOKEN	DIGIT 				[ \t]*[0-9]+
+
+	U8		host[20];			/**< Host */  %HOSTNAME% 	#PARSING_RULE:^^:REQ_HDR:^^:<HOST>{VALUE}#
+	U32		uiBase; 			%BASE%  /**< BASEID */ 	#PARSING_RULE:^^:REQ_HDR:^^:<HTTP_PHONE_2G_PHONE_SYSTEM_PARAMETER>BASE_ID:{DIGIT}#
+	U8		uiNID[EX_MAX_NID]; 	 /**< NID */  %NID%		#PARSING_RULE:^^:REQ_HDR:^^:<HTTP_PHONE_2G_PHONE_SYSTEM_PARAMETER>NID:{VALUE}#  
+	U32		uiSID; 				/**< SID */  #PARSING_RULE:^^:REQ_HDR:^^:<HTTP_PHONE_2G_PHONE_SYSTEM_PARAMETER>SID:{DIGIT}#
+
+    U32 	uiSrvIP;			#COMMAND:^^:STG_EQUAL(pHTTP->uiSrvIP)#
+    U32		<TAG_DEFINE:RespCode>RespCode;			/**< 잘못된 예제 */ 		#PARSING_RULE:^^:RESP_HDR:^^:<HTTP>{DIGIT}#
+    	 ALTERNATIVE_RULE		/**< 다시 */ #PARSING_RULE:^^:RESP_HDR:^^:<HTTP>KIT:{ID}#
+    	 ALTERNATIVE_RULE		/**< 다시 */ #PARSING_RULE:^^:RESP_HDR:^^:<HTTP>{ID}#
+    U32		ContentLength;		/**< Contents Length */  	#PARSING_RULE:^^:RESP_HDR:^^:<CONTENT_LENGTH>{DIGIT}#
+    U8		ContentType[100]; 	%CType%  /**< Contents Type */		#PARSING_RULE:^^:RESP_HDR:^^:<CONTENT_TYPE>{ID}#
+	U32 	<TAG_DEFINE:ReqCode>ReqCode;			#COMMAND:^^:STG_EQUAL(pHTTP->uiSrvIP)#
+} LOG_ME;
+
+#pragma pack (0)
+
+#endif

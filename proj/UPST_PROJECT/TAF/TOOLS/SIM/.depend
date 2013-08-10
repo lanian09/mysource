@@ -1,0 +1,8 @@
+dagconvert.o: dagconvert.c utils.h ./include/dagutil.h ./include/dag_platform.h ./include/dag_platform_linux.h ./include/dagnew.h ./include/daginf.h ./include/dagreg.h ./include/dagpci.h inputs.h ./include/dagapi.h outputs.h 
+dagio.o: dagio.c inputs.h ./include/dagapi.h ./include/dagnew.h ./include/daginf.h ./include/dagreg.h utils.h ./include/dagutil.h ./include/dag_platform.h ./include/dag_platform_linux.h ./include/dagpci.h
+erfio.o: erfio.c inputs.h ./include/dagapi.h ./include/dagnew.h ./include/daginf.h ./include/dagreg.h outputs.h utils.h ./include/dagutil.h ./include/dag_platform.h ./include/dag_platform_linux.h ./include/dagpci.h
+legacyio.o: legacyio.c inputs.h ./include/dagapi.h ./include/dagnew.h ./include/daginf.h ./include/dagreg.h outputs.h utils.h ./include/dagutil.h ./include/dag_platform.h ./include/dag_platform_linux.h ./include/dagpci.h
+nullio.o: nullio.c ./include/dagnew.h ./include/daginf.h ./include/dagapi.h ./include/dagnew.h ./include/dagreg.h inputs.h outputs.h utils.h ./include/dagutil.h ./include/dag_platform.h ./include/dag_platform_linux.h ./include/dagpci.h
+pcapio.o: pcapio.c inputs.h ./include/dagapi.h ./include/dagnew.h ./include/daginf.h ./include/dagreg.h outputs.h utils.h ./include/dagutil.h ./include/dag_platform.h ./include/dag_platform_linux.h ./include/dagpci.h 
+prtio.o: prtio.c inputs.h ./include/dagapi.h ./include/dagnew.h ./include/daginf.h ./include/dagreg.h outputs.h utils.h ./include/dagutil.h ./include/dag_platform.h ./include/dag_platform_linux.h ./include/dagpci.h
+utils.o: utils.c utils.h ./include/dagutil.h ./include/dag_platform.h ./include/dag_platform_linux.h ./include/dagnew.h ./include/daginf.h ./include/dagreg.h ./include/dagpci.h

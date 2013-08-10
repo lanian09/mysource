@@ -1,0 +1,164 @@
+[GENERAL]
+SYSTEM_LABEL = DSCM#1
+SYSTEM_MODEL = TEST
+OP_ACCOUNT	= root
+
+[ASSOCIATE_SYSTEMS]
+#name	     =	type		group   	ipAddr(primary)		ipAddr(secondary)
+#-------------------------------------------------------------------------------
+# Upresto
+DSCM        =   OMP     	OMP     	192.168.100.10		192.168.100.10
+SCMA        =   MP      	DSC     	192.168.100.11		192.168.100.12
+SCMB        =   MP      	DSC     	192.168.100.13   	192.168.100.14
+
+[APPLICATIONS]
+################################################
+# CAUTION!
+# 다음 블럭은 기동되는 순서를 수정해서는 안된다.
+# IXPC - 가장 나중에 기동되어야 함.
+# SAMD - IXPC 기동 전에 기동이 되어야 함.
+################################################
+#name	=	msgQkey		where		alarm_level(1:minor, 2:major, 3:critical)
+#-------------------------------------------------------------------------------
+FIMD    =   0x12012     BIN/fimd        1
+COND    =   0x12013     BIN/cond        1
+STMD    =   0x12014     BIN/stmd        1
+MMCD    =   0x12015     BIN/mmcd        1
+MCDM    =   0x12016     BIN/mcdm        1
+NMSIF   =   0x12018     BIN/nmsif       1
+CDELAY  =   0x12019     BIN/cdelay      1
+HAMON   =   0x12020     BIN/hamon       1
+SCEM    =   0x12021     BIN/scem        1
+CSCM    =   0x12022     BIN/cscm        1
+DIRM    =   0x12023     BIN/dirm        1
+SAMD    =   0x12017     BIN/samd        2
+IXPC    =   0x12011     BIN/ixpc        2
+
+[SOCKET_PORT]
+# 0x9550 (38224)
+IXPC		=	0x1440
+MMCD		=	0x1441
+FIMD_DATA	=	0x1442
+FIMD_EVENT	=	0x1443
+COND		=	0x1444
+NMS_ALM		=	0x139F
+NMS_CONS	=	0x139D
+NMS_CONF	=	0x13B1
+NMS_MMC		=	0x13C5
+NMS_STAT	=	0x17DE
+
+
+[SHARED_MEMORY_KEY]
+SHM_KEEPALIVE   = 0x11110
+SHM_SFDB		= 0x11111
+SHM_LOC_SADB	= 0x11112
+SHM_IXPC_CON	= 0x11113
+SHM_NMS_RESEND  = 0x11114
+SHM_SOUND		= 0x11115
+SHM_L3PD		= 0x11116
+SHM_PROC_VER	= 0x11117
+SHM_NMS_CON		= 0x11118
+SHM_SCE			= 0x11119
+SHM_L2SW		= 0x11120
+#SHM_LEG		= 0x11121
+SHM_CALL		= 0x11121
+
+
+[SAMD_CONFIG]
+DISK        =   /   /DSC  /DATA
+
+[VRTS_IP]
+IP			= 192.168.100.15
+
+[STMD_CONFIG]
+OMP	=	SAMD  FIMD
+MP 	=	SAMD RLEG
+
+
+[L3PD_IP_ADDRESS]
+192.168.100.5
+192.168.100.6
+
+
+# 2009.04.14 by dhkim
+[SCE_IP_ADDRESS]
+192.168.100.3
+192.168.100.4
+
+[L2_IP_ADDRESS]
+192.168.100.1
+192.168.100.2
+#
+# 2009.04.16 by dhkim
+[RDR_IP_ADDRESS]
+192.168.100.11
+192.168.100.13
+
+[UDR_FTP_INFO]
+#FTPLISTNAME      SYS   IP-ADDRESS    PORT      USER    PASSWORD        REMOTE DIR      LOCAL DIR   HEADER-COL-FLAG
+#FTPSERVER1	= DSCA	211.254.95.161	21 	root	root./bsd	/DSC/LOG/UDR	/DSC/UDR	Y
+#FTPSERVER2	= DSCB	211.254.95.161	21	root	root./bsd	/DSC/LOG/UDR	/DSC/UDR	Y
+#FTPSERVER3	= DSCA	211.254.95.161	21	root	root./bsd	/DSC/CDR	/DSC/CDR	N
+#FTPSERVER4	= DSCB	211.254.95.161	21	root	root./bsd	/DSC/CDR	/DSC/CDR	N
+
+
+[UDR_COLLECT]
+#HEADLOG_REMOTE_DIR =	/DSC/LOG/HEADLOG
+#HEADLOG_STORE_DIR =	/DSC/HEADLOG
+
+
+[NMS_INFO]
+NE_ID		=	99999
+STATID_BASE	=	4500
+SID_BASE	=	10000
+HB_TERM		=	60
+
+[DUP_CHECK_TIME]
+TIME = 100
+
+[CDELAY_PART]
+#CAPD_DEV    = e1000g0
+CAPD_DEV    = bge0
+MATCH_CNT   = 10
+# loop sec (default: 3600 초) 
+LOOP_TIME	= 3600
+
+
+[HW_LOCAL_INFO]
+# hwinfo = 장비 type(hw:0/sw:1/mirror:2) , 0.0.0.0 : IP 사용 안함(not equip), 1.1.1.1 (dladm).
+HARDWARE0 = e1000g0 0 192.168.100.13
+HARDWARE1 = e1000g1 0 10.1.1.2
+HARDWARE2 = e1000g2 0 1.1.1.1
+HARDWARE3 = e1000g3 2 1.1.1.1
+HARDWARE4 = e1000g4 0 192.168.100.14
+HARDWARE5 = e1000g5 2 1.1.1.1
+HARDWARE6 = e1000g6 0 1.1.1.1
+HARDWARE7 = e1000g7 0 10.2.1.2
+HARDWARE8 = e1000g8 0 10.160.250.106
+HARDWARE9 = e1000g9 0 0.0.0.0
+HARDWARE10 = e1000g10 0 0.0.0.0
+HARDWARE11 = e1000g11 0 0.0.0.0
+HARDWARE12 = mysql  1   0
+HARDWARE13 = timesten 1 0
+HARDWARE14 = sm 1   0
+HARDWARE15 = cm 1   0
+HARDWARE16 = SMCONN_A 1 0
+HARDWARE17 = SMSYNC_A 1 0
+HARDWARE18 = SMCONN_B 1 0
+HARDWARE19 = SMSYNC_B 1 0
+HARDWARE20 = DISK1 0    0
+HARDWARE21 = DISK2 0    0
+HARDWARE22 = FAN1 0 0
+HARDWARE23 = FAN2 0 0
+HARDWARE24 = FAN3 0 0
+HARDWARE25 = PWR1 0 0
+HARDWARE26 = PWR2 0 0
+
+[LAN_INFO]
+# IF_TYPE_COUNT 는 MAX 4개.
+# IF_TYPE은 IF_TYPE_COUNT 만큼 나열. (base on zero index, ex-IF_TYPE0, ..)
+# IF_TYPE String Size 는 MAX 15
+IF_TYPE_COUNT = 2
+IF_TYPE_NAME0 = e1000g
+IF_TYPE_NAME1 = nxge
+

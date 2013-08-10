@@ -1,0 +1,176 @@
+# cmdName : 명령어 이름
+# dstAppName : 명령어를 실제 처리 할 프로세스 이름
+# dstSysNames : 해당 프로세스가 있는 프로세서(MP) 이름을 나열한다.
+#               sysconfig에 등록된 시스템 이름이어야 한다.
+#               최대 8개까지 등록할 수 있다.
+#
+# cmdName	dstAppName	dstSysNames		type
+#
+# TYPE 설명
+#	ACTIVE_OMP : ACTIVE쪽으로 던지되 OMP에도 함께 던진다.
+# 	BOTH 	: 설정된 시스템으로 모두 던진다.
+# 	ACTIVE 	: 설정된 시스템중 한쪽으로만 던진다.
+#				IXPC와 명령어수행블럭이 살아있고,TCP연결이 된쪽으로?
+# 	BYPASS 	: 설정된 시스템으로 모두 던지고, 결과는
+#				MMCD로 가게 한다.
+# 	S-BYPASS : 설정된 시스템중 한쪽으로만던지고, 결과는
+#				MMCD로 가게 한다.
+# 	B-BYPASS : 아직 안만들었다.
+#xxx-yyyy		abcd	SMSB SMSA		BOTH	
+#
+
+#dis-sys-sts		SAMD    SCMA SCMB ACTIVE
+dis-sys-sts		SAMD    SCMA SCMB	BOTH 
+dis-load-sts	SAMD    DSCM SCMB SCMA	BOTH
+dis-ntp-sts		SAMD    DSCM SCMB SCMA	ACTIVE_OMP
+dis-lan-sts		SAMD    DSCM SCMB SCMA	ACTIVE_OMP
+
+#dis-prc-sts	SAMD    DSCM SCMB SCMA   ACTIVE_OMP
+dis-prc-sts		SAMD    DSCM SCMA SCMB	BOTH
+dis-sys-ver		SAMD    DSCM SCMA SCMB	BOTH
+
+####set-dup-conf   	MMCR    SCMB SCMA	BOTH
+####dis-dup-conf   	MMCR    SCMB SCMA	ACTIVE
+
+####set-swt-cond   	MMCR    SCMB SCMA	BOTH
+####dis-swt-cond   	MMCR    SCMB SCMA	ACTIVE
+
+#swt-act-bsd		SDMD    SCMB SCMA	ACTIVE
+
+#set-dup-sts   	SDMD    SCMB SCMA	ACTIVE
+# 기능 추가후 적용예정...
+#set-dup-sts    	SAMD    SCMB SCMA	ACTIVE
+
+#sjjeon
+#dis-dup-sts    	SAMD    DSCM SCMB SCMA	ACTIVE_OMP
+
+#dis-swt-info   	SDMD    SCMB SCMA	ACTIVE
+
+dis-duia-st		SAMD    SCMB SCMA	ACTIVE 
+set-duia-st		SAMD    SCMB SCMA	BOTH 
+
+#####add-wap-gw		MMCR    SCMB SCMA   BOTH
+####del-wap-gw		MMCR    SCMB SCMA   BOTH
+####chg-wap-gw		MMCR    SCMB SCMA   BOTH
+####dis-wap-gw		SAMD    SCMB SCMA   BOTH
+
+####add-aaa-info	MMCR    SCMB SCMA   BOTH
+####del-aaa-info	MMCR    SCMB SCMA   BOTH
+####chg-aaa-info	MMCR    SCMB SCMA   BOTH
+####dis-aaa-info	MMCR    SCMB SCMA   ACTIVE
+####dis-aaa-sts     SAMD    SCMB SCMA   ACTIVE
+
+####add-anaaa-info	MMCR    SCMB SCMA   BOTH
+####del-anaaa-info	MMCR    SCMB SCMA   BOTH
+####chg-anaaa-info	MMCR    SCMB SCMA   BOTH
+####dis-anaaa-info	MMCR    SCMB SCMA   ACTIVE
+####dis-anaaa-sts	SAMD	SCMB SCMA   ACTIVE
+
+####add-pdsn-info	MMCR    SCMB SCMA   BOTH
+####del-pdsn-info	MMCR    SCMB SCMA   BOTH
+####chg-pdsn-info	MMCR    SCMB SCMA   BOTH
+####dis-pdsn-info	MMCR    SCMB SCMA   BOTH
+
+####add-ip-pool		MMCR    SCMB SCMA   BOTH
+####del-ip-pool		MMCR    SCMB SCMA   BOTH
+#chg-ip-pool	MMCR    SCMB SCMA   BOTH
+####dis-ip-pool		MMCR    SCMB SCMA   ACTIVE
+
+####add-svc-type	MMCR    SCMB SCMA   BOTH
+####del-svc-type	MMCR    SCMB SCMA   BOTH
+####chg-svc-type	MMCR    SCMB SCMA   BOTH
+####dis-svc-type	MMCR    SCMB SCMA   ACTIVE
+####dis-svc-info	MMCR    SCMB SCMA   ACTIVE
+
+####add-svc-opt		MMCR    SCMB SCMA   BOTH
+####del-svc-opt		MMCR    SCMB SCMA   BOTH
+####chg-svc-opt		MMCR    SCMB SCMA   BOTH
+####dis-svc-opt		MMCR    SCMB SCMA   ACTIVE
+
+####add-url-cha		MMCR    SCMB SCMA   BOTH
+####del-url-cha		MMCR    SCMB SCMA   BOTH
+####chg-url-cha		MMCR    SCMB SCMA   BOTH
+####dis-url-cha		MMCR    SCMB SCMA   ACTIVE
+
+####set-txn-ext		MMCR    SCMB SCMA   BOTH
+####dis-txn-ext		MMCR    SCMB SCMA   ACTIVE
+
+#set-tmr			MMCR    SCMB SCMA   BOTH
+#dis-tmr			MMCR    SCMB SCMA   BOTH
+
+#dis-sess-load	SAMD    SCMB SCMA   ACTIVE
+####del-sess-info	UDRGEN	SCMB SCMA   ACTIVE
+#dis-sess-info	UDRGEN	SCMB SCMA   ACTIVE
+#yhshin
+#dis-sess-info	MMCR    SCMB SCMA   BOTH
+dis-cps-info	MMCR    SCMB SCMA   ACTIVE
+dis-sess		MMCR    SCMB SCMA   ACTIVE
+dis-sess-cnt	MMCR    SCMB SCMA   ACTIVE
+dis-sess-list	MMCR    SCMB SCMA   ACTIVE
+
+####set-udr-conf	MMCR    SCMB SCMA   BOTH
+####dis-udr-conf	MMCR    SCMB SCMA   ACTIVE
+
+####add-udr-txc     MMCR    SCMB SCMA   BOTH
+####del-udr-txc     MMCR    SCMB SCMA   BOTH
+####chg-udr-txc     MMCR    SCMB SCMA   BOTH
+####dis-udr-txc     MMCR    SCMB SCMA   ACTIVE
+
+####set-udr-dump	MMCR    SCMB SCMA   BOTH
+####dump-udr		UDRGEN	SCMB SCMA   ACTIVE
+####dis-udr-dump	UDRGEN	SCMB SCMA   ACTIVE
+
+####chk-bsd-conf	MMCR    SCMB SCMA   ACTIVE
+
+reg-call-trc	MMCR    SCMB SCMA   BOTH
+chg-call-trc	MMCR    SCMB SCMA   BOTH
+canc-call-trc	MMCR    SCMB SCMA   BOTH
+dis-call-trc	MMCR    SCMB SCMA   ACTIVE
+
+set-log-level	MMCR    SCMB SCMA	BOTH
+dis-log-level	MMCR    SCMB SCMA   ACTIVE
+
+#dis-pkg-ver	MMCR    SCMB SCMA   ACTIVE
+
+bkup-pkg		SAMD    DSCM SCMB SCMA   BOTH
+
+#srch-udr		MMCR    SCMB SCMA   ACTIVE
+#ext-udr		MMCR    SCMB SCMA   ACTIVE
+
+####dis-pps-conf	MMCR    SCMB SCMA   ACTIVE
+####set-pps-conf	MMCR	SCMB SCMA	ACTIVE
+####dis-icmp-conf	MMCR    SCMB SCMA   ACTIVE
+####set-icmp-conf	MMCR	SCMB SCMA	ACTIVE
+####dis-bcast-conf  MMCR    SCMB SCMA   ACTIVE
+####set-bcast-conf  MMCR    SCMB SCMA	ACTIVE
+####dis-uawap-info	MMCR    SCMB SCMA   ACTIVE
+####set-uawap-info	MMCR	SCMB SCMA	ACTIVE
+
+#yhshin
+#dis-rule-info	MMCR	SCMB SCMA	ACTIVE
+sync-rule-file	MMCR	SCMB SCMA	BOTH
+#sync-rule-file2	RDRANA	SCMB SCMA	BOTH
+sync-sms-msg	RDRANA	SCMB SCMA	BOTH
+
+#june
+sess-log-out	MMCR	SCMB SCMA	ACTIVE
+dis-rule-use	MMCR	SCMB SCMA	BOTH
+set-rule-use	MMCR	SCMB SCMA	BOTH
+del-rule-use	MMCR	SCMB SCMA	BOTH
+set-ovld-ctrl	MMCR	SCMB SCMA	BOTH
+dis-ovld-ctrl	MMCR	SCMB SCMA	BOTH
+dis-tmr-info	MMCR	SCMB SCMA   BOTH
+set-tmr-info	MMCR	SCMB SCMA   BOTH
+
+
+# R1.0.2
+clr-alm-sysmsg  SAMD    SCMB SCMA   BOTH
+
+# R1.0.3, 20100413, by june
+dis-rleg-sess   MMCR    SCMB SCMA   ACTIVE
+
+set-smbuf-clr	MMCR	SCMB SCMA	ACTIVE
+del-smbuf-clr	MMCR	SCMB SCMA	ACTIVE
+dis-smbuf-clr	MMCR	SCMB SCMA	ACTIVE
+
+dis-call-info   MMCR    SCMB SCMA   ACTIVE

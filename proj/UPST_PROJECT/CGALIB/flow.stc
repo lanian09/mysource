@@ -1,0 +1,388 @@
+FileName : flow.c
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "+<+$FileName+>+"
+
+
+#define	MAX_FLOW_LOOP_CNT  200
+int __loop_cnt = 0;
+
+
+ITERATE %FLOW +<<+ ITFLOWNAME ITFLOWSTRUCT
+
+
+Set : iterate_comments = ON
+
+/**
+SSL state
+[Page의 상태에 SSL이라고 set]
+L7Code를 보고 SSL이면 여기까지 도착을 함.
+굵은 선의 테두리가 아니므로 다음 조건으로 바로 뜀 (Don’t Care)
+
+OK state에서 L7Code를 보고 MENU이면 TEXT state로 이동
+구현시 주의 해야 할 점
+굵은 테두리 state이므로 TEXT[MENU}로 이동하여 기다린다. 새로운 것이 들어왔을때의 URL을 보고 다음 state로 가게 되는 것이다.
+
+구현 방법 : 
+#$FLOW_PAGE_STATE_OK_if
+OK_if(srvL7Code){
+  switch(srvL7Code){	$FLOW_PAGE_STATE_OK{if_var_type}  {if_var}
+  # ITERATE %FLOW_PAGE_VERTEX_OK{} -> ITKEY
+  # $FLOW_PAGE_DIR_OK_2_ITKEY
+  case MENU: return TEXT_MENU;
+  …
+}
+OK_on(isSTART_CALL){
+  isNEED_NEW=NO;
+  page_state = OK;
+	#$FLOW_PAGE_STATE_OK{action}
+  OK_Pre_Action();
+  if(isNEED_NEW==YES &&
+     isSTART_CALL == NO)  return ;
+  flow_ITFLOWNAME_state_go(OK_if(svrL7Code),isSTART_CALL=NO);
+} 
+
+TEXT_MENU_if(thisurlListinfo , newurl){
+  if(Does thisurlList include newurl == YES) return TEXT_MENU;
+  else NEXT_STATE;
+}
+TEXT_MENU_on(isSTART_CALL){
+  isNEED_NEW = YES
+  page_state = TEXT_MENU
+  page_cateroty = MENU
+  TEXT_MENU_action(); a body_parsing&save
+  if(isNEED_NEW==YES &&
+     isSTART_CALL == NO)  return ;
+  flow_ITFLOWNAME_state_go(TEXT_MENU_if(),isSTART_CALL=NO);
+}
+
+flow_ITFLOWNAME_state_go(state_num,isSTART_CALL){
+  switch(state_num){
+  case OK: OK_on(isSTART_CALL);
+  case TEXT_MENU: TEXT_MENU_on(isSTART_CALL);
+  …
+  }
+}
+
+main(){
+  Read_NODE();
+  flow_ITFLOWNAME_state_go(page_state,isSTART_CALL=YES);
+}
+
+**/
+
+
+
+
+Set : function_def{flow_ITFLOWNAME_state_go} = "void flow_ITFLOWNAME_state_go(ITFLOWSTRUCT *pTHIS , int type , int len , void *pLOG , int state_num,int isSTART_CALL)"
+void 
+flow_ITFLOWNAME_state_go(ITFLOWSTRUCT *pTHIS , int type , int len , void *pLOG , int state_num,int isSTART_CALL)
+{
+	if(isSTART_CALL == YES){
+		__loop_cnt = 0;
+	} else {
+		__loop_cnt ++;
+		FPRINTF(LOG_LEVEL,"%s : state loop_cnt = %d\n",(char *) __FUNCTION__, __loop_cnt);
+		if(__loop_cnt > MAX_FLOW_LOOP_CNT){
+			FPRINTF(LOG_BUG,"%s : ERROR state loop_cnt = %d\n",(char *) __FUNCTION__, __loop_cnt);
+			__loop_cnt = -1;
+			return ;
+		}
+	}
+	FPRINTF(LOG_LEVEL,"%s : type %d , len %d , state_num %d , isSTART_CALL %d\n",(char *) __FUNCTION__, type,len,state_num,isSTART_CALL);
+	FPRINTF(LOG_LEVEL,"%s : input type %s",(char *)__FUNCTION__,PRINT_DEF_NUM_table_log(type));
+	print_flow_ITFLOWNAME_state((char *) __FUNCTION__,state_num);
+  	switch(state_num){
+	ITERATE %FLOW_ITFLOWNAME_STATE +<<+ ITKEY  ITVALUE
+  	case ITKEY: 
+  		ITKEY_on(pTHIS , type , len , pLOG , isSTART_CALL); 
+  		return ;
+	+>>+
+	default : 
+		FPRINTF(LOG_LEVEL,"%s : state_num %d\n",(char *) __FUNCTION__ , state_num);
+		break;
+	}
+  	return ;
+}
+
+
+
+
+
+Set : function_def{print_flow_ITFLOWNAME_state} = "void print_flow_ITFLOWNAME_state(char *prefix_string, int state_num)"
+void 
+print_flow_ITFLOWNAME_state(char *prefix_string, int state_num)
+{
+  switch(state_num){
+	ITERATE %FLOW_ITFLOWNAME_STATE +<<+ ITKEY  ITVALUE
+  	case ITKEY: 
+		FPRINTF(LOG_LEVEL,"%s : DEFAULT : state_num %d : %s\n",(char *) prefix_string , state_num,"ITKEY");
+		return ;
+	+>>+
+	default : 
+		FPRINTF(LOG_LEVEL,"%s : DEFAULT : state_num %d\n",(char *) prefix_string , state_num);
+		break;
+  }
+  return ;
+}
+
+
+
+
+ITERATE %FLOW_ITFLOWNAME_STATE +<<+ ITKEY  ITVALUE
+ 
+
+int 
+ITKEY_if(
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,D) int code
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,L) LIST *p,char *d
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,S) char *s,char *d
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,C) int s,int d
+	){
+
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,D) #if 1
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,L) #if 0
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,S) #if 0
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,C) #if 0
+	{
+		FPRINTF(LOG_LEVEL,"%s : code = %d\n",(char *)__FUNCTION__,code);
+  		switch(code){
+		ITERATE %FLOW_ITFLOWNAME_STATE_ITKEY_Y_if_val +<<+ IT2KEY  IT2VALUE
+			//// +<+$FLOW_ITFLOWNAME_STATE_ITKEY_Y_current{IT2KEY}+>+ -> +<+$FLOW_ITFLOWNAME_STATE_ITKEY_Y_next{IT2KEY}+>+ [label= "( +<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+ : Y )\n+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var}+>+ \neq\n IT2KEY"];
+	  		case IT2KEY : 	return  +<+$FLOW_ITFLOWNAME_STATE_ITKEY_Y_next{IT2KEY}+>+ ;
+		+>>+
+		ITERATE %FLOW_ITFLOWNAME_STATE_ITKEY_N_if_val +<<+ IT2KEY  IT2VALUE
+			//// +<+$FLOW_ITFLOWNAME_STATE_ITKEY_N_current{IT2KEY}+>+ -> +<+$FLOW_ITFLOWNAME_STATE_ITKEY_N_next{IT2KEY}+>+ [label= "( +<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+ : N )\n+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var}+>+ \nne\n IT2KEY"];
+	  		default : 	return  +<+$FLOW_ITFLOWNAME_STATE_ITKEY_N_next{IT2KEY}+>+ ;
+		+>>+
+		}
+	}
+	#endif
+
+
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,D) #if 0
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,L) #if 1
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,S) #if 0
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,C) #if 0
+	{
+		int __tmp_i;
+		FPRINTF(LOG_LEVEL,"%s : src %d : dest: %.*s",(char *)__FUNCTION__, p->listcnt, MAX_BODY_STR_SIZE,d);
+		if(p->listcnt > MAX_URL_CNT){ 
+			FPRINTF(LOG_BUG,"%s : listcnt %d MAX_URL_CNT %d",(char *)__FUNCTION__,p->listcnt,MAX_URL_CNT);
+	  		return -1;
+		}
+		for(__tmp_i = 0 ; __tmp_i < p->listcnt ; __tmp_i++)
+		{
+			FPRINTF(LOG_LEVEL,"%s : [%d] : %.*s",(char *)__FUNCTION__, __tmp_i, MAX_BODY_STR_SIZE, p->strlist[__tmp_i].str);
+			if(strncmp((U8 *) &p->strlist[__tmp_i].str[0] , d,MAX_BODY_STR_SIZE) == 0){		//// found the same string in the page url list
+				break;
+			}
+		}
+		if(__tmp_i != p->listcnt){		//// found
+		FPRINTF(LOG_LEVEL,"%s : FOUND GOOD",(char *)__FUNCTION__);
+		ITERATE %FLOW_ITFLOWNAME_STATE_ITKEY_Y_if_val +<<+ IT2KEY  IT2VALUE
+			//// +<+$FLOW_ITFLOWNAME_STATE_ITKEY_Y_current{IT2KEY}+>+ -> +<+$FLOW_ITFLOWNAME_STATE_ITKEY_Y_next{IT2KEY}+>+ [label= "( +<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+ : Y )\n+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var}+>+ \neq\n IT2KEY"];
+	  		return  +<+$FLOW_ITFLOWNAME_STATE_ITKEY_Y_next{IT2KEY}+>+ ;
+		+>>+
+		} else {					//// not found
+		FPRINTF(LOG_LEVEL,"%s : NOT FOUND",(char *)__FUNCTION__);
+		ITERATE %FLOW_ITFLOWNAME_STATE_ITKEY_N_if_val +<<+ IT2KEY  IT2VALUE
+			//// +<+$FLOW_ITFLOWNAME_STATE_ITKEY_N_current{IT2KEY}+>+ -> +<+$FLOW_ITFLOWNAME_STATE_ITKEY_N_next{IT2KEY}+>+ [label= "( +<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+ : N )\n+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var}+>+ \nne\n IT2KEY"];
+	  		return  +<+$FLOW_ITFLOWNAME_STATE_ITKEY_N_next{IT2KEY}+>+ ;
+		+>>+
+		}
+	}
+	#endif
+
+
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,D) #if 0
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,L) #if 0
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,S) #if 1
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,C) #if 0
+	{
+		FPRINTF(LOG_LEVEL,"%s : src : %.*s",(char *)__FUNCTION__, MAX_BODY_STR_SIZE,s);
+		FPRINTF(LOG_LEVEL,"%s : dest: %.*s",(char *)__FUNCTION__, MAX_BODY_STR_SIZE,d);
+		if(strncmp(s,d,MAX_BODY_STR_SIZE) == 0){   //// same
+		ITERATE %FLOW_ITFLOWNAME_STATE_ITKEY_Y_if_val +<<+ IT2KEY  IT2VALUE
+			//// +<+$FLOW_ITFLOWNAME_STATE_ITKEY_Y_current{IT2KEY}+>+ -> +<+$FLOW_ITFLOWNAME_STATE_ITKEY_Y_next{IT2KEY}+>+ [label= "( +<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+ : Y )\n+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var}+>+ \neq\n IT2KEY"];
+	  		return  +<+$FLOW_ITFLOWNAME_STATE_ITKEY_Y_next{IT2KEY}+>+ ;
+		+>>+
+		}
+		else { 					//// different
+		ITERATE %FLOW_ITFLOWNAME_STATE_ITKEY_N_if_val +<<+ IT2KEY  IT2VALUE
+			//// +<+$FLOW_ITFLOWNAME_STATE_ITKEY_N_current{IT2KEY}+>+ -> +<+$FLOW_ITFLOWNAME_STATE_ITKEY_N_next{IT2KEY}+>+ [label= "( +<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+ : N )\n+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var}+>+ \nne\n IT2KEY"];
+	  		return  +<+$FLOW_ITFLOWNAME_STATE_ITKEY_N_next{IT2KEY}+>+ ;
+		+>>+
+		}
+	}
+	#endif
+
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,D) #if 0
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,L) #if 0
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,S) #if 0
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,C) #if 1
+	{
+		if(s == d){   //// same
+		ITERATE %FLOW_ITFLOWNAME_STATE_ITKEY_Y_if_val +<<+ IT2KEY  IT2VALUE
+			//// +<+$FLOW_ITFLOWNAME_STATE_ITKEY_Y_current{IT2KEY}+>+ -> +<+$FLOW_ITFLOWNAME_STATE_ITKEY_Y_next{IT2KEY}+>+ [label= "( +<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+ : Y )\n+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var}+>+ \neq\n IT2KEY"];
+	  		return  +<+$FLOW_ITFLOWNAME_STATE_ITKEY_Y_next{IT2KEY}+>+ ;
+		+>>+
+		}
+		else { 					//// different
+		ITERATE %FLOW_ITFLOWNAME_STATE_ITKEY_N_if_val +<<+ IT2KEY  IT2VALUE
+			//// +<+$FLOW_ITFLOWNAME_STATE_ITKEY_N_current{IT2KEY}+>+ -> +<+$FLOW_ITFLOWNAME_STATE_ITKEY_N_next{IT2KEY}+>+ [label= "( +<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+ : N )\n+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var}+>+ \nne\n IT2KEY"];
+	  		return  +<+$FLOW_ITFLOWNAME_STATE_ITKEY_N_next{IT2KEY}+>+ ;
+		+>>+
+		}
+	}
+	#endif
+
+	return 0;
+}
+
+
+
++>>+
+
+
+/** LOG_member_Get_func.c 안에 정의되어지게 된다. 
+기본적으로 가져야 하는 것들을 어디에 정의를 해둘 필요가 있을 것으로 보인다. 이것은 OUTPUT에 같이 생성이 되게 하며 Makefile에도 넣어서 compile이 되게 하는 것이 좋을 것으로 보인다. 
+$save_typedef_member_(typedef_name){member명} = membertype;
+$save_typedef_member_(member명){typedef_name} = membertype;
+$save_typedef_member_{member명} = membertype; // 처음 것을 set하고 다음 것들은 모두 같은 값이어야 한다. 
+int Get_SrvL7Code (int type , int len , void *pLOG)
+{
+	선언 ; 
+
+	switch(type){
+		case  : ;
+		default : return 0;
+	}
+}
+*/
+
+
+
+ITERATE %FLOW_ITFLOWNAME_STATE +<<+ ITKEY  ITVALUE
+
+
+Set : function_def{ITKEY_PRE_Action} = "void ITKEY_PRE_Action(ITFLOWSTRUCT *pTHIS, int type , int len , void *pLOG)"
+void 
+ITKEY_PRE_Action(ITFLOWSTRUCT *pTHIS, int type , int len , void *pLOG)
+{
+	+<+$tag_flow_pINPUT{ITFLOWNAME}+>+ *pINPUT = (+<+$tag_flow_pINPUT{ITFLOWNAME}+>+ *) pLOG;
+
+FPRINTF(LOG_LEVEL,"%s : type %s pINPUT=%p",(char *)__FUNCTION__,PRINT_DEF_NUM_table_log(type), pINPUT);
+
+	+<+$FLOW_ITFLOWNAME_STATE_ITKEY{action}+>+
+}
+
+
+Set : function_def{ITKEY_on} = "void ITKEY_on(ITFLOWSTRUCT *pTHIS , int type , int len , void *pLOG , int isSTART_CALL)"
+void 
+ITKEY_on(ITFLOWSTRUCT *pTHIS , int type , int len , void *pLOG , int isSTART_CALL)
+{
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{msg}+>+,OTHERMSG) U32 isNEED_NEW = YES;
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{msg}+>+,CONTINUE) U32 isNEED_NEW = NO;
+
+	+<+$tag_flow_pINPUT{ITFLOWNAME}+>+ *pINPUT = (+<+$tag_flow_pINPUT{ITFLOWNAME}+>+ *) pLOG;
+
+	FPRINTF(LOG_LEVEL,"%s : isNEED_NEW %d ,  isSTART_CALL %d : YES %d pINPUT=%p",(char *)__FUNCTION__,isNEED_NEW,isSTART_CALL,YES, pINPUT);
+
+
+	if(isSTART_CALL == NO){
+
+		pTHIS->ITFLOWNAME_OLD_STATE = pTHIS->ITFLOWNAME_STATE;
+  		pTHIS->ITFLOWNAME_STATE = ITKEY;
+
+  		ITKEY_PRE_Action(pTHIS,type,len,pLOG);
+
+
+		if( isNEED_NEW == YES ){  return ;  }
+
+	} else {
+	}
+
+
+	//// flow_ITFLOWNAME_state_go(OK_if(svrL7Code),isSTART_CALL=NO);
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,D) #{
+	{
+		OFFSET __state_num__;
+		//// 예전 Code :: __state_num__ = ITKEY_if( (int) (+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_member}+>+  +<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_member_opr}+>+) );
+		__state_num__ = ITKEY_if( (OFFSET) (+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_member}+>+ ) );
+		if(__state_num__ == 0) return ;
+		flow_ITFLOWNAME_state_go(pTHIS,type,len,pLOG,__state_num__, NO);		
+	}	}#
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,L) #{
+	{
+		OFFSET __state_num__;
+		__state_num__ = ITKEY_if(&(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_member}+>+) , +<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_val_member}+>+); 
+		if(__state_num__ == 0) return ;
+		flow_ITFLOWNAME_state_go(pTHIS,type,len,pLOG,__state_num__, NO);		
+	}	}#
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,S) #{
+	{
+		OFFSET __state_num__;
+		__state_num__ = ITKEY_if(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_member}+>+ , +<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_val_member}+>+ );
+		if(__state_num__ == 0) return ;
+		flow_ITFLOWNAME_state_go(pTHIS,type,len,pLOG,__state_num__, NO);		
+	}	}#
+	IFEQUAL(+<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_type}+>+,C) #{
+	{
+		OFFSET __state_num__;
+		__state_num__ = ITKEY_if( (OFFSET) ( +<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_var_member}+>+ ) , (OFFSET) ( +<+$FLOW_ITFLOWNAME_STATE_ITKEY{if_val_member}+>+ ) );
+		if(__state_num__ == 0) return ;
+		flow_ITFLOWNAME_state_go(pTHIS,type,len,pLOG,__state_num__, NO);		
+	}	}#
+
+}
+
+
++>>+
+
+
+
++>>+
+
+
+
+
+
+#ifdef TEST
+
+PAGE PP;
+LOG_TEST  LT;
+
+main(){
+	PAGE *thisPAGE;
+	void *pLOG;
+
+
+	memset(&PP,0,sizeof(PP));
+	memset(&LT,0,sizeof(LT));
+
+	LT.RespCode = 300;
+	sprintf(LT.url, "http://leecheoljoo/done");
+	
+	thisPAGE = (PAGE *) &PP;
+	pLOG = (void *) &LT;
+	flow_ITFLOWNAME_state_go(thisPAGE, LOG_TEST_DEF_NUM , sizeof(LT) , pLOG , INIT,YES);
+
+	FPRINTF(LOG_LEVEL,"============================\n");
+
+	memset(&LT,0,sizeof(LT));
+	sprintf(LT.url, "http://leecheoljoo/done");
+	flow_ITFLOWNAME_state_go(thisPAGE,LOG_TEST_DEF_NUM,sizeof(LT),pLOG,thisPAGE->PAGE_STATE,YES);
+
+	FPRINTF(LOG_LEVEL,"============================\n");
+
+	memset(&LT,0,sizeof(LT));
+	sprintf(LT.url, "http://leecheoljoo/done/done");
+	flow_ITFLOWNAME_state_go(thisPAGE,LOG_TEST_DEF_NUM,sizeof(LT),pLOG,REDIRECT,YES);
+
+	
+}
+
+#endif
