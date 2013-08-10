@@ -1,0 +1,44 @@
+[1;41r[?25h[?8c[?25h[?0c[27m[24m[0m[H[J[?25l[?1c[41;1H".git/COMMIT_EDITMSG" 38L, 1013C[2;1H# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# Explicit paths specified without -i nor -o; assuming --only paths...
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#   new file:   dbms/a.out
+#   new file:   dbms/t.c
+#   modified:   enum/t.c
+#   modified:   ipc/t.c
+#   renamed:    ipc/t.c -> ipc/tt.c
+#   new file:   mask/a.out
+#   new file:   mask/t.c
+#   new file:   mysql/t.c
+#   new file:   perl/flow_list.conf
+#   new file:   perl/gifo.pl
+#   new file:   perl/gifo/mkconf.pl
+#   new file:   perl/gifo_perl.tar.gz
+#   new file:   perl/process_list.conf
+#   modified:   string/t.c
+#   renamed:    string/t.c -> string/t2.c
+#   new file:   test.sh
+#   new file:   type/a.out
+#   new file:   type/t.c
+#   new file:   type/tt.c
+#   new file:   type/ttt.c
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#   enum/a.out
+#   enum/aa.out
+#   ipc/a.out
+#   list
+#   list2
+#   string/a.out
+[1m[34m~                                                                                                                                                                [40;1H~                                                                                                                                                                [1;1H[?25h[?0c
+[?25l[?1c[0m[41;1HType  :quit<Enter>  to exit Vim[41;32H[K[2;1H[?25h[?0c[?25l[?1c[?25h[?0c[?25l[?1c[?25h[?0c
+
+
+[41;1HVim: Error reading input, exiting...
+Vim: Finished.
+[41;1H[41;1H[K[41;1H
