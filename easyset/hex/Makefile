@@ -3,7 +3,7 @@ OBJ=${SRC:.c=.o}
 TARGET=a.out
 
 all:
-	cc ${SRC}
+	cc -g ${SRC}
 
 clean:
 	rm -rf *.o ${TARGET}

@@ -57,7 +57,7 @@ void mdbu_set_callback(void *tag[3])
 	SET_MDBU(*index, completed);
 }
 
-int main()
+void test_MDBU()
 {
 	struct st_activated_mdbu *pstmdbu;
 	void  *usertag[3];
@@ -89,5 +89,162 @@ int main()
 	printf("mdbu3 status = 0x%02x\n", GET_MDBU(3));
 	printf("mdbu4 status = 0x%02x\n", GET_MDBU(4));
 
+
+	return;
+}
+
+#define SET_ROU_END(p)  ((p) |= 0x01 << 7)
+#define SET_RDU_END(p)  ((p) |= 0x01 << 6)
+
+void test_ROU()
+{
+	unsigned char a1 = 0x01;
+	unsigned char a2 = 0x02;
+	unsigned char a3 = 0x03;
+
+	printf(" [before]\n");
+	printf("rou1 = 0x%02x\n", (a1));
+	printf("rou2 = 0x%02x\n", (a2));
+	printf("rou3 = 0x%02x\n", (a3));
+
+	printf(" [after]\n");
+	printf("rou1 = 0x%02x\n", SET_ROU_END(a1));
+	printf("rou2 = 0x%02x\n", SET_ROU_END(a2));
+	printf("rou3 = 0x%02x\n", SET_ROU_END(a3));
+
+	printf("rdu1 = 0x%02x\n", SET_RDU_END(a1));
+	printf("rdu2 = 0x%02x\n", SET_RDU_END(a2));
+	printf("rdu3 = 0x%02x\n", SET_RDU_END(a3));
+}
+
+void test_hex()
+{
+	unsigned char a;
+	int i;
+
+	for (i = 0, a = 0x01; i < 8; i++) {
+		printf("a%d=0x%02x\n", i, a << i);
+	}
+}
+
+void test_struct()
+{
+	struct stt {
+		unsigned char a1:2;
+		unsigned char a2:2;
+		unsigned char a3:2;
+		unsigned char a4:2;
+	} a;
+
+	struct stt2 {
+		char a;
+		char b;
+		int  c;
+	} c;
+	unsigned char b;
+
+	printf("sizeof(a)=%d\n", sizeof(a));
+	printf("sizeof(b)=%d\n", sizeof(b));
+	printf("sizeof(c)=%d\n", sizeof(c));
+
+	a.a1 = 0x01;
+	a.a2 = 0x02;
+	a.a3 = 0x02;
+	a.a4 = 0x01;
+
+	printf("a.a1=0x%02x\n", a.a1);
+	printf("a.a2=0x%02x\n", a.a2);
+	printf("a.a3=0x%02x\n", a.a3);
+	printf("a.a4=0x%02x\n", a.a4);
+	printf("a   =0x%02x\n", a);
+}
+
+int get_test_ptr(int type, int *bi[2])
+{
+	int ret = 1;
+	switch (type) {
+		case 1: case 3: *bi[0] = 100; break;;
+		case 2: case 4: *bi[0] = 200; *bi[1] = 300; ret = 2;
+				break;
+		default:
+				return 0;
+	}
+	return ret;
+}
+
+void test_ptr()
+{
+	int *bi[2];
+	int a,b;
+	int ret;
+	int i;
+
+	bi[0] = &a;
+	bi[1] = &b;
+
+	for (i = 0; i < 6; i++) {
+		ret = get_test_ptr(i, bi);
+		if (!ret) continue;
+
+		if (ret == 2)      printf("[%d]bi[0]=%d, bi[1]=%d\n", i, *bi[0], *bi[1]);
+		else if (ret == 1) printf("[%d]bi[0]=%d\n", i, *bi[0]);
+	}
+}
+
+void ttt(void *ii[2])
+{
+	int a;
+	int b;
+
+	a = (int)ii[0];
+	b = (int)ii[1];
+
+	printf("a=%d\n", a);
+	printf("b=%d\n", b);
+}
+void test_ptr2()
+{
+	int *a;
+	int *b;
+	void *tag[2];
+
+	a = (int *)11;
+	b = (int *)7;
+	tag[0] = (void *)a;
+	tag[1] = (void *)b;
+
+	ttt(tag);
+}
+
+struct st1 {
+	int a;
+	struct st1 *pst;
+};
+
+void t2(struct st1 *a[2])
+{
+}
+
+void test_st()
+{
+	struct st1 *a[2];
+	struct st1 b1, b2;
+
+	a[0] = &b1;
+	a[1] = &b2;
+
+	t2(a);
+}
+
+int main()
+{
+
+	test_MDBU();
+	test_ROU();
+	test_hex();
+	test_struct();
+	test_ptr();
+	test_ptr2();
+	test_st();
 	return;
 }
