@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include <string.h>
+
 typedef struct _st_new{
 	int idx;
 	int buffer[3];
 }st_new,*pst_new;
 
-int main()
+void test1()
 {
 	int i,dSize;
 	st_new stnew[3];
@@ -24,6 +26,59 @@ int main()
 		printf("idx[%d]=%d[%u]\n",i,pstnew->idx,pstnew);
 		pstnew++;
 	}
+}
 
+void test2()
+{
+	char arr[10];
+
+	unsigned int *a, *b;
+	unsigned short *c;
+	int i;
+
+	memset(arr, 0, 10);
+
+	a = (unsigned int *)&arr[0];
+	b = (unsigned int *)&arr[4];
+	c = (unsigned short *)&arr[8];
+
+	*a = 12399809;
+	*b = 99388491;
+	*c = 28392;
+
+	for (i = 0; i < sizeof(arr); i++) {
+		printf("a[%d]=0x%02x\n", i, *(unsigned char *)&arr[i]);
+	}
+
+
+}
+
+void test3()
+{
+	char *c,buf[] = {"test"};
+	int  len;
+	printf("buf=%s\n", buf);
+	c = &buf[0];
+	len = 4;
+	while(len--){
+		printf("%x:",*c++);
+	}
+	printf("\n");
+}
+
+int print(void (*cb)())
+{
+	static test_cnt = 1;
+	printf("=== test start(%d) ===\n", test_cnt++);
+	cb();
+	printf("=== test finished ===\n");
+	return 0;
+}
+
+int main()
+{
+	print(test1);
+	print(test2);
+	print(test3);
 	return 0;
 }
